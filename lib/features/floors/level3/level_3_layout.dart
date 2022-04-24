@@ -16,7 +16,6 @@ class Level3Layout extends StatefulWidget {
 }
 
 class _Level3LayoutState extends State<Level3Layout> {
-
   int table = 0;
   int seat = 0;
   Map<int, List<int>> bookedTables = bookingController.bookedSeats;

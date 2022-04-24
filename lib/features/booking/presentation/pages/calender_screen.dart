@@ -1,6 +1,6 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/room_card.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/table_card.dart';
 
@@ -29,7 +29,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20.h),
                 child: DatePicker(
-                  DateTime.now(),
+                  DateTime(DateTime.now().year),
                   initialSelectedDate: DateTime.now(),
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
@@ -43,12 +43,15 @@ class _CalenderScreenState extends State<CalenderScreen> {
                 ),
               ),
               TableCard(
-                  showWarning: false,fromCurrentBooking: false,
-                allowEdit: true,onRefresh: (){}
-              ),
+                  showWarning: false,
+                  fromCurrentBooking: false,
+                  allowEdit: true,
+                  onRefresh: () {}),
               RoomCard(
-                showWarning: false,fromCurrentBooking: false,
-                allowEdit: false,onRefresh: (){},
+                showWarning: false,
+                fromCurrentBooking: false,
+                allowEdit: false,
+                onRefresh: () {},
               ),
             ],
           ),

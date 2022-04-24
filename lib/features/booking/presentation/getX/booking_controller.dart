@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:hot_desking/features/booking/data/models/table_model.dart';
 
 class BookingController extends GetxController {
   static BookingController instance = Get.find();

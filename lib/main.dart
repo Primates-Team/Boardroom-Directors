@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       builder: (_) {
         return GetMaterialApp(
           title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: GoogleFonts.lato().fontFamily,
           ),

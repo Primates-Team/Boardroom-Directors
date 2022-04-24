@@ -1,15 +1,16 @@
 import 'dart:ui';
-import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
-import 'package:hot_desking/features/floors/level14/level14_layout.dart';
-import 'package:hot_desking/features/floors/level3/level_3_layout.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
+import 'package:http/http.dart' as http;
 
 import '../../../../core/app_urls.dart';
+import '../../../floors/level14/level14_layout.dart';
+import '../../../floors/level3/level_3_layout.dart';
 
 class HotDeskingScreen extends StatefulWidget {
   const HotDeskingScreen({Key? key}) : super(key: key);
@@ -19,7 +20,6 @@ class HotDeskingScreen extends StatefulWidget {
 }
 
 class _HotDeskingScreenState extends State<HotDeskingScreen> {
-
   List<String> _floorsList = [
     'Floor 3',
     'Floor 14',
@@ -28,27 +28,24 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
   String _selectedFloor = 'Floor 3';
   int? tableNo, seatNo;
 
-
-
   @override
   void initState() {
     super.initState();
     callAPI();
   }
 
-
   callAPI() async {
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),body: {
-        "selecteddate":"${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
-        "floor":_selectedFloor
+      var response =
+          await client.post(Uri.parse(AppUrl.tableBookedByFloor), body: {
+        "selecteddate":
+            "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
+        "floor": _selectedFloor
       });
 
       print(response.body);
-    } catch (e) {
-
-    }
+    } catch (e) {}
   }
 
   @override

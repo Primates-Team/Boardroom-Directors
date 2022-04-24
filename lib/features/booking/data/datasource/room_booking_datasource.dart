@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/models/get_all_room_booking_response.dart';
 import 'package:http/http.dart' as http;
+
 import '../../../../core/app_urls.dart';
 import '../../../../core/widgets/show_snackbar.dart';
 
@@ -20,20 +22,18 @@ class RoomBookingDataSource {
     var client = http.Client();
     try {
       var response = await client.post(Uri.parse(AppUrl.createRoomBooking),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
-            "roomid": roomId.toString(),
-            "selecteddate": date,
-            "fromtime": fromTime,
-            "totime": toTime,
-            "email" : jsonEncode(members),
-            "employeeid":
-                AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
-                    : 1,
-          });
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "roomid": 23,
+            "selecteddate": "24-04-2022",
+            "fromtime": "14.00",
+            "totime": "16.00",
+            "employeeid": 3,
+            "status": "Reserved",
+            "packs": 4,
+            "floor": "Floor 3",
+            "email": ["kgthangavel@gmail.com"]
+          }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
         print(jsonString);

@@ -2,6 +2,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/widgets/rc.dart';
 import 'package:hot_desking/features/current_booking/data/datasource/booked_ds.dart';
 
@@ -17,10 +18,10 @@ class BookingHistoryScreen extends StatefulWidget {
 }
 
 class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
-  DateTime? _selectedValue;
+  DateTime _selectedValue = DateTime.now();
   DatePickerController dateController = DatePickerController();
   List _all = [];
-  List _filter = [];
+  // List _filter = [];
   bool _error = false;
   bool _processing = true;
 
@@ -30,8 +31,16 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   void loadData() async {
     print("in load data");
-    Map bd = await BookedDataSource.getBookingHistory();
-    Map tt = await BookedDataSource.getBookingMeetingHistory();
+    // Map bd = await BookedDataSource.getBookingHistory(
+    //     AppHelpers.formatDate(_selectedValue));
+
+    Map bd = await BookedDataSource.getCurrentHistory(
+        AppHelpers.formatDate(_selectedValue), null);
+
+    Map tt = await BookedDataSource.getCurrentHistoryTable(
+        AppHelpers.formatDate(_selectedValue), null);
+
+    // Map tt = await BookedDataSource.getBookingMeetingHistory();
 
     if (bd.containsKey('flag') && bd['flag'] == false) {
       _error = true;
@@ -42,7 +51,6 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       _all = bd['data'];
       _error = false;
     }
-
 
     if (tt.containsKey('flag') && tt['flag'] == true) {
       _all.addAll(tt['data']);
@@ -59,8 +67,8 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       _selectedValue = DateTime.now();
     }
 
-    Future.delayed(Duration(milliseconds: 100),()=>dateController.animateToDate(_selectedValue!));
-
+    Future.delayed(Duration(milliseconds: 100),
+        () => dateController.animateToDate(_selectedValue));
 
     String dt2 = _selectedValue.toString();
     var y = dt2.substring(0, 4);
@@ -73,13 +81,13 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
     String fin = dt + '-' + mth + '-' + y;
     print(fin);
-    _filter = [];
-    _all.forEach((element) {
-      // print(element['selecteddate']);
-      if (element['selecteddate'] == fin.toString()) {
-        _filter.add(element);
-      }
-    });
+    // _filter = [];
+    // _all.forEach((element) {
+    //   // print(element['selecteddate']);
+    //   if (element['selecteddate'] == fin.toString()) {
+    //     _filter.add(element);
+    //   }
+    // });
     setState(() {});
   }
 
@@ -88,20 +96,42 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: _filter.length,
+        itemCount: _all.length,
         itemBuilder: (BuildContext context, int index) {
-          var node = _filter[index];
-          if(node['tableid'] != null){
+          var node = _all[index];
+          if (node['tableid'] != null) {
             return Rc(node);
-          }else{
+          } else {
             return RoomCard(
-              showWarning: false,
-              allowEdit: false,fromCurrentBooking: false,node: node,onRefresh: (){}
-            );
+                showWarning: false,
+                allowEdit: false,
+                fromCurrentBooking: false,
+                node: node,
+                onRefresh: () {});
           }
-
         });
   }
+
+  // Widget _drawList() {
+  //   if (_error) return Center(child: Text("Error Occured"));
+  //   return ListView.builder(
+  //       physics: NeverScrollableScrollPhysics(),
+  //       shrinkWrap: true,
+  //       itemCount: _filter.length,
+  //       itemBuilder: (BuildContext context, int index) {
+  //         var node = _filter[index];
+  //         if (node['tableid'] != null) {
+  //           return Rc(node);
+  //         } else {
+  //           return RoomCard(
+  //               showWarning: false,
+  //               allowEdit: false,
+  //               fromCurrentBooking: false,
+  //               node: node,
+  //               onRefresh: () {});
+  //         }
+  //       });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +148,8 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.h),
                       child: DatePicker(
-                        DateTime(DateTime.now().year - 1, DateTime.now().month, DateTime.now().day),
+                        DateTime(DateTime.now().year - 1, DateTime.now().month,
+                            DateTime.now().day),
                         controller: dateController,
                         initialSelectedDate: DateTime.now(),
                         selectionColor: Colors.black,
@@ -129,16 +160,23 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                             _selectedValue = date;
                             print(_selectedValue);
                           });
-                          filter();
+                          // filter();
+
+                          loadData();
                         },
                       ),
                     ),
-                    Container(height: Get.height * 0.8, child: _drawList()),
+                    Container(
+                        height: Get.height * 0.8,
+                        child: _all.isEmpty
+                            ? Center(
+                                child: Text("No bookings available"),
+                              )
+                            : _drawList()),
                   ],
                 ),
               ),
             ),
-            
     );
   }
 }

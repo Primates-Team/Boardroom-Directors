@@ -47,8 +47,10 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   int? tableNo, seatNo, roomId;
   List<String> paxEmailList = [];
 
-  String firstName = AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
-  String lastName = AppHelpers.SHARED_PREFERENCES.getString('lastName') ?? 'Doe';
+  String firstName =
+      AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
+  String lastName =
+      AppHelpers.SHARED_PREFERENCES.getString('lastName') ?? 'Doe';
 
   Future<void> getRoomid() async {
     String url = '/facilityaccess/viewall';
@@ -78,7 +80,10 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     super.initState();
   }
 
-  var black600TextStyle = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Colors.black.withOpacity(0.5));
+  var black600TextStyle = TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.black.withOpacity(0.5));
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +166,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     Container(
                       height: 34.h,
                       width: 152.w,
-                      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 6, horizontal: 14),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
@@ -302,7 +308,10 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     ],
                   ),
                 ),
-                if (_formattedDate != null && _startTime != null && roomId != null && _endTime != null)
+                if (_formattedDate != null &&
+                    _startTime != null &&
+                    roomId != null &&
+                    _endTime != null)
                   ListView.builder(
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
@@ -354,46 +363,50 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Expanded(flex: 3,
+          Expanded(
+            flex: 3,
             child: Text(
-              rooms[index]['name'] != null ? '${rooms[index]['name']}' : "Room A",
+              rooms[index]['name'] != null
+                  ? '${rooms[index]['name']}'
+                  : "Room A",
               style: AppTheme.black500TextStyle(14),
             ),
           ),
-
-          Expanded(flex: 4,
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  rooms[index]['noofpax'] != null
-                      ? rooms[index]['noofpax'].toString().length == 1
-                      ? "0${rooms[index]['noofpax']}"
-                      : "${rooms[index]['noofpax']}"
-                      : "8",
-                  style: AppTheme.black500TextStyle(14),
-                ),
-                InkWell(
-                  onTap: () {
-                    roomId = rooms[index]['id'];
-                    Get.bottomSheet(timeBottomSheet(index), isScrollControlled: true);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      color: AppColors.kEvergreen,
-                    ),
-                    child: Center(
-                        child: Text(
-                          'Available',
-                          style: AppTheme.black500TextStyle(14),
-                        )),
+          Expanded(
+            flex: 4,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    rooms[index]['noofpax'] != null
+                        ? rooms[index]['noofpax'].toString().length == 1
+                            ? "0${rooms[index]['noofpax']}"
+                            : "${rooms[index]['noofpax']}"
+                        : "8",
+                    style: AppTheme.black500TextStyle(14),
                   ),
-                ),
-              ]
-            ),
+                  InkWell(
+                    onTap: () {
+                      roomId = rooms[index]['id'];
+                      Get.bottomSheet(timeBottomSheet(index),
+                          isScrollControlled: true);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5.0, horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: AppColors.kEvergreen,
+                      ),
+                      child: Center(
+                          child: Text(
+                        'Available',
+                        style: AppTheme.black500TextStyle(14),
+                      )),
+                    ),
+                  ),
+                ]),
           )
-
         ],
       ),
     );
@@ -512,9 +525,11 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         ListView.builder(
                             itemBuilder: (context, index2) => Container(
                                   margin: EdgeInsets.only(bottom: 10),
-                                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 10),
                                   decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black, width: 1),
+                                      border: Border.all(
+                                          color: Colors.black, width: 1),
                                       borderRadius: BorderRadius.circular(15)),
                                   child: TextFormField(
                                     readOnly: false,
@@ -540,7 +555,9 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                     },
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontFeatures: const [FontFeature.tabularFigures()],
+                                        fontFeatures: const [
+                                          FontFeature.tabularFigures()
+                                        ],
                                         color: Colors.blueGrey[300],
                                         fontSize: 13),
                                     textAlign: TextAlign.start,
@@ -550,11 +567,14 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                     decoration: InputDecoration(
                                       isDense: true,
                                       border: InputBorder.none,
-                                      contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      contentPadding:
+                                          const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                       hintStyle: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
-                                        fontFeatures: const [FontFeature.tabularFigures()],
+                                        fontFeatures: const [
+                                          FontFeature.tabularFigures()
+                                        ],
                                         color: Colors.blueGrey[300],
                                       ),
                                       hintText: "Enter Pax${index2 + 1} Email",
@@ -607,15 +627,22 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   alignment: Alignment.centerRight,
                   child: InkWell(
                     onTap: () {
-                      if (_selectedLevel != null && _dateTime != null && _startTime != null && _endTime != null) {
+                      if (_selectedLevel != null &&
+                          _dateTime != null &&
+                          _startTime != null &&
+                          _endTime != null) {
                         if (_selectedPax.value != paxEmailList.length) {
-                          showSnackBar(context: context, message: 'Enter All Pax Emails');
+                          showSnackBar(
+                              context: context,
+                              message: 'Enter All Pax Emails');
                           return;
                         }
 
                         paxEmailList.forEach((element) {
                           if (!element.isEmail) {
-                            showSnackBar(context: context, message: 'Enter Valid Pax Email');
+                            showSnackBar(
+                                context: context,
+                                message: 'Enter Valid Pax Email');
                             return;
                           }
 
@@ -635,9 +662,12 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                     barrierDismissible: false,
                                     builder: (context) {
                                       return BackdropFilter(
-                                        filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 2.5, sigmaY: 2.5),
                                         child: Dialog(
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0)),
                                           child: const BookingConfirmedWidget(),
                                         ),
                                       );
@@ -650,7 +680,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                           }
                         });
                       } else {
-                        showSnackBar(context: context, message: 'Select All Fields');
+                        showSnackBar(
+                            context: context, message: 'Select All Fields');
                       }
                     },
                     child: confirmButton(),
@@ -710,7 +741,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     );
   }
 
-  Widget fromDateSelector(BuildContext context, void Function(void Function()) setState) {
+  Widget fromDateSelector(
+      BuildContext context, void Function(void Function()) setState) {
     return Container(
       height: 34.h,
       width: 152.w,
@@ -721,7 +753,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          showTimePicker(context: context, initialTime: TimeOfDay.now()).then((value) {
+          showTimePicker(context: context, initialTime: TimeOfDay.now())
+              .then((value) {
             if (value == null) return;
             setState(() {
               _formattedStartTime = AppHelpers.formatTime(value);
@@ -734,7 +767,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                _formattedStartTime ?? 'From Time',
+                _formattedStartTime ?? 'Start Time',
                 style: black600TextStyle,
               ),
               Icon(
@@ -748,7 +781,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     );
   }
 
-  Widget toDateSelector(BuildContext context, void Function(void Function()) setState) {
+  Widget toDateSelector(
+      BuildContext context, void Function(void Function()) setState) {
     return Container(
       height: 34.h,
       width: 152.w,
@@ -759,7 +793,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          showTimePicker(context: context, initialTime: TimeOfDay.now()).then((value) {
+          showTimePicker(context: context, initialTime: TimeOfDay.now())
+              .then((value) {
             if (value == null) return;
             setState(() {
               _formattedEndTime = AppHelpers.formatTime(value);
@@ -806,7 +841,9 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
               ),
               isExpanded: true,
               iconEnabledColor: Colors.black.withOpacity(0.5),
-              items: List<int>.generate(rooms[index]['available'] ?? 16, (i) => i + 1).map((int value) {
+              items: List<int>.generate(
+                      rooms[index]['available'] ?? 16, (i) => i + 1)
+                  .map((int value) {
                 return DropdownMenuItem<int>(
                   value: value,
                   child: Text(

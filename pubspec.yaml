@@ -35,9 +35,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logo/desq_logo.png"
+  image_path: "assets/logo/1024.png"
   adaptive_icon_background: "#361E55"
-  adaptive_icon_foreground: "assets/logo/desq_logo.png"
+  adaptive_icon_foreground: "assets/logo/1024.png"
 
 flutter:
 

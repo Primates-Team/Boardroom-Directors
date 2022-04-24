@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_urls.dart';
 import 'package:hot_desking/features/login/data/model/get_user_response.dart';
 import 'package:hot_desking/features/login/data/model/user_model.dart';
 import 'package:http/http.dart' as http;
+
 import '../../../../core/app_helpers.dart';
 import '../../../../core/widgets/show_snackbar.dart';
 
@@ -82,7 +84,9 @@ class AuthDataSource {
             AppHelpers.SHARED_PREFERENCES
                 .setString('profilepic', user.profilepic ?? '');
             AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
-            return true;
+            if (user.status != null)
+              AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
+            return user.status ?? true;
           }
         }
         showSnackBar(
