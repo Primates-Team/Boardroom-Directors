@@ -151,6 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: const HomeScreenMain(),
                                   duration: const Duration(milliseconds: 250)));
                         }
+                        
                       });
                     }
                   },
