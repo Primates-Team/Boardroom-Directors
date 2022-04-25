@@ -11,7 +11,10 @@ import '../../../../core/app_theme.dart';
 import '../widgets/room_card.dart';
 
 class BookingHistoryScreen extends StatefulWidget {
-  const BookingHistoryScreen({Key? key}) : super(key: key);
+  BookingHistoryScreen({Key? key, this.isCalendarScreen = false})
+      : super(key: key);
+
+  bool? isCalendarScreen;
 
   @override
   State<BookingHistoryScreen> createState() => _BookingHistoryScreenState();
@@ -27,6 +30,12 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   void initState() {
     WidgetsBinding.instance?.addPostFrameCallback((_) => loadData());
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   void loadData() async {
@@ -93,23 +102,28 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   Widget _drawList() {
     if (_error) return Center(child: Text("Error Occured"));
-    return ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: _all.length,
-        itemBuilder: (BuildContext context, int index) {
-          var node = _all[index];
-          if (node['tableid'] != null) {
-            return Rc(node);
-          } else {
-            return RoomCard(
-                showWarning: false,
-                allowEdit: false,
-                fromCurrentBooking: false,
-                node: node,
-                onRefresh: () {});
-          }
-        });
+    return RefreshIndicator(
+      onRefresh: () async {
+        loadData();
+      },
+      child: ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: _all.length,
+          itemBuilder: (BuildContext context, int index) {
+            var node = _all[index];
+            if (node['tableid'] != null) {
+              return Rc(node);
+            } else {
+              return RoomCard(
+                  showWarning: false,
+                  allowEdit: false,
+                  fromCurrentBooking: false,
+                  node: node,
+                  onRefresh: () {});
+            }
+          }),
+    );
   }
 
   // Widget _drawList() {
@@ -135,9 +149,12 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool isCalendarScreen = widget.isCalendarScreen ?? false;
+
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
-      appBar: AppTheme.appBar('Booking History', context, false),
+      appBar: AppTheme.appBar(
+          isCalendarScreen ? "Calendar" : 'Booking History', context, false),
       body: _processing == true
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(

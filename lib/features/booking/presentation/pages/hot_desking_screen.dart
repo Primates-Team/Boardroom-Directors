@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -37,12 +38,12 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
   callAPI() async {
     var client = http.Client();
     try {
-      var response =
-          await client.post(Uri.parse(AppUrl.tableBookedByFloor), body: {
-        "selecteddate":
-            "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
-        "floor": _selectedFloor
-      });
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          body: jsonEncode({
+            "selecteddate":
+                "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
+            "floor": _selectedFloor
+          }));
 
       print(response.body);
     } catch (e) {}

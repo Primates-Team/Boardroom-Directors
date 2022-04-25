@@ -18,21 +18,25 @@ class RoomBookingDataSource {
     required String fromTime,
     required String toTime,
     required List<String> members,
+    required String floor,
   }) async {
     var client = http.Client();
     try {
       var response = await client.post(Uri.parse(AppUrl.createRoomBooking),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
-            "roomid": 23,
-            "selecteddate": "24-04-2022",
-            "fromtime": "14.00",
-            "totime": "16.00",
-            "employeeid": 3,
+            "roomid": roomId,
+            "selecteddate": date,
+            "fromtime": fromTime,
+            "totime": toTime,
+            "employeeid":
+                AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
+                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
+                    : 1,
             "status": "Reserved",
-            "packs": 4,
-            "floor": "Floor 3",
-            "email": ["kgthangavel@gmail.com"]
+            "packs": members.length,
+            "floor": floor,
+            "email": members
           }));
       if (response.statusCode == 200) {
         var jsonString = response.body;

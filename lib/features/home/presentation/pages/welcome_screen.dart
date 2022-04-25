@@ -4,10 +4,11 @@ import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/features/booking/presentation/pages/hot_desking_screen.dart';
+import 'package:hot_desking/features/booking_history/presentation/pages/booking_history_screen.dart';
 import 'package:hot_desking/features/login/presentation/pages/login_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
 import '../../../booking/presentation/pages/room_booking_screen.dart';
-import '../../../booking/presentation/pages/calender_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -103,7 +104,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onTap: () {
                     pushNewScreen(
                       context,
-                      screen: const CalenderScreen(),
+                      screen: BookingHistoryScreen(
+                        isCalendarScreen: true,
+                      ),
+                      // screen: const CalenderScreen(),
                       withNavBar: true, // OPTIONAL VALUE. True by default.
                       pageTransitionAnimation: PageTransitionAnimation.fade,
                     );

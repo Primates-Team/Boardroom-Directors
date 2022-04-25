@@ -653,7 +653,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                     date: _formattedDate!,
                                     fromTime: _formattedStartTime!,
                                     toTime: _formattedEndTime!,
-                                    members: paxEmailList)
+                                    members: paxEmailList,
+                                    floor: _selectedLevel ?? 'Floor 3')
                                 .then((value) {
                               if (value) {
                                 Navigator.pop(context);

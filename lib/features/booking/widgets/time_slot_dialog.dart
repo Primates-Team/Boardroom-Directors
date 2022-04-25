@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hot_desking/core/app_colors.dart';
@@ -45,7 +46,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
   TimeOfDay? startTime, endTime;
   @override
   void initState() {
-     sdate = widget.date;
+    sdate = widget.date;
     startTime = widget.startTime;
     super.initState();
   }
@@ -60,10 +61,10 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Table 1',
-            style: AppTheme.labelTextStyle,
-          ),
+          // Text(
+          //   'Table 1',
+          //   style: AppTheme.labelTextStyle,
+          // ),
           SizedBox(
             height: 19.h,
           ),
@@ -74,8 +75,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                 child: Column(
                   children: [
                     textWidget('Date'),
-                    textWidget('From'),
-                    textWidget('To'),
+                    textWidget('Start'),
+                    textWidget('End'),
                   ],
                 ),
               ),
@@ -92,7 +93,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                        child: InkWell(
+                      child: InkWell(
                           onTap: () {
                             showDatePicker(
                                     context: context,
@@ -206,8 +207,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       .createBooking(
                     tableNo: widget.tableNo,
                     seatNo: widget.seatNo,
-                      date: AppHelpers.formatDate(sdate),
-                     //date: sdate,
+                    date: AppHelpers.formatDate(sdate),
+                    //date: sdate,
                     fromTime: AppHelpers.formatTime(startTime!),
                     toTime: AppHelpers.formatTime(endTime!),
                   )
