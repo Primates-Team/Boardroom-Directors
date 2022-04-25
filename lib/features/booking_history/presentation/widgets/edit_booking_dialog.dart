@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -16,7 +15,11 @@ class EditBookingDialog extends StatefulWidget {
   final Function onEdit;
 
   const EditBookingDialog(
-      {Key? key, required this.type, required this.node, required this.onDelete, required this.onEdit})
+      {Key? key,
+      required this.type,
+      required this.node,
+      required this.onDelete,
+      required this.onEdit})
       : super(key: key);
 
   @override
@@ -36,7 +39,9 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
     if (widget.node != null && widget.node['selecteddate'] != null) {
       selectdDate = widget.node['selecteddate'];
     }
-    if (widget.node != null && widget.node['fromtime'] != null && widget.node['totime'] != null) {
+    if (widget.node != null &&
+        widget.node['fromtime'] != null &&
+        widget.node['totime'] != null) {
       startTime = widget.node['fromtime'];
       endTime = widget.node['totime'];
     }
@@ -78,7 +83,11 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                     textWidget('Date'),
                     textWidget('Timing'),
                     if (widget.type == 'Room')
-                      SizedBox(height: 100, child: Align(alignment: Alignment.topLeft, child: textWidget('Members'))),
+                      SizedBox(
+                          height: 100,
+                          child: Align(
+                              alignment: Alignment.topLeft,
+                              child: textWidget('Members'))),
                   ],
                 ),
               ),
@@ -93,7 +102,8 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                 context: context,
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime.now(),
-                                lastDate: DateTime.now().add(const Duration(days: 180)))
+                                lastDate: DateTime.now()
+                                    .add(const Duration(days: 180)))
                             .then((value) {
                           if (value == null) return;
                           setState(() {
@@ -110,7 +120,11 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(children: [Text(selectdDate), Spacer(), Icon(Icons.calendar_month)])),
+                          child: Row(children: [
+                            Text(selectdDate),
+                            Spacer(),
+                            Icon(Icons.calendar_month)
+                          ])),
                     ),
                     Container(
                       height: 32.h,
@@ -133,7 +147,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                         : int.parse(startTime),
                                     minute: startTime.contains(":")
                                         ? int.parse(startTime.split(":").last)
-                                        :00),
+                                        : 00),
                               ).then((value) {
                                 if (value == null) return;
                                 setState(() {
@@ -141,7 +155,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                 });
                               });
                             },
-                            child: Text(startTime ),
+                            child: Text(startTime),
                           ),
                           Text("-"),
                           InkWell(
@@ -154,7 +168,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                         : int.parse(endTime),
                                     minute: endTime.contains(":")
                                         ? int.parse(endTime.split(":").last)
-                                        :00),
+                                        : 00),
                               ).then((value) {
                                 if (value == null) return;
                                 setState(() {
@@ -164,7 +178,8 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             },
                             child: Text(endTime),
                           ),
-                          Spacer(), Icon(Icons.calendar_month)
+                          Spacer(),
+                          Icon(Icons.calendar_month)
                         ],
                       ),
                     ),
@@ -194,7 +209,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
               InkWell(
                 onTap: () async {
                   Navigator.pop(context);
-                  widget.onEdit(selectdDate,startTime,endTime);
+                  widget.onEdit(selectdDate, startTime, endTime);
                 },
                 child: confirmButton(),
               ),

@@ -21,9 +21,12 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   bool _error = false;
   List _data = [];
 
+
   void initState() {
     super.initState();
     loadData();
+
+    
   }
 
   void loadData() async {
@@ -53,8 +56,16 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   }
 
   Widget _drawBody() {
-    if (_error == true) return Container(height: MediaQuery.of(context).size.height,alignment: Alignment.center,child: Text("Error Occured"));
-    if (_data.length == 0) return Container(height: MediaQuery.of(context).size.height,alignment: Alignment.center,child: Text("No Record to show"));
+    if (_error == true)
+      return Container(
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: Text("Error Occured"));
+    if (_data.length == 0)
+      return Container(
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: Text("No Record to show"));
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -69,16 +80,23 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
                   itemBuilder: (BuildContext context, int index) {
                     var node = _data[index];
                     if (node['tableid'] != null) {
-                      return TableCard(allowEdit: true, fromCurrentBooking: true, showWarning: true,node: node,onRefresh: (){
-                        loadData();
-                      });
+                      return TableCard(
+                          allowEdit: true,
+                          fromCurrentBooking: true,
+                          showWarning: true,
+                          node: node,
+                          onRefresh: () {
+                            loadData();
+                          });
                     } else {
                       return RoomCard(
-                        showWarning: true,fromCurrentBooking: true,
-                        allowEdit: true,node: node,onRefresh: (){
-                        loadData();
-                      }
-                      );
+                          showWarning: true,
+                          fromCurrentBooking: true,
+                          allowEdit: true,
+                          node: node,
+                          onRefresh: () {
+                            loadData();
+                          });
                     }
                   }))),
     );
@@ -99,6 +117,9 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
                 onRefresh: () async {
                   loadData();
                 },
-                child: SingleChildScrollView(padding: EdgeInsets.zero,physics: ScrollPhysics(),child: _drawBody())));
+                child: SingleChildScrollView(
+                    padding: EdgeInsets.zero,
+                    physics: ScrollPhysics(),
+                    child: _drawBody())));
   }
 }
