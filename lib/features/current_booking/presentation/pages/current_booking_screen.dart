@@ -99,6 +99,6 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
                 onRefresh: () async {
                   loadData();
                 },
-                child: SingleChildScrollView(padding: EdgeInsets.zero,physics: ScrollPhysics(),child: _drawBody())));
+                child: _drawBody()));
   }
 }

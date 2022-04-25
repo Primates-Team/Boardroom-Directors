@@ -82,8 +82,9 @@ class TableCard extends StatelessWidget {
                                     node: node,
                                     onDelete: () async {
                                       var client = http.Client();
-                                      await client.post(Uri.parse(AppUrl.tablecancleMeeting),
+                                     var response = await client.post(Uri.parse(AppUrl.tablecancleMeeting),
                                           body: {"id": "${node['id'] ?? 0}", "status": "cancel"});
+                                          print(response.body);
                                       onRefresh();
                                     },
                                     onEdit: (String date,String startTime,String endTime) async {

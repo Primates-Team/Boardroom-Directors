@@ -26,15 +26,19 @@ class EditBookingDialog extends StatefulWidget {
 class _EditBookingDialogState extends State<EditBookingDialog> {
   String selectdDate = '04-01-2022';
 
-  List<String> members = ['Rajesh', 'Suresh', 'Kamal', 'Manikandan'];
+  // List<String> members = ['members'];
 
   String startTime = "11", endTime = "4";
+    TextEditingController membersController = TextEditingController();
 
   @override
   void initState() {
     // startTime = widget.startTime;
     if (widget.node != null && widget.node['selecteddate'] != null) {
       selectdDate = widget.node['selecteddate'];
+    }
+    if (widget.node != null && widget.node['members'] != null) {
+      membersController.text = widget.node['members'];
     }
     if (widget.node != null && widget.node['fromtime'] != null && widget.node['totime'] != null) {
       startTime = widget.node['fromtime'];
@@ -178,7 +182,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text(members.join(', ')),
+                        child: TextField(controller: membersController,),
                       ),
                   ],
                 ),
