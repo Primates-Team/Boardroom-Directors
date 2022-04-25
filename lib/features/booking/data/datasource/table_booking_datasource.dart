@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -24,18 +25,18 @@ class TableBookingDataSource {
           //      headers: {
           //   HttpHeaders.contentTypeHeader: 'application/json'
           // },
-          body: {
+          body: jsonEncode( {
             "tableid": tableNo.toString(),
             "seatnumber": seatNo.toString(),
             "selecteddate": date,
             "fromtime": fromTime,
             "totime": toTime,
-            
+            "floor" : "Floor 3",
             "employeeid":
                 AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
                     ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
                     : 1,
-          });
+          }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
         print(jsonString);
@@ -98,7 +99,7 @@ class TableBookingDataSource {
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
-            message: 'Boking Failed',
+            message: 'Booking Failed',
             bgColor: Colors.red);
         return false;
       }

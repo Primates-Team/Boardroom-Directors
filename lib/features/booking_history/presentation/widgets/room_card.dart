@@ -206,7 +206,8 @@ class RoomCard extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text( node != null ?
-                        node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                        // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                         node['members'] != null ?  node['members'] : node['members'] : 'No Members',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

@@ -86,7 +86,8 @@ class AuthDataSource {
             AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
             if (user.status != null)
               AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
-            return user.status ?? true;
+            //return user.status ?? true;
+            return true;
           }
         }
         showSnackBar(

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -117,9 +118,6 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
                 onRefresh: () async {
                   loadData();
                 },
-                child: SingleChildScrollView(
-                    padding: EdgeInsets.zero,
-                    physics: ScrollPhysics(),
-                    child: _drawBody())));
+                child: _drawBody()));
   }
 }

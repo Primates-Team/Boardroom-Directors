@@ -38,6 +38,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   ];
 
   List rooms = [];
+  List bookedRooms = [];
   String? _selectedLevel = 'Floor 3';
   DateTime? _dateTime;
   TimeOfDay? _startTime, _endTime;
@@ -61,13 +62,52 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       var jsonString = response.body;
       print(response);
       roomId = jsonDecode(jsonString)[0]['id'];
-      rooms = jsonDecode(jsonString);
+      // rooms = jsonDecode(jsonString);
+      rooms.clear();
+      (jsonDecode(jsonString) as List).forEach((element) {
+        if (element['floor'] != null && element['floor'] == _selectedLevel) {
+          rooms.add(element);
+        }
+      });
     } catch (e) {
       // showSnackBar(
       //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
 
     }
   }
+  Future<void> getBookedRooms(String date) async {
+    String url = '/roombooking/viewbydate';
+    var client = http.Client();
+    try {
+      var response = await client.post(Uri.parse(AppUrl.baseUrl + url), body: {"selecteddate": date, "floor": _selectedLevel});
+
+      if(response.statusCode == 200){
+         if(jsonDecode(response.body) is List){
+           bookedRooms = jsonDecode(response.body);
+           setState(() {
+
+           });
+         } else{
+           bookedRooms.clear();
+           setState(() {
+
+           });
+         }
+      }else{
+        bookedRooms.clear();
+        setState(() {
+
+        });
+      }
+
+
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+
+    }
+  }
+
 
   @override
   void initState() {
@@ -598,11 +638,11 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'From: $_formattedStartTime',
+                      'Start time: $_formattedStartTime',
                       style: AppTheme.black500TextStyle(14),
                     ),
                     Text(
-                      'To: $_formattedEndTime',
+                      'End time: $_formattedEndTime',
                       style: AppTheme.black500TextStyle(14),
                     ),
                   ],
