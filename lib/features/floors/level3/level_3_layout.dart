@@ -18,11 +18,35 @@ class Level3Layout extends StatefulWidget {
 class _Level3LayoutState extends State<Level3Layout> {
   int table = 0;
   int seat = 0;
-  Map<int, List<int>> bookedTables = bookingController.bookedSeats;
+  // Map<int, List<int>> bookedTables = bookingController.bookedSeats;
+  late Map<int, List<int>> bookedTables;
+
+  List<Map<int, int>> tableData = bookingController.tableData;
+
+  Map<int, List<int>> modifiedTables = {};
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    for (var i = 1; i < 8; i++) {
+      modifiedTables[i] = [];
+      tableData.forEach((element) {
+        if (element.containsKey(i)) {
+          modifiedTables[i]?.add(element.values.first);
+        }
+      });
+    }
+
+    bookedTables = modifiedTables;
+    // print(modifiedTables);
+  }
 
   selectTable(int tableNo, int seatNo) {
     print(bookedTables);
     print('$tableNo $seatNo');
+
     if (bookedTables.containsKey(tableNo) && bookedTables[tableNo] != null) {
       if (bookedTables[tableNo]!.contains(seatNo)) {
         showSnackBar(context: context, message: 'Seat Already booked');

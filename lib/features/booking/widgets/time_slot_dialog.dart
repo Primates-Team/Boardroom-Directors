@@ -231,7 +231,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                               ),
                             );
                           });
-                      TableBookingDataSource().viewAllBooking();
+                      //TableBookingDataSource().viewAllBooking();
                     } else {
                       Navigator.pop(context);
                     }

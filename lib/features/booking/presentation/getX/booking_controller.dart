@@ -5,8 +5,13 @@ class BookingController extends GetxController {
 
   // RxList<BookedSeats> bookedSeats = [BookedSeats(tableNo: 0, seatNo: 0)].obs;
   RxMap<int, List<int>> bookedSeats = {
-    6: [4]
+    2: [
+      4,
+    ],
   }.obs;
+
+  List<Map<int, int>> tableData = [];
+
   RxList<int> bookedRooms = [0].obs;
 
 //  Future<void> getbookedSeats(String date) async {

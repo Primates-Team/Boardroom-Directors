@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -87,21 +88,17 @@ class BookedDataSource {
     // }
   }
 
-  static Future<Map> getCurrentHistory(String date, String? time) async {
+  static Future<Map> getCurrentHistory(String date, String time) async {
     var client = http.Client();
     print(date);
     try {
       var response = await client.post(Uri.parse(AppUrl.viewByTime),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
             "selecteddate": date,
-            // "employeeid": "10"
-            "employeeid":
-                AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString(),
-            if (time != null) "time": time
-          });
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+            if (time != null) "current_time": time
+          }));
       print(
           "employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()}");
       // print(response);
@@ -134,23 +131,19 @@ class BookedDataSource {
     }
   }
 
-  static Future<Map> getCurrentHistoryTable(String date, String? time) async {
+  static Future<Map> getCurrentHistoryTable(String date, String time) async {
     var client = http.Client();
     print(date);
     try {
       var response = await client.post(Uri.parse(AppUrl.viewByTimeTable),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
             "selecteddate": date,
             // "employeeid": "10"
-            "employeeid":
-                AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString(),
-            if (time != null) "time": time
-          });
-      print(
-          "employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()}");
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+            if (time != null) "current_time": time
+          }));
+      print("employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id')}");
       // print(response);
       // print("selecteddate=" + date.toString());
       //print("time=" + time.toString());

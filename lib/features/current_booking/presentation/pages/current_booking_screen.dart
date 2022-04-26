@@ -31,8 +31,10 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
     var tim = now.hour.toString() + ':' + now.minute.toString();
     String cd = AppHelpers.formatDate(now);
 
-    Map ct = await BookedDataSource.getCurrentHistory(cd, tim);
-    Map tt = await BookedDataSource.getCurrentHistoryTable(cd, tim);
+    Map ct = await BookedDataSource.getCurrentHistory(
+        cd, AppHelpers.formatTime(TimeOfDay.now()));
+    Map tt = await BookedDataSource.getCurrentHistoryTable(
+        cd, AppHelpers.formatTime(TimeOfDay.now()));
 
     if (ct['flag'] == false) {
       _error = true;

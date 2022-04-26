@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -42,16 +44,32 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client
-          .post(Uri.parse(AppUrl.tableBookedByFloorDateTime), body: {
-        "selecteddate": outputDate,
-        // "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
-        "floor": _selectedFloor,
-        "current_time": AppHelpers.formatTime(TimeOfDay.now())
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": outputDate,
+            "floor": _selectedFloor,
+            "current_time": AppHelpers.formatTime(TimeOfDay.now())
+          }));
+
+      List<dynamic> jsondata = jsonDecode(response.body);
+
+      List<Map<int, int>> tableData = [];
+
+      jsondata.forEach((element) {
+        Map<int, int> tableSeatDict = {
+          jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+        };
+
+        tableData.add(tableSeatDict);
       });
 
-      print(response.body);
-    } catch (e) {}
+      bookingController.tableData = tableData;
+
+      print(tableData);
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override

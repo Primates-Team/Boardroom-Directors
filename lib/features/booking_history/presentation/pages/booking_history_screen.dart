@@ -44,10 +44,12 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     //     AppHelpers.formatDate(_selectedValue));
 
     Map bd = await BookedDataSource.getCurrentHistory(
-        AppHelpers.formatDate(_selectedValue), null);
+        AppHelpers.formatDate(_selectedValue),
+        AppHelpers.formatTime(TimeOfDay.now()));
 
     Map tt = await BookedDataSource.getCurrentHistoryTable(
-        AppHelpers.formatDate(_selectedValue), null);
+        AppHelpers.formatDate(_selectedValue),
+        AppHelpers.formatTime(TimeOfDay.now()));
 
     // Map tt = await BookedDataSource.getBookingMeetingHistory();
 

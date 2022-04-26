@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -22,22 +23,20 @@ class TableBookingDataSource {
 
     try {
       var response = await client.post(Uri.parse(AppUrl.createTableBooking),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
-            "tableid": tableNo.toString(),
-            "seatnumber": seatNo.toString(),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "tableid": tableNo,
+            "seatnumber": seatNo,
             "fromtime": fromTime,
             "totime": toTime,
             "selecteddate": date,
             "floor": floor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now()),
+            // "current_time": AppHelpers.formatTime(TimeOfDay.now()),
             "employeeid":
                 AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
-                    : "1",
-          });
+                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id')
+                    : 1,
+          }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
         print(jsonString);

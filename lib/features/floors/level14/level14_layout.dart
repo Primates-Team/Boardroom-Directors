@@ -17,7 +17,29 @@ class Level14Layout extends StatefulWidget {
 class _Level14LayoutState extends State<Level14Layout> {
   int table = 0;
   int seat = 0;
-  Map<int, List<int>> bookedTables = bookingController.bookedSeats;
+  late Map<int, List<int>> bookedTables;
+
+  List<Map<int, int>> tableData = bookingController.tableData;
+
+  Map<int, List<int>> modifiedTables = {};
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    for (var i = 1; i < 17; i++) {
+      modifiedTables[i] = [];
+      tableData.forEach((element) {
+        if (element.containsKey(i)) {
+          modifiedTables[i]?.add(element.values.first);
+        }
+      });
+    }
+
+    bookedTables = modifiedTables;
+    // print(modifiedTables);
+  }
 
   selectTable(int tableNo, int seatNo) {
     print(bookedTables);
