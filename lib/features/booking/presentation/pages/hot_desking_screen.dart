@@ -1,13 +1,14 @@
-import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hot_desking/core/app_colors.dart';
+import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 import '../../../../core/app_urls.dart';
 import '../../../floors/level14/level14_layout.dart';
@@ -36,14 +37,18 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
   }
 
   callAPI() async {
+    var inputDate = DateTime.parse(DateTime.now().toString());
+    var outputFormat = DateFormat('dd-MM-yyyy');
+    var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
-          body: jsonEncode({
-            "selecteddate":
-                "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
-            "floor": _selectedFloor
-          }));
+      var response = await client
+          .post(Uri.parse(AppUrl.tableBookedByFloorDateTime), body: {
+        "selecteddate": outputDate,
+        // "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
+        "floor": _selectedFloor,
+        "current_time": AppHelpers.formatTime(TimeOfDay.now())
+      });
 
       print(response.body);
     } catch (e) {}

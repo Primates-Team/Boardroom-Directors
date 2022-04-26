@@ -1,12 +1,4 @@
 import 'package:get/get.dart';
-import 'package:hot_desking/core/app_urls.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-
-
 
 class BookingController extends GetxController {
   static BookingController instance = Get.find();
@@ -42,12 +34,9 @@ class BookingController extends GetxController {
 //         });
 //       }
 
+  // } catch (e) {
+  // showSnackBar(
+  //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
 
-    // } catch (e) {
-      // showSnackBar(
-      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
-
-   
   // }
 }
-

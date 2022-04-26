@@ -386,7 +386,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             _isLoading = true;
                           });
                           FirebaseStorage.instance
-                              .ref(mobile.text)
+                              .ref(mobile.text + ".jpeg")
                               .putFile(_image!)
                               .then((data) {
                             if (data.metadata != null) {

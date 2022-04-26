@@ -150,8 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   type: PageTransitionType.fade,
                                   child: const HomeScreenMain(),
                                   duration: const Duration(milliseconds: 250)));
+                        } else {
+                          Get.snackbar(
+                              "Error", "The user is not approved yet.");
                         }
-                        
                       });
                     }
                   },

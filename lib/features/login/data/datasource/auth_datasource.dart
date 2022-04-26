@@ -86,8 +86,8 @@ class AuthDataSource {
             AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
             if (user.status != null)
               AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
-            //return user.status ?? true;
-            return true;
+
+            return user.status ?? true;
           }
         }
         showSnackBar(
@@ -105,9 +105,9 @@ class AuthDataSource {
         return false;
       }
     } catch (e) {
-      showSnackBar(
-          context: Get.context!, message: e.toString(), bgColor: Colors.red);
-      print(e);
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      // print(e);
       return false;
     }
   }
