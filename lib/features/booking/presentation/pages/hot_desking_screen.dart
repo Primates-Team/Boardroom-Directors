@@ -176,6 +176,7 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
                                   seatNo: seatNo!,
                                   date: DateTime.now(),
                                   startTime: TimeOfDay.now(),
+                                  floor: _selectedFloor,
                                 ),
                               ),
                             );

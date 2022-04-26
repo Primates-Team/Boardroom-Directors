@@ -16,12 +16,14 @@ class TimeSlotDialog extends StatefulWidget {
   final int seatNo;
   final DateTime date;
   final TimeOfDay startTime;
+  final String floor;
   const TimeSlotDialog(
       {Key? key,
       required this.date,
       required this.startTime,
       required this.tableNo,
-      required this.seatNo})
+      required this.seatNo,
+      required this.floor})
       : super(key: key);
 
   @override
@@ -208,7 +210,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                     tableNo: widget.tableNo,
                     seatNo: widget.seatNo,
                     date: AppHelpers.formatDate(sdate),
-                    //date: sdate,
+                    floor: widget.floor,
                     fromTime: AppHelpers.formatTime(startTime!),
                     toTime: AppHelpers.formatTime(endTime!),
                   )

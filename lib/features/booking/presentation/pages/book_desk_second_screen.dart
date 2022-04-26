@@ -178,6 +178,7 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
                                   seatNo: seatNo!,
                                   date: widget.date,
                                   startTime: widget.time,
+                                  floor: _selectedFloor ?? '',
                                 ),
                               ),
                             );

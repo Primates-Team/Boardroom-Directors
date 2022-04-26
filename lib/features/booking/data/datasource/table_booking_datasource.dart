@@ -11,14 +11,15 @@ import '../../../../core/app_urls.dart';
 import '../../../../core/widgets/show_snackbar.dart';
 
 class TableBookingDataSource {
-  Future<bool> createBooking({
-    required int tableNo,
-    required int seatNo,
-    required String date,
-    required String fromTime,
-    required String toTime,
-  }) async {
+  Future<bool> createBooking(
+      {required int tableNo,
+      required int seatNo,
+      required String date,
+      required String fromTime,
+      required String toTime,
+      required String floor}) async {
     var client = http.Client();
+
     try {
       var response = await client.post(Uri.parse(AppUrl.createTableBooking),
           //      headers: {
@@ -29,7 +30,8 @@ class TableBookingDataSource {
             "seatnumber": seatNo.toString(),
             "fromtime": fromTime,
             "totime": toTime,
-            "floor": "Floor 3",
+            "selecteddate": date,
+            "floor": floor,
             "current_time": AppHelpers.formatTime(TimeOfDay.now()),
             "employeeid":
                 AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null

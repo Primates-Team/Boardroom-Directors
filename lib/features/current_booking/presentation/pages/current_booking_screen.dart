@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -22,12 +21,9 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   bool _error = false;
   List _data = [];
 
-
   void initState() {
     super.initState();
     loadData();
-
-    
   }
 
   void loadData() async {
