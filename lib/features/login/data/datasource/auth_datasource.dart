@@ -36,10 +36,11 @@ class AuthDataSource {
       if (response.statusCode == 200) {
         print(response.body);
         showSnackBar(context: Get.context!, message: 'Registered Successfully');
-        AppHelpers.SHARED_PREFERENCES.setString('email', user.email);
-        AppHelpers.SHARED_PREFERENCES.setString('firstName', user.firstName);
-        AppHelpers.SHARED_PREFERENCES.setString('lastName', user.lastName);
-        AppHelpers.SHARED_PREFERENCES.setString('phone', user.mobile);
+        // AppHelpers.SHARED_PREFERENCES.setString('email', user.email);
+        // AppHelpers.SHARED_PREFERENCES.setString('firstName', user.firstName);
+        // AppHelpers.SHARED_PREFERENCES.setString('lastName', user.lastName);
+        // AppHelpers.SHARED_PREFERENCES.setString('phone', user.mobile);
+
         return true;
       } else {
         print(response.statusCode);
@@ -68,26 +69,35 @@ class AuthDataSource {
       if (response.statusCode == 200) {
         var jsonString = response.body;
         List<GetUserResponse> users = getUserResponseFromJson(jsonString);
+
         for (var user in users) {
           if (user.email == email && user.password == password) {
-            AppHelpers.SHARED_PREFERENCES.setString('email', user.email!);
-            AppHelpers.SHARED_PREFERENCES.setString('password', user.password!);
-            AppHelpers.SHARED_PREFERENCES
-                .setString('firstName', user.firstname);
-            AppHelpers.SHARED_PREFERENCES.setString('lastName', user.lastname);
-            AppHelpers.SHARED_PREFERENCES.setString('phone', user.phone ?? '');
-            AppHelpers.SHARED_PREFERENCES.setInt('user_id', user.id);
-            AppHelpers.SHARED_PREFERENCES.setString('role', user.role ?? '');
-            AppHelpers.SHARED_PREFERENCES
-                .setString('designation', user.designation ?? '');
-            AppHelpers.SHARED_PREFERENCES.setString('phone', user.phone ?? '');
-            AppHelpers.SHARED_PREFERENCES
-                .setString('profilepic', user.profilepic ?? '');
-            AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
-            if (user.status != null)
-              AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
-
-            return user.status ?? true;
+            if (user.status != null) {
+              AppHelpers.SHARED_PREFERENCES.setString('email', user.email!);
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('password', user.password!);
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('firstName', user.firstname);
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('lastName', user.lastname);
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('phone', user.phone ?? '');
+              AppHelpers.SHARED_PREFERENCES.setInt('user_id', user.id);
+              AppHelpers.SHARED_PREFERENCES.setString('role', user.role ?? '');
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('designation', user.designation ?? '');
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('phone', user.phone ?? '');
+              AppHelpers.SHARED_PREFERENCES
+                  .setString('profilepic', user.profilepic ?? '');
+              AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
+              if (user.status != null) {
+                AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
+              }
+              return user.status == "true" || user.status == true;
+            } else {
+              return false;
+            }
           }
         }
         showSnackBar(

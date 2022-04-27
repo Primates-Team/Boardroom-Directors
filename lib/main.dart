@@ -28,7 +28,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool isLoggedIn = AppHelpers.SHARED_PREFERENCES.getString('email') != null;
+    bool isLoggedIn =
+        AppHelpers.SHARED_PREFERENCES.getString('email') != null &&
+            (AppHelpers.SHARED_PREFERENCES.getString('status') != null &&
+                (AppHelpers.SHARED_PREFERENCES.getString('status') == 'true'));
+    print(AppHelpers.SHARED_PREFERENCES.getString('status'));
     print(AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString());
     return ScreenUtilInit(
       designSize: const Size(390, 800),

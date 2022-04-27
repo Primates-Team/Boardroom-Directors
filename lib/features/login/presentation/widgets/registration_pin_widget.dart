@@ -120,6 +120,7 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                               mobile: widget.user.mobile,
                               email: widget.user.email,
                               password: passwordController.text,
+                              
                               profileUrl: widget.user.profileUrl);
 
                           AuthDataSource().signup(userModel).then((value) {
