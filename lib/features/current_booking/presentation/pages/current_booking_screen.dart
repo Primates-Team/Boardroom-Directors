@@ -21,6 +21,9 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   bool _error = false;
   List _data = [];
 
+  AppBar appbar = AppBar();
+  TabBar tabBar = TabBar(tabs: []);
+
   void initState() {
     super.initState();
     loadData();
@@ -60,44 +63,52 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.center,
           child: Text("Error Occured"));
-    if (_data.length == 0)
-      return Container(
-          height: MediaQuery.of(context).size.height,
-          alignment: Alignment.center,
-          child: Text("No Record to show"));
+    // if (_data.length == 0)
+    //   return Container(
+    //       height: MediaQuery.of(context).size.height,
+    //       alignment: Alignment.center,
+    //       child: Text("No Record to show"));
 
     return RefreshIndicator(
       onRefresh: () async {
         loadData();
       },
-      child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Container(
-              height: Get.height * 0.9,
-              child: ListView.builder(
-                  itemCount: _data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var node = _data[index];
-                    if (node['tableid'] != null) {
-                      return TableCard(
-                          allowEdit: true,
-                          fromCurrentBooking: true,
-                          showWarning: true,
-                          node: node,
-                          onRefresh: () {
-                            loadData();
-                          });
-                    } else {
-                      return RoomCard(
-                          showWarning: true,
-                          fromCurrentBooking: true,
-                          allowEdit: true,
-                          node: node,
-                          onRefresh: () {
-                            loadData();
-                          });
-                    }
-                  }))),
+      child: (_data.length == 0)
+          ? SingleChildScrollView(
+              child: Container(
+                  height: MediaQuery.of(context).size.height -
+                      kToolbarHeight -
+                      kBottomNavigationBarHeight,
+                  child: Center(child: Text("No Record to show"))),
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Container(
+                  height: Get.height * 0.9,
+                  child: ListView.builder(
+                      itemCount: _data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        var node = _data[index];
+                        if (node['tableid'] != null) {
+                          return TableCard(
+                              allowEdit: true,
+                              fromCurrentBooking: true,
+                              showWarning: true,
+                              node: node,
+                              onRefresh: () {
+                                loadData();
+                              });
+                        } else {
+                          return RoomCard(
+                              showWarning: true,
+                              fromCurrentBooking: true,
+                              allowEdit: true,
+                              node: node,
+                              onRefresh: () {
+                                loadData();
+                              });
+                        }
+                      }))),
     );
   }
 
@@ -112,10 +123,6 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
                   Expanded(child: Center(child: CircularProgressIndicator())),
                 ],
               )
-            : RefreshIndicator(
-                onRefresh: () async {
-                  loadData();
-                },
-                child: _drawBody()));
+            : _drawBody());
   }
 }

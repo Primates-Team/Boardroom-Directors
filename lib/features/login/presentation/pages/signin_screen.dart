@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
@@ -319,13 +320,26 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Stack(
                         children: [
                           TextFormField(
+                            // maxLengthEnforcement: MaxLengthEnforcement.enforced,
                             controller: mobile,
-                            decoration:
-                                AppTheme.textFieldDecoration('Mobile Number'),
-                            validator: (s) => !GetUtils.isPhoneNumber(s!)
-                                ? 'Mobile number required'
-                                : null,
+                            decoration: AppTheme.textFieldDecoration(
+                              'Mobile Number',
+                            ),
+                            validator: (s) {
+                              const String pattern = r'(^(?:[+0]9)?[0-9]{8}$)';
+
+                              RegExp regex = RegExp(pattern);
+                              if (!regex.hasMatch(s!))
+                                return 'Mobile number is not valid';
+                              else
+                                return null;
+                            },
+                            // !GetUtils.isPhoneNumber(s!)
+                            //     ? 'Mobile number is not valid'
+                            //     : null,
                             keyboardType: TextInputType.number,
+                            maxLength: 8,
+
                             style: const TextStyle(
                                 color: AppColors.kDarkPantone,
                                 fontSize: 12,

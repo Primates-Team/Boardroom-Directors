@@ -159,40 +159,52 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           isCalendarScreen ? "Calendar" : 'Booking History', context, false),
       body: _processing == true
           ? Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20.h),
-                      child: DatePicker(
-                        DateTime(DateTime.now().year - 1, DateTime.now().month,
-                            DateTime.now().day),
-                        controller: dateController,
-                        initialSelectedDate: DateTime.now(),
-                        selectionColor: Colors.black,
-                        daysCount: 366,
-                        selectedTextColor: Colors.white,
-                        onDateChange: (date) {
-                          setState(() {
-                            _selectedValue = date;
-                            print(_selectedValue);
-                          });
-                          // filter();
+          : RefreshIndicator(
+              onRefresh: () async {
+                loadData();
+              },
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20.h),
+                        child: DatePicker(
+                          DateTime(DateTime.now().year - 1,
+                              DateTime.now().month, DateTime.now().day),
+                          controller: dateController,
+                          initialSelectedDate: DateTime.now(),
+                          selectionColor: Colors.black,
+                          daysCount: 366,
+                          selectedTextColor: Colors.white,
+                          onDateChange: (date) {
+                            setState(() {
+                              _selectedValue = date;
+                              print(_selectedValue);
+                            });
+                            // filter();
 
-                          loadData();
-                        },
+                            loadData();
+                          },
+                        ),
                       ),
-                    ),
-                    Container(
-                        height: Get.height * 0.8,
-                        child: _all.isEmpty
-                            ? Center(
-                                child: Text("No bookings available"),
-                              )
-                            : _drawList()),
-                  ],
+                      Container(
+                          height: Get.height * 0.8,
+                          child: _all.isEmpty
+                              ? SingleChildScrollView(
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height -
+                                        kToolbarHeight -
+                                        kBottomNavigationBarHeight -
+                                        200,
+                                    child: Center(
+                                        child: Text("No bookings available")),
+                                  ),
+                                )
+                              : _drawList()),
+                    ],
+                  ),
                 ),
               ),
             ),

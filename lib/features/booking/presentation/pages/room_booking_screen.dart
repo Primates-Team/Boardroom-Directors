@@ -13,6 +13,9 @@ import 'package:hot_desking/features/booking/data/datasource/room_booking_dataso
 import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 import 'package:http/http.dart' as http;
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
+import '../../../login/presentation/pages/login_screen.dart';
 
 //import 'package:hot_desking/features/floors/level3/level_3_layout.dart';
 //import 'package:hot_desking/features/booking/widgets/seat_selection_dialog.dart';
@@ -75,39 +78,32 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
     }
   }
+
   Future<void> getBookedRooms(String date) async {
     String url = '/roombooking/viewbydate';
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.baseUrl + url), body: {"selecteddate": date, "floor": _selectedLevel});
+      var response = await client.post(Uri.parse(AppUrl.baseUrl + url),
+          body: {"selecteddate": date, "floor": _selectedLevel});
 
-      if(response.statusCode == 200){
-         if(jsonDecode(response.body) is List){
-           bookedRooms = jsonDecode(response.body);
-           setState(() {
-
-           });
-         } else{
-           bookedRooms.clear();
-           setState(() {
-
-           });
-         }
-      }else{
+      if (response.statusCode == 200) {
+        if (jsonDecode(response.body) is List) {
+          bookedRooms = jsonDecode(response.body);
+          setState(() {});
+        } else {
+          bookedRooms.clear();
+          setState(() {});
+        }
+      } else {
         bookedRooms.clear();
-        setState(() {
-
-        });
+        setState(() {});
       }
-
-
     } catch (e) {
       // showSnackBar(
       //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
 
     }
   }
-
 
   @override
   void initState() {
@@ -149,9 +145,16 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                       },
                       child: const Icon(Icons.arrow_back_ios),
                     ),
-                    Image.asset(
-                      'assets/welcome_screen/log_out.png',
-                      height: 30,
+                    GestureDetector(
+                      onTap: () {
+                        AppHelpers.SHARED_PREFERENCES.clear();
+                        pushAndRemoveUntilScreen(context,
+                            screen: const LoginScreen(), withNavBar: false);
+                      },
+                      child: Image.asset(
+                        'assets/welcome_screen/log_out.png',
+                        height: 30,
+                      ),
                     ),
                   ],
                 ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_theme.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
 import 'package:hot_desking/features/login/data/model/user_model.dart';
 import 'package:hot_desking/features/login/presentation/widgets/successful_widget.dart';
@@ -51,6 +50,7 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                     TextFormField(
                       controller: passwordController,
                       decoration: AppTheme.textFieldDecoration('New Pin'),
+                      obscureText: true,
                       validator: (s) => s!.isEmpty ? 'Password Required' : null,
                       style: TextStyle(
                           color: AppColors.kDarkPantone,
@@ -81,6 +81,7 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                     TextFormField(
                       controller: confPasswordController,
                       decoration: AppTheme.textFieldDecoration('Re-Type Pin'),
+                      obscureText: true,
                       validator: (s) => s!.isEmpty
                           ? 'Confirm Password Required'
                           : s == passwordController.text
@@ -120,7 +121,6 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                               mobile: widget.user.mobile,
                               email: widget.user.email,
                               password: passwordController.text,
-                              
                               profileUrl: widget.user.profileUrl);
 
                           AuthDataSource().signup(userModel).then((value) {

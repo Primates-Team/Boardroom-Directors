@@ -20,6 +20,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
+
+  final GlobalKey<ScaffoldMessengerState> snackbarKey =
+      GlobalKey<ScaffoldMessengerState>();
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -151,8 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: const HomeScreenMain(),
                                   duration: const Duration(milliseconds: 250)));
                         } else {
-                          Get.snackbar(
-                              "Error", "The user is not approved yet.");
+                          Get.snackbar("The user is not approved yet.", "");
                         }
                       });
                     }
