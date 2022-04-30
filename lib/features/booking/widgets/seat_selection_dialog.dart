@@ -88,7 +88,7 @@ class SeatSelection extends StatelessWidget {
                       width: 15.w,
                     ),
                     Text(
-                      'Avaiable',
+                      'Available',
                       style: AppTheme.black500TextStyle(10),
                     ),
                   ],

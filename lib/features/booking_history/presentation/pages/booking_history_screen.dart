@@ -176,7 +176,8 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                           controller: dateController,
                           initialSelectedDate: DateTime.now(),
                           selectionColor: Colors.black,
-                          daysCount: 366,
+                          daysCount:
+                              widget.isCalendarScreen == true ? 732 : 366,
                           selectedTextColor: Colors.white,
                           onDateChange: (date) {
                             setState(() {

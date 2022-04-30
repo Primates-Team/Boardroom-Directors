@@ -90,7 +90,7 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     chairInfo(
-                        status: 'Avaiable',
+                        status: 'Available',
                         imageFile: 'assets/chairs/available.png',
                         color: AppColors.kEvergreen),
                     chairInfo(
@@ -102,7 +102,7 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
                         imageFile: 'assets/chairs/selected.png',
                         color: AppColors.kOrange),
                     chairInfo(
-                        status: 'Avaiable Soon',
+                        status: 'Available Soon',
                         imageFile: 'assets/chairs/available_soon.png',
                         color: Colors.grey),
                   ],

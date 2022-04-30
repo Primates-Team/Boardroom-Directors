@@ -42,6 +42,12 @@ class AuthDataSource {
         // AppHelpers.SHARED_PREFERENCES.setString('phone', user.mobile);
 
         return true;
+      } else if (response.statusCode == 400) {
+        showSnackBar(
+            context: Get.context!,
+            message: "Email Already Register",
+            bgColor: Colors.red);
+        return false;
       } else {
         print(response.statusCode);
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
