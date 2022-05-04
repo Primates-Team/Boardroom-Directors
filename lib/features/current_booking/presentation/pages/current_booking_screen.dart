@@ -58,16 +58,12 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   }
 
   Widget _drawBody() {
-    if (_error == true)
+    if (_error == true) {
       return Container(
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.center,
-          child: Text("Error Occured"));
-    // if (_data.length == 0)
-    //   return Container(
-    //       height: MediaQuery.of(context).size.height,
-    //       alignment: Alignment.center,
-    //       child: Text("No Record to show"));
+          child: const Text("Error Occured"));
+    }
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -75,15 +71,15 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
       },
       child: (_data.length == 0)
           ? SingleChildScrollView(
-              child: Container(
+              child: SizedBox(
                   height: MediaQuery.of(context).size.height -
                       kToolbarHeight -
                       kBottomNavigationBarHeight,
-                  child: Center(child: Text("No Record to show"))),
+                  child: const Center(child: Text("No Record to show"))),
             )
           : Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Container(
+              child: SizedBox(
                   height: Get.height * 0.9,
                   child: ListView.builder(
                       itemCount: _data.length,
@@ -120,7 +116,8 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
         body: _processing == true
             ? Column(
                 children: [
-                  Expanded(child: Center(child: CircularProgressIndicator())),
+                  const Expanded(
+                      child: Center(child: CircularProgressIndicator())),
                 ],
               )
             : _drawBody());
