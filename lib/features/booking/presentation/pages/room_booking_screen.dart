@@ -12,6 +12,8 @@ import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
 import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
+import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
+import 'package:hot_desking/features/login/data/model/get_user_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
@@ -50,6 +52,12 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   var _selectedPax = 1.obs;
   int? tableNo, seatNo, roomId;
   List<String> paxEmailList = [];
+
+  List<GetUserResponse> users = [];
+
+  List<String> userList = [];
+
+  String dropdownValue = "One";
 
   String firstName =
       AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
@@ -113,6 +121,12 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       _selectedCategory = 1;
     }
     getRoomid();
+    AuthDataSource().GetAllUser().then((value) {
+      if (value != null) {
+        users = value;
+        userList = value.map((e) => e.email ?? '').toList();
+      }
+    });
     super.initState();
   }
 
@@ -123,9 +137,6 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(_formattedDate);
-    print(_startTime);
-    print(_endTime);
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
       body: SafeArea(
@@ -566,64 +577,103 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         ),
                         SizedBox(height: 10),
                         ListView.builder(
-                            itemBuilder: (context, index2) => Container(
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 10),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.black, width: 1),
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: TextFormField(
-                                    readOnly: false,
-                                    autofocus: false,
-                                    textInputAction: TextInputAction.done,
-                                    onChanged: (value) {
-                                      if (paxEmailList.isEmpty) {
-                                        setState(() {
-                                          paxEmailList.add(value);
-                                        });
-                                      }
-
-                                      if (paxEmailList.length < index2 + 1) {
-                                        setState(() {
-                                          paxEmailList.add(value);
-                                        });
-                                      }
-
+                            itemBuilder: (context, index2) {
+                              return DropdownButtonFormField<String>(
+                                value: null,
+                                hint: Text("Enter Pax${index2 + 1} Email"),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    if (paxEmailList.isEmpty) {
                                       setState(() {
-                                        paxEmailList[index2] = value;
+                                        paxEmailList.add(newValue ?? '');
                                       });
-                                      print("test");
-                                    },
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFeatures: const [
-                                          FontFeature.tabularFigures()
-                                        ],
-                                        color: Colors.blueGrey[300],
-                                        fontSize: 13),
-                                    textAlign: TextAlign.start,
-                                    keyboardType: TextInputType.emailAddress,
-                                    obscureText: false,
-                                    cursorColor: Colors.black,
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      border: InputBorder.none,
-                                      contentPadding:
-                                          const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      hintStyle: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        fontFeatures: const [
-                                          FontFeature.tabularFigures()
-                                        ],
-                                        color: Colors.blueGrey[300],
-                                      ),
-                                      hintText: "Enter Pax${index2 + 1} Email",
+                                    }
+
+                                    if (paxEmailList.length < index2 + 1) {
+                                      setState(() {
+                                        paxEmailList.add(newValue ?? '');
+                                      });
+                                    }
+
+                                    setState(() {
+                                      paxEmailList[index2] = newValue ?? '';
+                                    });
+                                  });
+                                },
+                                validator: (String? value) {
+                                  if (value?.isEmpty ?? true) {
+                                    return "please Enter Pax${index2 + 1} Email";
+                                  }
+                                },
+                                items: userList.map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                // onSaved: (val) =>
+                                //     setState(() => _user.typeNeg = val),
+                              );
+                              return Container(
+                                margin: EdgeInsets.only(bottom: 10),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 10),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 1),
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: TextFormField(
+                                  readOnly: false,
+                                  autofocus: false,
+                                  textInputAction: TextInputAction.done,
+                                  onChanged: (value) {
+                                    if (paxEmailList.isEmpty) {
+                                      setState(() {
+                                        paxEmailList.add(value);
+                                      });
+                                    }
+
+                                    if (paxEmailList.length < index2 + 1) {
+                                      setState(() {
+                                        paxEmailList.add(value);
+                                      });
+                                    }
+
+                                    setState(() {
+                                      paxEmailList[index2] = value;
+                                    });
+                                    print("test");
+                                  },
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontFeatures: const [
+                                        FontFeature.tabularFigures()
+                                      ],
+                                      color: Colors.blueGrey[300],
+                                      fontSize: 13),
+                                  textAlign: TextAlign.start,
+                                  keyboardType: TextInputType.emailAddress,
+                                  obscureText: false,
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    border: InputBorder.none,
+                                    contentPadding:
+                                        const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    hintStyle: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      fontFeatures: const [
+                                        FontFeature.tabularFigures()
+                                      ],
+                                      color: Colors.blueGrey[300],
                                     ),
+                                    hintText: "Enter Pax${index2 + 1} Email",
                                   ),
                                 ),
+                              );
+                            },
                             physics: ScrollPhysics(),
                             shrinkWrap: true,
                             padding: EdgeInsets.zero,
@@ -923,5 +973,16 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: child,
     );
+  }
+
+  Widget _buildTextcontrollers() {
+    List<TextEditingController> controllers = [];
+
+    for (int i = 0; 1 < _selectedPax.value; i++) {
+      TextEditingController controller = TextEditingController();
+      controllers.add(controller);
+    }
+
+    return Container();
   }
 }

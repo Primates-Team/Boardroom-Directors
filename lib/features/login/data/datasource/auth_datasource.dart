@@ -127,4 +127,34 @@ class AuthDataSource {
       return false;
     }
   }
+
+  Future<List<GetUserResponse>?> GetAllUser() async {
+    var client = http.Client();
+    try {
+      var response = await client.get(
+        Uri.parse(AppUrl.viewAllUsers),
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      );
+      List<GetUserResponse>? users;
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+        users = getUserResponseFromJson(jsonString);
+        return users;
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Registration Failed',
+            bgColor: Colors.red);
+        return users;
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      // print(e);
+      return null;
+    }
+  }
 }
