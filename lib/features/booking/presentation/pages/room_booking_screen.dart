@@ -64,6 +64,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   String lastName =
       AppHelpers.SHARED_PREFERENCES.getString('lastName') ?? 'Doe';
 
+  String? profilePic = AppHelpers.SHARED_PREFERENCES.getString('profilepic');
+
   Future<void> getRoomid() async {
     String url = '/facilityaccess/viewall';
     var client = http.Client();
@@ -175,10 +177,20 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      'assets/welcome_screen/person_emoji.png',
-                      height: 55,
-                    ),
+                    profilePic != null
+                        ? Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration:
+                                const BoxDecoration(shape: BoxShape.circle),
+                            child: Image.network(
+                              profilePic ?? '',
+                              height: 55,
+                            ),
+                          )
+                        : Image.asset(
+                            'assets/welcome_screen/person_emoji.png',
+                            height: 55,
+                          ),
                     RichText(
                       text: TextSpan(
                         style: TextStyle(fontSize: 22.sp),
@@ -338,7 +350,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 // ),
                 Center(
                   child: Text(
-                    'Available Room in the selected Time Slot',
+                    'Available room in the selected time slot',
                     style: AppTheme.black600TextStyle(18),
                   ),
                 ),
@@ -348,7 +360,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Room No',
+                        'Room Name',
                         style: AppTheme.black600TextStyle(14),
                       ),
                       Text(

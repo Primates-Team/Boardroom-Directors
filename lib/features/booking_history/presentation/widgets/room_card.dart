@@ -38,7 +38,8 @@ class RoomCard extends StatelessWidget {
                     return BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                       child: Dialog(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
                         child: StartEndDialog(
                           type: 'Room',
                         ),
@@ -52,7 +53,8 @@ class RoomCard extends StatelessWidget {
         width: 326.w,
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(12),
-        decoration: AppTheme.boxDecoration.copyWith(color: AppColors.kLightGreyContainer),
+        decoration: AppTheme.boxDecoration
+            .copyWith(color: AppColors.kLightGreyContainer),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -74,22 +76,32 @@ class RoomCard extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+                                filter:
+                                    ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                                 child: Dialog(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
                                   child: EditBookingDialog(
                                       type: 'Room',
                                       node: node,
-                                      onEdit: (String date,String  startTime,String endTime) async {
-                                        var response = await http.Client().post(Uri.parse(AppUrl.updateRoomBooking),
+                                      onEdit: (String date, String startTime,
+                                          String endTime) async {
+                                        var response = await http.Client().post(
+                                            Uri.parse(AppUrl.updateRoomBooking),
                                             body: {
-                                              "id" : node['id'].toString(),
+                                              "id": node['id'].toString(),
                                               "selecteddate": date,
                                               "fromtime": startTime,
                                               "totime": endTime,
-                                              "employeeid":
-                                              AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                                                  ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
+                                              "employeeid": AppHelpers
+                                                          .SHARED_PREFERENCES
+                                                          .getInt('user_id') !=
+                                                      null
+                                                  ? AppHelpers
+                                                      .SHARED_PREFERENCES
+                                                      .getInt('user_id')
+                                                      .toString()
                                                   : 1.toString(),
                                             });
                                         print(response.body);
@@ -97,8 +109,12 @@ class RoomCard extends StatelessWidget {
                                       },
                                       onDelete: () async {
                                         var client = http.Client();
-                                        await client.post(Uri.parse(AppUrl.cancleMeeting),
-                                            body: {"id": "${node['id'] ?? 0}", "status": "cancel"});
+                                        await client.post(
+                                            Uri.parse(AppUrl.cancleMeeting),
+                                            body: {
+                                              "id": "${node['id'] ?? 0}",
+                                              "status": "cancel"
+                                            });
                                         onRefresh();
                                       }),
                                 ),
@@ -131,8 +147,12 @@ class RoomCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        node['selecteddate'] != null ? node['selecteddate'] : '21/12/2021' : '21/12/2021',
+                      child: Text(
+                        node != null
+                            ? node['selecteddate'] != null
+                                ? node['selecteddate']
+                                : '21/12/2021'
+                            : '21/12/2021',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -167,10 +187,12 @@ class RoomCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        node['fromtime'] != null && node['totime'] != null
-                            ? node['fromtime'] + ' - ' + node['totime']
-                            : '11 - 4 pm' : '11 - 4 pm',
+                      child: Text(
+                        node != null
+                            ? node['fromtime'] != null && node['totime'] != null
+                                ? node['fromtime'] + ' - ' + node['totime']
+                                : '11 - 4 pm'
+                            : '11 - 4 pm',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -205,9 +227,14 @@ class RoomCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
-                         node['members'] != null ?  node['members'] : node['members'] : 'No Members',
+                      child: Text(
+                        node != null
+                            ?
+                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                            node['members'] != null
+                                ? node['members']
+                                : node['members']
+                            : 'No Members',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

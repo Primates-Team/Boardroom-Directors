@@ -22,6 +22,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
   String lastName =
       AppHelpers.SHARED_PREFERENCES.getString('lastName') ?? 'Doe';
+
+  String? profilePic = AppHelpers.SHARED_PREFERENCES.getString('profilepic');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +53,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/welcome_screen/person_emoji.png',
-                    height: 55,
-                  ),
+                  profilePic != null
+                      ? Container(
+                          clipBehavior: Clip.hardEdge,
+                          decoration:
+                              const BoxDecoration(shape: BoxShape.circle),
+                          child: Image.network(
+                            profilePic ?? '',
+                            height: 55,
+                          ),
+                        )
+                      : Image.asset(
+                          'assets/welcome_screen/person_emoji.png',
+                          height: 55,
+                        ),
                   RichText(
                     text: TextSpan(
                       style: TextStyle(fontSize: 22.sp),
