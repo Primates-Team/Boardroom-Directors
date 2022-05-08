@@ -61,7 +61,7 @@ class RoomCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Id : " + node['id'].toString(),
+                  "Room ID : " + node['id'].toString(),
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w700,
