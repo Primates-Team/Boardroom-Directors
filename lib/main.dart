@@ -32,8 +32,7 @@ class MyApp extends StatelessWidget {
         AppHelpers.SHARED_PREFERENCES.getString('email') != null &&
             (AppHelpers.SHARED_PREFERENCES.getString('status') != null &&
                 (AppHelpers.SHARED_PREFERENCES.getString('status') == 'true'));
-    print(AppHelpers.SHARED_PREFERENCES.getString('status'));
-    print(AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString());
+
     return ScreenUtilInit(
       designSize: const Size(390, 800),
       builder: (_) {

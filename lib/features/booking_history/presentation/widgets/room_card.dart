@@ -61,7 +61,7 @@ class RoomCard extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Meeting Room',
+                  "Id : " + node['id'].toString(),
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w700,
@@ -104,7 +104,7 @@ class RoomCard extends StatelessWidget {
                                                       .toString()
                                                   : 1.toString(),
                                             });
-                                        print(response.body);
+
                                         onRefresh();
                                       },
                                       onDelete: () async {
@@ -235,6 +235,90 @@ class RoomCard extends StatelessWidget {
                                 ? node['members']
                                 : node['members']
                             : 'No Members',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Status',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        node != null
+                            ?
+                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                            node['status'] != null
+                                ? node['status']
+                                : node['status']
+                            : 'No Status',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Floor',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        node != null
+                            ?
+                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                            node['floor'] != null
+                                ? node['floor']
+                                : node['floor']
+                            : 'No Floor',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

@@ -166,6 +166,7 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
                       },
                     )
                   : Level3Layout(
+                      _selectedFloor,
                       selectedTable: (s) {
                         if (s != null) {
                           tableNo = s.tableNo;
