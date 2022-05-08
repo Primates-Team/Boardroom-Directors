@@ -134,7 +134,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
         userList = value.map((e) => e.email ?? '').toList();
       }
     });
-    viewAvailablity();
+
     super.initState();
   }
 
@@ -384,13 +384,28 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     _startTime != null &&
                     roomId != null &&
                     _endTime != null)
-                  ListView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
-                      itemCount: rooms.length,
-                      itemBuilder: (context, index) {
-                        return buildAvailabilityList(index);
-                      }),
+                  FutureBuilder<List<int>>(
+                    future: viewAvailablity(), // async work
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<int>> snapshot) {
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.waiting:
+                          return Text('Loading....');
+                        default:
+                          if (snapshot.hasError)
+                            return Text('Error: ${snapshot.error}');
+                          else
+                            return ListView.builder(
+                                shrinkWrap: true,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: rooms.length,
+                                itemBuilder: (context, index) {
+                                  return buildAvailabilityList(index);
+                                });
+                      }
+                    },
+                  )
+
                 // _selectedLevel == 'Floor 14'
                 //     ? Level14Room(
                 //         selectedRoom: (s) {
@@ -1007,23 +1022,17 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     return Container();
   }
 
-  Future viewAvailablity() async {
+  Future<List<int>> viewAvailablity() async {
     var client = http.Client();
     try {
       var response = await client.post(
         Uri.parse(AppUrl.availabalityNew),
         body: jsonEncode({
-          "floor": "Floor 3",
-          "selecteddate": "08-05-2022",
-          "fromtime": "17:30",
-          "totime": "19:22"
+          "floor": _selectedLevel,
+          "selecteddate": _formattedDate,
+          "fromtime": _formattedStartTime,
+          "totime": _formattedEndTime
         }),
-        // {
-        //   "floor": _selectedLevel,
-        //   "selecteddate": _formattedDate,
-        //   "fromtime": _formattedStartTime,
-        //   "totime": _formattedEndTime
-        // },
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
       if (response.statusCode == 200) {
@@ -1046,16 +1055,16 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
         bookedRooomsIdList = bookedRooomsIdList.toSet().toList();
         bookingController.bookedRooms.value = bookedRooomsIdList;
 
-        return true;
+        return bookedRooomsIdList;
       } else {
         showSnackBar(
             context: Get.context!,
             message: 'Failed to Load',
             bgColor: Colors.red);
-        return false;
+        return [];
       }
     } catch (e) {
-      return false;
+      return [];
     }
   }
 }
