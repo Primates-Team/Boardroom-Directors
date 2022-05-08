@@ -26,4 +26,5 @@ class AppUrl {
   static const String tablecancleMeeting = '$baseUrl/booking/update';
 
   static const String viewByDateTime = '$baseUrl/roombooking/viewbydatetime';
+  static const String availabalityNew = '$baseUrl/roombooking/availabilitynew';
 }

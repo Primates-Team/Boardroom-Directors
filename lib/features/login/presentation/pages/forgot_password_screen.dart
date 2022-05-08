@@ -26,15 +26,29 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(width: 10.w,),
-                IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.arrow_back_ios),),
+                SizedBox(
+                  width: 10.w,
+                ),
+                IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(Icons.arrow_back_ios),
+                ),
               ],
             ),
             //logo
-            SizedBox(width: size.width, height: 132,),
-            Image.asset('assets/common/logo.png', width: 248, height: 104,),
+            SizedBox(
+              width: size.width,
+              height: 132,
+            ),
+            Image.asset(
+              'assets/common/logo.png',
+              width: 248,
+              height: 104,
+            ),
             //mobile number
-            SizedBox(height: 15.h,),
+            SizedBox(
+              height: 15.h,
+            ),
             SizedBox(
               height: 48.h,
               width: 343.w,
@@ -42,35 +56,48 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 children: [
                   TextFormField(
                     decoration: AppTheme.textFieldDecoration('Mobile Number'),
-                    style: TextStyle(color: AppColors.kLightPantone, fontSize: 12.sp),
+                    style: TextStyle(
+                        color: AppColors.kLightPantone, fontSize: 12.sp),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 12.0.h, left: 11.w),
-                    child: Image.asset('assets/common/mobile.png', height: 25.h, width: 25.w, color: AppColors.kDarkPantone,),
+                    child: Image.asset(
+                      'assets/common/mobile.png',
+                      height: 25.h,
+                      width: 25.w,
+                      color: AppColors.kDarkPantone,
+                    ),
                   )
                 ],
               ),
             ),
             //register
-            SizedBox(height: 15.h,),
-            InkWell(
-              onTap: () => Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.leftToRight,
-                      child: const OTPWidget(),
-                      duration: const Duration(
-                          milliseconds: 250))),
-              child: Container(
-                height: 57.h,
-                width: 343.w,
-                decoration: BoxDecoration(
-                  color: AppColors.kAubergine,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Center(child: Text('Send OTP', style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700, color: Colors.white),)),
-              )
+            SizedBox(
+              height: 15.h,
             ),
+            InkWell(
+                onTap: () => Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.leftToRight,
+                        child: const OTPWidget(),
+                        duration: const Duration(milliseconds: 250))),
+                child: Container(
+                  height: 57.h,
+                  width: 343.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.kAubergine,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Send OTP',
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  )),
+                )),
           ],
         ),
       ),

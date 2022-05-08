@@ -38,7 +38,8 @@ class TableCard extends StatelessWidget {
                     return BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                       child: Dialog(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
                         child: StartEndDialog(
                           type: 'Table',
                         ),
@@ -52,14 +53,15 @@ class TableCard extends StatelessWidget {
         width: 326.w,
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(12),
-        decoration: AppTheme.boxDecoration.copyWith(color: AppColors.kLightGreyContainer),
+        decoration: AppTheme.boxDecoration
+            .copyWith(color: AppColors.kLightGreyContainer),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Text(
-                  'Table ${node != null ?    node["tableid"] != null ? node['tableid'] : node['id'] != null ? node['id'] : 1 : 1}',
+                  'Table ${node != null ? node["tableid"] != null ? node['tableid'] : node['id'] != null ? node['id'] : 1 : 1}',
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w700,
@@ -74,35 +76,49 @@ class TableCard extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+                                filter:
+                                    ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                                 child: Dialog(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
                                   child: EditBookingDialog(
                                     type: 'Table',
                                     node: node,
                                     onDelete: () async {
                                       var client = http.Client();
-                                     var response = await client.post(Uri.parse(AppUrl.tablecancleMeeting),
-                                          body: {"id": "${node['id'] ?? 0}", "status": "cancel"});
-                                          print(response.body);
+                                      var response = await client.post(
+                                          Uri.parse(AppUrl.tablecancleMeeting),
+                                          body: {
+                                            "id": "${node['id'] ?? 0}",
+                                            "status": "cancel"
+                                          });
+                                      print(response.body);
                                       onRefresh();
                                     },
-                                    onEdit: (String date,String startTime,String endTime) async {
-
-                                      var response = await http.Client().post(Uri.parse(AppUrl.updateTableBooking),
+                                    onEdit: (String date, String startTime,
+                                        String endTime) async {
+                                      var response = await http.Client().post(
+                                          Uri.parse(AppUrl.updateTableBooking),
                                           //      headers: {
                                           //   HttpHeaders.contentTypeHeader: 'application/json'
                                           // },
                                           body: {
-                                            "id" : node['id'].toString(),
-                                            "tableid": node['tableid'].toString(),
-                                            "seatnumber": node['seatnumber'].toString(),
+                                            "id": node['id'].toString(),
+                                            "tableid":
+                                                node['tableid'].toString(),
+                                            "seatnumber":
+                                                node['seatnumber'].toString(),
                                             "selecteddate": date,
                                             "fromtime": startTime,
                                             "totime": endTime,
-                                            "employeeid":
-                                            AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                                                ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
+                                            "employeeid": AppHelpers
+                                                        .SHARED_PREFERENCES
+                                                        .getInt('user_id') !=
+                                                    null
+                                                ? AppHelpers.SHARED_PREFERENCES
+                                                    .getInt('user_id')
+                                                    .toString()
                                                 : 1.toString(),
                                           });
                                       print(response.body);
@@ -139,8 +155,12 @@ class TableCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(node != null ?
-                        node['selecteddate'] != null ? node['selecteddate'] : '21/12/2021': '21/12/2021',
+                      child: Text(
+                        node != null
+                            ? node['selecteddate'] != null
+                                ? node['selecteddate']
+                                : '21/12/2021'
+                            : '21/12/2021',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -175,10 +195,12 @@ class TableCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        node['fromtime'] != null && node['totime'] != null
-                            ? node['fromtime'] + ' - ' + node['totime']
-                            : '11 - 4 pm': '11 - 4 pm',
+                      child: Text(
+                        node != null
+                            ? node['fromtime'] != null && node['totime'] != null
+                                ? node['fromtime'] + ' - ' + node['totime']
+                                : '11 - 4 pm'
+                            : '11 - 4 pm',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

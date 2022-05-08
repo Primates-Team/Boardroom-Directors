@@ -30,7 +30,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                 padding: EdgeInsets.symmetric(vertical: 20.h),
                 child: DatePicker(
                   // DateTime(DateTime.now().year),
-                   DateTime.now(),
+                  DateTime.now(),
                   initialSelectedDate: DateTime.now(),
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,

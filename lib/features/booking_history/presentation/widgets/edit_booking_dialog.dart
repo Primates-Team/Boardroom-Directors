@@ -32,7 +32,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
   // List<String> members = ['members'];
 
   String startTime = "11", endTime = "4";
-    TextEditingController membersController = TextEditingController();
+  TextEditingController membersController = TextEditingController();
 
   @override
   void initState() {
@@ -43,7 +43,9 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
     if (widget.node != null && widget.node['members'] != null) {
       membersController.text = widget.node['members'];
     }
-    if (widget.node != null && widget.node['fromtime'] != null && widget.node['totime'] != null) {
+    if (widget.node != null &&
+        widget.node['fromtime'] != null &&
+        widget.node['totime'] != null) {
       startTime = widget.node['fromtime'];
       endTime = widget.node['totime'];
     }
@@ -195,7 +197,9 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: TextField(controller: membersController,),
+                        child: TextField(
+                          controller: membersController,
+                        ),
                       ),
                   ],
                 ),

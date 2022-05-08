@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/app_urls.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
+import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
+import 'package:hot_desking/features/booking/data/models/availabilty_response.dart';
 import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
@@ -58,6 +61,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   List<String> userList = [];
 
   String dropdownValue = "One";
+
+  List<int> bookedRooomsIdList = [];
 
   String firstName =
       AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
@@ -129,6 +134,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
         userList = value.map((e) => e.email ?? '').toList();
       }
     });
+    viewAvailablity();
     super.initState();
   }
 
@@ -425,6 +431,9 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   }
 
   Widget buildAvailabilityList(int index) {
+    if (bookedRooomsIdList.contains(rooms[index]['id'])) {
+      return Container();
+    }
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -996,5 +1005,57 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     }
 
     return Container();
+  }
+
+  Future viewAvailablity() async {
+    var client = http.Client();
+    try {
+      var response = await client.post(
+        Uri.parse(AppUrl.availabalityNew),
+        body: jsonEncode({
+          "floor": "Floor 3",
+          "selecteddate": "08-05-2022",
+          "fromtime": "17:30",
+          "totime": "19:22"
+        }),
+        // {
+        //   "floor": _selectedLevel,
+        //   "selecteddate": _formattedDate,
+        //   "fromtime": _formattedStartTime,
+        //   "totime": _formattedEndTime
+        // },
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        // var jsonString = response.body;
+        // print(jsonString);
+        Iterable l = json.decode(response.body);
+        List<AvailabiltyResponse> bookedSlots = List<AvailabiltyResponse>.from(
+            l.map((model) => AvailabiltyResponse.fromJson(model)));
+
+        // List<BookedSeats> bookedSeats = [];
+
+        for (var slot in bookedSlots) {
+          if (isNumeric(slot.roomid!)) {
+            // bookedSeats.add(BookedSeats(
+            //     tableNo: int.parse(booking.tableid),
+            //     seatNo: int.parse(booking.seatnumber)));
+            bookedRooomsIdList.add(int.parse(slot.roomid!));
+          }
+        }
+        bookedRooomsIdList = bookedRooomsIdList.toSet().toList();
+        bookingController.bookedRooms.value = bookedRooomsIdList;
+
+        return true;
+      } else {
+        showSnackBar(
+            context: Get.context!,
+            message: 'Failed to Load',
+            bgColor: Colors.red);
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
   }
 }
