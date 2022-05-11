@@ -102,7 +102,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                     initialDate: widget.date,
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime.now()
-                                        .add(const Duration(days: 180)))
+                                        .add(const Duration(days: 90)))
                                 .then((value) {
                               if (value == null) return;
                               setState(() {
@@ -146,6 +146,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                           showTimePicker(
                             context: context,
                             initialTime: startTime!,
+                            initialEntryMode: TimePickerEntryMode.input,
                           ).then((value) {
                             if (value == null) return;
                             setState(() {
@@ -176,6 +177,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                           showTimePicker(
                             context: context,
                             initialTime: startTime!,
+                            initialEntryMode: TimePickerEntryMode.input,
                           ).then((value) {
                             if (value == null) return;
                             setState(() {
@@ -227,7 +229,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                               child: Dialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
-                                child: const BookingConfirmedWidget(),
+                                child: BookingConfirmedWidget(
+                                    AppHelpers.formatTime(startTime!),
+                                    AppHelpers.formatTime(endTime!)),
                               ),
                             );
                           });

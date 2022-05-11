@@ -4,7 +4,13 @@ import 'package:hot_desking/core/app_theme.dart';
 
 class BookingConfirmedWidget extends StatelessWidget {
   final String message;
-  const BookingConfirmedWidget({Key? key, this.message = 'Booking\nConfirmed'})
+
+  final String startTime;
+
+  final String endTime;
+
+  BookingConfirmedWidget(this.startTime, this.endTime,
+      {Key? key, this.message = 'Booking\nConfirmed'})
       : super(key: key);
 
   @override
@@ -26,13 +32,34 @@ class BookingConfirmedWidget extends StatelessWidget {
             ),
           ),
           Center(
-            child: Text(
-              message,
-              style: TextStyle(
-                fontSize: 30.sp,
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Start time: $startTime',
+                  style: AppTheme.black500TextStyle(20),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  'End time: $endTime',
+                  style: AppTheme.black500TextStyle(20),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: Text(
+                    message,
+                    style: TextStyle(
+                      fontSize: 30.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

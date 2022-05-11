@@ -107,7 +107,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime.now(),
                                 lastDate: DateTime.now()
-                                    .add(const Duration(days: 180)))
+                                    .add(const Duration(days: 90)))
                             .then((value) {
                           if (value == null) return;
                           setState(() {
@@ -145,6 +145,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             onTap: () {
                               showTimePicker(
                                 context: context,
+                                initialEntryMode: TimePickerEntryMode.input,
                                 initialTime: TimeOfDay(
                                     hour: startTime.contains(":")
                                         ? int.parse(startTime.split(":").first)
@@ -166,6 +167,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             onTap: () {
                               showTimePicker(
                                 context: context,
+                                initialEntryMode: TimePickerEntryMode.input,
                                 initialTime: TimeOfDay(
                                     hour: endTime.contains(":")
                                         ? int.parse(endTime.split(":").first)

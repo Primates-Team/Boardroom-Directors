@@ -354,6 +354,13 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 //     ],
                 //   ),
                 // ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 18.0),
+                  child: Text(
+                    '* Room Booking can be done 3 months in Advance',
+                    style: AppTheme.black400TextStyle(13),
+                  ),
+                ),
                 Center(
                   child: Text(
                     'Available room in the selected time slot',
@@ -478,8 +485,11 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   InkWell(
                     onTap: () {
                       roomId = rooms[index]['id'];
-                      Get.bottomSheet(timeBottomSheet(index),
-                          isScrollControlled: true);
+                      Get.bottomSheet(
+                        timeBottomSheet(index),
+                        isScrollControlled: true,
+                        isDismissible: true,
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -616,7 +626,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             itemBuilder: (context, index2) {
                               return DropdownButtonFormField<String>(
                                 value: null,
-                                hint: Text("Enter Pax${index2 + 1} Email"),
+                                hint: Text("Select Invitee${index2 + 1} Email"),
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     if (paxEmailList.isEmpty) {
@@ -638,7 +648,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                 },
                                 validator: (String? value) {
                                   if (value?.isEmpty ?? true) {
-                                    return "please Enter Pax${index2 + 1} Email";
+                                    return "please Select Invitee${index2 + 1} Email";
                                   }
                                 },
                                 items: userList.map<DropdownMenuItem<String>>(
@@ -705,7 +715,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                       ],
                                       color: Colors.blueGrey[300],
                                     ),
-                                    hintText: "Enter Pax${index2 + 1} Email",
+                                    hintText:
+                                        "Select Invitee${index2 + 1} Email",
                                   ),
                                 ),
                               );
@@ -798,7 +809,9 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0)),
-                                          child: const BookingConfirmedWidget(),
+                                          child: BookingConfirmedWidget(
+                                              _formattedStartTime!,
+                                              _formattedEndTime!),
                                         ),
                                       );
                                     });
@@ -843,7 +856,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime.now(),
-                  lastDate: DateTime.now().add(const Duration(days: 180)))
+                  lastDate: DateTime.now().add(const Duration(days: 90)))
               .then((value) {
             if (value == null) return;
             setState(() {
@@ -883,7 +896,10 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          showTimePicker(context: context, initialTime: TimeOfDay.now())
+          showTimePicker(
+                  initialEntryMode: TimePickerEntryMode.input,
+                  context: context,
+                  initialTime: TimeOfDay.now())
               .then((value) {
             if (value == null) return;
             setState(() {
@@ -923,7 +939,10 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          showTimePicker(context: context, initialTime: TimeOfDay.now())
+          showTimePicker(
+                  initialEntryMode: TimePickerEntryMode.input,
+                  context: context,
+                  initialTime: TimeOfDay.now())
               .then((value) {
             if (value == null) return;
             setState(() {
