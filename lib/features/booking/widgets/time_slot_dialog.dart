@@ -244,8 +244,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: BookingConfirmedWidget(
-                                    AppHelpers.formatTime(startTime!),
-                                    AppHelpers.formatTime(endTime!)),
+                                  AppHelpers.formatTime(startTime!),
+                                  AppHelpers.formatTime(endTime!),
+                                ),
                               ),
                             );
                           });

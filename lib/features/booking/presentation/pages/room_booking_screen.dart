@@ -14,6 +14,7 @@ import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/models/availabilty_response.dart';
+import 'package:hot_desking/features/booking/presentation/pages/room_booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
@@ -65,14 +66,14 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
   List<int> bookedRooomsIdList = [];
 
-  bool _isLoading = false;
-
   String firstName =
       AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
   String lastName =
       AppHelpers.SHARED_PREFERENCES.getString('lastName') ?? 'Doe';
 
   String? profilePic = AppHelpers.SHARED_PREFERENCES.getString('profilepic');
+
+  late RoomBookingController controller;
 
   Future<void> getRoomid() async {
     String url = '/facilityaccess/viewall';
@@ -147,6 +148,20 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    controller = Get.put(RoomBookingController());
+    return GetBuilder<RoomBookingController>(
+      builder: (logic) {
+        if (logic.status == RxStatus.loading()) {
+          const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return _buildScreenWidget();
+      },
+    );
+  }
+
+  Widget _buildScreenWidget() {
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
       body: SafeArea(
@@ -286,78 +301,11 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                       children: [
                         fromDateSelector(context, setState),
                         toDateSelector(context, setState),
-                        // Container(
-                        //   height: 34.h,
-                        //   width: 152.w,
-                        //   padding: const EdgeInsets.symmetric(
-                        //       vertical: 6, horizontal: 14),
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(10),
-                        //     color: Colors.white,
-                        //   ),
-                        //   child: InkWell(
-                        //     onTap: () {
-                        //       Get.bottomSheet(
-                        //         timeBottomSheet(),
-                        //       );
-                        //       // showTimePicker(
-                        //       //   context: context,
-                        //       //   initialTime: TimeOfDay.now(),
-                        //       // ).then((value) {
-                        //       //   if (value == null) return;
-                        //       //   setState(() {
-                        //       //     _formattedTime = AppHelpers.formatTime(value);
-                        //       //     _timeOfDay = value;
-                        //       //   });
-                        //       // });
-                        //     },
-                        //     child: Center(
-                        //       child: Row(
-                        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //         children: [
-                        //           Text(
-                        //             _formattedStartTime ?? 'Select Time',
-                        //             style: black600TextStyle,
-                        //           ),
-                        //           Icon(
-                        //             Icons.arrow_drop_down,
-                        //             color: Colors.black.withOpacity(0.5),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                     SizedBox(
                       height: 25.h,
                     ),
-                    // Text(
-                    //   _selectedLevel ?? 'Select Level',
-                    //   style: AppTheme.black500TextStyle(18),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    //   child: Row(
-                    //     children: const [
-                    //       Text(
-                    //         'Desk: ',
-                    //         style: TextStyle(
-                    //           fontWeight: FontWeight.w500,
-                    //         ),
-                    //       ),
-                    //       Expanded(
-                    //           child: Text(
-                    //         '50 available',
-                    //         style: TextStyle(
-                    //           color: AppColors.kMint,
-                    //           fontWeight: FontWeight.w500,
-                    //         ),
-                    //       )),
-                    //     ],
-                    //   ),
-                    // ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 18.0),
                       child: Text(
@@ -401,61 +349,26 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             AsyncSnapshot<List<int>> snapshot) {
                           switch (snapshot.connectionState) {
                             case ConnectionState.waiting:
-                              return Text('Loading....');
+                              return const Text('Loading....');
                             default:
-                              if (snapshot.hasError)
+                              if (snapshot.hasError) {
                                 return Text('Error: ${snapshot.error}');
-                              else
+                              } else {
                                 return ListView.builder(
                                     shrinkWrap: true,
-                                    physics: BouncingScrollPhysics(),
+                                    physics: const BouncingScrollPhysics(),
                                     itemCount: rooms.length,
                                     itemBuilder: (context, index) {
                                       return buildAvailabilityList(index);
                                     });
+                              }
                           }
                         },
                       )
-
-                    // _selectedLevel == 'Floor 14'
-                    //     ? Level14Room(
-                    //         selectedRoom: (s) {
-                    //           roomId = s;
-                    //           print(roomId);
-                    //         },
-                    //       )
-                    //     : Level3Room(selectedRoom: (s) {
-                    //         roomId = s;
-                    //         print(roomId);
-                    //       }),
-                    // Center(
-                    //   child: TextButton(
-                    //     onPressed: () {
-                    //       showDialog(
-                    //           context: context,
-                    //           builder: (context) {
-                    //             return BackdropFilter(
-                    //               filter:
-                    //                   ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-                    //               child: Dialog(
-                    //                 shape: RoundedRectangleBorder(
-                    //                     borderRadius: BorderRadius.circular(20.0)),
-                    //                 child: SeatSelection(),
-                    //               ),
-                    //             );
-                    //           });
-                    //     },
-                    //     child: const Text('Seat Selection'),
-                    //   ),
-                    // )
                   ],
                 ),
               ),
             ),
-            if (_isLoading)
-              Center(
-                child: CircularProgressIndicator(),
-              )
           ],
         ),
       ),
@@ -847,9 +760,34 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             }
 
                             if (element == paxEmailList.last) {
-                              setState(() {
-                                _isLoading = true;
-                              });
+                              // controller
+                              //     .createBooking(
+                              //         roomId!,
+                              //         _formattedDate!,
+                              //         _formattedStartTime!,
+                              //         _formattedEndTime!,
+                              //         paxEmailList,
+                              //         _selectedLevel ?? 'Floor 3')
+                              //     .then((value) {
+                              //   showDialog(
+                              //       context: context,
+                              //       barrierDismissible: false,
+                              //       builder: (context) {
+                              //         return BackdropFilter(
+                              //           filter: ImageFilter.blur(
+                              //               sigmaX: 2.5, sigmaY: 2.5),
+                              //           child: Dialog(
+                              //             shape: RoundedRectangleBorder(
+                              //                 borderRadius:
+                              //                     BorderRadius.circular(20.0)),
+                              //             child: BookingConfirmedWidget(
+                              //                 _formattedStartTime!,
+                              //                 _formattedEndTime!),
+                              //           ),
+                              //         );
+                              //       });
+                              //   RoomBookingDataSource().viewAllRoomBooking();
+                              // });
 
                               RoomBookingDataSource()
                                   .createRoomBooking(
@@ -861,11 +799,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                       floor: _selectedLevel ?? 'Floor 3')
                                   .then((value) {
                                 if (value) {
-                                  setState(() {
-                                    _isLoading = true;
-                                  });
-
-                                  Navigator.pop(context);
+                                  // Navigator.pop(context);
+                                  Get.back();
                                   showDialog(
                                       context: context,
                                       barrierDismissible: false,
