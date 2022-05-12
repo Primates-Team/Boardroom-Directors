@@ -143,44 +143,67 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                         children: [
                           InkWell(
                             onTap: () {
-                              showTimePicker(
-                                context: context,
-                                initialEntryMode: TimePickerEntryMode.input,
-                                initialTime: TimeOfDay(
-                                    hour: startTime.contains(":")
-                                        ? int.parse(startTime.split(":").first)
-                                        : int.parse(startTime),
-                                    minute: startTime.contains(":")
-                                        ? int.parse(startTime.split(":").last)
-                                        : 00),
-                              ).then((value) {
-                                if (value == null) return;
+                              AppHelpers.showCupertinoTimePicker(context,
+                                  (value) {
                                 setState(() {
-                                  startTime = AppHelpers.formatTime(value);
+                                  startTime = AppHelpers.formatTime(
+                                      TimeOfDay.fromDateTime(value));
                                 });
                               });
+
+                              // showTimePicker(
+                              //   context: context,
+                              //   initialEntryMode: TimePickerEntryMode.input,
+                              //   initialTime: TimeOfDay(
+                              //       hour: startTime.contains(":")
+                              //           ? int.parse(startTime.split(":").first)
+                              //           : int.parse(startTime),
+                              //       minute: startTime.contains(":")
+                              //           ? int.parse(startTime.split(":").last)
+                              //           : 00),
+                              // ).then((value) {
+                              //   if (value == null) return;
+                              //   setState(() {
+                              //     startTime = AppHelpers.formatTime(value);
+                              //   });
+                              // });
                             },
                             child: Text(startTime),
                           ),
                           Text("-"),
                           InkWell(
                             onTap: () {
-                              showTimePicker(
-                                context: context,
-                                initialEntryMode: TimePickerEntryMode.input,
-                                initialTime: TimeOfDay(
-                                    hour: endTime.contains(":")
-                                        ? int.parse(endTime.split(":").first)
-                                        : int.parse(endTime),
-                                    minute: endTime.contains(":")
-                                        ? int.parse(endTime.split(":").last)
-                                        : 00),
-                              ).then((value) {
-                                if (value == null) return;
+                              AppHelpers.showCupertinoTimePicker(context,
+                                  (value) {
                                 setState(() {
-                                  endTime = AppHelpers.formatTime(value);
+                                  endTime = AppHelpers.formatTime(
+                                      TimeOfDay.fromDateTime(value));
                                 });
-                              });
+                              },
+                                  initialTimeofDay: TimeOfDay(
+                                      hour: endTime.contains(":")
+                                          ? int.parse(endTime.split(":").first)
+                                          : int.parse(endTime),
+                                      minute: endTime.contains(":")
+                                          ? int.parse(endTime.split(":").last)
+                                          : 00));
+
+                              // showTimePicker(
+                              //   context: context,
+                              //   initialEntryMode: TimePickerEntryMode.input,
+                              //   initialTime: TimeOfDay(
+                              //       hour: endTime.contains(":")
+                              //           ? int.parse(endTime.split(":").first)
+                              //           : int.parse(endTime),
+                              //       minute: endTime.contains(":")
+                              //           ? int.parse(endTime.split(":").last)
+                              //           : 00),
+                              // ).then((value) {
+                              //   if (value == null) return;
+                              //   setState(() {
+                              //     endTime = AppHelpers.formatTime(value);
+                              //   });
+                              // });
                             },
                             child: Text(endTime),
                           ),

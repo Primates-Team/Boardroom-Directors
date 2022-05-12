@@ -143,16 +143,24 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          showTimePicker(
-                            context: context,
-                            initialTime: startTime!,
-                            initialEntryMode: TimePickerEntryMode.input,
-                          ).then((value) {
-                            if (value == null) return;
+                          AppHelpers.showCupertinoTimePicker(context, (value) {
                             setState(() {
-                              startTime = value;
+                              setState(() {
+                                startTime = TimeOfDay.fromDateTime(value);
+                              });
                             });
                           });
+
+                          // showTimePicker(
+                          //   context: context,
+                          //   initialTime: startTime!,
+                          //   initialEntryMode: TimePickerEntryMode.input,
+                          // ).then((value) {
+                          //   if (value == null) return;
+                          //   setState(() {
+                          //     startTime = value;
+                          //   });
+                          // });
                         },
                         child: Center(
                           child: Text(
@@ -174,16 +182,22 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          showTimePicker(
-                            context: context,
-                            initialTime: startTime!,
-                            initialEntryMode: TimePickerEntryMode.input,
-                          ).then((value) {
-                            if (value == null) return;
+                          AppHelpers.showCupertinoTimePicker(context, (value) {
                             setState(() {
-                              endTime = value;
+                              endTime = TimeOfDay.fromDateTime(value);
                             });
                           });
+
+                          // showTimePicker(
+                          //   context: context,
+                          //   initialTime: startTime!,
+                          //   initialEntryMode: TimePickerEntryMode.input,
+                          // ).then((value) {
+                          //   if (value == null) return;
+                          //   setState(() {
+                          //     endTime = value;
+                          //   });
+                          // });
                         },
                         child: Center(
                           child: Text(

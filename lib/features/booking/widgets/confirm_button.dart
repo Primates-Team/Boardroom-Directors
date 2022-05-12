@@ -6,8 +6,8 @@ import '../../../core/app_theme.dart';
 
 Container confirmButton([String text = 'Confirm']) {
   return Container(
-    height: 27.h,
-    width: 117.w,
+    height: 50.h,
+    // width: 117.w,
     decoration: BoxDecoration(
       color: AppColors.kEvergreen,
       borderRadius: BorderRadius.circular(10),

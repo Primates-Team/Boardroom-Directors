@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -64,6 +65,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
   List<int> bookedRooomsIdList = [];
 
+  bool _isLoading = false;
+
   String firstName =
       AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
   String lastName =
@@ -74,7 +77,6 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   Future<void> getRoomid() async {
     String url = '/facilityaccess/viewall';
     var client = http.Client();
-    print(url);
     try {
       var response = await client.get(Uri.parse(AppUrl.baseUrl + url));
       var jsonString = response.body;
@@ -148,305 +150,313 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
       body: SafeArea(
-        child: SingleChildScrollView(
-          // controller: controller,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              // controller: controller,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(Icons.arrow_back_ios),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(Icons.arrow_back_ios),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            AppHelpers.SHARED_PREFERENCES.clear();
+                            pushAndRemoveUntilScreen(context,
+                                screen: const LoginScreen(), withNavBar: false);
+                          },
+                          child: Image.asset(
+                            'assets/welcome_screen/log_out.png',
+                            height: 30,
+                          ),
+                        ),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        AppHelpers.SHARED_PREFERENCES.clear();
-                        pushAndRemoveUntilScreen(context,
-                            screen: const LoginScreen(), withNavBar: false);
-                      },
-                      child: Image.asset(
-                        'assets/welcome_screen/log_out.png',
-                        height: 30,
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        profilePic != null
+                            ? Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration:
+                                    const BoxDecoration(shape: BoxShape.circle),
+                                child: Image.network(
+                                  profilePic ?? '',
+                                  height: 55,
+                                ),
+                              )
+                            : Image.asset(
+                                'assets/welcome_screen/person_emoji.png',
+                                height: 55,
+                              ),
+                        RichText(
+                          text: TextSpan(
+                            style: TextStyle(fontSize: 22.sp),
+                            children: [
+                              const TextSpan(
+                                text: 'Welcome ',
+                                style: TextStyle(
+                                  color: AppColors.kAubergine,
+                                ),
+                              ),
+                              TextSpan(
+                                text: '$firstName $lastName',
+                                style: const TextStyle(
+                                  color: AppColors.kEvergreen,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      'Reserve Your \nMeeting Room',
+                      style: TextStyle(
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    profilePic != null
-                        ? Container(
-                            clipBehavior: Clip.hardEdge,
-                            decoration:
-                                const BoxDecoration(shape: BoxShape.circle),
-                            child: Image.network(
-                              profilePic ?? '',
-                              height: 55,
-                            ),
-                          )
-                        : Image.asset(
-                            'assets/welcome_screen/person_emoji.png',
-                            height: 55,
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 34.h,
+                          width: 152.w,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6, horizontal: 14),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
                           ),
-                    RichText(
-                      text: TextSpan(
-                        style: TextStyle(fontSize: 22.sp),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                                value: _selectedLevel,
+                                style: black600TextStyle,
+                                hint: Text(
+                                  'Level',
+                                  style: black600TextStyle,
+                                ),
+                                isExpanded: true,
+                                iconEnabledColor: Colors.black.withOpacity(0.5),
+                                items: _levelsList.map((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value.toString(),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (String? val) {
+                                  setState(() {
+                                    _selectedLevel = val!;
+                                  });
+                                  getRoomid();
+                                }),
+                          ),
+                        ),
+                        // paxSelector(),
+                        startDateSelector(context),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        fromDateSelector(context, setState),
+                        toDateSelector(context, setState),
+                        // Container(
+                        //   height: 34.h,
+                        //   width: 152.w,
+                        //   padding: const EdgeInsets.symmetric(
+                        //       vertical: 6, horizontal: 14),
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     color: Colors.white,
+                        //   ),
+                        //   child: InkWell(
+                        //     onTap: () {
+                        //       Get.bottomSheet(
+                        //         timeBottomSheet(),
+                        //       );
+                        //       // showTimePicker(
+                        //       //   context: context,
+                        //       //   initialTime: TimeOfDay.now(),
+                        //       // ).then((value) {
+                        //       //   if (value == null) return;
+                        //       //   setState(() {
+                        //       //     _formattedTime = AppHelpers.formatTime(value);
+                        //       //     _timeOfDay = value;
+                        //       //   });
+                        //       // });
+                        //     },
+                        //     child: Center(
+                        //       child: Row(
+                        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //         children: [
+                        //           Text(
+                        //             _formattedStartTime ?? 'Select Time',
+                        //             style: black600TextStyle,
+                        //           ),
+                        //           Icon(
+                        //             Icons.arrow_drop_down,
+                        //             color: Colors.black.withOpacity(0.5),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25.h,
+                    ),
+                    // Text(
+                    //   _selectedLevel ?? 'Select Level',
+                    //   style: AppTheme.black500TextStyle(18),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    //   child: Row(
+                    //     children: const [
+                    //       Text(
+                    //         'Desk: ',
+                    //         style: TextStyle(
+                    //           fontWeight: FontWeight.w500,
+                    //         ),
+                    //       ),
+                    //       Expanded(
+                    //           child: Text(
+                    //         '50 available',
+                    //         style: TextStyle(
+                    //           color: AppColors.kMint,
+                    //           fontWeight: FontWeight.w500,
+                    //         ),
+                    //       )),
+                    //     ],
+                    //   ),
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Text(
+                        '* Room Booking can be done 3 months in Advance',
+                        style: AppTheme.black400TextStyle(13),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        'Available room in the selected time slot',
+                        style: AppTheme.black600TextStyle(18),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const TextSpan(
-                            text: 'Welcome ',
-                            style: TextStyle(
-                              color: AppColors.kAubergine,
-                            ),
+                          Text(
+                            'Room Name',
+                            style: AppTheme.black600TextStyle(14),
                           ),
-                          TextSpan(
-                            text: '$firstName $lastName',
-                            style: const TextStyle(
-                              color: AppColors.kEvergreen,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          Text(
+                            'Max Pax',
+                            style: AppTheme.black600TextStyle(14),
+                          ),
+                          Text(
+                            'Available          ',
+                            style: AppTheme.black600TextStyle(14),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Text(
-                  'Reserve Your \nMeeting Room',
-                  style: TextStyle(
-                    fontSize: 25.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      height: 34.h,
-                      width: 152.w,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 6, horizontal: 14),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton(
-                            value: _selectedLevel,
-                            style: black600TextStyle,
-                            hint: Text(
-                              'Level',
-                              style: black600TextStyle,
-                            ),
-                            isExpanded: true,
-                            iconEnabledColor: Colors.black.withOpacity(0.5),
-                            items: _levelsList.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value.toString(),
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (String? val) {
-                              setState(() {
-                                _selectedLevel = val!;
-                              });
-                              getRoomid();
-                            }),
-                      ),
-                    ),
-                    // paxSelector(),
-                    startDateSelector(context),
-                  ],
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    fromDateSelector(context, setState),
-                    toDateSelector(context, setState),
-                    // Container(
-                    //   height: 34.h,
-                    //   width: 152.w,
-                    //   padding: const EdgeInsets.symmetric(
-                    //       vertical: 6, horizontal: 14),
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(10),
-                    //     color: Colors.white,
-                    //   ),
-                    //   child: InkWell(
-                    //     onTap: () {
-                    //       Get.bottomSheet(
-                    //         timeBottomSheet(),
-                    //       );
-                    //       // showTimePicker(
-                    //       //   context: context,
-                    //       //   initialTime: TimeOfDay.now(),
-                    //       // ).then((value) {
-                    //       //   if (value == null) return;
-                    //       //   setState(() {
-                    //       //     _formattedTime = AppHelpers.formatTime(value);
-                    //       //     _timeOfDay = value;
-                    //       //   });
-                    //       // });
-                    //     },
-                    //     child: Center(
-                    //       child: Row(
-                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //         children: [
-                    //           Text(
-                    //             _formattedStartTime ?? 'Select Time',
-                    //             style: black600TextStyle,
-                    //           ),
-                    //           Icon(
-                    //             Icons.arrow_drop_down,
-                    //             color: Colors.black.withOpacity(0.5),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
-                ),
-                SizedBox(
-                  height: 25.h,
-                ),
-                // Text(
-                //   _selectedLevel ?? 'Select Level',
-                //   style: AppTheme.black500TextStyle(18),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                //   child: Row(
-                //     children: const [
-                //       Text(
-                //         'Desk: ',
-                //         style: TextStyle(
-                //           fontWeight: FontWeight.w500,
-                //         ),
-                //       ),
-                //       Expanded(
-                //           child: Text(
-                //         '50 available',
-                //         style: TextStyle(
-                //           color: AppColors.kMint,
-                //           fontWeight: FontWeight.w500,
-                //         ),
-                //       )),
-                //     ],
-                //   ),
-                // ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 18.0),
-                  child: Text(
-                    '* Room Booking can be done 3 months in Advance',
-                    style: AppTheme.black400TextStyle(13),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    'Available room in the selected time slot',
-                    style: AppTheme.black600TextStyle(18),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Room Name',
-                        style: AppTheme.black600TextStyle(14),
-                      ),
-                      Text(
-                        'Max Pax',
-                        style: AppTheme.black600TextStyle(14),
-                      ),
-                      Text(
-                        'Available          ',
-                        style: AppTheme.black600TextStyle(14),
-                      ),
-                    ],
-                  ),
-                ),
-                if (_formattedDate != null &&
-                    _startTime != null &&
-                    roomId != null &&
-                    _endTime != null)
-                  FutureBuilder<List<int>>(
-                    future: viewAvailablity(), // async work
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<int>> snapshot) {
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.waiting:
-                          return Text('Loading....');
-                        default:
-                          if (snapshot.hasError)
-                            return Text('Error: ${snapshot.error}');
-                          else
-                            return ListView.builder(
-                                shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
-                                itemCount: rooms.length,
-                                itemBuilder: (context, index) {
-                                  return buildAvailabilityList(index);
-                                });
-                      }
-                    },
-                  )
+                    if (_formattedDate != null &&
+                        _startTime != null &&
+                        roomId != null &&
+                        _endTime != null)
+                      FutureBuilder<List<int>>(
+                        future: viewAvailablity(), // async work
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List<int>> snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.waiting:
+                              return Text('Loading....');
+                            default:
+                              if (snapshot.hasError)
+                                return Text('Error: ${snapshot.error}');
+                              else
+                                return ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: BouncingScrollPhysics(),
+                                    itemCount: rooms.length,
+                                    itemBuilder: (context, index) {
+                                      return buildAvailabilityList(index);
+                                    });
+                          }
+                        },
+                      )
 
-                // _selectedLevel == 'Floor 14'
-                //     ? Level14Room(
-                //         selectedRoom: (s) {
-                //           roomId = s;
-                //           print(roomId);
-                //         },
-                //       )
-                //     : Level3Room(selectedRoom: (s) {
-                //         roomId = s;
-                //         print(roomId);
-                //       }),
-                // Center(
-                //   child: TextButton(
-                //     onPressed: () {
-                //       showDialog(
-                //           context: context,
-                //           builder: (context) {
-                //             return BackdropFilter(
-                //               filter:
-                //                   ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-                //               child: Dialog(
-                //                 shape: RoundedRectangleBorder(
-                //                     borderRadius: BorderRadius.circular(20.0)),
-                //                 child: SeatSelection(),
-                //               ),
-                //             );
-                //           });
-                //     },
-                //     child: const Text('Seat Selection'),
-                //   ),
-                // )
-              ],
+                    // _selectedLevel == 'Floor 14'
+                    //     ? Level14Room(
+                    //         selectedRoom: (s) {
+                    //           roomId = s;
+                    //           print(roomId);
+                    //         },
+                    //       )
+                    //     : Level3Room(selectedRoom: (s) {
+                    //         roomId = s;
+                    //         print(roomId);
+                    //       }),
+                    // Center(
+                    //   child: TextButton(
+                    //     onPressed: () {
+                    //       showDialog(
+                    //           context: context,
+                    //           builder: (context) {
+                    //             return BackdropFilter(
+                    //               filter:
+                    //                   ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+                    //               child: Dialog(
+                    //                 shape: RoundedRectangleBorder(
+                    //                     borderRadius: BorderRadius.circular(20.0)),
+                    //                 child: SeatSelection(),
+                    //               ),
+                    //             );
+                    //           });
+                    //     },
+                    //     child: const Text('Seat Selection'),
+                    //   ),
+                    // )
+                  ],
+                ),
+              ),
             ),
-          ),
+            if (_isLoading)
+              Center(
+                child: CircularProgressIndicator(),
+              )
+          ],
         ),
       ),
     );
@@ -485,6 +495,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   InkWell(
                     onTap: () {
                       roomId = rooms[index]['id'];
+
                       Get.bottomSheet(
                         timeBottomSheet(index),
                         isScrollControlled: true,
@@ -515,327 +526,386 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   Widget timeBottomSheet(int index) {
     return StatefulBuilder(builder: (context, setState) {
       return Container(
-        padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
+        height: MediaQuery.of(context).size.height * 0.8,
+        // padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.5),
+          color: Colors.white.withOpacity(0.75),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20.0),
             topRight: Radius.circular(20.0),
           ),
         ),
-        child: ListView(
-          children: [
-            transparentWhiteContainer(
-                child: const Text(
-              'Time Slot',
-              style: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.w500,
-              ),
-            )),
-            const SizedBox(
-              height: 15,
-            ),
-            transparentWhiteContainer(
-              child: Column(
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+          child: ListView(
+            children: [
+              transparentWhiteContainer(
+                  child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    rooms[index]['name'] != null
+                        ? '${rooms[index]['name']}'
+                        : "Room A",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   const Text(
-                    'Room Amenities',
+                    'Time Slot',
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.check_circle,
-                          color: AppColors.kRed,
-                          size: 15,
-                        ),
-                        Text(
-                          '   Meeting Amenities',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.check_circle,
-                          color: AppColors.kRed,
-                          size: 15,
-                        ),
-                        Text(
-                          '   Projector',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.check_circle,
-                          color: AppColors.kRed,
-                          size: 15,
-                        ),
-                        Text(
-                          '   Available (If Any)',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
+              )),
+              const SizedBox(
+                height: 15,
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            transparentWhiteContainer(
-                child: Obx(() => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'List of Pax',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        ListView.builder(
-                            itemBuilder: (context, index2) {
-                              return DropdownButtonFormField<String>(
-                                value: null,
-                                hint: Text("Select Invitee${index2 + 1} Email"),
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    if (paxEmailList.isEmpty) {
-                                      setState(() {
-                                        paxEmailList.add(newValue ?? '');
-                                      });
-                                    }
-
-                                    if (paxEmailList.length < index2 + 1) {
-                                      setState(() {
-                                        paxEmailList.add(newValue ?? '');
-                                      });
-                                    }
-
-                                    setState(() {
-                                      paxEmailList[index2] = newValue ?? '';
-                                    });
-                                  });
-                                },
-                                validator: (String? value) {
-                                  if (value?.isEmpty ?? true) {
-                                    return "please Select Invitee${index2 + 1} Email";
-                                  }
-                                },
-                                items: userList.map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                                // onSaved: (val) =>
-                                //     setState(() => _user.typeNeg = val),
-                              );
-                              return Container(
-                                margin: EdgeInsets.only(bottom: 10),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: 10),
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.black, width: 1),
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: TextFormField(
-                                  readOnly: false,
-                                  autofocus: false,
-                                  textInputAction: TextInputAction.done,
-                                  onChanged: (value) {
-                                    if (paxEmailList.isEmpty) {
-                                      setState(() {
-                                        paxEmailList.add(value);
-                                      });
-                                    }
-
-                                    if (paxEmailList.length < index2 + 1) {
-                                      setState(() {
-                                        paxEmailList.add(value);
-                                      });
-                                    }
-
-                                    setState(() {
-                                      paxEmailList[index2] = value;
-                                    });
-                                    print("test");
-                                  },
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFeatures: const [
-                                        FontFeature.tabularFigures()
-                                      ],
-                                      color: Colors.blueGrey[300],
-                                      fontSize: 13),
-                                  textAlign: TextAlign.start,
-                                  keyboardType: TextInputType.emailAddress,
-                                  obscureText: false,
-                                  cursorColor: Colors.black,
-                                  decoration: InputDecoration(
-                                    isDense: true,
-                                    border: InputBorder.none,
-                                    contentPadding:
-                                        const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                    hintStyle: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 13,
-                                      fontFeatures: const [
-                                        FontFeature.tabularFigures()
-                                      ],
-                                      color: Colors.blueGrey[300],
-                                    ),
-                                    hintText:
-                                        "Select Invitee${index2 + 1} Email",
-                                  ),
-                                ),
-                              );
-                            },
-                            physics: ScrollPhysics(),
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            itemCount: _selectedPax.value),
-                      ],
-                    ))),
-            const SizedBox(
-              height: 15,
-            ),
-            transparentWhiteContainer(
+              transparentWhiteContainer(
                 child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Start time: $_formattedStartTime',
-                      style: AppTheme.black500TextStyle(14),
+                    const Text(
+                      'Room Amenities',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    Text(
-                      'End time: $_formattedEndTime',
-                      style: AppTheme.black500TextStyle(14),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.check_circle,
+                            color: AppColors.kRed,
+                            size: 15,
+                          ),
+                          Text(
+                            '   Meeting Amenities',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.check_circle,
+                            color: AppColors.kRed,
+                            size: 15,
+                          ),
+                          Text(
+                            '   Projector',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.check_circle,
+                            color: AppColors.kRed,
+                            size: 15,
+                          ),
+                          Text(
+                            '   Available (If Any)',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    paxSelector(index),
-                    Text(
-                      'Date: $_formattedDate',
-                      style: AppTheme.black500TextStyle(14),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: InkWell(
-                    onTap: () {
-                      if (_selectedLevel != null &&
-                          _dateTime != null &&
-                          _startTime != null &&
-                          _endTime != null) {
-                        if (_selectedPax.value != paxEmailList.length) {
-                          showSnackBar(
-                              context: context,
-                              message: 'Enter All Pax Emails');
-                          return;
-                        }
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              transparentWhiteContainer(
+                  child: Obx(() => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'List of Pax',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: ListView.builder(
+                                    itemBuilder: (context, index2) {
+                                      return DropdownButtonFormField<String>(
+                                        value: null,
+                                        hint: Text(
+                                            "Select Invitee${index2 + 1} Email"),
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            if (paxEmailList.isEmpty) {
+                                              setState(() {
+                                                paxEmailList
+                                                    .add(newValue ?? '');
+                                              });
+                                            }
 
-                        paxEmailList.forEach((element) {
-                          if (!element.isEmail) {
+                                            if (paxEmailList.length <
+                                                index2 + 1) {
+                                              setState(() {
+                                                paxEmailList
+                                                    .add(newValue ?? '');
+                                              });
+                                            }
+
+                                            setState(() {
+                                              paxEmailList[index2] =
+                                                  newValue ?? '';
+                                            });
+                                          });
+                                        },
+                                        validator: (String? value) {
+                                          if (value?.isEmpty ?? true) {
+                                            return "please Select Invitee${index2 + 1} Email";
+                                          }
+                                        },
+                                        items: userList
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              value,
+
+                                              textScaleFactor: 0.85,
+                                              // style: TextStyle(fontSize: 13),
+                                            ),
+                                          );
+                                        }).toList(),
+                                        // onSaved: (val) =>
+                                        //     setState(() => _user.typeNeg = val),
+                                      );
+                                      return Container(
+                                        margin: EdgeInsets.only(bottom: 10),
+                                        padding: EdgeInsets.symmetric(
+                                            vertical: 5, horizontal: 10),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.black, width: 1),
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: TextFormField(
+                                          readOnly: false,
+                                          autofocus: false,
+                                          textInputAction: TextInputAction.done,
+                                          onChanged: (value) {
+                                            if (paxEmailList.isEmpty) {
+                                              setState(() {
+                                                paxEmailList.add(value);
+                                              });
+                                            }
+
+                                            if (paxEmailList.length <
+                                                index2 + 1) {
+                                              setState(() {
+                                                paxEmailList.add(value);
+                                              });
+                                            }
+
+                                            setState(() {
+                                              paxEmailList[index2] = value;
+                                            });
+                                            print("test");
+                                          },
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontFeatures: const [
+                                                FontFeature.tabularFigures()
+                                              ],
+                                              color: Colors.blueGrey[300],
+                                              fontSize: 13),
+                                          textAlign: TextAlign.start,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          obscureText: false,
+                                          cursorColor: Colors.black,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            border: InputBorder.none,
+                                            contentPadding:
+                                                const EdgeInsets.fromLTRB(
+                                                    0, 0, 0, 0),
+                                            hintStyle: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 13,
+                                              fontFeatures: const [
+                                                FontFeature.tabularFigures()
+                                              ],
+                                              color: Colors.blueGrey[300],
+                                            ),
+                                            hintText:
+                                                "Select Invitee${index2 + 1} Email",
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    physics: ScrollPhysics(),
+                                    shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
+                                    itemCount: _selectedPax.value),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 12.0),
+                                child: paxSelector(index),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ))),
+              const SizedBox(
+                height: 15,
+              ),
+              transparentWhiteContainer(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // paxSelector(index),
+                      Text(
+                        'Date: $_formattedDate',
+                        style: AppTheme.black500TextStyle(14),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Start time: $_formattedStartTime',
+                        style: AppTheme.black500TextStyle(14),
+                      ),
+                      Text(
+                        'End time: $_formattedEndTime',
+                        style: AppTheme.black500TextStyle(14),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: InkWell(
+                      onTap: () {
+                        if (_selectedLevel != null &&
+                            _dateTime != null &&
+                            _startTime != null &&
+                            _endTime != null) {
+                          if (_selectedPax.value != paxEmailList.length) {
                             showSnackBar(
                                 context: context,
-                                message: 'Enter Valid Pax Email');
+                                message: 'Enter All Pax Emails');
                             return;
                           }
 
-                          if (element == paxEmailList.last) {
-                            RoomBookingDataSource()
-                                .createRoomBooking(
-                                    roomId: roomId!,
-                                    date: _formattedDate!,
-                                    fromTime: _formattedStartTime!,
-                                    toTime: _formattedEndTime!,
-                                    members: paxEmailList,
-                                    floor: _selectedLevel ?? 'Floor 3')
-                                .then((value) {
-                              if (value) {
-                                Navigator.pop(context);
-                                showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (context) {
-                                      return BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 2.5, sigmaY: 2.5),
-                                        child: Dialog(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20.0)),
-                                          child: BookingConfirmedWidget(
-                                              _formattedStartTime!,
-                                              _formattedEndTime!),
-                                        ),
-                                      );
-                                    });
-                                RoomBookingDataSource().viewAllRoomBooking();
-                              } else {
-                                Navigator.pop(context);
-                              }
-                            });
-                          }
-                        });
-                      } else {
-                        showSnackBar(
-                            context: context, message: 'Select All Fields');
-                      }
-                    },
-                    child: confirmButton(),
+                          paxEmailList.forEach((element) {
+                            if (!element.isEmail) {
+                              showSnackBar(
+                                  context: context,
+                                  message: 'Enter Valid Pax Email');
+                              return;
+                            }
+
+                            if (element == paxEmailList.last) {
+                              setState(() {
+                                _isLoading = true;
+                              });
+
+                              RoomBookingDataSource()
+                                  .createRoomBooking(
+                                      roomId: roomId!,
+                                      date: _formattedDate!,
+                                      fromTime: _formattedStartTime!,
+                                      toTime: _formattedEndTime!,
+                                      members: paxEmailList,
+                                      floor: _selectedLevel ?? 'Floor 3')
+                                  .then((value) {
+                                if (value) {
+                                  setState(() {
+                                    _isLoading = true;
+                                  });
+
+                                  Navigator.pop(context);
+                                  showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) {
+                                        return BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 2.5, sigmaY: 2.5),
+                                          child: Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        20.0)),
+                                            child: BookingConfirmedWidget(
+                                                _formattedStartTime!,
+                                                _formattedEndTime!),
+                                          ),
+                                        );
+                                      });
+                                  RoomBookingDataSource().viewAllRoomBooking();
+                                } else {
+                                  Navigator.pop(context);
+                                }
+                              });
+                            }
+                          });
+                        } else {
+                          showSnackBar(
+                              context: context, message: 'Select All Fields');
+                        }
+                      },
+                      child: confirmButton(),
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-              ],
-            ))
-          ],
+                  const SizedBox(
+                    height: 15,
+                  ),
+                ],
+              ))
+            ],
+          ),
         ),
       );
     });
@@ -896,17 +966,24 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          showTimePicker(
-                  initialEntryMode: TimePickerEntryMode.input,
-                  context: context,
-                  initialTime: TimeOfDay.now())
-              .then((value) {
-            if (value == null) return;
+          AppHelpers.showCupertinoTimePicker(context, (value) {
             setState(() {
-              _formattedStartTime = AppHelpers.formatTime(value);
-              _startTime = value;
+              _formattedStartTime =
+                  AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+              _startTime = TimeOfDay.fromDateTime(value);
             });
           });
+          // showTimePicker(
+          //         initialEntryMode: TimePickerEntryMode.input,
+          //         context: context,
+          //         initialTime: TimeOfDay.now())
+          //     .then((value) {
+          //   if (value == null) return;
+          //   setState(() {
+          //     _formattedStartTime = AppHelpers.formatTime(value);
+          //     _startTime = value;
+          //   });
+          // });
         },
         child: Center(
           child: Row(
@@ -939,17 +1016,28 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          showTimePicker(
-                  initialEntryMode: TimePickerEntryMode.input,
-                  context: context,
-                  initialTime: TimeOfDay.now())
-              .then((value) {
-            if (value == null) return;
+          AppHelpers.showCupertinoTimePicker(context, (value) {
             setState(() {
-              _formattedEndTime = AppHelpers.formatTime(value);
-              _endTime = value;
+              if (value == null) return;
+              setState(() {
+                _formattedEndTime =
+                    AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+                _endTime = TimeOfDay.fromDateTime(value);
+              });
             });
           });
+
+          // showTimePicker(
+          //         initialEntryMode: TimePickerEntryMode.input,
+          //         context: context,
+          //         initialTime: TimeOfDay.now())
+          //     .then((value) {
+          //   if (value == null) return;
+          //   setState(() {
+          //     _formattedEndTime = AppHelpers.formatTime(value);
+          //     _endTime = value;
+          //   });
+          // });
         },
         child: Center(
           child: Row(
@@ -974,7 +1062,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     return StatefulBuilder(builder: (context, setState) {
       return Container(
         height: 34.h,
-        width: 152.w,
+        width: 60.w,
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
