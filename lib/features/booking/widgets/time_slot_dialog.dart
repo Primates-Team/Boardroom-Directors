@@ -56,7 +56,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 227.h,
+      height: 250.h,
       width: 326.w,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       decoration: AppTheme.boxDecoration,
@@ -244,9 +244,12 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: BookingConfirmedWidget(
-                                  AppHelpers.formatTime(startTime!),
-                                  AppHelpers.formatTime(endTime!),
-                                ),
+                                    AppHelpers.formatTime(startTime!),
+                                    AppHelpers.formatTime(endTime!),
+                                    widget.tableNo,
+                                    widget.seatNo,
+                                    AppHelpers.formatDate(sdate),
+                                    widget.floor),
                               ),
                             );
                           });

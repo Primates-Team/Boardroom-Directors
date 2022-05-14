@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_urls.dart';
+import 'package:hot_desking/features/booking/data/models/forgot_password_response.dart';
 import 'package:hot_desking/features/login/data/model/get_user_response.dart';
 import 'package:hot_desking/features/login/data/model/user_model.dart';
 import 'package:http/http.dart' as http;
@@ -155,6 +156,66 @@ class AuthDataSource {
       //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
       // print(e);
       return null;
+    }
+  }
+
+  Future<ForgotPasswordResponse?> sendOtp(String email) async {
+    var client = http.Client();
+    try {
+      var response = await client.post(
+        Uri.parse(AppUrl.sendOtp),
+        body: jsonEncode({"email": email}),
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      );
+
+      ForgotPasswordResponse? forgotPasswordResponse;
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> jsonString = jsonDecode(response.body);
+        forgotPasswordResponse = ForgotPasswordResponse.fromJson(jsonString);
+        return forgotPasswordResponse;
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Registration Failed',
+            bgColor: Colors.red);
+        return forgotPasswordResponse;
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      // print(e);
+      return null;
+    }
+  }
+
+  Future<bool?> verifyOtp(String id, String otp) async {
+    var client = http.Client();
+    try {
+      var response = await client.post(
+        Uri.parse(AppUrl.verifyOtp),
+        body: jsonEncode({"id": id, "otp": otp}),
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        return response.body == "true";
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Registration Failed',
+            bgColor: Colors.red);
+        return false;
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      // print(e);
+      return false;
     }
   }
 }

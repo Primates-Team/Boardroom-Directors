@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/app_colors.dart';
 import '../../../core/app_theme.dart';
 
-Container confirmButton([String text = 'Confirm']) {
+Container confirmButton({String text = 'Confirm'}) {
   return Container(
     height: 50.h,
     // width: 117.w,

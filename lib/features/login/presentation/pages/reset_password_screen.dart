@@ -26,9 +26,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           SizedBox(width: size.width),
           Image.asset(
             'assets/common/logo.png',
-            height: 85,
-            width: 60,
-            color: const Color(0xFF75F0BD),
+            height: 135,
+            width: 150,
+            // color: const Color(0xFF75F0BD),
           ),
           //text
           const SizedBox(

@@ -11,11 +11,9 @@ import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/app_urls.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
-import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/models/availabilty_response.dart';
 import 'package:hot_desking/features/booking/presentation/pages/room_booking_controller.dart';
-import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
 import 'package:hot_desking/features/login/data/model/get_user_response.dart';
@@ -151,12 +149,15 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     controller = Get.put(RoomBookingController());
     return GetBuilder<RoomBookingController>(
       builder: (logic) {
-        if (logic.status == RxStatus.loading()) {
-          const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        return _buildScreenWidget();
+        return Stack(
+          children: [
+            _buildScreenWidget(),
+            // if (logic.status.isLoading)
+            //   const Center(
+            //     child: CircularProgressIndicator(),
+            //   )
+          ],
+        );
       },
     );
   }
@@ -751,7 +752,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             return;
                           }
 
-                          paxEmailList.forEach((element) {
+                          for (var element in paxEmailList) {
                             if (!element.isEmail) {
                               showSnackBar(
                                   context: context,
@@ -760,14 +761,17 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             }
 
                             if (element == paxEmailList.last) {
-                              // controller
-                              //     .createBooking(
-                              //         roomId!,
-                              //         _formattedDate!,
-                              //         _formattedStartTime!,
-                              //         _formattedEndTime!,
-                              //         paxEmailList,
-                              //         _selectedLevel ?? 'Floor 3')
+                              controller.createBooking(
+                                roomId!,
+                                _formattedDate!,
+                                _formattedStartTime!,
+                                _formattedEndTime!,
+                                paxEmailList,
+                                _selectedLevel ?? 'Floor 3',
+                                rooms[index]['name'] != null
+                                    ? '${rooms[index]['name']}'
+                                    : "Room A",
+                              );
                               //     .then((value) {
                               //   showDialog(
                               //       context: context,
@@ -789,43 +793,58 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                               //   RoomBookingDataSource().viewAllRoomBooking();
                               // });
 
-                              RoomBookingDataSource()
-                                  .createRoomBooking(
-                                      roomId: roomId!,
-                                      date: _formattedDate!,
-                                      fromTime: _formattedStartTime!,
-                                      toTime: _formattedEndTime!,
-                                      members: paxEmailList,
-                                      floor: _selectedLevel ?? 'Floor 3')
-                                  .then((value) {
-                                if (value) {
-                                  // Navigator.pop(context);
-                                  Get.back();
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                _formattedStartTime!,
-                                                _formattedEndTime!),
-                                          ),
-                                        );
-                                      });
-                                  RoomBookingDataSource().viewAllRoomBooking();
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
+                              // RoomBookingDataSource()
+                              //     .createRoomBooking(
+                              //         roomId: roomId!,
+                              //         date: _formattedDate!,
+                              //         fromTime: _formattedStartTime!,
+                              //         toTime: _formattedEndTime!,
+                              //         members: paxEmailList,
+                              //         floor: _selectedLevel ?? 'Floor 3')
+                              //     .then((value) {
+                              //   if (value) {
+                              // Navigator.pop(context);
+
+                              // Get.defaultDialog(
+                              //     barrierDismissible: false,
+                              //     content: BackdropFilter(
+                              //       filter: ImageFilter.blur(
+                              //           sigmaX: 2.5, sigmaY: 2.5),
+                              //       child: Dialog(
+                              //         shape: RoundedRectangleBorder(
+                              //             borderRadius:
+                              //                 BorderRadius.circular(20.0)),
+                              //         child: BookingConfirmedWidget(
+                              //             _formattedStartTime!,
+                              //             _formattedEndTime!),
+                              //       ),
+                              //     ));
+
+                              // showDialog(
+                              //     context: context,
+                              //     barrierDismissible: false,
+                              //     builder: (context) {
+                              //       return BackdropFilter(
+                              //         filter: ImageFilter.blur(
+                              //             sigmaX: 2.5, sigmaY: 2.5),
+                              //         child: Dialog(
+                              //           shape: RoundedRectangleBorder(
+                              //               borderRadius:
+                              //                   BorderRadius.circular(
+                              //                       20.0)),
+                              //           child: BookingConfirmedWidget(
+                              //               _formattedStartTime!,
+                              //               _formattedEndTime!),
+                              //         ),
+                              //       );
+                              //     });
+                              // RoomBookingDataSource().viewAllRoomBooking();
+                              // } else {
+                              //   Navigator.pop(context);
+                              // }
+                              //  });
                             }
-                          });
+                          }
                         } else {
                           showSnackBar(
                               context: context, message: 'Select All Fields');
