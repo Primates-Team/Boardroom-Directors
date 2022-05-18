@@ -33,7 +33,7 @@ class RoomBookingController extends GetxController with StateMixin {
 
     if (response) {
       change(null, status: RxStatus.success());
-      Get.back();
+      // Get.back();
       RoomBookingDataSource().viewAllRoomBooking();
       Get.dialog(BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
