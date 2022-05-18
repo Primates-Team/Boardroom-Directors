@@ -30,4 +30,6 @@ class AppUrl {
 
   static const String sendOtp = '$baseUrl/users/sendotp';
   static const String verifyOtp = '$baseUrl/users/verifyotp';
+  static const String viewByEmail = '$baseUrl/users/viewbyemail';
+  static const String userUpdate = '$baseUrl/users/update';
 }

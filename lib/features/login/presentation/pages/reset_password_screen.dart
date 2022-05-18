@@ -18,7 +18,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppColors.kAubergine,
+      // backgroundColor: AppColors.kAubergine,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

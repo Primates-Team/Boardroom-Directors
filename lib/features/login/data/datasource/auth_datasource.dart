@@ -218,4 +218,66 @@ class AuthDataSource {
       return false;
     }
   }
+
+  Future<GetUserResponse?> viewByEmail(String email) async {
+    var client = http.Client();
+    GetUserResponse? userResponse;
+    try {
+      var response = await client.post(
+        Uri.parse(AppUrl.viewByEmail),
+        body: jsonEncode({"email": email}),
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+        List<GetUserResponse> users = getUserResponseFromJson(jsonString);
+        return users[0];
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Registration Failed',
+            bgColor: Colors.red);
+        return userResponse;
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      // print(e);
+      return userResponse;
+    }
+  }
+
+  Future<String?> userUpdate(int id, String password) async {
+    var client = http.Client();
+
+    try {
+      var response = await client.post(
+        Uri.parse(AppUrl.userUpdate),
+        body: jsonEncode({"id": id, "password": password}),
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+
+        return "";
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Registration Failed',
+            bgColor: Colors.red);
+        return "userResponse";
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      // print(e);
+      return "userResponse";
+    }
+  }
 }

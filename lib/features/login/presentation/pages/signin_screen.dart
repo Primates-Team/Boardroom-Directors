@@ -329,17 +329,14 @@ class _SignInScreenState extends State<SignInScreen> {
                               const String pattern = r'(^(?:[+0]9)?[0-9]{8}$)';
 
                               RegExp regex = RegExp(pattern);
-                              if (!regex.hasMatch(s!))
+                              if (!regex.hasMatch(s!)) {
                                 return 'Mobile number is not valid';
-                              else
+                              } else {
                                 return null;
+                              }
                             },
-                            // !GetUtils.isPhoneNumber(s!)
-                            //     ? 'Mobile number is not valid'
-                            //     : null,
                             keyboardType: TextInputType.number,
                             maxLength: 8,
-
                             style: const TextStyle(
                                 color: AppColors.kDarkPantone,
                                 fontSize: 12,
@@ -419,6 +416,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 setState(() {
                                   _isLoading = false;
                                 });
+
                                 Navigator.push(
                                     context,
                                     PageTransition(

@@ -194,6 +194,7 @@ class _OTPWidgetState extends State<OTPWidget> {
                   //         type: PageTransitionType.fade,
                   //         child: const ResetPasswordScreen(),
                   //         duration: const Duration(milliseconds: 250)));
+
                 }
                 textFourthFocusNode.unfocus();
               }
