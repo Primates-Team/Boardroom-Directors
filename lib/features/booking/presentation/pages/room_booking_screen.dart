@@ -147,15 +147,16 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   @override
   Widget build(BuildContext context) {
     controller = Get.put(RoomBookingController());
+    controller.change(null, status: RxStatus.empty());
     return GetBuilder<RoomBookingController>(
       builder: (logic) {
         return Stack(
           children: [
             _buildScreenWidget(),
-            // if (logic.status.isLoading)
-            //   const Center(
-            //     child: CircularProgressIndicator(),
-            //   )
+            if (logic.status.isLoading)
+              const Center(
+                child: CircularProgressIndicator(),
+              )
           ],
         );
       },

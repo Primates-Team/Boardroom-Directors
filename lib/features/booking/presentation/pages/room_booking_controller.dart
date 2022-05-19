@@ -22,14 +22,13 @@ class RoomBookingController extends GetxController with StateMixin {
 
     Get.back();
 
-    var response = true;
-    // await RoomBookingDataSource().createRoomBooking(
-    //     roomId: roomId,
-    //     date: date,
-    //     fromTime: fromTime,
-    //     toTime: toTime,
-    //     members: members,
-    //     floor: floor);
+    var response = await RoomBookingDataSource().createRoomBooking(
+        roomId: roomId,
+        date: date,
+        fromTime: fromTime,
+        toTime: toTime,
+        members: members,
+        floor: floor);
 
     if (response) {
       change(null, status: RxStatus.success());
