@@ -130,70 +130,101 @@ class _Level3LayoutState extends State<Level3Layout> {
           (BuildContext context, AsyncSnapshot<List<Map<int, int>>> snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           default:
-            if (snapshot.hasError)
+            if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
-            else
+            } else {
               return GetBuilder<BookingController>(builder: (controller) {
                 return Container(
-                  // height: 100,
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          table3(3, bookedTables[3] ?? []),
-                          table3(4, bookedTables[4] ?? []),
-                          table3(5, bookedTables[5] ?? []),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Column(
+                  color: Colors.white,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          // height: 100,
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              table2(2, bookedTables[2] ?? []),
-                              table2(1, bookedTables[1] ?? []),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  table3(
+                                      3, bookedTables[3] ?? [], Colors.purple),
+                                  table3(
+                                      4, bookedTables[4] ?? [], Colors.yellow),
+                                  table3(
+                                      5, bookedTables[5] ?? [], Colors.yellow),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      table2(2, bookedTables[2] ?? [],
+                                          Colors.green),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      table2(1, bookedTables[1] ?? [],
+                                          Colors.green),
+                                    ],
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        table6(6, bookedTables[6] ?? [],
+                                            Colors.green),
+                                        SizedBox(
+                                          height: 20.h,
+                                        ),
+                                        table7(7, bookedTables[7] ?? [],
+                                            Colors.green),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                table6(6, bookedTables[6] ?? []),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                table7(7, bookedTables[7] ?? []),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
+                        ),
+                        Image.asset(
+                          "assets/level3/floor3.png",
+                          height: MediaQuery.of(context).size.height * 0.7,
+                        )
+                      ],
+                    ),
                   ),
                 );
               });
+            }
         }
       },
     );
   }
 
-  Widget table3(int tableNo, List<int> seats) {
+  Widget table3(int tableNo, List<int> seats, Color tableColor) {
     return Stack(
       children: [
-        Image.asset(
-          table4Seater,
-          height: 115.w,
+        Container(
+          color: tableColor,
+          child: Image.asset(
+            table4Seater,
+            height: 115.w,
+          ),
         ),
         Positioned(
           top: 10.w,
           left: 10.w,
           child: InkWell(
-            onTap: () => selectTable(tableNo, 2),
+            onTap: () {
+              //selectTable(tableNo, 2);
+            },
             child: Image.asset(
               squareChair,
               height: 30.w,
@@ -257,14 +288,17 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Widget table2(int tableNo, List<int> seats) {
+  Widget table2(int tableNo, List<int> seats, Color tableColor) {
     return RotatedBox(
       quarterTurns: 1,
       child: Stack(
         children: [
-          Image.asset(
-            table4Seater,
-            height: 120.w,
+          Container(
+            color: tableColor,
+            child: Image.asset(
+              table4Seater,
+              height: 120.w,
+            ),
           ),
           Positioned(
             top: 10.w,
@@ -335,15 +369,18 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Stack table6(int tableNo, List<int> seats) {
+  Stack table6(int tableNo, List<int> seats, Color tableColor) {
     return Stack(
       alignment: Alignment.center,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            table8Seater,
-            width: 130.w,
+          child: Container(
+            color: tableColor,
+            child: Image.asset(
+              table8Seater,
+              width: 130.w,
+            ),
           ),
         ),
         Positioned(
@@ -502,15 +539,18 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Transform table7(int tableNo, List<int> seats) {
+  Transform table7(int tableNo, List<int> seats, Color tableColor) {
     return Transform.rotate(
       angle: 180,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Image.asset(
-            table6Seater,
-            height: 150,
+          Container(
+            color: tableColor,
+            child: Image.asset(
+              table6Seater,
+              height: 150,
+            ),
           ),
           Positioned(
             top: 15.w,
