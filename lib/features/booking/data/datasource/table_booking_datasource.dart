@@ -15,7 +15,8 @@ class TableBookingDataSource {
   Future<bool> createBooking(
       {required int tableNo,
       required int seatNo,
-      required String date,
+      required String startDate,
+      required String endDate,
       required String fromTime,
       required String toTime,
       required String floor}) async {
@@ -29,7 +30,8 @@ class TableBookingDataSource {
             "seatnumber": seatNo,
             "fromtime": fromTime,
             "totime": toTime,
-            "selecteddate": date,
+            "selecteddate": startDate,
+            "todate": endDate,
             "floor": floor,
             // "current_time": AppHelpers.formatTime(TimeOfDay.now()),
             "employeeid":
