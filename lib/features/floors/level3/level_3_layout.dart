@@ -154,37 +154,30 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  table3(
-                                      3, bookedTables[3] ?? [], Colors.purple),
-                                  table3(
-                                      4, bookedTables[4] ?? [], Colors.yellow),
-                                  table3(
-                                      5, bookedTables[5] ?? [], Colors.yellow),
+                                  table3(3, bookedTables[3] ?? []),
+                                  table3(4, bookedTables[4] ?? []),
+                                  table3(5, bookedTables[5] ?? []),
                                 ],
                               ),
                               Row(
                                 children: [
                                   Column(
                                     children: [
-                                      table2(2, bookedTables[2] ?? [],
-                                          Colors.green),
+                                      table2(2, bookedTables[2] ?? []),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      table2(1, bookedTables[1] ?? [],
-                                          Colors.green),
+                                      table2(1, bookedTables[1] ?? []),
                                     ],
                                   ),
                                   Expanded(
                                     child: Column(
                                       children: [
-                                        table6(6, bookedTables[6] ?? [],
-                                            Colors.green),
+                                        table6(6, bookedTables[6] ?? []),
                                         SizedBox(
                                           height: 20.h,
                                         ),
-                                        table7(7, bookedTables[7] ?? [],
-                                            Colors.green),
+                                        table7(7, bookedTables[7] ?? []),
                                       ],
                                     ),
                                   )
@@ -208,11 +201,10 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Widget table3(int tableNo, List<int> seats, Color tableColor) {
+  Widget table3(int tableNo, List<int> seats) {
     return Stack(
       children: [
         Container(
-          color: tableColor,
           child: Image.asset(
             table4Seater,
             height: 115.w,
@@ -288,13 +280,12 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Widget table2(int tableNo, List<int> seats, Color tableColor) {
+  Widget table2(int tableNo, List<int> seats) {
     return RotatedBox(
       quarterTurns: 1,
       child: Stack(
         children: [
           Container(
-            color: tableColor,
             child: Image.asset(
               table4Seater,
               height: 120.w,
@@ -369,14 +360,13 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Stack table6(int tableNo, List<int> seats, Color tableColor) {
+  Stack table6(int tableNo, List<int> seats) {
     return Stack(
       alignment: Alignment.center,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            color: tableColor,
             child: Image.asset(
               table8Seater,
               width: 130.w,
@@ -539,18 +529,15 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  Transform table7(int tableNo, List<int> seats, Color tableColor) {
+  Transform table7(int tableNo, List<int> seats) {
     return Transform.rotate(
       angle: 180,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Container(
-            color: tableColor,
-            child: Image.asset(
-              table6Seater,
-              height: 150,
-            ),
+          Image.asset(
+            table6Seater,
+            height: 150,
           ),
           Positioned(
             top: 15.w,

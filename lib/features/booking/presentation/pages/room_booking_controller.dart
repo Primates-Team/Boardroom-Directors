@@ -12,7 +12,8 @@ import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 class RoomBookingController extends GetxController with StateMixin {
   Future<void> createBooking(
       int roomId,
-      String date,
+      String startDate,
+      String endDate,
       String fromTime,
       String toTime,
       List<String> members,
@@ -24,7 +25,8 @@ class RoomBookingController extends GetxController with StateMixin {
 
     var response = await RoomBookingDataSource().createRoomBooking(
         roomId: roomId,
-        date: date,
+        startDate: startDate,
+        endDate: endDate,
         fromTime: fromTime,
         toTime: toTime,
         members: members,

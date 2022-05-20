@@ -14,7 +14,8 @@ import '../../../../core/widgets/show_snackbar.dart';
 class RoomBookingDataSource {
   Future<bool> createRoomBooking({
     required int roomId,
-    required String date,
+    required String startDate,
+    required String endDate,
     required String fromTime,
     required String toTime,
     required List<String> members,
@@ -26,7 +27,8 @@ class RoomBookingDataSource {
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "roomid": roomId,
-            "selecteddate": date,
+            "selecteddate": startDate,
+            "todate": endDate,
             "fromtime": fromTime,
             "totime": toTime,
             "employeeid":

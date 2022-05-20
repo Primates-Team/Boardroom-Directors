@@ -48,9 +48,13 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   List rooms = [];
   List bookedRooms = [];
   String? _selectedLevel = 'Floor 3';
-  DateTime? _dateTime;
+  DateTime? _startDate;
+  DateTime? _endDate;
   TimeOfDay? _startTime, _endTime;
-  String? _formattedDate, _formattedStartTime, _formattedEndTime;
+  String? _formattedStartDate,
+      _formattedEndDate,
+      _formattedStartTime,
+      _formattedEndTime;
   late int _selectedCategory;
   var _selectedPax = 1.obs;
   int? tableNo, seatNo, roomId;
@@ -292,8 +296,23 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                           ),
                         ),
                         // paxSelector(),
-                        startDateSelector(context),
                       ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Row(
+                        children: [
+                          Container(
+                              height: 34.h,
+                              width: 152.w,
+                              child: startDateSelector(context)),
+                          Spacer(),
+                          Container(
+                              height: 34.h,
+                              width: 152.w,
+                              child: endDateSelector(context)),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -341,7 +360,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         ],
                       ),
                     ),
-                    if (_formattedDate != null &&
+                    if (_formattedStartDate != null &&
+                        _formattedEndDate != null &&
                         _startTime != null &&
                         roomId != null &&
                         _endTime != null)
@@ -714,7 +734,20 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     children: [
                       // paxSelector(index),
                       Text(
-                        'Date: $_formattedDate',
+                        'Start Date: $_formattedStartDate',
+                        style: AppTheme.black500TextStyle(14),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // paxSelector(index),
+                      Text(
+                        'End Date: $_formattedEndDate',
                         style: AppTheme.black500TextStyle(14),
                       ),
                     ],
@@ -743,7 +776,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     child: InkWell(
                       onTap: () {
                         if (_selectedLevel != null &&
-                            _dateTime != null &&
+                            _startDate != null &&
+                            _endDate != null &&
                             _startTime != null &&
                             _endTime != null) {
                           if (_selectedPax.value != paxEmailList.length) {
@@ -764,7 +798,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             if (element == paxEmailList.last) {
                               controller.createBooking(
                                 roomId!,
-                                _formattedDate!,
+                                _formattedStartDate!,
+                                _formattedEndDate!,
                                 _formattedStartTime!,
                                 _formattedEndTime!,
                                 paxEmailList,
@@ -885,8 +920,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
               .then((value) {
             if (value == null) return;
             setState(() {
-              _formattedDate = AppHelpers.formatDate(value);
-              _dateTime = value;
+              _formattedStartDate = AppHelpers.formatDate(value);
+              _startDate = value;
             });
           });
         },
@@ -895,7 +930,59 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                _formattedDate ?? 'Select Date',
+                _formattedStartDate ?? 'Select Date',
+                style: black600TextStyle,
+              ),
+              Icon(
+                Icons.arrow_drop_down,
+                color: Colors.black.withOpacity(0.5),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget endDateSelector(BuildContext context) {
+    return Container(
+      height: 34.h,
+      width: 152.w,
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      child: InkWell(
+        onTap: () {
+          if (_startDate != null) {
+            showDatePicker(
+                    context: context,
+                    initialDate: _startDate ?? DateTime.now(),
+                    firstDate: _startDate ?? DateTime.now(),
+                    lastDate: _startDate != null
+                        ? (_startDate!.add(const Duration(days: 90)))
+                        : DateTime.now())
+                .then((value) {
+              if (value == null) return;
+              setState(() {
+                _formattedEndDate = AppHelpers.formatDate(value);
+                _endDate = value;
+              });
+            });
+          } else {
+            showSnackBar(
+                context: Get.context!,
+                message: 'Select Start Date',
+                bgColor: Colors.red);
+          }
+        },
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                _formattedEndDate ?? 'End Date',
                 style: black600TextStyle,
               ),
               Icon(
@@ -1091,7 +1178,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
         Uri.parse(AppUrl.availabalityNew),
         body: jsonEncode({
           "floor": _selectedLevel,
-          "selecteddate": _formattedDate,
+          "selecteddate": _formattedStartDate,
           "fromtime": _formattedStartTime,
           "totime": _formattedEndTime
         }),
