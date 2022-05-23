@@ -34,10 +34,7 @@ class TableBookingDataSource {
             "todate": endDate,
             "floor": floor,
             // "current_time": AppHelpers.formatTime(TimeOfDay.now()),
-            "employeeid":
-                AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id')
-                    : 1,
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id') ?? 1,
           }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
