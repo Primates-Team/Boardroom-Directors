@@ -1057,16 +1057,19 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          AppHelpers.showCupertinoTimePicker(context, (value) {
-            setState(() {
-              if (value == null) return;
+          AppHelpers.showCupertinoTimePicker(
+            context,
+            (value) {
               setState(() {
-                _formattedEndTime =
-                    AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
-                _endTime = TimeOfDay.fromDateTime(value);
+                if (value == null) return;
+                setState(() {
+                  _formattedEndTime =
+                      AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+                  _endTime = TimeOfDay.fromDateTime(value);
+                });
               });
-            });
-          });
+            },
+          );
 
           // showTimePicker(
           //         initialEntryMode: TimePickerEntryMode.input,
