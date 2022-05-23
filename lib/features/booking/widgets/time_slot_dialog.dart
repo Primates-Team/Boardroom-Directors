@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
@@ -274,7 +275,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                   )
                       .then((value) {
                     if (value) {
-                      Navigator.pop(context);
+                      Get.back();
+                      // Navigator.pop(context);
+
                       showDialog(
                           context: context,
                           barrierDismissible: false,
@@ -295,7 +298,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                               ),
                             );
                           });
-                      //TableBookingDataSource().viewAllBooking();
+                      TableBookingDataSource().viewAllBooking();
                     } else {
                       Navigator.pop(context);
                     }

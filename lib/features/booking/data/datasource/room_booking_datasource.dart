@@ -65,6 +65,49 @@ class RoomBookingDataSource {
     }
   }
 
+  static Future<bool> updateRoomBooking(
+      String date, String startTime, String endTime, final node) async {
+    var client = http.Client();
+    try {
+      var response =
+          await http.Client().post(Uri.parse(AppUrl.updateRoomBooking),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "id": node['id'].toString(),
+                "selecteddate": date,
+                "fromtime": startTime,
+                "totime": endTime,
+                "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id') !=
+                        null
+                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
+                    : 1.toString(),
+              }));
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+        print(jsonString);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Booking Successful',
+            bgColor: Colors.green);
+        return true;
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Boking Failed',
+            bgColor: Colors.red);
+        return false;
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      print(e);
+      return false;
+    }
+  }
+
   Future viewAllRoomBooking() async {
     var client = http.Client();
     try {

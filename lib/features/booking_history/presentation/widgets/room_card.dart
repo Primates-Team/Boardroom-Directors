@@ -2,12 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/edit_booking_dialog.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/start_end_dialog.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/app_colors.dart';
-import '../../../../core/app_helpers.dart';
 import '../../../../core/app_theme.dart';
 import '../../../../core/app_urls.dart';
 
@@ -87,23 +87,28 @@ class RoomCard extends StatelessWidget {
                                       node: node,
                                       onEdit: (String date, String startTime,
                                           String endTime) async {
-                                        var response = await http.Client().post(
-                                            Uri.parse(AppUrl.updateRoomBooking),
-                                            body: {
-                                              "id": node['id'].toString(),
-                                              "selecteddate": date,
-                                              "fromtime": startTime,
-                                              "totime": endTime,
-                                              "employeeid": AppHelpers
-                                                          .SHARED_PREFERENCES
-                                                          .getInt('user_id') !=
-                                                      null
-                                                  ? AppHelpers
-                                                      .SHARED_PREFERENCES
-                                                      .getInt('user_id')
-                                                      .toString()
-                                                  : 1.toString(),
-                                            });
+                                        var response =
+                                            await RoomBookingDataSource
+                                                .updateRoomBooking(date,
+                                                    startTime, endTime, node);
+
+                                        // var response = await http.Client().post(
+                                        //     Uri.parse(AppUrl.updateRoomBooking),
+                                        //     body: jsonEncode({
+                                        //       "id": node['id'].toString(),
+                                        //       "selecteddate": date,
+                                        //       "fromtime": startTime,
+                                        //       "totime": endTime,
+                                        //       "employeeid": AppHelpers
+                                        //                   .SHARED_PREFERENCES
+                                        //                   .getInt('user_id') !=
+                                        //               null
+                                        //           ? AppHelpers
+                                        //               .SHARED_PREFERENCES
+                                        //               .getInt('user_id')
+                                        //               .toString()
+                                        //           : 1.toString(),
+                                        //     }));
 
                                         onRefresh();
                                       },

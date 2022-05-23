@@ -246,8 +246,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
-import 'package:hot_desking/core/widgets/show_snackbar.dart';
-import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -315,7 +313,7 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
-      appBar: AppTheme.appBar('Book Desk', context),
+      appBar: AppTheme.appBar('Book DesK', context),
       body: SingleChildScrollView(
         // controller: controller,
         child: Padding(
@@ -407,13 +405,14 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
                   : Level3Layout(
                       _selectedFloor,
                       selectedTable: (s) {
-                        if (s != null) {
-                          tableNo = s.tableNo;
-                          seatNo = s.seats[0].seatNo;
-                        }
+                        setState(() {
+                          if (s != null) {
+                            tableNo = s.tableNo;
+                            seatNo = s.seats[0].seatNo;
+                          }
+                        });
                       },
                     ),
-
             ],
           ),
         ),
@@ -443,4 +442,3 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
     );
   }
 }
-
