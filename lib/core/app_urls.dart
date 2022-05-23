@@ -27,6 +27,7 @@ class AppUrl {
 
   static const String viewByDateTime = '$baseUrl/roombooking/viewbydatetime';
   static const String availabalityNew = '$baseUrl/roombooking/availabilitynew';
+  static const String getAvailability = '$baseUrl/roombooking/roomdetails';
 
   static const String sendOtp = '$baseUrl/users/sendotp';
   static const String verifyOtp = '$baseUrl/users/verifyotp';

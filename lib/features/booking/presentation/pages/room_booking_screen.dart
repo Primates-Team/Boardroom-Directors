@@ -11,8 +11,7 @@ import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/app_urls.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
-import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
-import 'package:hot_desking/features/booking/data/models/availabilty_response.dart';
+import 'package:hot_desking/features/booking/data/models/get_availability_response/get_availability_response.dart';
 import 'package:hot_desking/features/booking/presentation/pages/room_booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
@@ -1175,12 +1174,14 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     var client = http.Client();
     try {
       var response = await client.post(
-        Uri.parse(AppUrl.availabalityNew),
+        Uri.parse(AppUrl.getAvailability),
         body: jsonEncode({
-          "floor": _selectedLevel,
-          "selecteddate": _formattedStartDate,
-          "fromtime": _formattedStartTime,
-          "totime": _formattedEndTime
+          "employeeid": "245"
+
+          // "floor": _selectedLevel,
+          // "selecteddate": _formattedStartDate,
+          // "fromtime": _formattedStartTime,
+          // "totime": _formattedEndTime
         }),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
@@ -1188,18 +1189,20 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
         // var jsonString = response.body;
         // print(jsonString);
         Iterable l = json.decode(response.body);
-        List<AvailabiltyResponse> bookedSlots = List<AvailabiltyResponse>.from(
-            l.map((model) => AvailabiltyResponse.fromJson(model)));
+        List<GetAvailabilityResponse> bookedSlots =
+            List<GetAvailabilityResponse>.from(
+                l.map((model) => GetAvailabilityResponse.fromJson(model)));
 
         // List<BookedSeats> bookedSeats = [];
 
         for (var slot in bookedSlots) {
-          if (isNumeric(slot.roomid!)) {
-            // bookedSeats.add(BookedSeats(
-            //     tableNo: int.parse(booking.tableid),
-            //     seatNo: int.parse(booking.seatnumber)));
-            bookedRooomsIdList.add(int.parse(slot.roomid!));
-          }
+          bookedRooomsIdList.add(slot.id!);
+          // if (isNumeric(slot.id!)) {
+          //   // bookedSeats.add(BookedSeats(
+          //   //     tableNo: int.parse(booking.tableid),
+          //   //     seatNo: int.parse(booking.seatnumber)));
+          //   bookedRooomsIdList.add(int.parse(slot.roomid!));
+          // }
         }
         bookedRooomsIdList = bookedRooomsIdList.toSet().toList();
         bookingController.bookedRooms.value = bookedRooomsIdList;
