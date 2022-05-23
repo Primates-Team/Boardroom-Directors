@@ -1179,7 +1179,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       var response = await client.post(
         Uri.parse(AppUrl.getAvailability),
         body: jsonEncode({
-          "employeeid": "245"
+          "employeeid": AppHelpers.SHARED_PREFERENCES.getString('id')
 
           // "floor": _selectedLevel,
           // "selecteddate": _formattedStartDate,

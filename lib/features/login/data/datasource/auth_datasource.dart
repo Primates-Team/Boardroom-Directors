@@ -81,6 +81,7 @@ class AuthDataSource {
           if (user.email == email && user.password == password) {
             if (user.status != null) {
               AppHelpers.SHARED_PREFERENCES.setString('email', user.email!);
+              AppHelpers.SHARED_PREFERENCES.setString('id', user.id.toString());
               AppHelpers.SHARED_PREFERENCES
                   .setString('password', user.password!);
               AppHelpers.SHARED_PREFERENCES
