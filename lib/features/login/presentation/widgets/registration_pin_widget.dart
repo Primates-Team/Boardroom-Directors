@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_theme.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
 import 'package:hot_desking/features/login/data/model/user_model.dart';
 import 'package:hot_desking/features/login/presentation/widgets/successful_widget.dart';
@@ -21,6 +20,10 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
   final passwordController = TextEditingController();
   final confPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  bool showPassword = false;
+  bool showConformPassword = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -50,8 +53,36 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                   children: [
                     TextFormField(
                       controller: passwordController,
-                      decoration: AppTheme.textFieldDecoration('New Pin'),
-                      validator: (s) => s!.isEmpty ? 'Password Required' : null,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration:
+                          AppTheme.textFieldDecoration("New Pin").copyWith(
+                        errorMaxLines: 3,
+                        suffixIcon: IconButton(
+                          onPressed: () =>
+                              setState(() => showPassword = !showPassword),
+                          icon: Icon(
+                            showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: showPassword
+                                ? AppColors.kDarkPantone
+                                : AppColors.kLightPantone,
+                          ),
+                        ),
+                      ),
+                      obscureText: showPassword,
+
+                      validator: (s) {
+                        const String pattern =
+                            r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$)';
+
+                        RegExp regex = RegExp(pattern);
+                        if (!regex.hasMatch(s!))
+                          return 'Password should be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character';
+                        else
+                          return null;
+                      },
+                      // validator: (s) => s!.isEmpty ? 'Password Required' : null,
                       style: TextStyle(
                           color: AppColors.kDarkPantone,
                           fontSize: 12.sp,
@@ -80,7 +111,23 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                   children: [
                     TextFormField(
                       controller: confPasswordController,
-                      decoration: AppTheme.textFieldDecoration('Re-Type Pin'),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration:
+                          AppTheme.textFieldDecoration('Re-Type Pin').copyWith(
+                        suffixIcon: IconButton(
+                          onPressed: () => setState(
+                              () => showConformPassword = !showConformPassword),
+                          icon: Icon(
+                            showConformPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: showConformPassword
+                                ? AppColors.kDarkPantone
+                                : AppColors.kLightPantone,
+                          ),
+                        ),
+                      ),
+                      obscureText: showConformPassword,
                       validator: (s) => s!.isEmpty
                           ? 'Confirm Password Required'
                           : s == passwordController.text

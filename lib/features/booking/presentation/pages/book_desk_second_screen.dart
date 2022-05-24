@@ -2,12 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
-import 'package:hot_desking/features/floors/level3/level_3_layout.dart';
+import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
+import 'package:hot_desking/features/floors/level3/level_3_layout.dart';
 
 class BookDeskSecondScreen extends StatefulWidget {
   final String? level;
@@ -28,13 +30,15 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
     'Floor 3',
   ];
 
-  String? _selectedFloor;
+  String _selectedFloor = "Floor 3";
   int? tableNo, seatNo;
   @override
   Widget build(BuildContext context) {
+    BookingController controller = Get.put(BookingController());
+
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
-      appBar: AppTheme.appBar('Book Desk', context),
+      appBar: AppTheme.appBar('Book DesK', context),
       body: SingleChildScrollView(
         // controller: controller,
         child: Padding(
@@ -48,7 +52,7 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     chairInfo(
-                        status: 'Avaiable',
+                        status: 'Available',
                         imageFile: 'assets/chairs/available.png',
                         color: AppColors.kEvergreen),
                     chairInfo(
@@ -60,7 +64,7 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
                         imageFile: 'assets/chairs/selected.png',
                         color: AppColors.kOrange),
                     chairInfo(
-                        status: 'Avaiable Soon',
+                        status: 'Available Soon',
                         imageFile: 'assets/chairs/available_soon.png',
                         color: Colors.grey),
                   ],
@@ -149,14 +153,15 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
                   ],
                 ),
               ),
-              Level3Layout(
-                selectedTable: (s) {
-                  if (s != null) {
-                    tableNo = s.tableNo;
-                    seatNo = s.seats[0].seatNo;
-                  }
-                },
-              ),
+              Obx(() => Level3Layout(
+                    _selectedFloor,
+                    selectedTable: (s) {
+                      if (s != null) {
+                        tableNo = s.tableNo;
+                        seatNo = s.seats[0].seatNo;
+                      }
+                    },
+                  )),
               Center(
                 child: ElevatedButton(
                   style: ButtonStyle(
@@ -178,6 +183,7 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
                                   seatNo: seatNo!,
                                   date: widget.date,
                                   startTime: widget.time,
+                                  floor: _selectedFloor,
                                 ),
                               ),
                             );

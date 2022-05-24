@@ -16,7 +16,8 @@ class HomeScreenMain extends StatefulWidget {
 }
 
 class _HomeScreenMainState extends State<HomeScreenMain> {
-  final PersistentTabController _controller = PersistentTabController(initialIndex: 0);
+  final PersistentTabController _controller =
+      PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
               controller: _controller,
               itemCount: 4,
               // This is required in case of custom style! Pass the number of items for the nav bar.
-              screens: const [
+              screens: [
                 HomeScreen(),
                 CurrentBookingScreen(),
                 BookingHistoryScreen(),
@@ -50,7 +51,8 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                       selectedIndex: _controller.index,
                       onItemSelected: (index) {
                         setState(() {
-                          _controller.index = index; // NOTE: THIS IS CRITICAL!! Don't miss it!
+                          _controller.index =
+                              index; // NOTE: THIS IS CRITICAL!! Don't miss it!
                         });
                       },
                     ),
@@ -86,7 +88,8 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                                   ),
                                   const Text(
                                     'Home',
-                                    style: TextStyle(fontSize: 8, color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 8, color: Colors.white),
                                   )
                                 ],
                               ),
@@ -111,7 +114,8 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                                   ),
                                   const Text(
                                     'Current Booking',
-                                    style: TextStyle(fontSize: 8, color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 8, color: Colors.white),
                                   )
                                 ],
                               ),
@@ -136,7 +140,8 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                                   ),
                                   const Text(
                                     'Booking History',
-                                    style: TextStyle(fontSize: 8, color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 8, color: Colors.white),
                                   )
                                 ],
                               ),
@@ -161,7 +166,8 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                                   ),
                                   const Text(
                                     'Profile',
-                                    style: TextStyle(fontSize: 8, color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 8, color: Colors.white),
                                   )
                                 ],
                               ),

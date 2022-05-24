@@ -1,38 +1,44 @@
+import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/features/booking/data/models/get_all_table_booking_response.dart';
 import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:http/http.dart' as http;
+
 import '../../../../core/app_urls.dart';
 import '../../../../core/widgets/show_snackbar.dart';
 
 class TableBookingDataSource {
-  Future<bool> createBooking({
-    required int tableNo,
-    required int seatNo,
-    required String date,
-    required String fromTime,
-    required String toTime,
-  }) async {
+  Future<bool> createBooking(
+      {required int tableNo,
+      required int seatNo,
+      required String startDate,
+      required String endDate,
+      required String fromTime,
+      required String toTime,
+      required String floor}) async {
     var client = http.Client();
+
     try {
       var response = await client.post(Uri.parse(AppUrl.createTableBooking),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
-            "tableid": tableNo.toString(),
-            "seatnumber": seatNo.toString(),
-            "selecteddate": date,
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "tableid": tableNo,
+            "seatnumber": seatNo,
             "fromtime": fromTime,
             "totime": toTime,
+            "selecteddate": startDate,
+            "todate": endDate,
+            "floor": floor,
+            // "current_time": AppHelpers.formatTime(TimeOfDay.now()),
             "employeeid":
                 AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
+                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id')
                     : 1,
-          });
+          }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
         print(jsonString);
@@ -95,7 +101,7 @@ class TableBookingDataSource {
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
-            message: 'Boking Failed',
+            message: 'Booking Failed',
             bgColor: Colors.red);
         return false;
       }

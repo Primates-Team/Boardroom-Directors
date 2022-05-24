@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -16,7 +15,11 @@ class EditBookingDialog extends StatefulWidget {
   final Function onEdit;
 
   const EditBookingDialog(
-      {Key? key, required this.type, required this.node, required this.onDelete, required this.onEdit})
+      {Key? key,
+      required this.type,
+      required this.node,
+      required this.onDelete,
+      required this.onEdit})
       : super(key: key);
 
   @override
@@ -26,9 +29,10 @@ class EditBookingDialog extends StatefulWidget {
 class _EditBookingDialogState extends State<EditBookingDialog> {
   String selectdDate = '04-01-2022';
 
-  List<String> members = ['Rajesh', 'Suresh', 'Kamal', 'Manikandan'];
+  // List<String> members = ['members'];
 
   String startTime = "11", endTime = "4";
+  TextEditingController membersController = TextEditingController();
 
   @override
   void initState() {
@@ -36,7 +40,12 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
     if (widget.node != null && widget.node['selecteddate'] != null) {
       selectdDate = widget.node['selecteddate'];
     }
-    if (widget.node != null && widget.node['fromtime'] != null && widget.node['totime'] != null) {
+    if (widget.node != null && widget.node['members'] != null) {
+      membersController.text = widget.node['members'];
+    }
+    if (widget.node != null &&
+        widget.node['fromtime'] != null &&
+        widget.node['totime'] != null) {
       startTime = widget.node['fromtime'];
       endTime = widget.node['totime'];
     }
@@ -78,7 +87,11 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                     textWidget('Date'),
                     textWidget('Timing'),
                     if (widget.type == 'Room')
-                      SizedBox(height: 100, child: Align(alignment: Alignment.topLeft, child: textWidget('Members'))),
+                      SizedBox(
+                          height: 100,
+                          child: Align(
+                              alignment: Alignment.topLeft,
+                              child: textWidget('Members'))),
                   ],
                 ),
               ),
@@ -93,7 +106,8 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                 context: context,
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime.now(),
-                                lastDate: DateTime.now().add(const Duration(days: 180)))
+                                lastDate: DateTime.now()
+                                    .add(const Duration(days: 90)))
                             .then((value) {
                           if (value == null) return;
                           setState(() {
@@ -110,7 +124,11 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Row(children: [Text(selectdDate), Spacer(), Icon(Icons.calendar_month)])),
+                          child: Row(children: [
+                            Text(selectdDate),
+                            Spacer(),
+                            Icon(Icons.calendar_month)
+                          ])),
                     ),
                     Container(
                       height: 32.h,
@@ -125,46 +143,72 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                         children: [
                           InkWell(
                             onTap: () {
-                              showTimePicker(
-                                context: context,
-                                initialTime: TimeOfDay(
-                                    hour: startTime.contains(":")
-                                        ? int.parse(startTime.split(":").first)
-                                        : int.parse(startTime),
-                                    minute: startTime.contains(":")
-                                        ? int.parse(startTime.split(":").last)
-                                        :00),
-                              ).then((value) {
-                                if (value == null) return;
+                              AppHelpers.showCupertinoTimePicker(context,
+                                  (value) {
                                 setState(() {
-                                  startTime = AppHelpers.formatTime(value);
+                                  startTime = AppHelpers.formatTime(
+                                      TimeOfDay.fromDateTime(value));
                                 });
                               });
+
+                              // showTimePicker(
+                              //   context: context,
+                              //   initialEntryMode: TimePickerEntryMode.input,
+                              //   initialTime: TimeOfDay(
+                              //       hour: startTime.contains(":")
+                              //           ? int.parse(startTime.split(":").first)
+                              //           : int.parse(startTime),
+                              //       minute: startTime.contains(":")
+                              //           ? int.parse(startTime.split(":").last)
+                              //           : 00),
+                              // ).then((value) {
+                              //   if (value == null) return;
+                              //   setState(() {
+                              //     startTime = AppHelpers.formatTime(value);
+                              //   });
+                              // });
                             },
-                            child: Text(startTime ),
+                            child: Text(startTime),
                           ),
                           Text("-"),
                           InkWell(
                             onTap: () {
-                              showTimePicker(
-                                context: context,
-                                initialTime: TimeOfDay(
-                                    hour: endTime.contains(":")
-                                        ? int.parse(endTime.split(":").first)
-                                        : int.parse(endTime),
-                                    minute: endTime.contains(":")
-                                        ? int.parse(endTime.split(":").last)
-                                        :00),
-                              ).then((value) {
-                                if (value == null) return;
+                              AppHelpers.showCupertinoTimePicker(context,
+                                  (value) {
                                 setState(() {
-                                  endTime = AppHelpers.formatTime(value);
+                                  endTime = AppHelpers.formatTime(
+                                      TimeOfDay.fromDateTime(value));
                                 });
-                              });
+                              },
+                                  initialTimeofDay: TimeOfDay(
+                                      hour: endTime.contains(":")
+                                          ? int.parse(endTime.split(":").first)
+                                          : int.parse(endTime),
+                                      minute: endTime.contains(":")
+                                          ? int.parse(endTime.split(":").last)
+                                          : 00));
+
+                              // showTimePicker(
+                              //   context: context,
+                              //   initialEntryMode: TimePickerEntryMode.input,
+                              //   initialTime: TimeOfDay(
+                              //       hour: endTime.contains(":")
+                              //           ? int.parse(endTime.split(":").first)
+                              //           : int.parse(endTime),
+                              //       minute: endTime.contains(":")
+                              //           ? int.parse(endTime.split(":").last)
+                              //           : 00),
+                              // ).then((value) {
+                              //   if (value == null) return;
+                              //   setState(() {
+                              //     endTime = AppHelpers.formatTime(value);
+                              //   });
+                              // });
                             },
                             child: Text(endTime),
                           ),
-                          Spacer(), Icon(Icons.calendar_month)
+                          Spacer(),
+                          Icon(Icons.calendar_month)
                         ],
                       ),
                     ),
@@ -178,7 +222,9 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text(members.join(', ')),
+                        child: TextField(
+                          controller: membersController,
+                        ),
                       ),
                   ],
                 ),
@@ -194,7 +240,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
               InkWell(
                 onTap: () async {
                   Navigator.pop(context);
-                  widget.onEdit(selectdDate,startTime,endTime);
+                  widget.onEdit(selectdDate, startTime, endTime);
                 },
                 child: confirmButton(),
               ),

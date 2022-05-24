@@ -24,6 +24,7 @@ dependencies:
   image_picker: ^0.8.4+4
   firebase_storage: ^10.2.9
   firebase_core: ^1.13.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -35,9 +36,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logo/desq_logo.png"
+  image_path: "assets/logo/1024.png"
   adaptive_icon_background: "#361E55"
-  adaptive_icon_foreground: "assets/logo/desq_logo.png"
+  adaptive_icon_foreground: "assets/logo/1024.png"
 
 flutter:
 
@@ -50,3 +51,6 @@ flutter:
     - assets/chairs/
     - assets/level3/
     - assets/rooms/
+    - assets/
+    - assets/level14/
+    - assets/images/

@@ -5,14 +5,15 @@ import 'package:hot_desking/core/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomNavBarWidget extends StatelessWidget {
-  final int selectedIndex; // NOTE: You CAN declare your own model here instead of `PersistentBottomNavBarItem`.
+  final int
+      selectedIndex; // NOTE: You CAN declare your own model here instead of `PersistentBottomNavBarItem`.
   final ValueChanged<int> onItemSelected;
 
-  CustomNavBarWidget(
-      {Key? key,
-        required this.selectedIndex,
-        required this.onItemSelected,});
-
+  CustomNavBarWidget({
+    Key? key,
+    required this.selectedIndex,
+    required this.onItemSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,6 @@ class CustomNavBarWidget extends StatelessWidget {
 class CurveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-
     final shapeBounds = Rect.fromLTRB(0, 0, size.width, size.height);
 
     final centerAvatar = Offset(shapeBounds.center.dx, -15);

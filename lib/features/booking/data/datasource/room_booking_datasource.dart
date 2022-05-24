@@ -1,39 +1,88 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/models/get_all_room_booking_response.dart';
 import 'package:http/http.dart' as http;
+
 import '../../../../core/app_urls.dart';
 import '../../../../core/widgets/show_snackbar.dart';
 
 class RoomBookingDataSource {
   Future<bool> createRoomBooking({
     required int roomId,
-    required String date,
+    required String startDate,
+    required String endDate,
     required String fromTime,
     required String toTime,
     required List<String> members,
+    required String floor,
   }) async {
     var client = http.Client();
     try {
       var response = await client.post(Uri.parse(AppUrl.createRoomBooking),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
-            "roomid": roomId.toString(),
-            "selecteddate": date,
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "roomid": roomId,
+            "selecteddate": startDate,
+            "todate": endDate,
             "fromtime": fromTime,
             "totime": toTime,
-            "email" : jsonEncode(members),
             "employeeid":
                 AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
                     ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
                     : 1,
-          });
+            "status": "Reserved",
+            "packs": members.length,
+            "floor": floor,
+            "email": members
+          }));
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+        print(jsonString);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Booking Successful',
+            bgColor: Colors.green);
+        return true;
+      } else {
+        print(response.statusCode);
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        showSnackBar(
+            context: Get.context!,
+            message: 'Boking Failed',
+            bgColor: Colors.red);
+        return false;
+      }
+    } catch (e) {
+      // showSnackBar(
+      //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      print(e);
+      return false;
+    }
+  }
+
+  static Future<bool> updateRoomBooking(
+      String date, String startTime, String endTime, final node) async {
+    var client = http.Client();
+    try {
+      var response =
+          await http.Client().post(Uri.parse(AppUrl.updateRoomBooking),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "id": node['id'].toString(),
+                "selecteddate": date,
+                "fromtime": startTime,
+                "totime": endTime,
+                "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id') !=
+                        null
+                    ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
+                    : 1.toString(),
+              }));
+
       if (response.statusCode == 200) {
         var jsonString = response.body;
         print(jsonString);

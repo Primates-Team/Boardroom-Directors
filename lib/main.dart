@@ -28,13 +28,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool isLoggedIn = AppHelpers.SHARED_PREFERENCES.getString('email') != null;
-    print(AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString());
+    bool isLoggedIn =
+        AppHelpers.SHARED_PREFERENCES.getString('email') != null &&
+            (AppHelpers.SHARED_PREFERENCES.getString('status') != null &&
+                (AppHelpers.SHARED_PREFERENCES.getString('status') == 'true'));
+
     return ScreenUtilInit(
       designSize: const Size(390, 800),
       builder: (_) {
         return GetMaterialApp(
           title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: GoogleFonts.lato().fontFamily,
           ),

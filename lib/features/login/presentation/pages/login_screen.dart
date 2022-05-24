@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_theme.dart';
@@ -7,7 +8,6 @@ import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart'
 import 'package:hot_desking/features/login/presentation/pages/forgot_password_screen.dart';
 import 'package:hot_desking/features/login/presentation/pages/signin_screen.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,6 +20,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _email = TextEditingController();
   final _password = TextEditingController();
+
+  final GlobalKey<ScaffoldMessengerState> snackbarKey =
+      GlobalKey<ScaffoldMessengerState>();
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -150,6 +153,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   type: PageTransitionType.fade,
                                   child: const HomeScreenMain(),
                                   duration: const Duration(milliseconds: 250)));
+                        } else {
+                          Get.snackbar("The user is not approved yet.", "");
                         }
                       });
                     }

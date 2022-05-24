@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,7 +65,8 @@ class AppHelpers {
   ];
 
   static String formatDate(DateTime value) {
-    var date = '${value.day.toString().length == 1 ? "0${value.day}":value.day}-${value.month.toString().length == 1 ? "0${value.month}": value.month}-${value.year}';
+    var date =
+        '${value.day.toString().length == 1 ? "0${value.day}" : value.day}-${value.month.toString().length == 1 ? "0${value.month}" : value.month}-${value.year}';
     return date;
   }
 
@@ -78,6 +80,43 @@ class AppHelpers {
     var t = '$hour:$min';
     print(t);
     return t;
+  }
+
+  static void showCupertinoTimePicker(
+      BuildContext context, void Function(DateTime) onDateTimeChanged,
+      {TimeOfDay? initialTimeofDay}) {
+    DateTime initialDateTime = DateTime.now();
+
+    if (initialTimeofDay != null) {
+      initialDateTime = DateTime(initialDateTime.year, initialDateTime.month,
+          initialDateTime.day, initialTimeofDay.hour, initialTimeofDay.minute);
+    }
+
+    int initialMinute = initialDateTime.minute;
+
+    if (initialDateTime.minute % 15 != 0) {
+      initialMinute = initialDateTime.minute - initialDateTime.minute % 15 + 15;
+    }
+    showCupertinoModalPopup(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+            height: MediaQuery.of(context).copyWith().size.height * 0.25,
+            color: Colors.white,
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.time,
+              onDateTimeChanged: onDateTimeChanged,
+              minuteInterval: 15,
+              use24hFormat: true,
+              initialDateTime: DateTime(
+                  initialDateTime.year,
+                  initialDateTime.month,
+                  initialDateTime.day,
+                  initialDateTime.hour,
+                  initialMinute),
+            ),
+          );
+        });
   }
 
   static late SharedPreferences SHARED_PREFERENCES;

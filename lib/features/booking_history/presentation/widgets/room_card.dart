@@ -2,12 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/edit_booking_dialog.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/start_end_dialog.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/app_colors.dart';
-import '../../../../core/app_helpers.dart';
 import '../../../../core/app_theme.dart';
 import '../../../../core/app_urls.dart';
 
@@ -38,7 +38,8 @@ class RoomCard extends StatelessWidget {
                     return BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                       child: Dialog(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
                         child: StartEndDialog(
                           type: 'Room',
                         ),
@@ -52,21 +53,41 @@ class RoomCard extends StatelessWidget {
         width: 326.w,
         padding: const EdgeInsets.all(16),
         margin: const EdgeInsets.all(12),
-        decoration: AppTheme.boxDecoration.copyWith(color: AppColors.kLightGreyContainer),
+        decoration: AppTheme.boxDecoration
+            .copyWith(color: AppColors.kLightGreyContainer),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                Text(
-                  'Meeting Room',
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w700,
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Room ID : ",
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        textAlign: TextAlign.center,
+                        softWrap: true,
+                      ),
+                      Expanded(
+                        child: Text(
+                          node['roomname'].toString(),
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textAlign: TextAlign.center,
+                          softWrap: true,
+                        ),
+                      ),
+                    ],
                   ),
-                  textAlign: TextAlign.center,
                 ),
-                const Spacer(),
                 if (allowEdit)
                   IconButton(
                       onPressed: () {
@@ -74,31 +95,50 @@ class RoomCard extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+                                filter:
+                                    ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                                 child: Dialog(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
                                   child: EditBookingDialog(
                                       type: 'Room',
                                       node: node,
-                                      onEdit: (String date,String  startTime,String endTime) async {
-                                        var response = await http.Client().post(Uri.parse(AppUrl.updateRoomBooking),
-                                            body: {
-                                              "id" : node['id'].toString(),
-                                              "selecteddate": date,
-                                              "fromtime": startTime,
-                                              "totime": endTime,
-                                              "employeeid":
-                                              AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
-                                                  ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
-                                                  : 1.toString(),
-                                            });
-                                        print(response.body);
+                                      onEdit: (String date, String startTime,
+                                          String endTime) async {
+                                        var response =
+                                            await RoomBookingDataSource
+                                                .updateRoomBooking(date,
+                                                    startTime, endTime, node);
+
+                                        // var response = await http.Client().post(
+                                        //     Uri.parse(AppUrl.updateRoomBooking),
+                                        //     body: jsonEncode({
+                                        //       "id": node['id'].toString(),
+                                        //       "selecteddate": date,
+                                        //       "fromtime": startTime,
+                                        //       "totime": endTime,
+                                        //       "employeeid": AppHelpers
+                                        //                   .SHARED_PREFERENCES
+                                        //                   .getInt('user_id') !=
+                                        //               null
+                                        //           ? AppHelpers
+                                        //               .SHARED_PREFERENCES
+                                        //               .getInt('user_id')
+                                        //               .toString()
+                                        //           : 1.toString(),
+                                        //     }));
+
                                         onRefresh();
                                       },
                                       onDelete: () async {
                                         var client = http.Client();
-                                        await client.post(Uri.parse(AppUrl.cancleMeeting),
-                                            body: {"id": "${node['id'] ?? 0}", "status": "cancel"});
+                                        await client.post(
+                                            Uri.parse(AppUrl.cancleMeeting),
+                                            body: {
+                                              "id": "${node['id'] ?? 0}",
+                                              "status": "cancel"
+                                            });
                                         onRefresh();
                                       }),
                                 ),
@@ -131,8 +171,12 @@ class RoomCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        node['selecteddate'] != null ? node['selecteddate'] : '21/12/2021' : '21/12/2021',
+                      child: Text(
+                        node != null
+                            ? node['selecteddate'] != null
+                                ? node['selecteddate']
+                                : '21/12/2021'
+                            : '21/12/2021',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -167,10 +211,12 @@ class RoomCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        node['fromtime'] != null && node['totime'] != null
-                            ? node['fromtime'] + ' - ' + node['totime']
-                            : '11 - 4 pm' : '11 - 4 pm',
+                      child: Text(
+                        node != null
+                            ? node['fromtime'] != null && node['totime'] != null
+                                ? node['fromtime'] + ' - ' + node['totime']
+                                : '11 - 4 pm'
+                            : '11 - 4 pm',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -205,8 +251,98 @@ class RoomCard extends StatelessWidget {
                     flex: 3,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text( node != null ?
-                        node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                      child: Text(
+                        node != null
+                            ?
+                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                            node['members'] != null
+                                ? node['members']
+                                : node['members']
+                            : 'No Members',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Status',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        node != null
+                            ?
+                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                            node['status'] != null
+                                ? node['status']
+                                : node['status']
+                            : 'No Status',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Floor',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        node != null
+                            ?
+                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                            node['floor'] != null
+                                ? node['floor']
+                                : node['floor']
+                            : 'No Floor',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

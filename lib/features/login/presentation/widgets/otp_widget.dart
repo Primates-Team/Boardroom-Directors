@@ -3,14 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hot_desking/core/app_colors.dart';
-import 'package:hot_desking/features/login/presentation/pages/reset_password_screen.dart';
-import 'package:page_transition/page_transition.dart';
 
 class OTPWidget extends StatefulWidget {
   final bool? forgotPassword;
   final bool? register;
-  const OTPWidget({Key? key, this.forgotPassword, this.register})
+  OTPWidget(this.onSubmit, {Key? key, this.forgotPassword, this.register})
       : super(key: key);
+
+  Function onSubmit;
 
   @override
   _OTPWidgetState createState() => _OTPWidgetState();
@@ -21,6 +21,11 @@ class _OTPWidgetState extends State<OTPWidget> {
   FocusNode textSecondFocusNode = FocusNode();
   FocusNode textThirdFocusNode = FocusNode();
   FocusNode textFourthFocusNode = FocusNode();
+
+  TextEditingController otp1Controller = TextEditingController();
+  TextEditingController otp2Controller = TextEditingController();
+  TextEditingController otp3Controller = TextEditingController();
+  TextEditingController otp4Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +60,19 @@ class _OTPWidgetState extends State<OTPWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        _otp(1, textFirstFocusNode),
+                        _otp(1, textFirstFocusNode, otp1Controller),
                         const SizedBox(
                           width: 15.73,
                         ),
-                        _otp(2, textSecondFocusNode),
+                        _otp(2, textSecondFocusNode, otp2Controller),
                         const SizedBox(
                           width: 15.73,
                         ),
-                        _otp(3, textThirdFocusNode),
+                        _otp(3, textThirdFocusNode, otp3Controller),
                         const SizedBox(
                           width: 15.73,
                         ),
-                        _otp(4, textFourthFocusNode),
+                        _otp(4, textFourthFocusNode, otp4Controller),
                         const SizedBox(
                           width: 15.73,
                         )
@@ -118,7 +123,9 @@ class _OTPWidgetState extends State<OTPWidget> {
     );
   }
 
-  Widget _otp(int index, FocusNode focusNode) => Container(
+  Widget _otp(
+          int index, FocusNode focusNode, TextEditingController controller) =>
+      Container(
         height: 41.94,
         width: 41.94,
         decoration: BoxDecoration(
@@ -157,6 +164,7 @@ class _OTPWidgetState extends State<OTPWidget> {
         child: TextFormField(
           keyboardType: TextInputType.number,
           focusNode: focusNode,
+          controller: controller,
           decoration: const InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(bottom: 0),
@@ -174,14 +182,19 @@ class _OTPWidgetState extends State<OTPWidget> {
               if (index == 3) textFourthFocusNode.requestFocus();
               if (index == 4) {
                 if (widget.forgotPassword != null) {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.fade,
-                          child: const ResetPasswordScreen(),
-                          duration: const Duration(milliseconds: 250)));
+                  widget.onSubmit(otp1Controller.text +
+                      otp2Controller.text +
+                      otp3Controller.text +
+                      otp4Controller.text);
+                  // Navigator.pop(context);
+                  // Navigator.pop(context);
+                  // Navigator.push(
+                  //     context,
+                  //     PageTransition(
+                  //         type: PageTransitionType.fade,
+                  //         child: const ResetPasswordScreen(),
+                  //         duration: const Duration(milliseconds: 250)));
+
                 }
                 textFourthFocusNode.unfocus();
               }

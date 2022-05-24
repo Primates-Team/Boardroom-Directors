@@ -12,16 +12,25 @@ class AppUrl {
   static const String updateRoomBooking = '$baseUrl/roombooking/update';
   //history
   static const String viewByEmployee = '$baseUrl/booking/viewbyemployee';
-  static const String viewMeetingByEmployee = '$baseUrl/roombooking/viewbyemployee';
-
+  static const String viewMeetingByEmployee =
+      '$baseUrl/roombooking/viewbyemployee';
 
   static const String viewByTime = '$baseUrl/roombooking/viewbytime';
   static const String viewByTimeTable = '$baseUrl/booking/viewbytime';
 
-
-
   static const String tableBookedByFloor = '$baseUrl/booking/viewbydate';
+  static const String tableBookedByFloorDateTime =
+      '$baseUrl/booking/viewbydatetime';
 
   static const String cancleMeeting = '$baseUrl/roombooking/cancelbooking';
   static const String tablecancleMeeting = '$baseUrl/booking/update';
+
+  static const String viewByDateTime = '$baseUrl/roombooking/viewbydatetime';
+  static const String availabalityNew = '$baseUrl/roombooking/availabilitynew';
+  static const String getAvailability = '$baseUrl/roombooking/roomdetails';
+
+  static const String sendOtp = '$baseUrl/users/sendotp';
+  static const String verifyOtp = '$baseUrl/users/verifyotp';
+  static const String viewByEmail = '$baseUrl/users/viewbyemail';
+  static const String userUpdate = '$baseUrl/users/update';
 }

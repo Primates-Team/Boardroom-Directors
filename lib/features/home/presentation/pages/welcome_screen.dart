@@ -4,10 +4,11 @@ import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/features/booking/presentation/pages/hot_desking_screen.dart';
+import 'package:hot_desking/features/booking_history/presentation/pages/booking_history_screen.dart';
 import 'package:hot_desking/features/login/presentation/pages/login_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
 import '../../../booking/presentation/pages/room_booking_screen.dart';
-import '../../../booking/presentation/pages/calender_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -21,6 +22,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       AppHelpers.SHARED_PREFERENCES.getString('firstName') ?? 'John';
   String lastName =
       AppHelpers.SHARED_PREFERENCES.getString('lastName') ?? 'Doe';
+
+  String? profilePic = AppHelpers.SHARED_PREFERENCES.getString('profilepic');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,10 +53,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/welcome_screen/person_emoji.png',
-                    height: 55,
-                  ),
+                  profilePic != null
+                      ? Container(
+                          clipBehavior: Clip.hardEdge,
+                          decoration:
+                              const BoxDecoration(shape: BoxShape.circle),
+                          child: Image.network(
+                            profilePic ?? '',
+                            height: 55,
+                          ),
+                        )
+                      : Image.asset(
+                          'assets/welcome_screen/person_emoji.png',
+                          height: 55,
+                        ),
                   RichText(
                     text: TextSpan(
                       style: TextStyle(fontSize: 22.sp),
@@ -103,7 +117,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onTap: () {
                     pushNewScreen(
                       context,
-                      screen: const CalenderScreen(),
+                      screen: BookingHistoryScreen(
+                        isCalendarScreen: true,
+                      ),
+                      // screen: const CalenderScreen(),
                       withNavBar: true, // OPTIONAL VALUE. True by default.
                       pageTransitionAnimation: PageTransitionAnimation.fade,
                     );

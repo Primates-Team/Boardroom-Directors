@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,7 @@ import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:http/http.dart' as http;
 
 class BookedDataSource {
-  static Future<Map> getBookingHistory() async {
+  static Future<Map> getBookingHistory(String date) async {
     Map mp = {};
     var client = http.Client();
     //print(Uri.parse(AppUrl.viewByEmployee));
@@ -18,6 +19,7 @@ class BookedDataSource {
         //   HttpHeaders.contentTypeHeader: 'application/json'
         // },
         body: {
+          "selecteddate": date,
           "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
               ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
               : 1,
@@ -91,16 +93,12 @@ class BookedDataSource {
     print(date);
     try {
       var response = await client.post(Uri.parse(AppUrl.viewByTime),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
             "selecteddate": date,
-            // "employeeid": "10"
-            "employeeid":
-                AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString(),
-            "time": time
-          });
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+            if (time != null) "current_time": time
+          }));
       print(
           "employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()}");
       // print(response);
@@ -138,18 +136,14 @@ class BookedDataSource {
     print(date);
     try {
       var response = await client.post(Uri.parse(AppUrl.viewByTimeTable),
-          //      headers: {
-          //   HttpHeaders.contentTypeHeader: 'application/json'
-          // },
-          body: {
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
             "selecteddate": date,
             // "employeeid": "10"
-            "employeeid":
-            AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString(),
-            "time": time
-          });
-      print(
-          "employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()}");
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+            if (time != null) "current_time": time
+          }));
+      print("employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id')}");
       // print(response);
       // print("selecteddate=" + date.toString());
       //print("time=" + time.toString());

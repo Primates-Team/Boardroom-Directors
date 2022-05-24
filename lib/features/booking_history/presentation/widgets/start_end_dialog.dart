@@ -128,7 +128,7 @@ class _StartEndDialogState extends State<StartEndDialog> {
             onTap: () async {
               Navigator.pop(context);
             },
-            child: Center(child: confirmButton('Start')),
+            child: Center(child: confirmButton(text: 'Start')),
           ),
         ],
       ),

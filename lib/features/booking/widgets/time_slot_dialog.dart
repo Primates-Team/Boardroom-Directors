@@ -1,6 +1,8 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
@@ -15,12 +17,14 @@ class TimeSlotDialog extends StatefulWidget {
   final int seatNo;
   final DateTime date;
   final TimeOfDay startTime;
+  final String floor;
   const TimeSlotDialog(
       {Key? key,
       required this.date,
       required this.startTime,
       required this.tableNo,
-      required this.seatNo})
+      required this.seatNo,
+      required this.floor})
       : super(key: key);
 
   @override
@@ -28,7 +32,8 @@ class TimeSlotDialog extends StatefulWidget {
 }
 
 class _TimeSlotDialogState extends State<TimeSlotDialog> {
-  DateTime sdate = DateTime.now();
+  DateTime startdate = DateTime.now();
+  DateTime endDate = DateTime.now();
 
   Widget textWidget(String title) {
     return SizedBox(
@@ -45,7 +50,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
   TimeOfDay? startTime, endTime;
   @override
   void initState() {
-     sdate = widget.date;
+    startdate = widget.date;
     startTime = widget.startTime;
     super.initState();
   }
@@ -53,17 +58,17 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 227.h,
+      height: 300.h,
       width: 326.w,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       decoration: AppTheme.boxDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Table 1',
-            style: AppTheme.labelTextStyle,
-          ),
+          // Text(
+          //   'Table 1',
+          //   style: AppTheme.labelTextStyle,
+          // ),
           SizedBox(
             height: 19.h,
           ),
@@ -73,9 +78,10 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                 flex: 1,
                 child: Column(
                   children: [
-                    textWidget('Date'),
-                    textWidget('From'),
-                    textWidget('To'),
+                    textWidget('Start Date'),
+                    textWidget('End Date'),
+                    textWidget('Start'),
+                    textWidget('End'),
                   ],
                 ),
               ),
@@ -92,24 +98,60 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                        child: InkWell(
+                      child: InkWell(
                           onTap: () {
                             showDatePicker(
                                     context: context,
                                     initialDate: widget.date,
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime.now()
-                                        .add(const Duration(days: 180)))
+                                        .add(const Duration(days: 90)))
                                 .then((value) {
                               if (value == null) return;
                               setState(() {
-                                sdate = value;
+                                startdate = value;
                               });
                             });
                           },
                           child: Center(
                             child: Text(
-                              AppHelpers.formatDate(sdate),
+                              AppHelpers.formatDate(startdate),
+                              style: AppTheme.hintTextStyle,
+                            ),
+                          )),
+                    ),
+                    Container(
+                      height: 27.h,
+                      width: 157.w,
+                      margin: EdgeInsets.symmetric(vertical: 4.5.h),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                          onTap: () {
+                            if (startdate != null) {
+                              showDatePicker(
+                                      context: context,
+                                      initialDate: startdate,
+                                      firstDate: startdate,
+                                      lastDate: startdate
+                                          .add(const Duration(days: 90)))
+                                  .then((value) {
+                                if (value == null) return;
+                                setState(() {
+                                  endDate = value;
+                                });
+                              });
+                            } else {
+                              showSnackBar(
+                                  context: context,
+                                  message: "Select Start Date");
+                            }
+                          },
+                          child: Center(
+                            child: Text(
+                              AppHelpers.formatDate(endDate),
                               style: AppTheme.hintTextStyle,
                             ),
                           )),
@@ -140,15 +182,24 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          showTimePicker(
-                            context: context,
-                            initialTime: startTime!,
-                          ).then((value) {
-                            if (value == null) return;
+                          AppHelpers.showCupertinoTimePicker(context, (value) {
                             setState(() {
-                              startTime = value;
+                              setState(() {
+                                startTime = TimeOfDay.fromDateTime(value);
+                              });
                             });
                           });
+
+                          // showTimePicker(
+                          //   context: context,
+                          //   initialTime: startTime!,
+                          //   initialEntryMode: TimePickerEntryMode.input,
+                          // ).then((value) {
+                          //   if (value == null) return;
+                          //   setState(() {
+                          //     startTime = value;
+                          //   });
+                          // });
                         },
                         child: Center(
                           child: Text(
@@ -170,15 +221,22 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          showTimePicker(
-                            context: context,
-                            initialTime: startTime!,
-                          ).then((value) {
-                            if (value == null) return;
+                          AppHelpers.showCupertinoTimePicker(context, (value) {
                             setState(() {
-                              endTime = value;
+                              endTime = TimeOfDay.fromDateTime(value);
                             });
                           });
+
+                          // showTimePicker(
+                          //   context: context,
+                          //   initialTime: startTime!,
+                          //   initialEntryMode: TimePickerEntryMode.input,
+                          // ).then((value) {
+                          //   if (value == null) return;
+                          //   setState(() {
+                          //     endTime = value;
+                          //   });
+                          // });
                         },
                         child: Center(
                           child: Text(
@@ -201,19 +259,25 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
           Center(
             child: InkWell(
               onTap: () async {
-                if (startTime != null && endTime != null) {
+                if (startdate != null &&
+                    endDate != null &&
+                    startTime != null &&
+                    endTime != null) {
                   TableBookingDataSource()
                       .createBooking(
                     tableNo: widget.tableNo,
                     seatNo: widget.seatNo,
-                      date: AppHelpers.formatDate(sdate),
-                     //date: sdate,
+                    startDate: AppHelpers.formatDate(startdate),
+                    endDate: AppHelpers.formatDate(endDate),
+                    floor: widget.floor,
                     fromTime: AppHelpers.formatTime(startTime!),
                     toTime: AppHelpers.formatTime(endTime!),
                   )
                       .then((value) {
                     if (value) {
-                      Navigator.pop(context);
+                      Get.back();
+                      // Navigator.pop(context);
+
                       showDialog(
                           context: context,
                           barrierDismissible: false,
@@ -224,7 +288,13 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                               child: Dialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
-                                child: const BookingConfirmedWidget(),
+                                child: BookingConfirmedWidget(
+                                    AppHelpers.formatTime(startTime!),
+                                    AppHelpers.formatTime(endTime!),
+                                    widget.tableNo,
+                                    widget.seatNo,
+                                    AppHelpers.formatDate(startdate),
+                                    widget.floor),
                               ),
                             );
                           });

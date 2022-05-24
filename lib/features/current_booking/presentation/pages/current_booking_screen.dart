@@ -21,6 +21,9 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   bool _error = false;
   List _data = [];
 
+  AppBar appbar = AppBar();
+  TabBar tabBar = TabBar(tabs: []);
+
   void initState() {
     super.initState();
     loadData();
@@ -31,8 +34,10 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
     var tim = now.hour.toString() + ':' + now.minute.toString();
     String cd = AppHelpers.formatDate(now);
 
-    Map ct = await BookedDataSource.getCurrentHistory(cd, tim);
-    Map tt = await BookedDataSource.getCurrentHistoryTable(cd, tim);
+    Map ct = await BookedDataSource.getCurrentHistory(
+        cd, AppHelpers.formatTime(TimeOfDay.now()));
+    Map tt = await BookedDataSource.getCurrentHistoryTable(
+        cd, AppHelpers.formatTime(TimeOfDay.now()));
 
     if (ct['flag'] == false) {
       _error = true;
@@ -53,34 +58,53 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   }
 
   Widget _drawBody() {
-    if (_error == true) return Container(height: MediaQuery.of(context).size.height,alignment: Alignment.center,child: Text("Error Occured"));
-    if (_data.length == 0) return Container(height: MediaQuery.of(context).size.height,alignment: Alignment.center,child: Text("No Record to show"));
+    if (_error == true) {
+      return Container(
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: const Text("Error Occured"));
+    }
 
     return RefreshIndicator(
       onRefresh: () async {
         loadData();
       },
-      child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Container(
-              height: Get.height * 0.9,
-              child: ListView.builder(
-                  itemCount: _data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var node = _data[index];
-                    if (node['tableid'] != null) {
-                      return TableCard(allowEdit: true, fromCurrentBooking: true, showWarning: true,node: node,onRefresh: (){
-                        loadData();
-                      });
-                    } else {
-                      return RoomCard(
-                        showWarning: true,fromCurrentBooking: true,
-                        allowEdit: true,node: node,onRefresh: (){
-                        loadData();
-                      }
-                      );
-                    }
-                  }))),
+      child: (_data.length == 0)
+          ? SingleChildScrollView(
+              child: SizedBox(
+                  height: MediaQuery.of(context).size.height -
+                      kToolbarHeight -
+                      kBottomNavigationBarHeight,
+                  child: const Center(child: Text("No Record to show"))),
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: SizedBox(
+                  height: Get.height * 0.9,
+                  child: ListView.builder(
+                      itemCount: _data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        var node = _data[index];
+                        if (node['tableid'] != null) {
+                          return TableCard(
+                              allowEdit: true,
+                              fromCurrentBooking: true,
+                              showWarning: true,
+                              node: node,
+                              onRefresh: () {
+                                loadData();
+                              });
+                        } else {
+                          return RoomCard(
+                              showWarning: true,
+                              fromCurrentBooking: true,
+                              allowEdit: true,
+                              node: node,
+                              onRefresh: () {
+                                loadData();
+                              });
+                        }
+                      }))),
     );
   }
 
@@ -92,13 +116,10 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
         body: _processing == true
             ? Column(
                 children: [
-                  Expanded(child: Center(child: CircularProgressIndicator())),
+                  const Expanded(
+                      child: Center(child: CircularProgressIndicator())),
                 ],
               )
-            : RefreshIndicator(
-                onRefresh: () async {
-                  loadData();
-                },
-                child: SingleChildScrollView(padding: EdgeInsets.zero,physics: ScrollPhysics(),child: _drawBody())));
+            : _drawBody());
   }
 }

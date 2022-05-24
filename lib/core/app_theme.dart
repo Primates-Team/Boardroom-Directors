@@ -58,6 +58,7 @@ class AppTheme {
       fontWeight: FontWeight.w500,
     );
   }
+
   static TextStyle black400TextStyle(double fontSize) {
     return TextStyle(
       fontSize: fontSize.sp,
