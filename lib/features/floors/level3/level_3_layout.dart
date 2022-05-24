@@ -38,7 +38,7 @@ class _Level3LayoutState extends State<Level3Layout> {
   late Map<int, List<int>> bookedTables;
 
   // List<Map<int, int>> tableData = bookingController.tableData;
-  String _selectedFloor = 'Floor 3';
+  final String _selectedFloor = 'Floor 3';
   Map<int, List<int>> modifiedTables = {};
   callnext() async {
     var inputDate = DateTime.parse(DateTime.now().toString());
@@ -58,20 +58,16 @@ class _Level3LayoutState extends State<Level3Layout> {
 
       List<Map<int, int>> tableData = [];
 
-      jsondata.forEach((element) {
+      for (var element in jsondata) {
         Map<int, int> tableSeatDict = {
           jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
         tableData.add(tableSeatDict);
-      });
+      }
 
       bookingController.tableData = tableData;
-
-      print(tableData);
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 
   Future<List<Map<int, int>>> callAPI() async {
