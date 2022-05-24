@@ -54,8 +54,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       _formattedEndDate,
       _formattedStartTime,
       _formattedEndTime;
-  late int _selectedCategory;
-  var _selectedPax = 1.obs;
+  final _selectedPax = 1.obs;
   int? tableNo, seatNo, roomId;
   List<String> paxEmailList = [];
 
@@ -127,9 +126,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
   @override
   void initState() {
     if (widget.type == 'meeting room') {
-      _selectedCategory = 0;
     } else {
-      _selectedCategory = 1;
     }
     getRoomid();
     AuthDataSource().GetAllUser().then((value) {
