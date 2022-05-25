@@ -1229,9 +1229,15 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     var client = http.Client();
     try {
       var response = await client.post(
-        Uri.parse(AppUrl.getAvailability),
-        body: jsonEncode(
-            {"employeeid": AppHelpers.SHARED_PREFERENCES.getString('id')}),
+        Uri.parse(AppUrl.availabalityNew),
+        body: jsonEncode({
+          "selecteddate": _formattedStartDate,
+          "fromtime": _formattedStartTime,
+          "totime": _formattedEndTime,
+          "floor": _selectedLevel,
+          "todate": _formattedEndDate,
+          "employeeid": AppHelpers.SHARED_PREFERENCES.getString('id')
+        }),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
       if (response.statusCode == 200) {
