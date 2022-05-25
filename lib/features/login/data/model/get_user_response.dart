@@ -29,6 +29,7 @@ class GetUserResponse {
     this.lastscanned,
     this.status,
     this.profilepic,
+    this.lastActive,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -40,6 +41,7 @@ class GetUserResponse {
   String lastname;
   String gender;
   String? phone;
+  DateTime? lastActive;
   String? role;
   dynamic designation;
   dynamic address;
@@ -72,6 +74,9 @@ class GetUserResponse {
         profilepic: json["profilepic"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+        lastActive: json["last_active"] != null
+            ? DateTime.parse(json["last_active"])
+            : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -93,5 +98,6 @@ class GetUserResponse {
         "profilepic": profilepic,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
+        "lastActive": lastActive?.toIso8601String(),
       };
 }

@@ -79,33 +79,30 @@ class AuthDataSource {
 
         for (var user in users) {
           if (user.email == email && user.password == password) {
+            AppHelpers.SHARED_PREFERENCES.setString('email', user.email!);
+            AppHelpers.SHARED_PREFERENCES.setString('id', user.id.toString());
+            AppHelpers.SHARED_PREFERENCES.setString('password', user.password!);
+            AppHelpers.SHARED_PREFERENCES
+                .setString('firstName', user.firstname);
+            AppHelpers.SHARED_PREFERENCES.setString('lastName', user.lastname);
+            AppHelpers.SHARED_PREFERENCES.setString('phone', user.phone ?? '');
+            AppHelpers.SHARED_PREFERENCES.setInt('user_id', user.id);
+            AppHelpers.SHARED_PREFERENCES.setString('role', user.role ?? '');
+            AppHelpers.SHARED_PREFERENCES
+                .setString('designation', user.designation ?? '');
+            AppHelpers.SHARED_PREFERENCES.setString('phone', user.phone ?? '');
+            AppHelpers.SHARED_PREFERENCES
+                .setString('profilepic', user.profilepic ?? '');
+            AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
+            AppHelpers.SHARED_PREFERENCES
+                .setString('lastScanned', user.lastscanned ?? '');
+            AppHelpers.SHARED_PREFERENCES.setString('lastActive',
+                user.lastActive != null ? user.lastActive.toString() : "");
             if (user.status != null) {
-              AppHelpers.SHARED_PREFERENCES.setString('email', user.email!);
-              AppHelpers.SHARED_PREFERENCES.setString('id', user.id.toString());
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('password', user.password!);
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('firstName', user.firstname);
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('lastName', user.lastname);
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('phone', user.phone ?? '');
-              AppHelpers.SHARED_PREFERENCES.setInt('user_id', user.id);
-              AppHelpers.SHARED_PREFERENCES.setString('role', user.role ?? '');
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('designation', user.designation ?? '');
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('phone', user.phone ?? '');
-              AppHelpers.SHARED_PREFERENCES
-                  .setString('profilepic', user.profilepic ?? '');
-              AppHelpers.SHARED_PREFERENCES.setString('gender', user.gender);
-              if (user.status != null) {
-                AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
-              }
-              return user.status == "true" || user.status == true;
-            } else {
-              return false;
+              AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
             }
+
+            return user.status == "true" || user.status == true;
           }
         }
         showSnackBar(

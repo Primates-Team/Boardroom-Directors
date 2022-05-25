@@ -249,6 +249,13 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Text(
+                        '* Room Booking can be done 3 months in Advance',
+                        style: AppTheme.black400TextStyle(13),
+                      ),
+                    ),
                     SizedBox(
                       height: 15.h,
                     ),
@@ -321,13 +328,6 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     ),
                     SizedBox(
                       height: 25.h,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 18.0),
-                      child: Text(
-                        '* Room Booking can be done 3 months in Advance',
-                        style: AppTheme.black400TextStyle(13),
-                      ),
                     ),
                     Center(
                       child: Text(
@@ -631,12 +631,21 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   child: Obx(() => Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'List of Pax',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: const Text(
+                                  'List of Pax',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(top: 12.0),
+                                  child: paxSelector(availabilityResponse)),
+                            ],
                           ),
                           SizedBox(height: 10),
                           Row(
@@ -765,9 +774,6 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                               SizedBox(
                                 width: 20,
                               ),
-                              Padding(
-                                  padding: const EdgeInsets.only(top: 12.0),
-                                  child: paxSelector(availabilityResponse)),
                             ],
                           ),
                         ],
@@ -1155,7 +1161,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     return StatefulBuilder(builder: (context, setState) {
       return Container(
         height: 34.h,
-        width: 60.w,
+        width: 90.w,
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -1179,9 +1185,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   .map((int value) {
                 return DropdownMenuItem<int>(
                   value: value,
-                  child: Text(
-                    value.toString(),
-                  ),
+                  child: Text(value.toString()),
                 );
               }).toList(),
               onChanged: (int? val) {

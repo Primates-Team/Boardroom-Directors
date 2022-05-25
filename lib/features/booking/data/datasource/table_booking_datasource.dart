@@ -116,10 +116,16 @@ class TableBookingDataSource {
   Future viewAllBooking() async {
     var client = http.Client();
     try {
-      var response = await client.get(
-        Uri.parse(AppUrl.viewAllTableBookings),
-        headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-      );
+      var response = await client.post(Uri.parse(AppUrl.tableAvailabalityNew),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": "26-05-2022",
+            "fromtime": "01:30",
+            "totime": "21:45",
+            "floor": "Floor 14",
+            "todate": "26-05-2022",
+            "employeeid": "188"
+          }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
         print(jsonString);
@@ -129,7 +135,9 @@ class TableBookingDataSource {
         List<BookedSeats> bookedSeats = [];
         Map<int, List<int>> booked = {};
         for (var booking in bookings) {
-          if (isNumeric(booking.tableid) && isNumeric(booking.seatnumber)) {
+          if (isNumeric(booking.tableid) &&
+              isNumeric(booking.seatnumber) &&
+              booking.status == 'Occupied') {
             bookedSeats.add(BookedSeats(
                 tableNo: int.parse(booking.tableid),
                 seatNo: int.parse(booking.seatnumber)));

@@ -62,10 +62,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                               ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Last Activity At 04/04/2022',
+                                'Last Activity At ' +
+                                    AppHelpers.formatDate(DateTime.parse(
+                                        AppHelpers.SHARED_PREFERENCES
+                                                .getString('lastActive') ??
+                                            '')),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
