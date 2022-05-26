@@ -82,10 +82,20 @@ class AppHelpers {
     return t;
   }
 
-  static void showCupertinoTimePicker(
-      BuildContext context, void Function(DateTime) onDateTimeChanged,
-      {TimeOfDay? initialTimeofDay}) {
+  static void showCupertinoTimePicker(BuildContext context,
+      void Function(DateTime) onDateTimeChanged, DateTime minimumDate,
+      {TimeOfDay? initialTimeofDay, bool isEnddate = false}) {
     DateTime initialDateTime = DateTime.now();
+
+    DateTime? selectableTime;
+
+    if (isEnddate) {
+      selectableTime = minimumDate;
+    } else if (minimumDate.day == DateTime.now().day) {
+      selectableTime = minimumDate;
+    } else {
+      selectableTime = null;
+    }
 
     if (initialTimeofDay != null) {
       initialDateTime = DateTime(initialDateTime.year, initialDateTime.month,
@@ -108,6 +118,7 @@ class AppHelpers {
               onDateTimeChanged: onDateTimeChanged,
               minuteInterval: 15,
               use24hFormat: true,
+              minimumDate: selectableTime,
               initialDateTime: DateTime(
                   initialDateTime.year,
                   initialDateTime.month,

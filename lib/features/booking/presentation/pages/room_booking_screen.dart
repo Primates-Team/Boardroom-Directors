@@ -1068,7 +1068,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
               _startTime = TimeOfDay.fromDateTime(value);
             });
-          });
+          }, DateTime.now());
           // showTimePicker(
           //         initialEntryMode: TimePickerEntryMode.input,
           //         context: context,
@@ -1112,19 +1112,16 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       ),
       child: InkWell(
         onTap: () {
-          AppHelpers.showCupertinoTimePicker(
-            context,
-            (value) {
+          AppHelpers.showCupertinoTimePicker(context, (value) {
+            setState(() {
+              if (value == null) return;
               setState(() {
-                if (value == null) return;
-                setState(() {
-                  _formattedEndTime =
-                      AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
-                  _endTime = TimeOfDay.fromDateTime(value);
-                });
+                _formattedEndTime =
+                    AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+                _endTime = TimeOfDay.fromDateTime(value);
               });
-            },
-          );
+            });
+          }, DateTime.now());
 
           // showTimePicker(
           //         initialEntryMode: TimePickerEntryMode.input,

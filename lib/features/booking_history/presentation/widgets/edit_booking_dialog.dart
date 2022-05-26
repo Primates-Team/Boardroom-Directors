@@ -149,7 +149,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                   startTime = AppHelpers.formatTime(
                                       TimeOfDay.fromDateTime(value));
                                 });
-                              });
+                              }, DateTime.now());
 
                               // showTimePicker(
                               //   context: context,
@@ -179,7 +179,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                                   endTime = AppHelpers.formatTime(
                                       TimeOfDay.fromDateTime(value));
                                 });
-                              },
+                              }, DateTime.now(),
                                   initialTimeofDay: TimeOfDay(
                                       hour: endTime.contains(":")
                                           ? int.parse(endTime.split(":").first)

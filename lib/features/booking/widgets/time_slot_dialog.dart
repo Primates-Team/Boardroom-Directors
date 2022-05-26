@@ -188,7 +188,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                 startTime = TimeOfDay.fromDateTime(value);
                               });
                             });
-                          });
+                          }, startdate);
 
                           // showTimePicker(
                           //   context: context,
@@ -225,7 +225,14 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                             setState(() {
                               endTime = TimeOfDay.fromDateTime(value);
                             });
-                          });
+                          },
+                              DateTime(
+                                  startdate.year,
+                                  startdate.month,
+                                  startdate.day,
+                                  startTime?.hour ?? 0,
+                                  startTime?.minute ?? 0),
+                              isEnddate: true);
 
                           // showTimePicker(
                           //   context: context,
