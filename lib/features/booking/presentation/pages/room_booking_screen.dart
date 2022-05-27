@@ -553,80 +553,80 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
               const SizedBox(
                 height: 15,
               ),
-              transparentWhiteContainer(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Room Amenities',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.check_circle,
-                            color: AppColors.kRed,
-                            size: 15,
-                          ),
-                          Text(
-                            '   Meeting Amenities',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.check_circle,
-                            color: AppColors.kRed,
-                            size: 15,
-                          ),
-                          Text(
-                            '   Projector',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.check_circle,
-                            color: AppColors.kRed,
-                            size: 15,
-                          ),
-                          Text(
-                            '   Available (If Any)',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
+              // transparentWhiteContainer(
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       const Text(
+              //         'Room Amenities',
+              //         style: TextStyle(
+              //           fontSize: 20.0,
+              //           fontWeight: FontWeight.w500,
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.all(8.0),
+              //         child: Row(
+              //           children: const [
+              //             Icon(
+              //               Icons.check_circle,
+              //               color: AppColors.kRed,
+              //               size: 15,
+              //             ),
+              //             Text(
+              //               '   Meeting Amenities',
+              //               style: TextStyle(
+              //                 fontSize: 15.0,
+              //                 fontWeight: FontWeight.w500,
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.all(8.0),
+              //         child: Row(
+              //           children: const [
+              //             Icon(
+              //               Icons.check_circle,
+              //               color: AppColors.kRed,
+              //               size: 15,
+              //             ),
+              //             Text(
+              //               '   Projector',
+              //               style: TextStyle(
+              //                 fontSize: 15.0,
+              //                 fontWeight: FontWeight.w500,
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.all(8.0),
+              //         child: Row(
+              //           children: const [
+              //             Icon(
+              //               Icons.check_circle,
+              //               color: AppColors.kRed,
+              //               size: 15,
+              //             ),
+              //             Text(
+              //               '   Available (If Any)',
+              //               style: TextStyle(
+              //                 fontSize: 15.0,
+              //                 fontWeight: FontWeight.w500,
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 15,
+              // ),
               transparentWhiteContainer(
                   child: Obx(() => Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1101,17 +1101,6 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
               });
             }
           }, DateTime.now());
-          // showTimePicker(
-          //         initialEntryMode: TimePickerEntryMode.input,
-          //         context: context,
-          //         initialTime: TimeOfDay.now())
-          //     .then((value) {
-          //   if (value == null) return;
-          //   setState(() {
-          //     _formattedStartTime = AppHelpers.formatTime(value);
-          //     _startTime = value;
-          //   });
-          // });
         },
         child: Center(
           child: Row(

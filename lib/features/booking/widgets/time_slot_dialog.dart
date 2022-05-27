@@ -32,8 +32,8 @@ class TimeSlotDialog extends StatefulWidget {
 }
 
 class _TimeSlotDialogState extends State<TimeSlotDialog> {
-  DateTime startdate = DateTime.now();
-  DateTime endDate = DateTime.now();
+  DateTime? startdate = DateTime.now();
+  DateTime? endDate = DateTime.now();
 
   Widget textWidget(String title) {
     return SizedBox(
@@ -110,12 +110,15 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                               if (value == null) return;
                               setState(() {
                                 startdate = value;
+                                endDate = null;
                               });
                             });
                           },
                           child: Center(
                             child: Text(
-                              AppHelpers.formatDate(startdate),
+                              startdate != null
+                                  ? AppHelpers.formatDate(startdate!)
+                                  : '',
                               style: AppTheme.hintTextStyle,
                             ),
                           )),
@@ -133,9 +136,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                             if (startdate != null) {
                               showDatePicker(
                                       context: context,
-                                      initialDate: startdate,
-                                      firstDate: startdate,
-                                      lastDate: startdate
+                                      initialDate: startdate!,
+                                      firstDate: startdate!,
+                                      lastDate: startdate!
                                           .add(const Duration(days: 90)))
                                   .then((value) {
                                 if (value == null) return;
@@ -151,7 +154,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                           },
                           child: Center(
                             child: Text(
-                              AppHelpers.formatDate(endDate),
+                              endDate != null
+                                  ? AppHelpers.formatDate(endDate!)
+                                  : '',
                               style: AppTheme.hintTextStyle,
                             ),
                           )),
@@ -183,23 +188,30 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       child: InkWell(
                         onTap: () {
                           AppHelpers.showCupertinoTimePicker(context, (value) {
-                            setState(() {
+                            if (startdate?.day == DateTime.now().day) {
+                              if (value.isBefore(DateTime.now())) {
+                                showSnackBar(
+                                    context: context,
+                                    message: "Can't Select the date",
+                                    bgColor: Colors.red);
+                              } else {
+                                if (value.isBefore(DateTime.now())) {
+                                  showSnackBar(
+                                      context: context,
+                                      message: "Can't Select the date",
+                                      bgColor: Colors.red);
+                                } else {
+                                  setState(() {
+                                    startTime = TimeOfDay.fromDateTime(value);
+                                  });
+                                }
+                              }
+                            } else {
                               setState(() {
                                 startTime = TimeOfDay.fromDateTime(value);
                               });
-                            });
-                          }, startdate);
-
-                          // showTimePicker(
-                          //   context: context,
-                          //   initialTime: startTime!,
-                          //   initialEntryMode: TimePickerEntryMode.input,
-                          // ).then((value) {
-                          //   if (value == null) return;
-                          //   setState(() {
-                          //     startTime = value;
-                          //   });
-                          // });
+                            }
+                          }, startdate ?? DateTime.now());
                         },
                         child: Center(
                           child: Text(
@@ -222,14 +234,27 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       child: InkWell(
                         onTap: () {
                           AppHelpers.showCupertinoTimePicker(context, (value) {
-                            setState(() {
-                              endTime = TimeOfDay.fromDateTime(value);
-                            });
+                            if (startTime == null) return;
+
+                            if (value.hour <= startTime!.hour &&
+                                value.minute <= startTime!.minute) {
+                              showSnackBar(
+                                  context: context,
+                                  message: "Can't Select the date",
+                                  bgColor: Colors.red);
+                            } else {
+                              setState(() {
+                                if (value == null) return;
+                                setState(() {
+                                  endTime = TimeOfDay.fromDateTime(value);
+                                });
+                              });
+                            }
                           },
                               DateTime(
-                                  startdate.year,
-                                  startdate.month,
-                                  startdate.day,
+                                  startdate?.year ?? 0,
+                                  startdate?.month ?? 0,
+                                  startdate?.day ?? 0,
                                   startTime?.hour ?? 0,
                                   startTime?.minute ?? 0),
                               isEnddate: true);
@@ -274,8 +299,12 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       .createBooking(
                     tableNo: widget.tableNo,
                     seatNo: widget.seatNo,
-                    startDate: AppHelpers.formatDate(startdate),
-                    endDate: AppHelpers.formatDate(endDate),
+                    startDate: startdate != null
+                        ? AppHelpers.formatDate(startdate!)
+                        : AppHelpers.formatDate(DateTime.now()),
+                    endDate: endDate != null
+                        ? AppHelpers.formatDate(endDate!)
+                        : AppHelpers.formatDate(DateTime.now()),
                     floor: widget.floor,
                     fromTime: AppHelpers.formatTime(startTime!),
                     toTime: AppHelpers.formatTime(endTime!),
@@ -300,7 +329,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                     AppHelpers.formatTime(endTime!),
                                     widget.tableNo,
                                     widget.seatNo,
-                                    AppHelpers.formatDate(startdate),
+                                    AppHelpers.formatDate(startdate != null
+                                        ? startdate!
+                                        : DateTime.now()),
                                     widget.floor),
                               ),
                             );
