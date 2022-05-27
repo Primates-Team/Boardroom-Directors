@@ -53,7 +53,7 @@ class RoomBookingDataSource {
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
-            message: 'Boking Failed',
+            message: 'Booking Failed',
             bgColor: Colors.red);
         return false;
       }
@@ -96,7 +96,7 @@ class RoomBookingDataSource {
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
-            message: 'Boking Failed',
+            message: 'Booking Failed',
             bgColor: Colors.red);
         return false;
       }

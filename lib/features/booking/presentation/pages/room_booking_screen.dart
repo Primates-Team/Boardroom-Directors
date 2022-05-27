@@ -975,6 +975,11 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
             if (value == null) return;
             setState(() {
               _formattedStartDate = AppHelpers.formatDate(value);
+              _formattedEndDate = null;
+
+              _formattedStartTime = null;
+              _formattedEndTime = null;
+
               _startDate = value;
             });
           });
@@ -1019,10 +1024,19 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         : DateTime.now())
                 .then((value) {
               if (value == null) return;
-              setState(() {
-                _formattedEndDate = AppHelpers.formatDate(value);
-                _endDate = value;
-              });
+
+              if (_startDate!.day > value.day &&
+                  _startDate!.month > value.month) {
+                showSnackBar(
+                    context: Get.context!,
+                    message: 'Invalid date',
+                    bgColor: Colors.red);
+              } else {
+                setState(() {
+                  _formattedEndDate = AppHelpers.formatDate(value);
+                  _endDate = value;
+                });
+              }
             });
           } else {
             showSnackBar(
@@ -1063,11 +1077,29 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       child: InkWell(
         onTap: () {
           AppHelpers.showCupertinoTimePicker(context, (value) {
-            setState(() {
-              _formattedStartTime =
-                  AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
-              _startTime = TimeOfDay.fromDateTime(value);
-            });
+            if (_startDate?.day == DateTime.now().day) {
+              if (value.isBefore(DateTime.now())) {
+                showSnackBar(
+                    context: context, message: "Can't Select the date");
+              } else {
+                if (value.isBefore(DateTime.now())) {
+                  showSnackBar(
+                      context: context, message: "Can't Select the date");
+                } else {
+                  setState(() {
+                    _formattedStartTime =
+                        AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+                    _startTime = TimeOfDay.fromDateTime(value);
+                  });
+                }
+              }
+            } else {
+              setState(() {
+                _formattedStartTime =
+                    AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+                _startTime = TimeOfDay.fromDateTime(value);
+              });
+            }
           }, DateTime.now());
           // showTimePicker(
           //         initialEntryMode: TimePickerEntryMode.input,
@@ -1113,27 +1145,22 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       child: InkWell(
         onTap: () {
           AppHelpers.showCupertinoTimePicker(context, (value) {
-            setState(() {
-              if (value == null) return;
-              setState(() {
-                _formattedEndTime =
-                    AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
-                _endTime = TimeOfDay.fromDateTime(value);
-              });
-            });
-          }, DateTime.now());
+            if (_startTime == null) return;
 
-          // showTimePicker(
-          //         initialEntryMode: TimePickerEntryMode.input,
-          //         context: context,
-          //         initialTime: TimeOfDay.now())
-          //     .then((value) {
-          //   if (value == null) return;
-          //   setState(() {
-          //     _formattedEndTime = AppHelpers.formatTime(value);
-          //     _endTime = value;
-          //   });
-          // });
+            if (value.hour <= _startTime!.hour &&
+                value.minute <= _startTime!.minute) {
+              showSnackBar(context: context, message: "Can't Select the date");
+            } else {
+              setState(() {
+                if (value == null) return;
+                setState(() {
+                  _formattedEndTime =
+                      AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+                  _endTime = TimeOfDay.fromDateTime(value);
+                });
+              });
+            }
+          }, _startDate ?? DateTime.now());
         },
         child: Center(
           child: Row(

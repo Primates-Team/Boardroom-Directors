@@ -87,15 +87,15 @@ class AppHelpers {
       {TimeOfDay? initialTimeofDay, bool isEnddate = false}) {
     DateTime initialDateTime = DateTime.now();
 
-    DateTime? selectableTime;
+    // DateTime? selectableTime;
 
-    if (isEnddate) {
-      selectableTime = minimumDate;
-    } else if (minimumDate.day == DateTime.now().day) {
-      selectableTime = minimumDate;
-    } else {
-      selectableTime = null;
-    }
+    // if (isEnddate) {
+    //   selectableTime = minimumDate;
+    // } else if (minimumDate.day == DateTime.now().day) {
+    //   selectableTime = minimumDate;
+    // } else {
+    //   selectableTime = null;
+    // }
 
     if (initialTimeofDay != null) {
       initialDateTime = DateTime(initialDateTime.year, initialDateTime.month,
@@ -104,8 +104,8 @@ class AppHelpers {
 
     int initialMinute = initialDateTime.minute;
 
-    if (initialDateTime.minute % 15 != 0) {
-      initialMinute = initialDateTime.minute - initialDateTime.minute % 15 + 15;
+    if (initialDateTime.minute % 5 != 0) {
+      initialMinute = initialDateTime.minute - initialDateTime.minute % 5 + 5;
     }
     showCupertinoModalPopup(
         context: context,
@@ -116,9 +116,8 @@ class AppHelpers {
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.time,
               onDateTimeChanged: onDateTimeChanged,
-              minuteInterval: 15,
+              minuteInterval: 5,
               use24hFormat: true,
-              minimumDate: selectableTime,
               initialDateTime: DateTime(
                   initialDateTime.year,
                   initialDateTime.month,
