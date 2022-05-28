@@ -200,50 +200,50 @@ class _SignInScreenState extends State<SignInScreen> {
                     const SizedBox(
                       height: 15,
                     ),
-                    SizedBox(
-                      // height: 48,
-                      width: 343,
-                      child: Stack(
-                        children: [
-                          DropdownButtonFormField(
-                            iconSize: 20,
-                            decoration:
-                                AppTheme.textFieldDecoration('Designation')
-                                    .copyWith(
-                              contentPadding:
-                                  EdgeInsets.only(left: 55.w, right: 15.w),
-                            ),
-                            onChanged: (String? val) =>
-                                setState(() => designation.text = val!),
-                            items: designationOptions.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value.toString(),
-                                  style: const TextStyle(
-                                      color: AppColors.kDarkPantone,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 12.0, left: 11),
-                            child: Image.asset(
-                              'assets/common/scanner.png',
-                              height: 25,
-                              width: 25,
-                              color: AppColors.kDarkPantone,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    // SizedBox(
+                    //   // height: 48,
+                    //   width: 343,
+                    //   child: Stack(
+                    //     children: [
+                    //       DropdownButtonFormField(
+                    //         iconSize: 20,
+                    //         decoration:
+                    //             AppTheme.textFieldDecoration('Designation')
+                    //                 .copyWith(
+                    //           contentPadding:
+                    //               EdgeInsets.only(left: 55.w, right: 15.w),
+                    //         ),
+                    //         onChanged: (String? val) =>
+                    //             setState(() => designation.text = val!),
+                    //         items: designationOptions.map((String value) {
+                    //           return DropdownMenuItem<String>(
+                    //             value: value,
+                    //             child: Text(
+                    //               value.toString(),
+                    //               style: const TextStyle(
+                    //                   color: AppColors.kDarkPantone,
+                    //                   fontSize: 12,
+                    //                   fontWeight: FontWeight.w400),
+                    //             ),
+                    //           );
+                    //         }).toList(),
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(top: 12.0, left: 11),
+                    //         child: Image.asset(
+                    //           'assets/common/scanner.png',
+                    //           height: 25,
+                    //           width: 25,
+                    //           color: AppColors.kDarkPantone,
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
                     //
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    // const SizedBox(
+                    //   height: 15,
+                    // ),
                     SizedBox(
                       // height: 48,
                       width: 343,
@@ -417,7 +417,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                     firstName: firstName.text,
                                     lastName: lastName.text,
                                     gender: gender.text,
-                                    designation: designation.text,
+                                    designation: null,
+                                    // designation: designation.text,
                                     mobile: mobile.text,
                                     email: email.text,
                                     profileUrl: url);

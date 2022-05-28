@@ -702,71 +702,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                         // onSaved: (val) =>
                                         //     setState(() => _user.typeNeg = val),
                                       );
-                                      return Container(
-                                        margin: EdgeInsets.only(bottom: 10),
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 5, horizontal: 10),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.black, width: 1),
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: TextFormField(
-                                          readOnly: false,
-                                          autofocus: false,
-                                          textInputAction: TextInputAction.done,
-                                          onChanged: (value) {
-                                            if (paxEmailList.isEmpty) {
-                                              setState(() {
-                                                paxEmailList.add(value);
-                                              });
-                                            }
-
-                                            if (paxEmailList.length <
-                                                index2 + 1) {
-                                              setState(() {
-                                                paxEmailList.add(value);
-                                              });
-                                            }
-
-                                            setState(() {
-                                              paxEmailList[index2] = value;
-                                            });
-                                            print("test");
-                                          },
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontFeatures: const [
-                                                FontFeature.tabularFigures()
-                                              ],
-                                              color: Colors.blueGrey[300],
-                                              fontSize: 13),
-                                          textAlign: TextAlign.start,
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          obscureText: false,
-                                          cursorColor: Colors.black,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            border: InputBorder.none,
-                                            contentPadding:
-                                                const EdgeInsets.fromLTRB(
-                                                    0, 0, 0, 0),
-                                            hintStyle: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 13,
-                                              fontFeatures: const [
-                                                FontFeature.tabularFigures()
-                                              ],
-                                              color: Colors.blueGrey[300],
-                                            ),
-                                            hintText:
-                                                "Select Invitee${index2 + 1} Email",
-                                          ),
-                                        ),
-                                      );
                                     },
-                                    physics: ScrollPhysics(),
+                                    physics: const ScrollPhysics(),
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
                                     itemCount: _selectedPax.value),
@@ -862,77 +799,6 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                 _selectedLevel ?? 'Floor 3',
                                 availabilityResponse.name ?? '',
                               );
-                              //     .then((value) {
-                              //   showDialog(
-                              //       context: context,
-                              //       barrierDismissible: false,
-                              //       builder: (context) {
-                              //         return BackdropFilter(
-                              //           filter: ImageFilter.blur(
-                              //               sigmaX: 2.5, sigmaY: 2.5),
-                              //           child: Dialog(
-                              //             shape: RoundedRectangleBorder(
-                              //                 borderRadius:
-                              //                     BorderRadius.circular(20.0)),
-                              //             child: BookingConfirmedWidget(
-                              //                 _formattedStartTime!,
-                              //                 _formattedEndTime!),
-                              //           ),
-                              //         );
-                              //       });
-                              //   RoomBookingDataSource().viewAllRoomBooking();
-                              // });
-
-                              // RoomBookingDataSource()
-                              //     .createRoomBooking(
-                              //         roomId: roomId!,
-                              //         date: _formattedDate!,
-                              //         fromTime: _formattedStartTime!,
-                              //         toTime: _formattedEndTime!,
-                              //         members: paxEmailList,
-                              //         floor: _selectedLevel ?? 'Floor 3')
-                              //     .then((value) {
-                              //   if (value) {
-                              // Navigator.pop(context);
-
-                              // Get.defaultDialog(
-                              //     barrierDismissible: false,
-                              //     content: BackdropFilter(
-                              //       filter: ImageFilter.blur(
-                              //           sigmaX: 2.5, sigmaY: 2.5),
-                              //       child: Dialog(
-                              //         shape: RoundedRectangleBorder(
-                              //             borderRadius:
-                              //                 BorderRadius.circular(20.0)),
-                              //         child: BookingConfirmedWidget(
-                              //             _formattedStartTime!,
-                              //             _formattedEndTime!),
-                              //       ),
-                              //     ));
-
-                              // showDialog(
-                              //     context: context,
-                              //     barrierDismissible: false,
-                              //     builder: (context) {
-                              //       return BackdropFilter(
-                              //         filter: ImageFilter.blur(
-                              //             sigmaX: 2.5, sigmaY: 2.5),
-                              //         child: Dialog(
-                              //           shape: RoundedRectangleBorder(
-                              //               borderRadius:
-                              //                   BorderRadius.circular(
-                              //                       20.0)),
-                              //           child: BookingConfirmedWidget(
-                              //               _formattedStartTime!,
-                              //               _formattedEndTime!),
-                              //         ),
-                              //       );
-                              //     });
-                              // RoomBookingDataSource().viewAllRoomBooking();
-                              // } else {
-                              //   Navigator.pop(context);
-                              // }
-                              //  });
                             }
                           }
                         } else {
@@ -1212,7 +1078,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 }
 
                 if (_selectedPax.value > val!) {
-                  for (int i = 0; i < val - _selectedPax.value; i++) {
+                  for (int i = 0; i < _selectedPax.value - val; i++) {
                     paxEmailList.removeLast();
                   }
                 }
