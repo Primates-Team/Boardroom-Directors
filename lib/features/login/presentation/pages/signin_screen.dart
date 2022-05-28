@@ -22,9 +22,20 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   List<String> genderOptions = ['Male', 'Female', 'Other'];
   List<String> departmentOptions = [
-    'Operations Department',
-    'Sales Department',
-    'Purchase Department'
+    'ACCOUNTING',
+    'BESPL',
+    "CENTRAL ADMIN",
+    "CEO OFFICE",
+    "CORPORATE SECRETARIAL",
+    "FINANCE",
+    "HUMAN RESOURCE",
+    "INVESTOR SERVICES",
+    "PAYROLL",
+    "RISK, LEGAL & COMPLIANCE",
+    "SHARE REG SERVICES – TEMP",
+    "SHARE REG SERVICES",
+    "TAX",
+    "TECHNOLOGY SERVICES",
   ];
   List<String> designationOptions = [
     'Managing Director',
@@ -204,9 +215,6 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             onChanged: (String? val) =>
                                 setState(() => designation.text = val!),
-                            validator: (value) => value == null
-                                ? 'Please select Designation'
-                                : null,
                             items: designationOptions.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,

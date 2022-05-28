@@ -541,8 +541,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Text(
-                    'Time Slot',
+                  Text(
+                    'Number of Pax Allowed : ${availabilityResponse.noofpax}',
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.w500,
@@ -553,77 +553,77 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
               const SizedBox(
                 height: 15,
               ),
-              transparentWhiteContainer(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Number of Pax Allowed : ${availabilityResponse.noofpax}',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Row(
-                    //     children: const [
-                    //       Icon(
-                    //         Icons.check_circle,
-                    //         color: AppColors.kRed,
-                    //         size: 15,
-                    //       ),
-                    //       Text(
-                    //         '   Meeting Amenities',
-                    //         style: TextStyle(
-                    //           fontSize: 15.0,
-                    //           fontWeight: FontWeight.w500,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Row(
-                    //     children: const [
-                    //       Icon(
-                    //         Icons.check_circle,
-                    //         color: AppColors.kRed,
-                    //         size: 15,
-                    //       ),
-                    //       Text(
-                    //         '   Projector',
-                    //         style: TextStyle(
-                    //           fontSize: 15.0,
-                    //           fontWeight: FontWeight.w500,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Row(
-                    //     children: const [
-                    //       Icon(
-                    //         Icons.check_circle,
-                    //         color: AppColors.kRed,
-                    //         size: 15,
-                    //       ),
-                    //       Text(
-                    //         '   Available (If Any)',
-                    //         style: TextStyle(
-                    //           fontSize: 15.0,
-                    //           fontWeight: FontWeight.w500,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ),
+              //transparentWhiteContainer(
+              // child: Column(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     Text(
+              //       'Number of Pax Allowed : ${availabilityResponse.noofpax}',
+              //       style: TextStyle(
+              //         fontSize: 20.0,
+              //         fontWeight: FontWeight.w500,
+              //       ),
+              //     ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     children: const [
+              //       Icon(
+              //         Icons.check_circle,
+              //         color: AppColors.kRed,
+              //         size: 15,
+              //       ),
+              //       Text(
+              //         '   Meeting Amenities',
+              //         style: TextStyle(
+              //           fontSize: 15.0,
+              //           fontWeight: FontWeight.w500,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     children: const [
+              //       Icon(
+              //         Icons.check_circle,
+              //         color: AppColors.kRed,
+              //         size: 15,
+              //       ),
+              //       Text(
+              //         '   Projector',
+              //         style: TextStyle(
+              //           fontSize: 15.0,
+              //           fontWeight: FontWeight.w500,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     children: const [
+              //       Icon(
+              //         Icons.check_circle,
+              //         color: AppColors.kRed,
+              //         size: 15,
+              //       ),
+              //       Text(
+              //         '   Available (If Any)',
+              //         style: TextStyle(
+              //           fontSize: 15.0,
+              //           fontWeight: FontWeight.w500,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              //     ],
+              //   ),
+              // ),
               const SizedBox(
                 height: 15,
               ),
@@ -1077,6 +1077,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       child: InkWell(
         onTap: () {
           AppHelpers.showCupertinoTimePicker(context, (value) {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            ScaffoldMessenger.of(context).clearSnackBars();
             if (_startDate?.day == DateTime.now().day) {
               if (value.isBefore(DateTime.now())) {
                 showSnackBar(
@@ -1134,6 +1136,9 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       child: InkWell(
         onTap: () {
           AppHelpers.showCupertinoTimePicker(context, (value) {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            ScaffoldMessenger.of(context).clearSnackBars();
+
             if (_startTime == null) return;
 
             if (value.hour <= _startTime!.hour &&

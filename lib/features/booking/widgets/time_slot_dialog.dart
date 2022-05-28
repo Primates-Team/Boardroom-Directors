@@ -188,6 +188,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       child: InkWell(
                         onTap: () {
                           AppHelpers.showCupertinoTimePicker(context, (value) {
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             if (startdate?.day == DateTime.now().day) {
                               if (value.isBefore(DateTime.now())) {
                                 showSnackBar(
@@ -234,6 +236,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       child: InkWell(
                         onTap: () {
                           AppHelpers.showCupertinoTimePicker(context, (value) {
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            ScaffoldMessenger.of(context).clearSnackBars();
                             if (startTime == null) return;
 
                             if (value.hour <= startTime!.hour &&

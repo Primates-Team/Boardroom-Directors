@@ -145,6 +145,9 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             onTap: () {
                               AppHelpers.showCupertinoTimePicker(context,
                                   (value) {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                                ScaffoldMessenger.of(context).clearSnackBars();
                                 setState(() {
                                   startTime = AppHelpers.formatTime(
                                       TimeOfDay.fromDateTime(value));
@@ -175,6 +178,9 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
                             onTap: () {
                               AppHelpers.showCupertinoTimePicker(context,
                                   (value) {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                                ScaffoldMessenger.of(context).clearSnackBars();
                                 setState(() {
                                   endTime = AppHelpers.formatTime(
                                       TimeOfDay.fromDateTime(value));
