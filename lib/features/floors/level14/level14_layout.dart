@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -7,9 +9,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
+import 'package:hot_desking/core/app_urls.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/models/table_model.dart';
+import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class Level14Layout extends StatefulWidget {
   final Function(TableModel? table) selectedTable;
@@ -30,6 +36,78 @@ class _Level14LayoutState extends State<Level14Layout> {
   String _selectedFloor = 'Floor 14';
   Map<int, List<int>> modifiedTables = {};
 
+  callnext() async {
+    var inputDate = DateTime.parse(DateTime.now().toString());
+    var outputFormat = DateFormat('dd-MM-yyyy');
+    var outputDate = outputFormat.format(inputDate);
+    var client = http.Client();
+    try {
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": outputDate,
+            "floor": _selectedFloor,
+            "current_time": AppHelpers.formatTime(TimeOfDay.now())
+          }));
+
+      List<dynamic> jsondata = jsonDecode(response.body);
+
+      List<Map<int, int>> tableData = [];
+
+      for (var element in jsondata) {
+        Map<int, int> tableSeatDict = {
+          jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+        };
+
+        tableData.add(tableSeatDict);
+      }
+
+      bookingController.tableData = tableData;
+    } catch (e) {}
+  }
+
+  Future<List<Map<int, int>>> callAPI() async {
+    var inputDate = DateTime.parse(DateTime.now().toString());
+    var outputFormat = DateFormat('dd-MM-yyyy');
+    var outputDate = outputFormat.format(inputDate);
+    var client = http.Client();
+    try {
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": outputDate,
+            "floor": _selectedFloor,
+            "current_time": AppHelpers.formatTime(TimeOfDay.now())
+          }));
+
+      List<dynamic> jsondata = jsonDecode(response.body);
+
+      List<Map<int, int>> tableData = [];
+
+      for (var element in jsondata) {
+        Map<int, int> tableSeatDict = {
+          jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+        };
+
+        tableData.add(tableSeatDict);
+      }
+
+      bookingController.tableData = tableData;
+
+      for (var i = 1; i < 8; i++) {
+        modifiedTables[i] = [];
+        for (var element in tableData) {
+          if (element.containsKey(i)) {
+            modifiedTables[i]?.add(element.values.first);
+          }
+        }
+      }
+      return tableData;
+    } catch (e) {
+      return [];
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -43,6 +121,9 @@ class _Level14LayoutState extends State<Level14Layout> {
         }
       });
     }
+
+    callAPI();
+    callnext();
 
     bookedTables = modifiedTables;
     // print(modifiedTables);
@@ -80,95 +161,135 @@ class _Level14LayoutState extends State<Level14Layout> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return SizedBox(
-      height: height,
-      width: width,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Stack(
-          children: [
-            RotatedBox(
-                quarterTurns: 4,
-                child: Image.asset("assets/level14/Frame 15.png")
-                // SvgPicture.asset(
-                //   'assets/Svg_images/Frame-4.svg',
-                //   height: 1000.h,
-                //   width: width,
-                // ),
-                ),
-            Positioned(
-                top: 60.h,
-                left: 250.w,
-                child: InkWell(
-                  child: Image.asset('assets/chairs/Group 493.png',
-                      width: 100.w, height: 100.h, fit: BoxFit.fitWidth),
-                  onTap: () {
-                    showTabledetails(1, bookedTables[1] ?? []);
-                  },
-                )),
-            Positioned(
-                top: 60.h,
-                left: 350.w,
-                child: InkWell(
-                  child: Image.asset('assets/chairs/Group 493.png',
-                      width: 100.w, height: 100.h, fit: BoxFit.fitWidth),
-                  onTap: () {
-                    showTabledetails(2, bookedTables[2] ?? []);
-                  },
-                )),
-            Positioned(
-                top: 60.h,
-                left: 460.w,
-                child: InkWell(
-                  child: RotatedBox(
-                    quarterTurns: 3,
-                    child: Image.asset('assets/chairs/Group 497.png',
-                        width: 80.w, height: 80.h, fit: BoxFit.fitWidth),
+    return FutureBuilder<List<Map<int, int>>>(
+      future: callAPI(), // async work
+      builder:
+          (BuildContext context, AsyncSnapshot<List<Map<int, int>>> snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          default:
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return GetBuilder<BookingController>(builder: (controller) {
+                return SizedBox(
+                  height: height,
+                  width: width,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Stack(
+                      children: [
+                        RotatedBox(
+                            quarterTurns: 4,
+                            child: Image.asset("assets/level14/Frame 15.png")
+                            // SvgPicture.asset(
+                            //   'assets/Svg_images/Frame-4.svg',
+                            //   height: 1000.h,
+                            //   width: width,
+                            // ),
+                            ),
+                        Positioned(
+                            top: 60.h,
+                            left: 250.w,
+                            child: InkWell(
+                              child: Image.asset('assets/chairs/Group 493.png',
+                                  width: 100.w,
+                                  height: 100.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                showTabledetails(1, bookedTables[1] ?? []);
+                              },
+                            )),
+                        Positioned(
+                            top: 60.h,
+                            left: 350.w,
+                            child: InkWell(
+                              child: Image.asset('assets/chairs/Group 493.png',
+                                  width: 100.w,
+                                  height: 100.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                showTabledetails(2, bookedTables[2] ?? []);
+                              },
+                            )),
+                        Positioned(
+                            top: 60.h,
+                            left: 460.w,
+                            child: InkWell(
+                              child: RotatedBox(
+                                quarterTurns: 3,
+                                child: Image.asset(
+                                    'assets/chairs/Group 497.png',
+                                    width: 80.w,
+                                    height: 80.h,
+                                    fit: BoxFit.fitWidth),
+                              ),
+                              onTap: () {
+                                setState(() {});
+                                showTabledetails(3, bookedTables[3] ?? []);
+                              },
+                            )),
+                        Positioned(
+                            top: 60.h,
+                            left: 550.w,
+                            child: InkWell(
+                              child: RotatedBox(
+                                quarterTurns: 3,
+                                child: Image.asset(
+                                    'assets/chairs/Group 497.png',
+                                    width: 80.w,
+                                    height: 80.h,
+                                    fit: BoxFit.fitWidth),
+                              ),
+                              onTap: () {
+                                setState(() {});
+                                showTabledetails(4, bookedTables[4] ?? []);
+                              },
+                            )),
+                        Positioned(
+                            top: 60.h,
+                            left: 635.w,
+                            child: InkWell(
+                              child: Image.asset('assets/chairs/Group 495.png',
+                                  width: 100.w,
+                                  height: 100.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                showTabledetails(5, bookedTables[5] ?? []);
+                              },
+                            )),
+                        Positioned(
+                            top: 60.h,
+                            left: 730.w,
+                            child: InkWell(
+                              child: Image.asset('assets/chairs/Group 495.png',
+                                  width: 100.w,
+                                  height: 100.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                showTabledetails(6, bookedTables[6] ?? []);
+                              },
+                            )),
+                      ],
+                    ),
                   ),
-                  onTap: () {
-                    showTabledetails(3, bookedTables[3] ?? []);
-                  },
-                )),
-            Positioned(
-                top: 60.h,
-                left: 550.w,
-                child: InkWell(
-                  child: RotatedBox(
-                    quarterTurns: 3,
-                    child: Image.asset('assets/chairs/Group 497.png',
-                        width: 80.w, height: 80.h, fit: BoxFit.fitWidth),
-                  ),
-                  onTap: () {
-                    showTabledetails(4, bookedTables[4] ?? []);
-                  },
-                )),
-            Positioned(
-                top: 60.h,
-                left: 635.w,
-                child: InkWell(
-                  child: Image.asset('assets/chairs/Group 495.png',
-                      width: 100.w, height: 100.h, fit: BoxFit.fitWidth),
-                  onTap: () {
-                    showTabledetails(5, bookedTables[5] ?? []);
-                  },
-                )),
-            Positioned(
-                top: 60.h,
-                left: 730.w,
-                child: InkWell(
-                  child: Image.asset('assets/chairs/Group 495.png',
-                      width: 100.w, height: 100.h, fit: BoxFit.fitWidth),
-                  onTap: () {
-                    showTabledetails(6, bookedTables[6] ?? []);
-                  },
-                )),
-          ],
-        ),
-      ),
+                );
+              });
+            }
+        }
+      },
     );
   }
 
   showTabledetails(int tableNo, List<int> seats) async {
+    await callAPI();
     return showDialog(
         context: context,
         builder: (context) {

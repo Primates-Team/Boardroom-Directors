@@ -105,12 +105,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               optionsButton(
                   title: 'Hot desking',
                   onTap: () {
-                    pushNewScreen(
-                      context,
-                      screen: const HotDeskingScreen(),
-                      withNavBar: true, // OPTIONAL VALUE. True by default.
-                      pageTransitionAnimation: PageTransitionAnimation.fade,
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HotDeskingScreen(),
+                        ));
+
+                    // pushNewScreen(
+                    //   context,
+                    //   screen: const HotDeskingScreen(),
+                    //   withNavBar: true, // OPTIONAL VALUE. True by default.
+                    //   pageTransitionAnimation: PageTransitionAnimation.fade,
+                    // );
                   }),
               optionsButton(
                   title: 'Calendar',

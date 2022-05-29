@@ -709,49 +709,43 @@ class _Level3LayoutState extends State<Level3Layout> {
                         const SizedBox(
                           height: 15,
                         ),
-                        TimeSlotDialog(
-                          tableNo: tableNo,
-                          seatNo: seatNo!,
-                          date: DateTime.now(),
-                          startTime: TimeOfDay.now(),
-                          floor: _selectedFloor,
-                        ),
-                        // Center(
-                        //   child: ElevatedButton(
-                        //     style: ButtonStyle(
-                        //         backgroundColor: MaterialStateProperty.all(
-                        //             AppColors.kAubergine)),
-                        //     onPressed: () {
-                        //       if (tableNo != null && seatNo != null) {
-                        //         Get.back();
-                        //         showDialog(
-                        //             context: context,
-                        //             builder: (context) {
-                        //               return BackdropFilter(
-                        //                 filter: ImageFilter.blur(
-                        //                     sigmaX: 2.5, sigmaY: 2.5),
-                        //                 child: Dialog(
-                        //                   shape: RoundedRectangleBorder(
-                        //                       borderRadius:
-                        //                           BorderRadius.circular(20.0)),
-                        //                   child: TimeSlotDialog(
-                        //                     tableNo: tableNo,
-                        //                     seatNo: seatNo!,
-                        //                     date: DateTime.now(),
-                        //                     startTime: TimeOfDay.now(),
-                        //                     floor: _selectedFloor,
-                        //                   ),
-                        //                 ),
-                        //               );
-                        //             });
-                        //       } else {
-                        //         showSnackBar(
-                        //             context: context, message: 'Select Seat');
-                        //       }
-                        //     },
-                        //     child: const Text('Book'),
-                        //   ),
-                        // )
+
+                        Center(
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    AppColors.kAubergine)),
+                            onPressed: () {
+                              if (tableNo != null && seatNo != null) {
+                                Get.back();
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 2.5, sigmaY: 2.5),
+                                        child: Dialog(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0)),
+                                          child: TimeSlotDialog(
+                                            tableNo: tableNo,
+                                            seatNo: seatNo!,
+                                            date: DateTime.now(),
+                                            startTime: TimeOfDay.now(),
+                                            floor: _selectedFloor,
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              } else {
+                                showSnackBar(
+                                    context: context, message: 'Select Seat');
+                              }
+                            },
+                            child: const Text('Book'),
+                          ),
+                        )
                       ],
                     ),
                   ),
