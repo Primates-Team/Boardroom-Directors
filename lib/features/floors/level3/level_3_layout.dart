@@ -328,6 +328,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 fontSize: 15.sp, fontWeight: FontWeight.w700),
                           ),
                         ),
+                        SizedBox(
+                          height: 20.6.h,
+                        ),
                         // ignore: sized_box_for_whitespace
                         Container(
                           height: MediaQuery.of(context).size.height * 0.17,
@@ -369,7 +372,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                           height: 22.r,
                                         ),
                                       ),
-                                      Text('1')
+                                      Text('HDG1')
                                     ],
                                   ),
                                   onTap: () {
@@ -381,11 +384,11 @@ class _Level3LayoutState extends State<Level3Layout> {
                               ),
                               Positioned(
                                 top: 60.h,
-                                left: 35.w,
+                                left: 5.w,
                                 child: InkWell(
                                   child: Row(
                                     children: [
-                                      Text('2'),
+                                      Text('HDG2'),
                                       RotatedBox(
                                         quarterTurns: 3,
                                         child: Image.asset(
@@ -413,7 +416,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 child: InkWell(
                                   child: Column(
                                     children: [
-                                      Text('3'),
+                                      Text('HDG3'),
                                       RotatedBox(
                                         quarterTurns: 4,
                                         child: Image.asset(
@@ -447,7 +450,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   },
                                   child: Column(
                                     children: [
-                                      Text('4'),
+                                      Text('HDG4'),
                                       RotatedBox(
                                         quarterTurns: 4,
                                         child: Image.asset(
@@ -476,7 +479,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   },
                                   child: Column(
                                     children: [
-                                      Text('5'),
+                                      Text('HDG5'),
                                       RotatedBox(
                                         quarterTurns: 4,
                                         child: Image.asset(
@@ -498,7 +501,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                               //
                               Positioned(
                                 top: 60.h,
-                                right: 35.w,
+                                right: 5.w,
                                 child: InkWell(
                                   onTap: () {
                                     setState(() {
@@ -519,7 +522,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                           height: 22.r,
                                         ),
                                       ),
-                                      Text('6'),
+                                      Text('HDG6'),
                                     ],
                                   ),
                                 ),
@@ -548,7 +551,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                           height: 22.r,
                                         ),
                                       ),
-                                      Text('7'),
+                                      Text('HDG7'),
                                     ],
                                   ),
                                 ),
@@ -571,7 +574,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                           height: 22.r,
                                         ),
                                       ),
-                                      Text('8'),
+                                      Text('HDG8'),
                                     ],
                                   ),
                                   onTap: () {
@@ -766,6 +769,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.57,
                   width: MediaQuery.of(context).size.width * 0.9,
+
                   // margin: const EdgeInsets.only(
                   //   left: 16.09,
                   //   right: 7.09,
@@ -807,10 +811,14 @@ class _Level3LayoutState extends State<Level3Layout> {
                               fontSize: 15.sp, fontWeight: FontWeight.w700),
                         ),
                       ),
+                      SizedBox(
+                        height: 20.6.h,
+                      ),
                       // ignore: sized_box_for_whitespace
                       Container(
                         height: MediaQuery.of(context).size.height * 0.16,
                         width: MediaQuery.of(context).size.width,
+
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
                         //     top: 34.32, left: 48.41, right: 48.41),
@@ -1222,6 +1230,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                               fontSize: 15.sp, fontWeight: FontWeight.w700),
                         ),
                       ),
+                      SizedBox(
+                        height: 20.6.h,
+                      ),
                       // ignore: sized_box_for_whitespace
                       Container(
                         height: MediaQuery.of(context).size.height * 0.17,
@@ -1238,11 +1249,11 @@ class _Level3LayoutState extends State<Level3Layout> {
                             ),
                             Positioned(
                               top: 78.h,
-                              left: 80.w,
+                              left: 40.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
-                                    Text('1'),
+                                    Text(tableNo == 3 ? 'HDG11' : "HDG7"),
                                     RotatedBox(
                                       quarterTurns: 3,
                                       child: Image.asset(
@@ -1266,11 +1277,11 @@ class _Level3LayoutState extends State<Level3Layout> {
                             ),
                             Positioned(
                               top: 20.h,
-                              left: 80.w,
+                              left: 40.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
-                                    Text('2'),
+                                    Text(tableNo == 3 ? 'HDG12' : "HDG8"),
                                     RotatedBox(
                                       quarterTurns: 3,
                                       child: Image.asset(
@@ -1311,7 +1322,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                         height: 30.r,
                                       ),
                                     ),
-                                    Text('4'),
+                                    Text(tableNo == 3 ? 'HDG13' : "HDG9"),
                                   ],
                                 ),
                                 onTap: () {
@@ -1339,7 +1350,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                         height: 30.r,
                                       ),
                                     ),
-                                    Text('3'),
+                                    Text(tableNo == 3 ? 'HDG14' : "HDG10"),
                                   ],
                                 ),
                                 onTap: () {

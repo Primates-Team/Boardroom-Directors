@@ -193,12 +193,16 @@ class _Level14LayoutState extends State<Level14Layout> {
                             ),
                         Positioned(
                             top: 60.h,
-                            left: 250.w,
+                            left: 270.w,
                             child: InkWell(
-                              child: Image.asset('assets/chairs/Group 493.png',
-                                  width: 100.w,
-                                  height: 100.h,
-                                  fit: BoxFit.fitWidth),
+                              child: RotatedBox(
+                                quarterTurns: 1,
+                                child: Image.asset(
+                                    'assets/chairs/Group 493.png',
+                                    width: 100.w,
+                                    height: 100.h,
+                                    fit: BoxFit.fitWidth),
+                              ),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(1, bookedTables[1] ?? []);
@@ -208,17 +212,21 @@ class _Level14LayoutState extends State<Level14Layout> {
                             top: 60.h,
                             left: 350.w,
                             child: InkWell(
-                              child: Image.asset('assets/chairs/Group 493.png',
-                                  width: 100.w,
-                                  height: 100.h,
-                                  fit: BoxFit.fitWidth),
+                              child: RotatedBox(
+                                quarterTurns: 1,
+                                child: Image.asset(
+                                    'assets/chairs/Group 493.png',
+                                    width: 100.w,
+                                    height: 100.h,
+                                    fit: BoxFit.fitWidth),
+                              ),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(2, bookedTables[2] ?? []);
                               },
                             )),
                         Positioned(
-                            top: 60.h,
+                            top: 70.h,
                             left: 460.w,
                             child: InkWell(
                               child: RotatedBox(
@@ -235,7 +243,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 60.h,
+                            top: 70.h,
                             left: 550.w,
                             child: InkWell(
                               child: RotatedBox(
@@ -255,10 +263,14 @@ class _Level14LayoutState extends State<Level14Layout> {
                             top: 60.h,
                             left: 635.w,
                             child: InkWell(
-                              child: Image.asset('assets/chairs/Group 495.png',
-                                  width: 100.w,
-                                  height: 100.h,
-                                  fit: BoxFit.fitWidth),
+                              child: RotatedBox(
+                                quarterTurns: 3,
+                                child: Image.asset(
+                                    'assets/chairs/Group 495.png',
+                                    width: 100.w,
+                                    height: 100.h,
+                                    fit: BoxFit.fitWidth),
+                              ),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(5, bookedTables[5] ?? []);
@@ -268,10 +280,14 @@ class _Level14LayoutState extends State<Level14Layout> {
                             top: 60.h,
                             left: 730.w,
                             child: InkWell(
-                              child: Image.asset('assets/chairs/Group 495.png',
-                                  width: 100.w,
-                                  height: 100.h,
-                                  fit: BoxFit.fitWidth),
+                              child: RotatedBox(
+                                quarterTurns: 3,
+                                child: Image.asset(
+                                    'assets/chairs/Group 495.png',
+                                    width: 100.w,
+                                    height: 100.h,
+                                    fit: BoxFit.fitWidth),
+                              ),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(6, bookedTables[6] ?? []);
@@ -341,6 +357,9 @@ class _Level14LayoutState extends State<Level14Layout> {
                               fontSize: 15.sp, fontWeight: FontWeight.w700),
                         ),
                       ),
+                      SizedBox(
+                        height: 20.6.h,
+                      ),
                       // ignore: sized_box_for_whitespace
                       Container(
                         height: MediaQuery.of(context).size.height * 0.17,
@@ -382,7 +401,17 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text('1')
+                                    Text(tableNo == 1
+                                        ? 'HDG31'
+                                        : tableNo == 2
+                                            ? 'HDG25'
+                                            : tableNo == 3
+                                                ? "HDG19"
+                                                : tableNo == 4
+                                                    ? 'HDG13'
+                                                    : tableNo == 5
+                                                        ? 'HDG7'
+                                                        : "HDG1"),
                                   ],
                                 ),
                                 onTap: () {
@@ -399,7 +428,17 @@ class _Level14LayoutState extends State<Level14Layout> {
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text('2'),
+                                    Text(tableNo == 1
+                                        ? 'HDG34'
+                                        : tableNo == 2
+                                            ? 'HDG28'
+                                            : tableNo == 3
+                                                ? "HDG22"
+                                                : tableNo == 4
+                                                    ? 'HDG16'
+                                                    : tableNo == 5
+                                                        ? 'HDG10'
+                                                        : "HDG4"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -428,7 +467,17 @@ class _Level14LayoutState extends State<Level14Layout> {
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text('3'),
+                                    Text(tableNo == 1
+                                        ? 'HDG35'
+                                        : tableNo == 2
+                                            ? 'HDG29'
+                                            : tableNo == 3
+                                                ? "HDG23"
+                                                : tableNo == 4
+                                                    ? 'HDG17'
+                                                    : tableNo == 5
+                                                        ? 'HDG11'
+                                                        : "HDG5"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -457,7 +506,17 @@ class _Level14LayoutState extends State<Level14Layout> {
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text('4'),
+                                    Text(tableNo == 1
+                                        ? 'HDG36'
+                                        : tableNo == 2
+                                            ? 'HDG30'
+                                            : tableNo == 3
+                                                ? "HDG24"
+                                                : tableNo == 4
+                                                    ? 'HDG18'
+                                                    : tableNo == 5
+                                                        ? 'HDG12'
+                                                        : "HDG6"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -526,7 +585,17 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text('5'),
+                                    Text(tableNo == 1
+                                        ? 'HDG33'
+                                        : tableNo == 2
+                                            ? 'HDG27'
+                                            : tableNo == 3
+                                                ? "HDG21"
+                                                : tableNo == 4
+                                                    ? 'HDG15'
+                                                    : tableNo == 5
+                                                        ? 'HDG9'
+                                                        : "HDG3"),
                                   ],
                                 ),
                                 onTap: () {
@@ -554,7 +623,17 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text('6'),
+                                    Text(tableNo == 1
+                                        ? 'HDG32'
+                                        : tableNo == 2
+                                            ? 'HDG26'
+                                            : tableNo == 3
+                                                ? "HDG20"
+                                                : tableNo == 4
+                                                    ? 'HDG14'
+                                                    : tableNo == 5
+                                                        ? 'HDG8'
+                                                        : "HDG2"),
                                   ],
                                 ),
                                 onTap: () {
@@ -785,6 +864,9 @@ class _Level14LayoutState extends State<Level14Layout> {
                           textStyle: TextStyle(
                               fontSize: 15.sp, fontWeight: FontWeight.w700),
                         ),
+                      ),
+                      SizedBox(
+                        height: 20.6.h,
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
