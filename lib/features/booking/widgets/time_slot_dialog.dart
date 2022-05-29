@@ -240,6 +240,38 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                             ScaffoldMessenger.of(context).clearSnackBars();
                             if (startTime == null) return;
 
+                            DateTime starttTime = DateTime(
+                              value.year,
+                              value.month,
+                              value.day,
+                              startTime!.hour,
+                              startTime!.minute,
+                            );
+
+                            DateTime enddTime = DateTime(
+                              value.year,
+                              value.month,
+                              value.day,
+                              value.hour,
+                              value.minute,
+                            );
+
+                            if (enddTime.isBefore(starttTime)) {
+                              showSnackBar(
+                                  context: context,
+                                  message: "Can't Select the date");
+                            } else {
+                              setState(() {
+                                if (value == null) return;
+                                setState(() {
+                                  // _formattedEndTime = AppHelpers.formatTime(
+                                  //     TimeOfDay.fromDateTime(value));
+
+                                  endTime = TimeOfDay.fromDateTime(value);
+                                });
+                              });
+                            }
+
                             if (value.hour <= startTime!.hour &&
                                 value.minute <= startTime!.minute) {
                               showSnackBar(
@@ -295,6 +327,9 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
           Center(
             child: InkWell(
               onTap: () async {
+                if (widget.tableNo == null || widget.seatNo == null) {
+                  return;
+                }
                 if (startdate != null &&
                     endDate != null &&
                     startTime != null &&

@@ -958,6 +958,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                     _formattedStartTime =
                         AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
                     _startTime = TimeOfDay.fromDateTime(value);
+                    _formattedEndTime = "";
                   });
                 }
               }
@@ -966,6 +967,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 _formattedStartTime =
                     AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
                 _startTime = TimeOfDay.fromDateTime(value);
+                _endTime = null;
               });
             }
           }, DateTime.now());
@@ -1007,8 +1009,23 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
             if (_startTime == null) return;
 
-            if (value.hour <= _startTime!.hour &&
-                value.minute <= _startTime!.minute) {
+            DateTime startTime = DateTime(
+              value.year,
+              value.month,
+              value.day,
+              _startTime!.hour,
+              _startTime!.minute,
+            );
+
+            DateTime endTime = DateTime(
+              value.year,
+              value.month,
+              value.day,
+              value.hour,
+              value.minute,
+            );
+
+            if (endTime.isBefore(startTime)) {
               showSnackBar(context: context, message: "Can't Select the date");
             } else {
               setState(() {
@@ -1020,6 +1037,20 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 });
               });
             }
+
+            // if (value.hour <= _startTime!.hour &&
+            //     value.minute <= _startTime!.minute) {
+            //   showSnackBar(context: context, message: "Can't Select the date");
+            // } else {
+            //   setState(() {
+            //     if (value == null) return;
+            //     setState(() {
+            //       _formattedEndTime =
+            //           AppHelpers.formatTime(TimeOfDay.fromDateTime(value));
+            //       _endTime = TimeOfDay.fromDateTime(value);
+            //     });
+            //   });
+            // }
           }, _startDate ?? DateTime.now());
         },
         child: Center(

@@ -501,7 +501,8 @@ class _SignInScreenState extends State<SignInScreen> {
   void _pickImage(ImageSource source) async {
     XFile? image;
     final picker = ImagePicker();
-    image = await picker.pickImage(source: source);
+    image = await picker.pickImage(source: source, imageQuality: 20);
+
     if (image != null) {
       Navigator.pop(context);
       setState(() {
