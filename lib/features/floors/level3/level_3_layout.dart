@@ -16,6 +16,7 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../booking/widgets/time_slot_dialog.dart';
 
@@ -170,27 +171,30 @@ class _Level3LayoutState extends State<Level3Layout> {
                   //  height:  MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
-                      //   scrollDirection: Axis.horizontal,
+                        scrollDirection: Axis.horizontal,
                       child: Stack(
                     children: [
                       RotatedBox(
-                        quarterTurns: 1,
-                        child: Image.asset(
-                          'assets/level3/Frame 10.png',
-                          width: MediaQuery.of(context).size.width,
-                          height: 500.h,
-                        ),
+                        quarterTurns: 4,
+                        child:SvgPicture.asset("assets/background_floor/floor3/floor3.svg",
+                           width: MediaQuery.of(context).size.width,
+                            height: 500.h,)
+                        // child: Image.asset(
+                        //   'assets/level3/Frame 10.png',
+                          // width: MediaQuery.of(context).size.width,
+                          // height: 500.h,
+                        // ),
                       ),
                       Positioned(
-                          bottom: 160.w,
-                          right: 180.w,
+                          top: 85.w,
+                          left: 150.w,
                           child: InkWell(
-                            child: Image.asset(
-                              'assets/Group 493.png',
+                            child: SvgPicture.asset(
+                              'assets/background_floor/floor3/table_1.svg',
                               width: 90.w,
                             ),
                             onTap: () {
-                              showTabledetails1(1, bookedTables[1] ?? []);
+                              showTabledetails3(3, bookedTables[3] ?? []);
                             },
                           )),
                       // Positioned(
@@ -214,53 +218,62 @@ class _Level3LayoutState extends State<Level3Layout> {
                       //   ),
                       // ),
                       Positioned(
-                        bottom: 207.w,
-                        left: 235.w,
+                        bottom: 148.w,
+                        left: 205.w,
                         //  right: 1.w,
 
                         child: InkWell(
-                          child: SizedBox(
-                            height: 65.h,
-                            width: 50.w,
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                    'assets/chairs/chair_down_paired.png'),
-                                Image.asset(
-                                  'assets/chairs/small_table.png',
-                                ),
-                                Image.asset(
-                                    'assets/chairs/chair_down_paired.png'),
-                              ],
+                          // child: SizedBox(
+                          //   height: 65.h,
+                          //   width: 50.w,
+                          //   child: Column(
+                          //     children: [
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //       Image.asset(
+                          //         'assets/chairs/small_table.png',
+                          //       ),
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //     ],
+                          //   ),
+                          // ),
+                          child:SvgPicture.asset(
+                              'assets/background_floor/floor3/table_3.svg',
+                              width: 90.w,
                             ),
-                          ),
                           onTap: () {
-                            showTabledetails3(3, bookedTables[3] ?? []);
+                           
+                             showTabledetails1(1, bookedTables[1] ?? []);
                           },
                         ),
                       ),
                       Positioned(
-                        bottom: 148.w,
-                        left: 235.w,
+                       top: 85.w,
+                          left: 250.w,
                         //  right: 1.w,
 
                         child: InkWell(
-                          child: SizedBox(
-                            height: 65.h,
-                            width: 50.w,
-                            child: Column(
-                              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Image.asset(
-                                    'assets/chairs/chair_down_paired.png'),
-                                Image.asset(
-                                  'assets/chairs/small_table.png',
-                                ),
-                                Image.asset(
-                                    'assets/chairs/chair_down_paired.png'),
-                              ],
+                          // child: SizedBox(
+                          //   height: 65.h,
+                          //   width: 50.w,
+                          //   child: Column(
+                          //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //     children: [
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //       Image.asset(
+                          //         'assets/chairs/small_table.png',
+                          //       ),
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //     ],
+                          //   ),
+                          // ),
+                           child:SvgPicture.asset(
+                              'assets/background_floor/floor3/table_2.svg',
+                              width: 80.w,
                             ),
-                          ),
                           onTap: () {
                             showTabledetails3(4, bookedTables[4] ?? []);
                           },

@@ -7,9 +7,9 @@ import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
-import 'package:hot_desking/features/booking/presentation/pages/hot_desking_screen.dart';
 
 import '../../../core/app_colors.dart';
+import '../presentation/pages/hot_desking_screen.dart';
 import 'booking_confirmed_dialog.dart';
 import 'confirm_button.dart';
 
@@ -353,10 +353,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       .then((value) {
                     if (value) {
                       Get.back();
-                      setState(() {});
+                      //setState(() {});
                       // Navigator.pop(context);
-
-                      eventBus.fire(HotDeskingInitialEvent());
 
                       showDialog(
                           context: context,
@@ -379,9 +377,10 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                     widget.floor),
                               ),
                             );
-                          });
-
-                      TableBookingDataSource().viewAllBooking();
+                          }).then((value) {
+                        TableBookingDataSource().viewAllBooking();
+                        eventBus.fire(HotDeskingInitialEvent());
+                      });
                     } else {
                       Navigator.pop(context);
                     }

@@ -118,8 +118,8 @@ class AppHelpers {
 
     int initialMinute = initialDateTime.minute;
 
-    if (initialDateTime.minute % 5 != 0) {
-      initialMinute = initialDateTime.minute - initialDateTime.minute % 5 + 5;
+    if (initialDateTime.minute % 15 != 0) {
+      initialMinute = initialDateTime.minute - initialDateTime.minute % 15 + 15;
     }
     showCupertinoModalPopup(
         context: context,
@@ -130,7 +130,7 @@ class AppHelpers {
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.time,
               onDateTimeChanged: onDateTimeChanged,
-              minuteInterval: 5,
+              minuteInterval: 15,
               use24hFormat: true,
               initialDateTime: DateTime(
                   initialDateTime.year,
