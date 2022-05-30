@@ -352,9 +352,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   //         "assets/chairs/table.png",)),
                                   ),
 
-                              //
-
-                              //
                               Positioned(
                                 top: 100.h,
                                 left: 80.w,
