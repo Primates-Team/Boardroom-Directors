@@ -10,7 +10,7 @@ class BookingController extends GetxController {
     ],
   }.obs;
 
-  List<Map<int, int>> tableData = <Map<int, int>>[];
+  List<Map<int, int>> tableData = <Map<int, int>>[].obs;
 
   RxList<int> bookedRooms = [0].obs;
 

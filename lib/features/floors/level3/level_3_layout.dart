@@ -297,6 +297,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                   child: SingleChildScrollView(
                     child: Column(
                       //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
                           height: 10.h,

@@ -38,6 +38,7 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
     eventBus.on<HotDeskingInitialEvent>().listen((event) {
       callAPI();
       Get.back();
+      setState(() {});
     });
     callAPI();
   }

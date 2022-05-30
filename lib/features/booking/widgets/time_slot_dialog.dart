@@ -3,14 +3,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/presentation/pages/hot_desking_screen.dart';
-import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
 
+import '../../../core/app_colors.dart';
+import 'booking_confirmed_dialog.dart';
 import 'confirm_button.dart';
 
 class TimeSlotDialog extends StatefulWidget {
@@ -65,6 +65,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
       decoration: AppTheme.boxDecoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Text(
           //   'Table 1',
