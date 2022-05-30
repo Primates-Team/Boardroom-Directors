@@ -26,6 +26,7 @@ dependencies:
   firebase_core: ^1.13.1
   intl: ^0.17.0
   event_bus: ^2.0.0
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -55,3 +56,5 @@ flutter:
     - assets/
     - assets/level14/
     - assets/images/
+    - assets/background_floor/floor3/
+    - assets/background_floor/floor14/

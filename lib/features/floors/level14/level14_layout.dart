@@ -15,6 +15,7 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 class Level14Layout extends StatefulWidget {
@@ -184,110 +185,98 @@ class _Level14LayoutState extends State<Level14Layout> {
                       children: [
                         RotatedBox(
                             quarterTurns: 4,
-                            child: Image.asset("assets/level14/Frame 15.png")
+                           child:Container(
+                            //  margin:EdgeInsets.all(20),
+                             child: SvgPicture.asset('assets/background_floor/floor14/floor_14.svg',
+                              height: height,
+                                width: width,),
+                           )
+
                             // SvgPicture.asset(
                             //   'assets/Svg_images/Frame-4.svg',
-                            //   height: 1000.h,
-                            //   width: width,
+                              // height: 1000.h,
+                              // width: width,
                             // ),
                             ),
                         Positioned(
-                            top: 60.h,
-                            left: 270.w,
+                            top: 110.h,
+                            left: 170.w,
                             child: InkWell(
-                              child: RotatedBox(
-                                quarterTurns: 1,
-                                child: Image.asset(
-                                    'assets/chairs/Group 493.png',
-                                    width: 100.w,
-                                    height: 100.h,
-                                    fit: BoxFit.fitWidth),
-                              ),
+                              child: SvgPicture.asset(
+                                  'assets/background_floor/floor14/Table_6.svg',
+                                  width: 140.w,
+                                  height: 140.h,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(1, bookedTables[1] ?? []);
                               },
                             )),
                         Positioned(
-                            top: 60.h,
-                            left: 350.w,
+                             top: 95.h,
+                            left: 235.w,
                             child: InkWell(
-                              child: RotatedBox(
-                                quarterTurns: 1,
-                                child: Image.asset(
-                                    'assets/chairs/Group 493.png',
-                                    width: 100.w,
-                                    height: 100.h,
-                                    fit: BoxFit.fitWidth),
-                              ),
+                              child: SvgPicture.asset(
+                                  'assets/background_floor/floor14/Table_5.svg',
+                                  width: 160.w,
+                                  height: 160.h,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(2, bookedTables[2] ?? []);
                               },
                             )),
                         Positioned(
-                            top: 70.h,
-                            left: 460.w,
+                            top: 105.h,
+                            left: 315.w,
                             child: InkWell(
-                              child: RotatedBox(
-                                quarterTurns: 3,
-                                child: Image.asset(
-                                    'assets/chairs/Group 497.png',
-                                    width: 80.w,
-                                    height: 80.h,
-                                    fit: BoxFit.fitWidth),
-                              ),
+                              child: SvgPicture.asset(
+                                  'assets/background_floor/floor14/Table_4.svg',
+                                  width: 140.w,
+                                  height: 140.h,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(3, bookedTables[3] ?? []);
                               },
                             )),
                         Positioned(
-                            top: 70.h,
-                            left: 550.w,
+                            top: 90.h,
+                            left: 390.w,
                             child: InkWell(
-                              child: RotatedBox(
-                                quarterTurns: 3,
-                                child: Image.asset(
-                                    'assets/chairs/Group 497.png',
-                                    width: 80.w,
-                                    height: 80.h,
-                                    fit: BoxFit.fitWidth),
-                              ),
+                              child: SvgPicture.asset(
+                                  'assets/background_floor/floor14/Table_3.svg',
+                                  width: 150.w,
+                                  height: 170.h,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(4, bookedTables[4] ?? []);
                               },
                             )),
                         Positioned(
-                            top: 60.h,
-                            left: 635.w,
+                            top: 100.h,
+                            left: 460.w,
                             child: InkWell(
-                              child: RotatedBox(
-                                quarterTurns: 3,
-                                child: Image.asset(
-                                    'assets/chairs/Group 495.png',
-                                    width: 100.w,
-                                    height: 100.h,
-                                    fit: BoxFit.fitWidth),
-                              ),
+                              child: SvgPicture.asset(
+                                  'assets/background_floor/floor14/Table_2.svg',
+                                  width: 150.w,
+                                  height: 150.h,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(5, bookedTables[5] ?? []);
                               },
                             )),
                         Positioned(
-                            top: 60.h,
-                            left: 730.w,
+                            top: 80.h,
+                            left: 530.w,
                             child: InkWell(
-                              child: RotatedBox(
-                                quarterTurns: 3,
-                                child: Image.asset(
-                                    'assets/chairs/Group 495.png',
-                                    width: 100.w,
-                                    height: 100.h,
-                                    fit: BoxFit.fitWidth),
-                              ),
+                              child: SvgPicture.asset(
+                                  'assets/background_floor/floor14/Table_1.svg',
+                                  width: 190.w,
+                                  height: 190.h,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
                                 showTabledetails(6, bookedTables[6] ?? []);
