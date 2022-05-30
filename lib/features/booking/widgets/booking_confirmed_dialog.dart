@@ -71,7 +71,7 @@ class BookingConfirmedWidget extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                _buildRichTextWidget("Seat No : ", seatNo.toString()),
+                _buildRichTextWidget("Seat No : ", "HDG${seatNo.toString()}"),
                 const SizedBox(
                   height: 15,
                 ),

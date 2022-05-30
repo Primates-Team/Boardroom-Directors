@@ -21,6 +21,7 @@ class AppUrl {
   static const String viewByTimeTable = '$baseUrl/booking/viewbytime';
 
   static const String tableBookedByFloor = '$baseUrl/booking/viewbydate';
+ 
   static const String tableBookedByFloorDateTime =
       '$baseUrl/booking/viewbydatetime';
 
