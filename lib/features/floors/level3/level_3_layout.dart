@@ -175,114 +175,109 @@ class _Level3LayoutState extends State<Level3Layout> {
                   child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Stack(
-                        children: [
-                          RotatedBox(
-                              quarterTurns: 4,
-                              child: SvgPicture.asset(
-                                "assets/background_floor/floor3/floor3.svg",
-                                width: MediaQuery.of(context).size.width,
-                                height: 500.h,
-                              )
-                              // child: Image.asset(
-                              //   'assets/level3/Frame 10.png',
-                              // width: MediaQuery.of(context).size.width,
-                              // height: 500.h,
-                              // ),
-                              ),
-                          Positioned(
-                              top: 85.w,
-                              left: 150.w,
-                              child: InkWell(
-                                child: SvgPicture.asset(
-                                  'assets/background_floor/floor3/table_1.svg',
-                                  width: 90.w,
-                                ),
-                                onTap: () {
-                                  showTabledetails6(3, bookedTables[3] ?? []);
-                                },
-                              )),
-                          // Positioned(
-                          //     bottom: 160.w,
-                          //     right: 140.w,
-                          //     child: Image.asset(
-                          //       'assets/chairs/chair_of_table.png',
-                          //       height: 90.h,
-                          //     )),
-                          // Positioned(
-                          //   bottom: 168.w,
-                          //   right: 147.w,
-                          //   child: InkWell(
-                          //     child: Image.asset(
-                          //       'assets/chairs/table.png',
-                          //       height: 70.w,
-                          //     ),
-                          //     onTap: () {
-                          //       showTabledetails1(2, bookedTables[2] ?? []);
-                          //     },
+                    children: [
+                      RotatedBox(
+                        quarterTurns: 4,
+                        child:SvgPicture.asset("assets/background_floor/floor3/floor3.svg",
+                           width: MediaQuery.of(context).size.width,
+                            height: 500.h,)
+                        // child: Image.asset(
+                        //   'assets/level3/Frame 10.png',
+                          // width: MediaQuery.of(context).size.width,
+                          // height: 500.h,
+                        // ),
+                      ),
+                      Positioned(
+                          top: 15.w,
+                          left: 150.w,
+                          child: InkWell(
+                            child: SvgPicture.asset(
+                              'assets/background_floor/floor3/table_1.svg',
+                              width: 130.w,
+                            ),
+                            onTap: () {
+                              showTabledetails6(3, bookedTables[3] ?? []);
+                            },
+                          )),
+                      // Positioned(
+                      //     bottom: 160.w,
+                      //     right: 140.w,
+                      //     child: Image.asset(
+                      //       'assets/chairs/chair_of_table.png',
+                      //       height: 90.h,
+                      //     )),
+                      // Positioned(
+                      //   bottom: 168.w,
+                      //   right: 147.w,
+                      //   child: InkWell(
+                      //     child: Image.asset(
+                      //       'assets/chairs/table.png',
+                      //       height: 70.w,
+                      //     ),
+                      //     onTap: () {
+                      //       showTabledetails1(2, bookedTables[2] ?? []);
+                      //     },
+                      //   ),
+                      // ),
+                      Positioned(
+                        bottom: 130.w,
+                        left: 220.w,
+                        //  right: 1.w,
+
+                        child: InkWell(
+                          // child: SizedBox(
+                          //   height: 65.h,
+                          //   width: 50.w,
+                          //   child: Column(
+                          //     children: [
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //       Image.asset(
+                          //         'assets/chairs/small_table.png',
+                          //       ),
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //     ],
                           //   ),
                           // ),
-                          Positioned(
-                            bottom: 148.w,
-                            left: 205.w,
-                            //  right: 1.w,
+                          child:SvgPicture.asset(
+                              'assets/background_floor/floor3/table_3.svg',
+                              width: 130.w,
+                            ),
+                          onTap: () {
+                           
+                             showTabledetails1(1, bookedTables[1] ?? []);
+                          },
+                        ),
+                      ),
+                      Positioned(
+                       top: 8.w,
+                          left: 260.w,
+                        //  right: 1.w,
 
-                            child: InkWell(
-                              // child: SizedBox(
-                              //   height: 65.h,
-                              //   width: 50.w,
-                              //   child: Column(
-                              //     children: [
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //       Image.asset(
-                              //         'assets/chairs/small_table.png',
-                              //       ),
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //     ],
-                              //   ),
-                              // ),
-                              child: SvgPicture.asset(
-                                'assets/background_floor/floor3/table_3.svg',
-                                width: 90.w,
-                              ),
-                              onTap: () {
-                                showTabledetails1(1, bookedTables[1] ?? []);
-                              },
+                        child: InkWell(
+                          // child: SizedBox(
+                          //   height: 65.h,
+                          //   width: 50.w,
+                          //   child: Column(
+                          //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //     children: [
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //       Image.asset(
+                          //         'assets/chairs/small_table.png',
+                          //       ),
+                          //       Image.asset(
+                          //           'assets/chairs/chair_down_paired.png'),
+                          //     ],
+                          //   ),
+                          // ),
+                           child:SvgPicture.asset(
+                              'assets/background_floor/floor3/table_2.svg',
+                              width: 120.w,
                             ),
                           ),
-                          Positioned(
-                            top: 85.w,
-                            left: 250.w,
-                            //  right: 1.w,
-
-                            child: InkWell(
-                              // child: SizedBox(
-                              //   height: 65.h,
-                              //   width: 50.w,
-                              //   child: Column(
-                              //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              //     children: [
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //       Image.asset(
-                              //         'assets/chairs/small_table.png',
-                              //       ),
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //     ],
-                              //   ),
-                              // ),
-                              child: SvgPicture.asset(
-                                'assets/background_floor/floor3/table_2.svg',
-                                width: 80.w,
-                              ),
-                              onTap: () {
-                                showTabledetails5(4, bookedTables[4] ?? []);
-                              },
-                            ),
-                          ),
-                        ],
+                      )],
                       )),
                 );
               });

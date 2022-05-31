@@ -38,7 +38,7 @@ class _BookDeskSecondScreenState extends State<BookDeskSecondScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.kGreyBackground,
-      appBar: AppTheme.appBar('Book DesK', context),
+      appBar: AppTheme.appBar('Book Desk', context),
       body: SingleChildScrollView(
         // controller: controller,
         child: Padding(
