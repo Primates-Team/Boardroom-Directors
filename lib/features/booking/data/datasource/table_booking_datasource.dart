@@ -41,14 +41,14 @@ class TableBookingDataSource {
           }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        print(jsonString);
+      
         showSnackBar(
             context: Get.context!,
             message: 'Booking Successful',
             bgColor: Colors.green);
         return true;
       } else {
-        print(response.statusCode);
+      
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -90,14 +90,14 @@ class TableBookingDataSource {
           });
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        print(jsonString);
+      
         showSnackBar(
             context: Get.context!,
             message: 'Booking Successful',
             bgColor: Colors.green);
         return true;
       } else {
-        print(response.statusCode);
+      
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -128,7 +128,7 @@ class TableBookingDataSource {
           }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        print(jsonString);
+    
         List<GetAllTableBookingResponse> bookings =
             getAllTableBookingResponseFromJson(jsonString);
 
@@ -155,13 +155,13 @@ class TableBookingDataSource {
           }
         }
         bookedSeats.toSet().toList();
-        print(bookedSeats);
+  
         bookingController.bookedSeats.value = booked;
-        print(booked);
+      
 
         return true;
       } else {
-        print(response.statusCode);
+   
         showSnackBar(
             context: Get.context!,
             message: 'Failed to Load',

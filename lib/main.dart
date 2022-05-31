@@ -14,6 +14,7 @@ import 'features/login/presentation/pages/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
   AppHelpers.SHARED_PREFERENCES = await SharedPreferences.getInstance();
   TableBookingDataSource().viewAllBooking();
@@ -37,13 +38,19 @@ class MyApp extends StatelessWidget {
       designSize: const Size(390, 800),
       builder: (_) {
         return GetMaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            fontFamily: GoogleFonts.lato().fontFamily,
-          ),
-          home: isLoggedIn ? const HomeScreenMain() : const LoginScreen(),
-        );
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              fontFamily: GoogleFonts.lato().fontFamily,
+            ),
+            home: isLoggedIn ? const HomeScreenMain() : const LoginScreen(),
+            getPages: [
+              GetPage(
+                  name: '/root',
+                  page: () =>
+                      isLoggedIn ? HomeScreenMain() : const LoginScreen()),
+              GetPage(name: '/home', page: () => const HomeScreenMain()),
+            ]);
       },
     );
   }

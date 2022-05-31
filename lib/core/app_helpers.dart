@@ -81,7 +81,7 @@ class AppHelpers {
         ? '0${time.minute}'
         : time.minute.toString();
     var t = '$hour:$min';
-    print(t);
+   
     return t;
   }
 

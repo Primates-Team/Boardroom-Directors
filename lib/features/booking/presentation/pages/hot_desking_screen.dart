@@ -37,8 +37,10 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
     super.initState();
     eventBus.on<HotDeskingInitialEvent>().listen((event) {
       callAPI();
-      Get.back();
-      setState(() {});
+      Get.offAllNamed('/root');
+
+      // Get.back(closeOverlays: true);
+      // setState(() {});
     });
     callAPI();
   }
@@ -49,13 +51,14 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": outputDate,
-            "floor": _selectedFloor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now())
-          }));
+      var response =
+          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "selecteddate": outputDate,
+                "floor": _selectedFloor,
+                "current_time": AppHelpers.formatTime(TimeOfDay.now())
+              }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
@@ -70,8 +73,6 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
       });
 
       bookingController.tableData = tableData;
-
-      print(tableData);
     } catch (e) {
       print(e);
     }

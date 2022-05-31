@@ -93,7 +93,7 @@ class TableCard extends StatelessWidget {
                                             "id": "${node['id'] ?? 0}",
                                             "status": "cancel"
                                           });
-                                      print(response.body);
+                                 
                                       onRefresh();
                                     },
                                     onEdit: (String date, String startTime,
@@ -121,7 +121,7 @@ class TableCard extends StatelessWidget {
                                                     .toString()
                                                 : 1.toString(),
                                           });
-                                      print(response.body);
+                                 
                                       onRefresh();
                                     },
                                   ),

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_theme.dart';
-import 'package:hot_desking/features/home/presentation/pages/home_screen_main.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
 import 'package:hot_desking/features/login/presentation/pages/forgot_password_screen.dart';
 import 'package:hot_desking/features/login/presentation/pages/signin_screen.dart';
@@ -147,12 +146,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           .login(_email.text, _password.text)
                           .then((value) {
                         if (value) {
-                          Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: const HomeScreenMain(),
-                                  duration: const Duration(milliseconds: 250)));
+                          Get.toNamed("/home");
+
+                          // Navigator.push(
+                          //     context,
+                          //     PageTransition(
+                          //         type: PageTransitionType.fade,
+                          //         child: const HomeScreenMain(),
+                          //         duration: const Duration(milliseconds: 250)));
                         } else {
                           Get.snackbar("The user is not approved yet.", "");
                         }

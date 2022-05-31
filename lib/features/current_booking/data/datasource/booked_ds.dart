@@ -12,7 +12,7 @@ class BookedDataSource {
   static Future<Map> getBookingHistory(String date) async {
     Map mp = {};
     var client = http.Client();
-    //print(Uri.parse(AppUrl.viewByEmployee));
+   
     //try {
     var response = await client.post(Uri.parse(AppUrl.viewByEmployee),
         //      headers: {
@@ -24,14 +24,14 @@ class BookedDataSource {
               ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
               : 1,
         });
-    //print(response);
+    
     if (response.statusCode == 200) {
       mp['flag'] = true;
       mp['data'] = jsonDecode(response.body);
       return mp;
       // var jsonString = response.body;
     } else {
-      print(response.statusCode);
+      
       // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
       /* showSnackBar(
             context: Get.context!,
@@ -44,7 +44,7 @@ class BookedDataSource {
     // } catch (e) {
     // showSnackBar(
     //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
-    // print(e);
+    
     return {'flag': false};
     // }
   }
@@ -52,7 +52,7 @@ class BookedDataSource {
   static Future<Map> getBookingMeetingHistory() async {
     Map mp = {};
     var client = http.Client();
-    //print(Uri.parse(AppUrl.viewByEmployee));
+  
     //try {
     var response = await client.post(Uri.parse(AppUrl.viewMeetingByEmployee),
         //      headers: {
@@ -63,7 +63,7 @@ class BookedDataSource {
               ? AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()
               : 1,
         });
-    //print(response);
+   
     if (response.statusCode == 200) {
       mp['flag'] = true;
       mp['data'] = jsonDecode(response.body);
@@ -83,14 +83,14 @@ class BookedDataSource {
     // } catch (e) {
     // showSnackBar(
     //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
-    // print(e);
+   
     return {'flag': false};
     // }
   }
 
   static Future<Map> getCurrentHistory(String date, String time) async {
     var client = http.Client();
-    print(date);
+   
     try {
       var response = await client.post(Uri.parse(AppUrl.viewByTime),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
@@ -99,14 +99,11 @@ class BookedDataSource {
             "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
             if (time != null) "current_time": time
           }));
-      print(
-          "employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id').toString()}");
-      // print(response);
-      // print("selecteddate=" + date.toString());
-      //print("time=" + time.toString());
+   
+     
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        //print(jsonString);
+    
         /* showSnackBar(
             context: Get.context!,
             message: 'Data Fetched Successfully',
@@ -114,7 +111,7 @@ class BookedDataSource {
         return true;*/
         return {'flag': true, 'data': jsonDecode(jsonString)};
       } else {
-        print(response.statusCode);
+        
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         /* showSnackBar(
             context: Get.context!,
@@ -133,7 +130,7 @@ class BookedDataSource {
 
   static Future<Map> getCurrentHistoryTable(String date, String time) async {
     var client = http.Client();
-    print(date);
+  
     try {
       var response = await client.post(Uri.parse(AppUrl.viewByTimeTable),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
@@ -143,13 +140,10 @@ class BookedDataSource {
             "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
             if (time != null) "current_time": time
           }));
-      print("employyeid${AppHelpers.SHARED_PREFERENCES.getInt('user_id')}");
-      // print(response);
-      // print("selecteddate=" + date.toString());
-      //print("time=" + time.toString());
+    
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        //print(jsonString);
+     
         /* showSnackBar(
             context: Get.context!,
             message: 'Data Fetched Successfully',
@@ -157,7 +151,7 @@ class BookedDataSource {
         return true;*/
         return {'flag': true, 'data': jsonDecode(jsonString)};
       } else {
-        print(response.statusCode);
+      
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         /* showSnackBar(
             context: Get.context!,

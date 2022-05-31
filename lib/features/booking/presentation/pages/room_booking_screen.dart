@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,7 +82,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
     try {
       var response = await client.get(Uri.parse(AppUrl.baseUrl + url));
       var jsonString = response.body;
-      print(response);
+
       roomId = jsonDecode(jsonString)[0]['id'];
       // rooms = jsonDecode(jsonString);
       rooms.clear();
@@ -654,6 +655,49 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                               Expanded(
                                 child: ListView.builder(
                                     itemBuilder: (context, index2) {
+                                      return DropdownSearch<String>(
+                                          mode: Mode.BOTTOM_SHEET,
+                                          showSelectedItems: true,
+                                          showSearchBox: true,
+                                          items: userList,
+                                          dropdownSearchDecoration:
+                                              InputDecoration(
+                                            labelText:
+                                                "Select Invitee${index2 + 1} Email",
+                                            hintText:
+                                                "Select Invitee${index2 + 1} Email",
+                                          ),
+                                          // popupItemDisabled: (String s) =>
+                                          //     s.startsWith('I'),
+                                          onChanged: (String? newValue) {
+                                            setState(() {
+                                              if (paxEmailList.isEmpty) {
+                                                setState(() {
+                                                  paxEmailList
+                                                      .add(newValue ?? '');
+                                                });
+                                              }
+
+                                              if (paxEmailList.length <
+                                                  index2 + 1) {
+                                                setState(() {
+                                                  paxEmailList
+                                                      .add(newValue ?? '');
+                                                });
+                                              }
+
+                                              setState(() {
+                                                paxEmailList[index2] =
+                                                    newValue ?? '';
+                                              });
+                                            });
+                                          },
+                                          validator: (String? value) {
+                                            if (value?.isEmpty ?? true) {
+                                              return "please Select Invitee${index2 + 1} Email";
+                                            }
+                                          },
+                                          selectedItem: null);
                                       return DropdownButtonFormField<String>(
                                         value: null,
                                         hint: Text(
@@ -1110,7 +1154,9 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
 
                 if (_selectedPax.value > val!) {
                   for (int i = 0; i < _selectedPax.value - val; i++) {
-                    paxEmailList.removeLast();
+                    if (paxEmailList.isNotEmpty) {
+                      paxEmailList.removeLast();
+                    }
                   }
                 }
 

@@ -22,7 +22,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
     return GetBuilder<ForgotPasswordController>(
       builder: (logic) {
-        print(logic.status.isLoading);
         return Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,

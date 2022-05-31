@@ -38,7 +38,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
                     // New date selected
                     setState(() {
                       _selectedValue = date;
-                      print(_selectedValue);
+                     
                     });
                   },
                 ),

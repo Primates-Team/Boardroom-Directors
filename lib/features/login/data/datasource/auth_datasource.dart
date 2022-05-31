@@ -35,7 +35,7 @@ class AuthDataSource {
             "profilepic": user.profileUrl
           }));
       if (response.statusCode == 200) {
-        print(response.body);
+       
         showSnackBar(context: Get.context!, message: 'Registered Successfully');
         // AppHelpers.SHARED_PREFERENCES.setString('email', user.email);
         // AppHelpers.SHARED_PREFERENCES.setString('firstName', user.firstName);
@@ -50,7 +50,7 @@ class AuthDataSource {
             bgColor: Colors.red);
         return false;
       } else {
-        print(response.statusCode);
+  
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -72,7 +72,7 @@ class AuthDataSource {
         Uri.parse(AppUrl.viewAllUsers),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
-      print(response.body);
+   
       if (response.statusCode == 200) {
         var jsonString = response.body;
         List<GetUserResponse> users = getUserResponseFromJson(jsonString);
@@ -111,7 +111,7 @@ class AuthDataSource {
             bgColor: Colors.red);
         return false;
       } else {
-        print(response.statusCode);
+    
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -122,7 +122,7 @@ class AuthDataSource {
     } catch (e) {
       // showSnackBar(
       //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
-      // print(e);
+     
       return false;
     }
   }
@@ -141,7 +141,7 @@ class AuthDataSource {
         users = getUserResponseFromJson(jsonString);
         return users;
       } else {
-        print(response.statusCode);
+  
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -173,7 +173,7 @@ class AuthDataSource {
         forgotPasswordResponse = ForgotPasswordResponse.fromJson(jsonString);
         return forgotPasswordResponse;
       } else {
-        print(response.statusCode);
+    
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -201,7 +201,7 @@ class AuthDataSource {
       if (response.statusCode == 200) {
         return response.body == "true";
       } else {
-        print(response.statusCode);
+       
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,

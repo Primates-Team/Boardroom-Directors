@@ -39,7 +39,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
   }
 
   void loadData() async {
-    print("in load data");
+
     // Map bd = await BookedDataSource.getBookingHistory(
     //     AppHelpers.formatDate(_selectedValue));
 
@@ -91,10 +91,10 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 //date format incompatibility
 
     String fin = dt + '-' + mth + '-' + y;
-    print(fin);
+  
     // _filter = [];
     // _all.forEach((element) {
-    //   // print(element['selecteddate']);
+  
     //   if (element['selecteddate'] == fin.toString()) {
     //     _filter.add(element);
     //   }
@@ -182,7 +182,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                           onDateChange: (date) {
                             setState(() {
                               _selectedValue = date;
-                              print(_selectedValue);
+                             
                             });
                             // filter();
 

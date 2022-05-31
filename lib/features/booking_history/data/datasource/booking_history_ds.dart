@@ -21,14 +21,14 @@ class BookingHistoryDataSource {
           });
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        print(jsonString);
+     
         showSnackBar(
             context: Get.context!,
             message: 'History Fetched Successfully',
             bgColor: Colors.green);
         return true;
       } else {
-        print(response.statusCode);
+   
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -57,14 +57,14 @@ class BookingHistoryDataSource {
           });
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        print(jsonString);
+   
         showSnackBar(
             context: Get.context!,
             message: 'Data Fetched Successfully',
             bgColor: Colors.green);
         return true;
       } else {
-        print(response.statusCode);
+   
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,

@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,6 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 class Level14Layout extends StatefulWidget {
@@ -43,13 +43,14 @@ class _Level14LayoutState extends State<Level14Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": outputDate,
-            "floor": _selectedFloor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now())
-          }));
+      var response =
+          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "selecteddate": outputDate,
+                "floor": _selectedFloor,
+                "current_time": AppHelpers.formatTime(TimeOfDay.now())
+              }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
@@ -73,13 +74,14 @@ class _Level14LayoutState extends State<Level14Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": outputDate,
-            "floor": _selectedFloor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now())
-          }));
+      var response =
+          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "selecteddate": outputDate,
+                "floor": _selectedFloor,
+                "current_time": AppHelpers.formatTime(TimeOfDay.now())
+              }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
@@ -127,7 +129,6 @@ class _Level14LayoutState extends State<Level14Layout> {
     callnext();
 
     bookedTables = modifiedTables;
-    // print(modifiedTables);
   }
 
   selectTable(int tableNo, int seatNo) {
@@ -185,17 +186,19 @@ class _Level14LayoutState extends State<Level14Layout> {
                       children: [
                         RotatedBox(
                             quarterTurns: 4,
-                           child:Container(
-                            //  margin:EdgeInsets.all(20),
-                             child: SvgPicture.asset('assets/background_floor/floor14/floor_14.svg',
-                              height: height,
-                                width: width,),
-                           )
+                            child: Container(
+                              //  margin:EdgeInsets.all(20),
+                              child: SvgPicture.asset(
+                                'assets/background_floor/floor14/floor_14.svg',
+                                height: height,
+                                width: width,
+                              ),
+                            )
 
                             // SvgPicture.asset(
                             //   'assets/Svg_images/Frame-4.svg',
-                              // height: 1000.h,
-                              // width: width,
+                            // height: 1000.h,
+                            // width: width,
                             // ),
                             ),
                         Positioned(
@@ -213,12 +216,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                             top: 60.h,
+                            top: 60.h,
                             left: 350.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_5.svg',
-                                 width: 110.w,
+                                  width: 110.w,
                                   height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -232,7 +235,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_4.svg',
-                                 width: 110.w,
+                                  width: 110.w,
                                   height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -246,7 +249,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_3.svg',
-                                 width: 110.w,
+                                  width: 110.w,
                                   height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -260,7 +263,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_2.svg',
-                                 width: 110.w,
+                                  width: 110.w,
                                   height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -274,7 +277,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_1.svg',
-                                width: 110.w,
+                                  width: 110.w,
                                   height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -802,8 +805,7 @@ class _Level14LayoutState extends State<Level14Layout> {
         });
   }
 
-
-showTabledetails1(int tableNo, List<int> seats) async {
+  showTabledetails1(int tableNo, List<int> seats) async {
     await callAPI();
     return showDialog(
         context: context,
@@ -900,7 +902,7 @@ showTabledetails1(int tableNo, List<int> seats) async {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text( "HDG1"),
+                                    Text("HDG1"),
                                   ],
                                 ),
                                 onTap: () {
@@ -1252,7 +1254,7 @@ showTabledetails1(int tableNo, List<int> seats) async {
         });
   }
 
-showTabledetails2(int tableNo, List<int> seats) async {
+  showTabledetails2(int tableNo, List<int> seats) async {
     await callAPI();
     return showDialog(
         context: context,
@@ -1349,7 +1351,7 @@ showTabledetails2(int tableNo, List<int> seats) async {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text( "HDG7"),
+                                    Text("HDG7"),
                                   ],
                                 ),
                                 onTap: () {
@@ -1701,7 +1703,7 @@ showTabledetails2(int tableNo, List<int> seats) async {
         });
   }
 
-showTabledetails3(int tableNo, List<int> seats) async {
+  showTabledetails3(int tableNo, List<int> seats) async {
     await callAPI();
     return showDialog(
         context: context,
@@ -1798,7 +1800,7 @@ showTabledetails3(int tableNo, List<int> seats) async {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text( "HDG13"),
+                                    Text("HDG13"),
                                   ],
                                 ),
                                 onTap: () {
@@ -2150,7 +2152,7 @@ showTabledetails3(int tableNo, List<int> seats) async {
         });
   }
 
-showTabledetails4(int tableNo, List<int> seats) async {
+  showTabledetails4(int tableNo, List<int> seats) async {
     await callAPI();
     return showDialog(
         context: context,
@@ -2247,7 +2249,7 @@ showTabledetails4(int tableNo, List<int> seats) async {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text( "HDG19"),
+                                    Text("HDG19"),
                                   ],
                                 ),
                                 onTap: () {
@@ -2599,7 +2601,7 @@ showTabledetails4(int tableNo, List<int> seats) async {
         });
   }
 
-showTabledetails5(int tableNo, List<int> seats) async {
+  showTabledetails5(int tableNo, List<int> seats) async {
     await callAPI();
     return showDialog(
         context: context,
@@ -2696,7 +2698,7 @@ showTabledetails5(int tableNo, List<int> seats) async {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text( "HDG25"),
+                                    Text("HDG25"),
                                   ],
                                 ),
                                 onTap: () {
@@ -3048,7 +3050,7 @@ showTabledetails5(int tableNo, List<int> seats) async {
         });
   }
 
-showTabledetails6(int tableNo, List<int> seats) async {
+  showTabledetails6(int tableNo, List<int> seats) async {
     await callAPI();
     return showDialog(
         context: context,
@@ -3145,7 +3147,7 @@ showTabledetails6(int tableNo, List<int> seats) async {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text( "HDG31"),
+                                    Text("HDG31"),
                                   ],
                                 ),
                                 onTap: () {
@@ -3496,9 +3498,6 @@ showTabledetails6(int tableNo, List<int> seats) async {
           });
         });
   }
-
-
-
 
   // showTabledetails1(int tableNo, List<int> seats) async {
   //   return showDialog(

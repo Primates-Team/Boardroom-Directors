@@ -359,6 +359,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                       showDialog(
                           context: context,
                           barrierDismissible: false,
+                          useRootNavigator: false,
                           builder: (context) {
                             return BackdropFilter(
                               filter:

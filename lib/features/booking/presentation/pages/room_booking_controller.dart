@@ -39,6 +39,7 @@ class RoomBookingController extends GetxController with StateMixin {
       Get.dialog(BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
         child: Dialog(
+          
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           child: RoomBookingConfirmedWidget(fromTime, toTime, roomName, floor),
