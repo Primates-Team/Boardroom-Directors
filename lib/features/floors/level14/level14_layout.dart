@@ -43,7 +43,7 @@ class _Level14LayoutState extends State<Level14Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": outputDate,
@@ -73,7 +73,7 @@ class _Level14LayoutState extends State<Level14Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": outputDate,

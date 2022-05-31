@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,6 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../booking/widgets/time_slot_dialog.dart';
 
@@ -47,13 +47,14 @@ class _Level3LayoutState extends State<Level3Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": outputDate,
-            "floor": _selectedFloor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now())
-          }));
+      var response =
+          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "selecteddate": outputDate,
+                "floor": _selectedFloor,
+                "current_time": AppHelpers.formatTime(TimeOfDay.now())
+              }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
@@ -77,13 +78,14 @@ class _Level3LayoutState extends State<Level3Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": outputDate,
-            "floor": widget.selectedFloor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now())
-          }));
+      var response =
+          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "selecteddate": outputDate,
+                "floor": widget.selectedFloor,
+                "current_time": AppHelpers.formatTime(TimeOfDay.now())
+              }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
@@ -171,116 +173,117 @@ class _Level3LayoutState extends State<Level3Layout> {
                   //  height:  MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.horizontal,
                       child: Stack(
-                    children: [
-                      RotatedBox(
-                        quarterTurns: 4,
-                        child:SvgPicture.asset("assets/background_floor/floor3/floor3.svg",
-                           width: MediaQuery.of(context).size.width,
-                            height: 500.h,)
-                        // child: Image.asset(
-                        //   'assets/level3/Frame 10.png',
-                          // width: MediaQuery.of(context).size.width,
-                          // height: 500.h,
-                        // ),
-                      ),
-                      Positioned(
-                          top: 85.w,
-                          left: 150.w,
-                          child: InkWell(
-                            child: SvgPicture.asset(
-                              'assets/background_floor/floor3/table_1.svg',
-                              width: 90.w,
-                            ),
-                            onTap: () {
-                              showTabledetails6(3, bookedTables[3] ?? []);
-                            },
-                          )),
-                      // Positioned(
-                      //     bottom: 160.w,
-                      //     right: 140.w,
-                      //     child: Image.asset(
-                      //       'assets/chairs/chair_of_table.png',
-                      //       height: 90.h,
-                      //     )),
-                      // Positioned(
-                      //   bottom: 168.w,
-                      //   right: 147.w,
-                      //   child: InkWell(
-                      //     child: Image.asset(
-                      //       'assets/chairs/table.png',
-                      //       height: 70.w,
-                      //     ),
-                      //     onTap: () {
-                      //       showTabledetails1(2, bookedTables[2] ?? []);
-                      //     },
-                      //   ),
-                      // ),
-                      Positioned(
-                        bottom: 148.w,
-                        left: 205.w,
-                        //  right: 1.w,
-
-                        child: InkWell(
-                          // child: SizedBox(
-                          //   height: 65.h,
-                          //   width: 50.w,
-                          //   child: Column(
-                          //     children: [
-                          //       Image.asset(
-                          //           'assets/chairs/chair_down_paired.png'),
-                          //       Image.asset(
-                          //         'assets/chairs/small_table.png',
-                          //       ),
-                          //       Image.asset(
-                          //           'assets/chairs/chair_down_paired.png'),
-                          //     ],
+                        children: [
+                          RotatedBox(
+                              quarterTurns: 4,
+                              child: SvgPicture.asset(
+                                "assets/background_floor/floor3/floor3.svg",
+                                width: MediaQuery.of(context).size.width,
+                                height: 500.h,
+                              )
+                              // child: Image.asset(
+                              //   'assets/level3/Frame 10.png',
+                              // width: MediaQuery.of(context).size.width,
+                              // height: 500.h,
+                              // ),
+                              ),
+                          Positioned(
+                              top: 85.w,
+                              left: 150.w,
+                              child: InkWell(
+                                child: SvgPicture.asset(
+                                  'assets/background_floor/floor3/table_1.svg',
+                                  width: 90.w,
+                                ),
+                                onTap: () {
+                                  showTabledetails6(3, bookedTables[3] ?? []);
+                                },
+                              )),
+                          // Positioned(
+                          //     bottom: 160.w,
+                          //     right: 140.w,
+                          //     child: Image.asset(
+                          //       'assets/chairs/chair_of_table.png',
+                          //       height: 90.h,
+                          //     )),
+                          // Positioned(
+                          //   bottom: 168.w,
+                          //   right: 147.w,
+                          //   child: InkWell(
+                          //     child: Image.asset(
+                          //       'assets/chairs/table.png',
+                          //       height: 70.w,
+                          //     ),
+                          //     onTap: () {
+                          //       showTabledetails1(2, bookedTables[2] ?? []);
+                          //     },
                           //   ),
                           // ),
-                          child:SvgPicture.asset(
-                              'assets/background_floor/floor3/table_3.svg',
-                              width: 90.w,
-                            ),
-                          onTap: () {
-                           
-                             showTabledetails1(1, bookedTables[1] ?? []);
-                          },
-                        ),
-                      ),
-                      Positioned(
-                       top: 85.w,
-                          left: 250.w,
-                        //  right: 1.w,
+                          Positioned(
+                            bottom: 148.w,
+                            left: 205.w,
+                            //  right: 1.w,
 
-                        child: InkWell(
-                          // child: SizedBox(
-                          //   height: 65.h,
-                          //   width: 50.w,
-                          //   child: Column(
-                          //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          //     children: [
-                          //       Image.asset(
-                          //           'assets/chairs/chair_down_paired.png'),
-                          //       Image.asset(
-                          //         'assets/chairs/small_table.png',
-                          //       ),
-                          //       Image.asset(
-                          //           'assets/chairs/chair_down_paired.png'),
-                          //     ],
-                          //   ),
-                          // ),
-                           child:SvgPicture.asset(
-                              'assets/background_floor/floor3/table_2.svg',
-                              width: 80.w,
+                            child: InkWell(
+                              // child: SizedBox(
+                              //   height: 65.h,
+                              //   width: 50.w,
+                              //   child: Column(
+                              //     children: [
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //       Image.asset(
+                              //         'assets/chairs/small_table.png',
+                              //       ),
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //     ],
+                              //   ),
+                              // ),
+                              child: SvgPicture.asset(
+                                'assets/background_floor/floor3/table_3.svg',
+                                width: 90.w,
+                              ),
+                              onTap: () {
+                                showTabledetails1(1, bookedTables[1] ?? []);
+                              },
                             ),
-                          onTap: () {
-                            showTabledetails5(4, bookedTables[4] ?? []);
-                          },
-                        ),
-                      ),
-                    ],
-                  )),
+                          ),
+                          Positioned(
+                            top: 85.w,
+                            left: 250.w,
+                            //  right: 1.w,
+
+                            child: InkWell(
+                              // child: SizedBox(
+                              //   height: 65.h,
+                              //   width: 50.w,
+                              //   child: Column(
+                              //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              //     children: [
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //       Image.asset(
+                              //         'assets/chairs/small_table.png',
+                              //       ),
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //     ],
+                              //   ),
+                              // ),
+                              child: SvgPicture.asset(
+                                'assets/background_floor/floor3/table_2.svg',
+                                width: 80.w,
+                              ),
+                              onTap: () {
+                                showTabledetails5(4, bookedTables[4] ?? []);
+                              },
+                            ),
+                          ),
+                        ],
+                      )),
                 );
               });
             }
@@ -1512,7 +1515,6 @@ class _Level3LayoutState extends State<Level3Layout> {
         });
   }
 
- 
   showTabledetails5(int tableNo, List<int> seats) async {
     return showDialog(
         context: context,
@@ -1831,7 +1833,7 @@ class _Level3LayoutState extends State<Level3Layout> {
         });
   }
 
-   showTabledetails6(int tableNo, List<int> seats) async {
+  showTabledetails6(int tableNo, List<int> seats) async {
     return showDialog(
         context: context,
         builder: (context) {
