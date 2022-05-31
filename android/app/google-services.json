@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1039238524102",
+    "project_id": "hot-desking-primates",
+    "storage_bucket": "hot-desking-primates.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039238524102:android:5f60155fec0427d8b6fbc7",
+        "android_client_info": {
+          "package_name": "com.hot_desking.hot_desking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039238524102-6g7q8uh7012mg7ucs5elounorg443nsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLGsEqIv5irhydOj4IjK2Wup4iFDp_-gw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039238524102-6g7q8uh7012mg7ucs5elounorg443nsj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
