@@ -186,12 +186,12 @@ class _Level3LayoutState extends State<Level3Layout> {
                         // ),
                       ),
                       Positioned(
-                          top: 85.w,
+                          top: 15.w,
                           left: 150.w,
                           child: InkWell(
                             child: SvgPicture.asset(
                               'assets/background_floor/floor3/table_1.svg',
-                              width: 90.w,
+                              width: 130.w,
                             ),
                             onTap: () {
                               showTabledetails6(3, bookedTables[3] ?? []);
@@ -218,8 +218,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                       //   ),
                       // ),
                       Positioned(
-                        bottom: 148.w,
-                        left: 205.w,
+                        bottom: 130.w,
+                        left: 220.w,
                         //  right: 1.w,
 
                         child: InkWell(
@@ -240,7 +240,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                           // ),
                           child:SvgPicture.asset(
                               'assets/background_floor/floor3/table_3.svg',
-                              width: 90.w,
+                              width: 130.w,
                             ),
                           onTap: () {
                            
@@ -249,8 +249,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                         ),
                       ),
                       Positioned(
-                       top: 85.w,
-                          left: 250.w,
+                       top: 8.w,
+                          left: 260.w,
                         //  right: 1.w,
 
                         child: InkWell(
@@ -272,7 +272,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                           // ),
                            child:SvgPicture.asset(
                               'assets/background_floor/floor3/table_2.svg',
-                              width: 80.w,
+                              width: 120.w,
                             ),
                           onTap: () {
                             showTabledetails5(4, bookedTables[4] ?? []);
