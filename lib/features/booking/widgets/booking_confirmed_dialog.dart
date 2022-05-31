@@ -92,7 +92,7 @@ class BookingConfirmedWidget extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Get.back();
-                    Get.back();
+                    // Get.back();
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(18.0),

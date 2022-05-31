@@ -56,13 +56,14 @@ class _Level14LayoutState extends State<Level14Layout> {
 
       List<Map<int, int>> tableData = [];
 
-      for (var element in jsondata) {
+      jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
-          jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+          int.parse(element["tableid"]): int.parse(element["seatno"])
+          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
         tableData.add(tableSeatDict);
-      }
+      });
 
       bookingController.tableData = tableData;
     } catch (e) {}
@@ -87,13 +88,14 @@ class _Level14LayoutState extends State<Level14Layout> {
 
       List<Map<int, int>> tableData = [];
 
-      for (var element in jsondata) {
+      jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
-          jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+          int.parse(element["tableid"]): int.parse(element["seatno"])
+          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
         tableData.add(tableSeatDict);
-      }
+      });
 
       bookingController.tableData = tableData;
 

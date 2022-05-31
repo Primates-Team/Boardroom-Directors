@@ -9,7 +9,6 @@ import 'package:hot_desking/core/widgets/show_snackbar.dart';
 import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 
 import '../../../core/app_colors.dart';
-import '../presentation/pages/hot_desking_screen.dart';
 import 'booking_confirmed_dialog.dart';
 import 'confirm_button.dart';
 
@@ -380,7 +379,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                             );
                           }).then((value) {
                         TableBookingDataSource().viewAllBooking();
-                        eventBus.fire(HotDeskingInitialEvent());
+                        Get.offAllNamed("/home");
+                        // eventBus.fire(HotDeskingInitialEvent());
                       });
                     } else {
                       Navigator.pop(context);

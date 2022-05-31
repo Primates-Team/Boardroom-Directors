@@ -5,7 +5,6 @@ import 'dart:ui';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
@@ -35,13 +34,13 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
   @override
   void initState() {
     super.initState();
-    eventBus.on<HotDeskingInitialEvent>().listen((event) {
-      callAPI();
-      Get.offAllNamed('/root');
+    // eventBus.on<HotDeskingInitialEvent>().listen((event) {
+    //   callAPI();
+    //   Get.offAllNamed('/root');
 
-      // Get.back(closeOverlays: true);
-      // setState(() {});
-    });
+    //   // Get.back(closeOverlays: true);
+    //   // setState(() {});
+    // });
     callAPI();
   }
 
@@ -66,7 +65,8 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
 
       jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
-          jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+          int.parse(element["tableid"]): int.parse(element["seatno"])
+          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
         tableData.add(tableSeatDict);
