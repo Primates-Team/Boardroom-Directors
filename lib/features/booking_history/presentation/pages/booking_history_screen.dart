@@ -104,28 +104,23 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   Widget _drawList() {
     if (_error) return Center(child: Text("Error Occured"));
-    return RefreshIndicator(
-      onRefresh: () async {
-        loadData();
-      },
-      child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: _all.length,
-          itemBuilder: (BuildContext context, int index) {
-            var node = _all[index];
-            if (node['tableid'] != null) {
-              return Rc(node);
-            } else {
-              return RoomCard(
-                  showWarning: false,
-                  allowEdit: false,
-                  fromCurrentBooking: false,
-                  node: node,
-                  onRefresh: () {});
-            }
-          }),
-    );
+    return ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: _all.length,
+        itemBuilder: (BuildContext context, int index) {
+          var node = _all[index];
+          if (node['tableid'] != null) {
+            return Rc(node);
+          } else {
+            return RoomCard(
+                showWarning: false,
+                allowEdit: false,
+                fromCurrentBooking: false,
+                node: node,
+                onRefresh: () {});
+          }
+        });
   }
 
   // Widget _drawList() {
@@ -191,7 +186,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                         ),
                       ),
                       Container(
-                          height: Get.height * 0.8,
+                          // height: Get.height * 0.8,
                           child: _all.isEmpty
                               ? SingleChildScrollView(
                                   child: Container(

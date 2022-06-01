@@ -5,7 +5,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,6 +16,7 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../booking/widgets/time_slot_dialog.dart';
 
@@ -48,13 +48,13 @@ class _Level3LayoutState extends State<Level3Layout> {
     var client = http.Client();
     try {
       var response =
-          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
-              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-              body: jsonEncode({
-                "selecteddate": outputDate,
-                "floor": _selectedFloor,
-                "current_time": AppHelpers.formatTime(TimeOfDay.now())
-              }));
+       await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": outputDate,
+            "floor": _selectedFloor,
+            "current_time": AppHelpers.formatTime(TimeOfDay.now())
+          }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
@@ -79,20 +79,20 @@ class _Level3LayoutState extends State<Level3Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response =
-          await client.post(Uri.parse(AppUrl.tableBookedByFloorDateTime),
-              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-              body: jsonEncode({
-                "selecteddate": outputDate,
-                "floor": widget.selectedFloor,
-                "current_time": AppHelpers.formatTime(TimeOfDay.now())
-              }));
+      var response = 
+        await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": outputDate,
+            "floor": widget.selectedFloor,
+            "current_time": AppHelpers.formatTime(TimeOfDay.now())
+          }));
 
       List<dynamic> jsondata = jsonDecode(response.body);
 
       List<Map<int, int>> tableData = [];
 
-      jsondata.forEach((element) {
+       jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
           int.parse(element["tableid"]): int.parse(element["seatno"])
           // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
@@ -226,7 +226,24 @@ class _Level3LayoutState extends State<Level3Layout> {
                           Positioned(
                             bottom: 130.w,
                             left: 220.w,
+                            //  right: 1.w,
+
                             child: InkWell(
+                              // child: SizedBox(
+                              //   height: 65.h,
+                              //   width: 50.w,
+                              //   child: Column(
+                              //     children: [
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //       Image.asset(
+                              //         'assets/chairs/small_table.png',
+                              //       ),
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //     ],
+                              //   ),
+                              // ),
                               child: SvgPicture.asset(
                                 'assets/background_floor/floor3/table_3.svg',
                                 width: 130.w,
@@ -242,15 +259,31 @@ class _Level3LayoutState extends State<Level3Layout> {
                             //  right: 1.w,
 
                             child: InkWell(
-                              onTap: () {
-                                showTabledetails2(2, bookedTables[2] ?? []);
-                              },
+                              // child: SizedBox(
+                              //   height: 65.h,
+                              //   width: 50.w,
+                              //   child: Column(
+                              //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              //     children: [
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //       Image.asset(
+                              //         'assets/chairs/small_table.png',
+                              //       ),
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //     ],
+                              //   ),
+                              // ),
                               child: SvgPicture.asset(
                                 'assets/background_floor/floor3/table_2.svg',
                                 width: 120.w,
                               ),
+                              onTap: () {
+                                showTabledetails5(4, bookedTables[4] ?? []);
+                              },
                             ),
-                          )
+                          ),
                         ],
                       )),
                 );
@@ -319,7 +352,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                         ),
                         // ignore: sized_box_for_whitespace
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.18,
+                          height: MediaQuery.of(context).size.height * 0.24,
                           width: MediaQuery.of(context).size.width,
                           // color: Colors.lightBlue,
                           // margin: const EdgeInsets.only(
@@ -327,19 +360,24 @@ class _Level3LayoutState extends State<Level3Layout> {
                           child: Stack(
                             children: [
                               Center(
-                                  child: Image.asset(
-                                      'assets/level3/Rectangle 146.png',
-                                      height: 50.h,
-                                      width: 400.w)
+                                  child: SvgPicture.asset(
+                                      'assets/table/tableangle.svg',
+                                      height: 150.h,
+                                      width: 600.w)),
+                              // Center(
+                              //     child: Image.asset(
+                              //         'assets/level3/Rectangle 146.png',
+                              // height: 50.h,
+                              // width: 400.w)
 
-                                  // Image(
-                                  //     image: AssetImage(
-                                  //         "assets/chairs/table.png",)),
-                                  ),
+                              //     // Image(
+                              //     //     image: AssetImage(
+                              //     //         "assets/chairs/table.png",)),
+                              //     ),
 
                               Positioned(
-                                top: 100.h,
-                                left: 80.w,
+                                top: 150.h,
+                                left: 125.w,
                                 child: InkWell(
                                   child: Column(
                                     children: [
@@ -394,8 +432,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                               //   ),
                               // ),
                               Positioned(
-                                // top: 1.h,
-                                left: 80.w,
+                                top: 80.h,
+                                left: 60.w,
                                 child: InkWell(
                                   child: Column(
                                     children: [
@@ -423,8 +461,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                               ),
 
                               Positioned(
-                                //   top: 10.h,
-                                left: 139.w,
+                                top: 41.h,
+                                left: 100.w,
                                 child: InkWell(
                                   onTap: () {
                                     setState(() {
@@ -452,8 +490,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                               ),
 
                               Positioned(
-                                //   top: 10.h,
-                                left: 200.w,
+                                left: 145.w,
                                 child: InkWell(
                                   onTap: () {
                                     setState(() {
@@ -512,8 +549,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                               // ),
 
                               Positioned(
-                                top: 100.h,
-                                left: 200.w,
+                                top: 71.h,
+                                left: 210.w,
                                 child: InkWell(
                                   onTap: () {
                                     setState(() {
@@ -540,8 +577,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 ),
                               ),
                               Positioned(
-                                top: 100.h,
-                                left: 139.w,
+                                top: 110.h,
+                                left: 175.w,
                                 child: InkWell(
                                   child: Column(
                                     children: [
@@ -2462,7 +2499,7 @@ class _Level3LayoutState extends State<Level3Layout> {
             child: InkWell(
               onTap: () {
                 //selectTable(tableNo, 2);
-                print("asdad");
+                
               },
               child: Image.asset(
                 squareChair,

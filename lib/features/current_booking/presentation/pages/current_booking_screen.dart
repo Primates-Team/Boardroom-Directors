@@ -80,7 +80,7 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
           : Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: SizedBox(
-                  height: Get.height * 0.9,
+                  // height: Get.height * 0.9,
                   child: ListView.builder(
                       itemCount: _data.length,
                       itemBuilder: (BuildContext context, int index) {
