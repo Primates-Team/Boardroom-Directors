@@ -1,7 +1,6 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/widgets/rc.dart';
 import 'package:hot_desking/features/current_booking/data/datasource/booked_ds.dart';
@@ -39,7 +38,6 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
   }
 
   void loadData() async {
-
     // Map bd = await BookedDataSource.getBookingHistory(
     //     AppHelpers.formatDate(_selectedValue));
 
@@ -91,10 +89,10 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 //date format incompatibility
 
     String fin = dt + '-' + mth + '-' + y;
-  
+
     // _filter = [];
     // _all.forEach((element) {
-  
+
     //   if (element['selecteddate'] == fin.toString()) {
     //     _filter.add(element);
     //   }
@@ -177,7 +175,6 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                           onDateChange: (date) {
                             setState(() {
                               _selectedValue = date;
-                             
                             });
                             // filter();
 

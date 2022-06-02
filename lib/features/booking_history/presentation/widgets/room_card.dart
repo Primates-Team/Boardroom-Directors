@@ -158,7 +158,7 @@ class RoomCard extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Date',
+                        'Start Date',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w600,
@@ -175,6 +175,46 @@ class RoomCard extends StatelessWidget {
                         node != null
                             ? node['selecteddate'] != null
                                 ? node['selecteddate']
+                                : '21/12/2021'
+                            : '21/12/2021',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'End Date',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        node != null
+                            ? node['todate'] != null
+                                ? node['todate']
                                 : '21/12/2021'
                             : '21/12/2021',
                         style: TextStyle(

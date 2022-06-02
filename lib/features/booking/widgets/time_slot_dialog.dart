@@ -257,7 +257,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                               value.minute,
                             );
 
-                            if (enddTime.isBefore(starttTime)) {
+                            if (enddTime.isBefore(starttTime) ||
+                                enddTime.isAtSameMomentAs(starttTime)) {
                               showSnackBar(
                                   context: context,
                                   message: "Can't Select the date");

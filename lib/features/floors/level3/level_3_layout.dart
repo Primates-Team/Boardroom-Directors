@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,6 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../booking/widgets/time_slot_dialog.dart';
 
@@ -47,8 +47,7 @@ class _Level3LayoutState extends State<Level3Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response =
-       await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": outputDate,
@@ -79,8 +78,7 @@ class _Level3LayoutState extends State<Level3Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = 
-        await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": outputDate,
@@ -92,7 +90,7 @@ class _Level3LayoutState extends State<Level3Layout> {
 
       List<Map<int, int>> tableData = [];
 
-       jsondata.forEach((element) {
+      jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
           int.parse(element["tableid"]): int.parse(element["seatno"])
           // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
@@ -280,7 +278,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 width: 120.w,
                               ),
                               onTap: () {
-                                showTabledetails5(4, bookedTables[4] ?? []);
+                                showTabledetails5(2, bookedTables[2] ?? []);
                               },
                             ),
                           ),
@@ -2499,7 +2497,6 @@ class _Level3LayoutState extends State<Level3Layout> {
             child: InkWell(
               onTap: () {
                 //selectTable(tableNo, 2);
-                
               },
               child: Image.asset(
                 squareChair,

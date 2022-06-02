@@ -1069,7 +1069,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
               value.minute,
             );
 
-            if (endTime.isBefore(startTime)) {
+            if (endTime.isBefore(startTime) ||
+                endTime.isAtSameMomentAs(startTime)) {
               showSnackBar(context: context, message: "Can't Select the date");
             } else {
               setState(() {

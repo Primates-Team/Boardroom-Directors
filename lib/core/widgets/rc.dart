@@ -115,6 +115,43 @@ class Rc extends StatelessWidget {
               ],
             ),
           ),
+          if (data['todate'] != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'End Date',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        data['todate'],
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 7.0),
             child: Row(
