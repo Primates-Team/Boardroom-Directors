@@ -176,7 +176,7 @@ class Rc extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      data['fromtime'] ?? '' + ' - ' + data['totime'] ?? '',
+                      (data['fromtime'] ?? '') + ' - ' + (data['totime'] ?? ''),
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
