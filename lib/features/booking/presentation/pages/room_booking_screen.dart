@@ -698,61 +698,13 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                             }
                                           },
                                           selectedItem: null);
-                                      return DropdownButtonFormField<String>(
-                                        value: null,
-                                        hint: Text(
-                                            "Select Invitee${index2 + 1} Email"),
-                                        onChanged: (String? newValue) {
-                                          setState(() {
-                                            if (paxEmailList.isEmpty) {
-                                              setState(() {
-                                                paxEmailList
-                                                    .add(newValue ?? '');
-                                              });
-                                            }
-
-                                            if (paxEmailList.length <
-                                                index2 + 1) {
-                                              setState(() {
-                                                paxEmailList
-                                                    .add(newValue ?? '');
-                                              });
-                                            }
-
-                                            setState(() {
-                                              paxEmailList[index2] =
-                                                  newValue ?? '';
-                                            });
-                                          });
-                                        },
-                                        validator: (String? value) {
-                                          if (value?.isEmpty ?? true) {
-                                            return "please Select Invitee${index2 + 1} Email";
-                                          }
-                                        },
-                                        items: userList
-                                            .map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(
-                                              value,
-
-                                              textScaleFactor: 0.85,
-                                              // style: TextStyle(fontSize: 13),
-                                            ),
-                                          );
-                                        }).toList(),
-                                        // onSaved: (val) =>
-                                        //     setState(() => _user.typeNeg = val),
-                                      );
                                     },
                                     physics: const ScrollPhysics(),
                                     shrinkWrap: true,
                                     padding: EdgeInsets.zero,
                                     itemCount: _selectedPax.value),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                             ],
@@ -1153,7 +1105,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                   return;
                 }
 
-                if (_selectedPax.value > val!) {
+                if (_selectedPax.value > val! && paxEmailList.length > 1) {
                   for (int i = 0; i < _selectedPax.value - val; i++) {
                     if (paxEmailList.isNotEmpty) {
                       paxEmailList.removeLast();
