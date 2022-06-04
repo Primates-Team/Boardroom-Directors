@@ -201,7 +201,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   width: 130.w,
                                 ),
                                 onTap: () {
-                                  showTabledetails6(3, bookedTables[3] ?? []);
+                                  _buildDateSelectionDialog(3);
                                 },
                               )),
                           // Positioned(
@@ -250,7 +250,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 width: 130.w,
                               ),
                               onTap: () {
-                                _buildDateSelectionDialog();
+                                _buildDateSelectionDialog(1);
                                 // showTabledetails1(1, bookedTables[1] ?? []);
                               },
                             ),
@@ -282,7 +282,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 width: 120.w,
                               ),
                               onTap: () {
-                                showTabledetails5(2, bookedTables[2] ?? []);
+                                _buildDateSelectionDialog(2);
                               },
                             ),
                           ),
@@ -296,7 +296,7 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  _buildDateSelectionDialog() async {
+  _buildDateSelectionDialog(int tableNumber) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -325,8 +325,12 @@ class _Level3LayoutState extends State<Level3Layout> {
 
               bookedTables = modifiedTables;
 
-              if (bookedSeats != null) {
+              if (tableNumber == 1) {
                 showTabledetails1(1, bookedTables[1] ?? [], jsonData);
+              } else if (tableNumber == 2) {
+                showTabledetails5(2, bookedTables[2] ?? [], jsonData);
+              } else if (tableNumber == 3) {
+                showTabledetails6(3, bookedTables[3] ?? [], jsonData);
               }
             }),
           );
@@ -344,17 +348,12 @@ class _Level3LayoutState extends State<Level3Layout> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.57,
                   width: MediaQuery.of(context).size.width * 0.9,
-                  // margin: const EdgeInsets.only(
-                  //   left: 16.09,
-                  //   right: 7.09,
-                  // ),
                   padding: EdgeInsets.all(20.r),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                   ),
                   child: SingleChildScrollView(
                     child: Column(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
@@ -394,9 +393,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.24,
                           width: MediaQuery.of(context).size.width,
-                          // color: Colors.lightBlue,
-                          // margin: const EdgeInsets.only(
-                          //     top: 34.32, left: 48.41, right: 48.41),
                           child: Stack(
                             children: [
                               Center(
@@ -404,17 +400,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                       'assets/table/tableangle.svg',
                                       height: 150.h,
                                       width: 600.w)),
-                              // Center(
-                              //     child: Image.asset(
-                              //         'assets/level3/Rectangle 146.png',
-                              // height: 50.h,
-                              // width: 400.w)
-
-                              //     // Image(
-                              //     //     image: AssetImage(
-                              //     //         "assets/chairs/table.png",)),
-                              //     ),
-
                               Positioned(
                                 top: 150.h,
                                 left: 125.w,
@@ -443,34 +428,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   },
                                 ),
                               ),
-                              // Positioned(
-                              //   top: 60.h,
-                              //   left: 5.w,
-                              //   child: InkWell(
-                              //     child: Row(
-                              //       children: [
-                              //         Text('HDG2'),
-                              //         RotatedBox(
-                              //           quarterTurns: 3,
-                              //           child: Image.asset(
-                              //             "assets/chairs/available.png",
-                              //             color: seats.contains(2)
-                              //                 ? AppColors.kRed
-                              //                 : (table == tableNo && seat == 2)
-                              //                     ? AppColors.kOrange
-                              //                     : AppColors.kEvergreen,
-                              //             height: 22.r,
-                              //           ),
-                              //         ),
-                              //       ],
-                              //     ),
-                              //     onTap: () {
-                              //       setState(() {
-                              //         updateTable(tableNo, 2);
-                              //       });
-                              //     },
-                              //   ),
-                              // ),
                               Positioned(
                                 top: 80.h,
                                 left: 60.w,
@@ -499,7 +456,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   },
                                 ),
                               ),
-
                               Positioned(
                                 top: 41.h,
                                 left: 100.w,
@@ -528,7 +484,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   ),
                                 ),
                               ),
-
                               Positioned(
                                 left: 145.w,
                                 child: InkWell(
@@ -556,38 +511,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   ),
                                 ),
                               ),
-
-                              //
-                              //
-                              // Positioned(
-                              //   top: 60.h,
-                              //   right: 5.w,
-                              //   child: InkWell(
-                              //     onTap: () {
-                              //       setState(() {
-                              //         updateTable(tableNo, 6);
-                              //       });
-                              //     },
-                              //     child: Row(
-                              //       children: [
-                              //         RotatedBox(
-                              //           quarterTurns: 1,
-                              //           child: Image.asset(
-                              //             "assets/chairs/available.png",
-                              //             color: seats.contains(6)
-                              //                 ? AppColors.kRed
-                              //                 : (table == tableNo && seat == 6)
-                              //                     ? AppColors.kOrange
-                              //                     : AppColors.kEvergreen,
-                              //             height: 22.r,
-                              //           ),
-                              //         ),
-                              //         Text('HDG6'),
-                              //       ],
-                              //     ),
-                              //   ),
-                              // ),
-
                               Positioned(
                                 top: 71.h,
                                 left: 210.w,
@@ -681,36 +604,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                         const SizedBox(
                           height: 15.61,
                         ),
-                        // Row(
-                        //   children: [
-                        //     Container(
-                        //       height: 15.61,
-                        //       width: 31.21,
-                        //       margin: const EdgeInsets.only(
-                        //         left: 53.69,
-                        //       ),
-                        //       decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(10),
-                        //         color: Colors.grey,
-                        //       ),
-                        //     ),
-                        //     Container(
-                        //       margin: const EdgeInsets.only(
-                        //         left: 18.73,
-                        //       ),
-                        //       child: Text(
-                        //         "Available Soon",
-                        //         style: GoogleFonts.lato(
-                        //           textStyle: const TextStyle(
-                        //               fontSize: 10, fontWeight: FontWeight.w500),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
-                        // const SizedBox(
-                        //   height: 15.61,
-                        // ),
+
                         Row(
                           children: [
                             Container(
@@ -825,14 +719,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                                             ),
                                           );
                                         }).then((value) {
-                                      TableBookingDataSource().viewAllBooking({
-                                        "selecteddate": "26-05-2022",
-                                        "fromtime": "01:30",
-                                        "totime": "21:45",
-                                        "floor": "Floor 14",
-                                        "todate": "26-05-2022",
-                                        "employeeid": "188"
-                                      });
                                       Get.offAllNamed("/home");
                                       // eventBus.fire(HotDeskingInitialEvent());
                                     });
@@ -1602,7 +1488,8 @@ class _Level3LayoutState extends State<Level3Layout> {
         });
   }
 
-  showTabledetails5(int tableNo, List<int> seats) async {
+  showTabledetails5(
+      int tableNo, List<int> seats, Map<String, dynamic> data) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -1882,30 +1769,64 @@ class _Level3LayoutState extends State<Level3Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo != null && seatNo != null) {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return BackdropFilter(
-                                      filter: ImageFilter.blur(
-                                          sigmaX: 2.5, sigmaY: 2.5),
-                                      child: Dialog(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0)),
-                                        child: TimeSlotDialog(
-                                          tableNo: tableNo,
-                                          seatNo: seatNo!,
-                                          date: DateTime.now(),
-                                          startTime: TimeOfDay.now(),
-                                          floor: _selectedFloor,
-                                        ),
-                                      ),
-                                    );
+                            if (tableNo == null || seatNo == null) {
+                              return;
+                            }
+                            if (data["selecteddate"] != null &&
+                                data["todate"] != null &&
+                                data["fromtime"] != null &&
+                                data["totime"] != null) {
+                              TableBookingDataSource()
+                                  .createBooking(
+                                tableNo: tableNo,
+                                seatNo: seatNo ?? 0,
+                                startDate: data["selecteddate"],
+                                endDate: data["todate"],
+                                floor: _selectedFloor,
+                                fromTime: data["fromtime"],
+                                toTime: data["totime"],
+                              )
+                                  .then((value) {
+                                if (value) {
+                                  Get.back();
+                                  //setState(() {});
+                                  // Navigator.pop(context);
+
+                                  showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      useRootNavigator: false,
+                                      builder: (context) {
+                                        return BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 2.5, sigmaY: 2.5),
+                                          child: Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        20.0)),
+                                            child: BookingConfirmedWidget(
+                                                data["fromtime"],
+                                                data["totime"],
+                                                tableNo,
+                                                seatNo ?? 0,
+                                                data["selecteddate"],
+                                                _selectedFloor),
+                                          ),
+                                        );
+                                      }).then((value) {
+                                    Get.offAllNamed("/home");
+                                    // eventBus.fire(HotDeskingInitialEvent());
                                   });
+                                } else {
+                                  Navigator.pop(context);
+                                }
+                              });
                             } else {
                               showSnackBar(
-                                  context: context, message: 'Select Seat');
+                                  context: context,
+                                  message: 'Provide start and end time',
+                                  bgColor: AppColors.kRed);
                             }
                           },
                           child: const Text('Book'),
@@ -1920,7 +1841,8 @@ class _Level3LayoutState extends State<Level3Layout> {
         });
   }
 
-  showTabledetails6(int tableNo, List<int> seats) async {
+  showTabledetails6(
+      int tableNo, List<int> seats, Map<String, dynamic> data) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -2200,30 +2122,64 @@ class _Level3LayoutState extends State<Level3Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo != null && seatNo != null) {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return BackdropFilter(
-                                      filter: ImageFilter.blur(
-                                          sigmaX: 2.5, sigmaY: 2.5),
-                                      child: Dialog(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0)),
-                                        child: TimeSlotDialog(
-                                          tableNo: tableNo,
-                                          seatNo: seatNo!,
-                                          date: DateTime.now(),
-                                          startTime: TimeOfDay.now(),
-                                          floor: _selectedFloor,
-                                        ),
-                                      ),
-                                    );
+                            if (tableNo == null || seatNo == null) {
+                              return;
+                            }
+                            if (data["selecteddate"] != null &&
+                                data["todate"] != null &&
+                                data["fromtime"] != null &&
+                                data["totime"] != null) {
+                              TableBookingDataSource()
+                                  .createBooking(
+                                tableNo: tableNo,
+                                seatNo: seatNo ?? 0,
+                                startDate: data["selecteddate"],
+                                endDate: data["todate"],
+                                floor: _selectedFloor,
+                                fromTime: data["fromtime"],
+                                toTime: data["totime"],
+                              )
+                                  .then((value) {
+                                if (value) {
+                                  Get.back();
+                                  //setState(() {});
+                                  // Navigator.pop(context);
+
+                                  showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      useRootNavigator: false,
+                                      builder: (context) {
+                                        return BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 2.5, sigmaY: 2.5),
+                                          child: Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        20.0)),
+                                            child: BookingConfirmedWidget(
+                                                data["fromtime"],
+                                                data["totime"],
+                                                tableNo,
+                                                seatNo ?? 0,
+                                                data["selecteddate"],
+                                                _selectedFloor),
+                                          ),
+                                        );
+                                      }).then((value) {
+                                    Get.offAllNamed("/home");
+                                    // eventBus.fire(HotDeskingInitialEvent());
                                   });
+                                } else {
+                                  Navigator.pop(context);
+                                }
+                              });
                             } else {
                               showSnackBar(
-                                  context: context, message: 'Select Seat');
+                                  context: context,
+                                  message: 'Provide start and end time',
+                                  bgColor: AppColors.kRed);
                             }
                           },
                           child: const Text('Book'),
