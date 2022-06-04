@@ -57,6 +57,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
       _formattedEndTime;
   final _selectedPax = 1.obs;
   int? tableNo, seatNo, roomId;
+
   List<String> paxEmailList = [];
 
   List<GetUserResponse> users = [];
@@ -783,19 +784,21 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                   message: 'Enter Valid Pax Email');
                               return;
                             }
+                            Get.back();
+                            showSnackBar(context: context, message: "Success");
 
-                            if (element == paxEmailList.last) {
-                              controller.createBooking(
-                                roomId!,
-                                _formattedStartDate!,
-                                _formattedEndDate!,
-                                _formattedStartTime!,
-                                _formattedEndTime!,
-                                paxEmailList,
-                                _selectedLevel ?? 'Floor 3',
-                                availabilityResponse.name ?? '',
-                              );
-                            }
+                            // if (element == paxEmailList.last) {
+                            //   controller.createBooking(
+                            //     roomId!,
+                            //     _formattedStartDate!,
+                            //     _formattedEndDate!,
+                            //     _formattedStartTime!,
+                            //     _formattedEndTime!,
+                            //     paxEmailList,
+                            //     _selectedLevel ?? 'Floor 3',
+                            //     availabilityResponse.name ?? '',
+                            //   );
+                            // }
                           }
                         } else {
                           showSnackBar(
@@ -1106,9 +1109,12 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 }
 
                 if (_selectedPax.value > val! && paxEmailList.length > 1) {
-                  for (int i = 0; i < _selectedPax.value - val; i++) {
-                    if (paxEmailList.isNotEmpty) {
-                      paxEmailList.removeLast();
+                  if (paxEmailList.length == val) {
+                  } else {
+                    for (int i = 0; i < _selectedPax.value - val; i++) {
+                      if (paxEmailList.isNotEmpty) {
+                        paxEmailList.removeLast();
+                      }
                     }
                   }
                 }

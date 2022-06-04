@@ -47,8 +47,9 @@ class MyApp extends StatelessWidget {
             getPages: [
               GetPage(
                   name: '/root',
-                  page: () =>
-                      isLoggedIn ? HomeScreenMain() : const LoginScreen()),
+                  page: () => isLoggedIn
+                      ? const HomeScreenMain()
+                      : const LoginScreen()),
               GetPage(name: '/home', page: () => const HomeScreenMain()),
             ]);
       },

@@ -61,7 +61,7 @@ class _Level3LayoutState extends State<Level3Layout> {
 
       jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
-          int.parse(element["tableid"]): int.parse(element["seatno"])
+          int.parse(element["tableid"]): int.parse(element["seatnumber"])
           // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
@@ -92,7 +92,7 @@ class _Level3LayoutState extends State<Level3Layout> {
 
       jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
-          int.parse(element["tableid"]): int.parse(element["seatno"])
+          int.parse(element["tableid"]): int.parse(element["seatnumber"])
           // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 

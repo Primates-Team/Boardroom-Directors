@@ -41,6 +41,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     // Map bd = await BookedDataSource.getBookingHistory(
     //     AppHelpers.formatDate(_selectedValue));
 
+    _processing = true;
     Map bd = await BookedDataSource.getCurrentHistory(
         AppHelpers.formatDate(_selectedValue),
         AppHelpers.formatTime(TimeOfDay.now()));
@@ -147,42 +148,41 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     bool isCalendarScreen = widget.isCalendarScreen ?? false;
 
     return Scaffold(
-      backgroundColor: AppColors.kGreyBackground,
-      appBar: AppTheme.appBar(
-          isCalendarScreen ? "Calendar" : 'Booking History', context, false),
-      body: _processing == true
-          ? Center(child: CircularProgressIndicator())
-          : RefreshIndicator(
-              onRefresh: () async {
-                loadData();
-              },
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.h),
-                        child: DatePicker(
-                          DateTime(DateTime.now().year - 1,
-                              DateTime.now().month, DateTime.now().day),
-                          controller: dateController,
-                          initialSelectedDate: DateTime.now(),
-                          selectionColor: Colors.black,
-                          daysCount:
-                              widget.isCalendarScreen == true ? 732 : 366,
-                          selectedTextColor: Colors.white,
-                          onDateChange: (date) {
-                            setState(() {
-                              _selectedValue = date;
-                            });
-                            // filter();
+        backgroundColor: AppColors.kGreyBackground,
+        appBar: AppTheme.appBar(
+            isCalendarScreen ? "Calendar" : 'Booking History', context, false),
+        body: RefreshIndicator(
+          onRefresh: () async {
+            loadData();
+          },
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20.h),
+                    child: DatePicker(
+                      DateTime(DateTime.now().year - 1, DateTime.now().month,
+                          DateTime.now().day),
+                      controller: dateController,
+                      initialSelectedDate: DateTime.now(),
+                      selectionColor: Colors.black,
+                      daysCount: widget.isCalendarScreen == true ? 732 : 366,
+                      selectedTextColor: Colors.white,
+                      onDateChange: (date) {
+                        setState(() {
+                          _selectedValue = date;
+                        });
+                        // filter();
 
-                            loadData();
-                          },
-                        ),
-                      ),
-                      Container(
+                        loadData();
+                      },
+                    ),
+                  ),
+                  _processing == true
+                      ? Center(child: CircularProgressIndicator())
+                      : Container(
                           // height: Get.height * 0.8,
                           child: _all.isEmpty
                               ? SingleChildScrollView(
@@ -196,11 +196,10 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                                   ),
                                 )
                               : _drawList()),
-                    ],
-                  ),
-                ),
+                ],
               ),
             ),
-    );
+          ),
+        ));
   }
 }

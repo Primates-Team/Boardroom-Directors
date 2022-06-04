@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,6 @@ import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/booking/widgets/time_slot_dialog.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 class Level14Layout extends StatefulWidget {
@@ -43,40 +43,7 @@ class _Level14LayoutState extends State<Level14Layout> {
     var outputDate = outputFormat.format(inputDate);
     var client = http.Client();
     try {
-      var response = 
-         await client.post(Uri.parse(AppUrl.tableBookedByFloor),
-          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": outputDate,
-            "floor": _selectedFloor,
-            "current_time": AppHelpers.formatTime(TimeOfDay.now())
-          }));
-
-      List<dynamic> jsondata = jsonDecode(response.body);
-
-      List<Map<int, int>> tableData = [];
-
-      jsondata.forEach((element) {
-        Map<int, int> tableSeatDict = {
-          int.parse(element["tableid"]): int.parse(element["seatno"])
-          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
-        };
-
-        tableData.add(tableSeatDict);
-        });
-
-      bookingController.tableData = tableData;
-    } catch (e) {}
-  }
-
-  Future<List<Map<int, int>>> callAPI() async {
-    var inputDate = DateTime.parse(DateTime.now().toString());
-    var outputFormat = DateFormat('dd-MM-yyyy');
-    var outputDate = outputFormat.format(inputDate);
-    var client = http.Client();
-    try {
-      var response =
-          await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": outputDate,
@@ -97,6 +64,36 @@ class _Level14LayoutState extends State<Level14Layout> {
         tableData.add(tableSeatDict);
       });
 
+      bookingController.tableData = tableData;
+    } catch (e) {}
+  }
+
+  Future<List<Map<int, int>>> callAPI() async {
+    var inputDate = DateTime.parse(DateTime.now().toString());
+    var outputFormat = DateFormat('dd-MM-yyyy');
+    var outputDate = outputFormat.format(inputDate);
+    var client = http.Client();
+    try {
+      var response = await client.post(Uri.parse(AppUrl.tableBookedByFloor),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": outputDate,
+            "floor": _selectedFloor,
+            "current_time": AppHelpers.formatTime(TimeOfDay.now())
+          }));
+
+      List<dynamic> jsondata = jsonDecode(response.body);
+
+      List<Map<int, int>> tableData = [];
+
+      jsondata.forEach((element) {
+        Map<int, int> tableSeatDict = {
+          int.parse(element["tableid"]): int.parse(element["seatno"])
+          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+        };
+
+        tableData.add(tableSeatDict);
+      });
 
       bookingController.tableData = tableData;
 
