@@ -91,7 +91,9 @@ class BookedDataSource {
     var client = http.Client();
 
     try {
-      var response = await client.post(Uri.parse(AppUrl.viewByTime),
+      var response = await client.post(Uri.parse(
+              // AppUrl.viewByTime
+              AppUrl.roomviewbydateemployee),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": date,
@@ -129,7 +131,9 @@ class BookedDataSource {
     var client = http.Client();
 
     try {
-      var response = await client.post(Uri.parse(AppUrl.viewByTimeTable),
+      var response = await client.post(Uri.parse(
+              //AppUrl.viewByTimeTable
+              AppUrl.tableviewbydateemployee),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": date,

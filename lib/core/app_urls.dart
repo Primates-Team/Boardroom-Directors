@@ -20,6 +20,11 @@ class AppUrl {
   static const String viewByTime = '$baseUrl/roombooking/viewbytime';
   static const String viewByTimeTable = '$baseUrl/booking/viewbytime';
 
+  static const String tableviewbydateemployee =
+      '$baseUrl/booking/viewbydateemployee';
+  static const String roomviewbydateemployee =
+      '$baseUrl/roombooking/viewbydateemployee';
+
   static const String tableBookedByFloor = '$baseUrl/booking/viewbydate';
 
   static const String tableBookedByFloorDateTime =

@@ -287,26 +287,27 @@ class RoomCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        node != null
-                            ?
-                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
-                            node['members'] != null
-                                ? node['members']
-                                : node['members']
-                            : 'No Members',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
+                  if (node['members'] != null)
+                    Expanded(
+                      flex: 3,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          node != null
+                              ?
+                              // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                              node['members'] != null
+                                  ? node['members']
+                                  : node['members']
+                              : 'No Members',
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -329,26 +330,27 @@ class RoomCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        node != null
-                            ?
-                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
-                            node['status'] != null
-                                ? node['status']
-                                : node['status']
-                            : 'No Status',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
+                  if (node['status'] != null)
+                    Expanded(
+                      flex: 3,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          node != null
+                              ?
+                              // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                              node['status'] != null
+                                  ? node['status']
+                                  : node['status']
+                              : 'No Status',
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
@@ -371,26 +373,27 @@ class RoomCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        node != null
-                            ?
-                            // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
-                            node['floor'] != null
-                                ? node['floor']
-                                : node['floor']
-                            : 'No Floor',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
+                  if (node['floor'] != null)
+                    Expanded(
+                      flex: 3,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          node != null
+                              ?
+                              // node['email'] != null ? "[${node['email'].toString()}]" : 'Ramesh, Suresh, Gopi, Nandhagopalan' : 'Ramesh, Suresh, Gopi, Nandhagopalan',
+                              node['floor'] != null
+                                  ? node['floor']
+                                  : node['floor']
+                              : 'No Floor',
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.start,
                         ),
-                        textAlign: TextAlign.start,
                       ),
                     ),
-                  ),
                 ],
               ),
             ),
