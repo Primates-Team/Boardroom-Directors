@@ -56,7 +56,13 @@ class _HotDeskingScreenState extends State<HotDeskingScreen> {
               body: jsonEncode({
                 "selecteddate": outputDate,
                 "floor": _selectedFloor,
-                "current_time": AppHelpers.formatTime(TimeOfDay.now())
+                "current_time": AppHelpers.formatTime(TimeOfDay.now()),
+                // "fromtime": AppHelpers.formatTime(TimeOfDay.now()),
+                // "totime": AppHelpers.formatTime(TimeOfDay(
+                //     hour: TimeOfDay.now().hour,
+                //     minute: TimeOfDay.now().minute)),
+                // "todate": outputDate,
+                // "employeeid": "188"
               }));
 
       List<dynamic> jsondata = jsonDecode(response.body);

@@ -64,10 +64,15 @@ class Rc extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       data != null
-                          ? data['seatnumber'] != null
-                              ? data['seatnumber']
+                          ? data['tablename'] != null
+                              ? data['tablename']
                               : ''
                           : '',
+                      // data != null
+                      //     ? data['seatnumber'] != null
+                      //         ? data['seatnumber']
+                      //         : ''
+                      //     : '',
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
