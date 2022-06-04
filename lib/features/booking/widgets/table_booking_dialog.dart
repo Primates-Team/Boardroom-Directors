@@ -1,37 +1,36 @@
-import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
-import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
-import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
-import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
+import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 
-import 'confirm_button.dart';
+import '../../../core/app_theme.dart';
 
-class TimeSlotDialog extends StatefulWidget {
-  final int tableNo;
-  final int seatNo;
-  final DateTime date;
-  final TimeOfDay startTime;
-  final String floor;
-  const TimeSlotDialog(
-      {Key? key,
-      required this.date,
-      required this.startTime,
-      required this.tableNo,
-      required this.seatNo,
-      required this.floor})
-      : super(key: key);
+class TableBookingDateDialog extends StatefulWidget {
+  // final int tableNo;
+  // final int seatNo;
+  // final DateTime date;
+  // final TimeOfDay startTime;
+  // final String floor;
+  // const TableBookingDateDialog(
+  //     {Key? key,
+  //     required this.date,
+  //     required this.startTime,
+  //     required this.tableNo,
+  //     required this.seatNo,
+  //     required this.floor})
+  //     : super(key: key);
+
+  TableBookingDateDialog(this.onConfirmButtonTapped);
+
+  Function onConfirmButtonTapped;
 
   @override
-  State<TimeSlotDialog> createState() => _TimeSlotDialogState();
+  State<TableBookingDateDialog> createState() => _TableBookingDateDialogState();
 }
 
-class _TimeSlotDialogState extends State<TimeSlotDialog> {
+class _TableBookingDateDialogState extends State<TableBookingDateDialog> {
   DateTime? startdate = DateTime.now();
   DateTime? endDate = DateTime.now();
 
@@ -50,8 +49,8 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
   TimeOfDay? startTime, endTime;
   @override
   void initState() {
-    startdate = widget.date;
-    startTime = widget.startTime;
+    // startdate = widget.date;
+    // startTime = widget.startTime;
     super.initState();
   }
 
@@ -103,7 +102,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                           onTap: () {
                             showDatePicker(
                                     context: context,
-                                    initialDate: widget.date,
+                                    initialDate: DateTime.now(),
                                     firstDate: DateTime.now(),
                                     lastDate: DateTime.now()
                                         .add(const Duration(days: 90)))
@@ -329,77 +328,92 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
           Center(
             child: InkWell(
               onTap: () async {
-                if (widget.tableNo == null || widget.seatNo == null) {
-                  return;
-                }
                 if (startdate != null &&
                     endDate != null &&
                     startTime != null &&
                     endTime != null) {
-                  TableBookingDataSource()
-                      .createBooking(
-                    tableNo: widget.tableNo,
-                    seatNo: widget.seatNo,
-                    startDate: startdate != null
-                        ? AppHelpers.formatDate(startdate!)
-                        : AppHelpers.formatDate(DateTime.now()),
-                    endDate: endDate != null
-                        ? AppHelpers.formatDate(endDate!)
-                        : AppHelpers.formatDate(DateTime.now()),
-                    floor: widget.floor,
-                    fromTime: AppHelpers.formatTime(startTime!),
-                    toTime: AppHelpers.formatTime(endTime!),
-                  )
-                      .then((value) {
-                    if (value) {
-                      Get.back();
-                      //setState(() {});
-                      // Navigator.pop(context);
+                  String selectedStartDate = (startdate != null)
+                      ? AppHelpers.formatDate(startdate!)
+                      : AppHelpers.formatDate(DateTime.now());
+                  String selectedEnddate = endDate != null
+                      ? AppHelpers.formatDate(endDate!)
+                      : AppHelpers.formatDate(DateTime.now());
 
-                      showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          useRootNavigator: false,
-                          builder: (context) {
-                            return BackdropFilter(
-                              filter:
-                                  ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-                              child: Dialog(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: BookingConfirmedWidget(
-                                    AppHelpers.formatTime(startTime!),
-                                    AppHelpers.formatTime(endTime!),
-                                    widget.tableNo,
-                                    widget.seatNo,
-                                    AppHelpers.formatDate(startdate != null
-                                        ? startdate!
-                                        : DateTime.now()),
-                                    widget.floor),
-                              ),
-                            );
-                          }).then((value) {
-                        TableBookingDataSource().viewAllBooking({
-                          "selecteddate": "26-05-2022",
-                          "fromtime": "01:30",
-                          "totime": "21:45",
-                          "floor": "Floor 14",
-                          "todate": "26-05-2022",
-                          "employeeid": "188"
-                        });
-                        Get.offAllNamed("/home");
-                        // eventBus.fire(HotDeskingInitialEvent());
-                      });
-                    } else {
-                      Navigator.pop(context);
-                    }
+                  String selectedfromTime = AppHelpers.formatTime(startTime!);
+                  String selectedtoTime = AppHelpers.formatTime(endTime!);
+
+                  widget.onConfirmButtonTapped({
+                    "selecteddate": selectedStartDate,
+                    "todate": selectedEnddate,
+                    "fromtime": selectedfromTime,
+                    "totime": selectedtoTime,
                   });
-                } else {
-                  showSnackBar(
-                      context: context,
-                      message: 'Provide start and end time',
-                      bgColor: AppColors.kRed);
                 }
+
+                // if (widget.tableNo == null || widget.seatNo == null) {
+                //   return;
+                // }
+                // if (startdate != null &&
+                //     endDate != null &&
+                //     startTime != null &&
+                //     endTime != null) {
+                //   TableBookingDataSource()
+                //       .createBooking(
+                //     tableNo: widget.tableNo,
+                //     seatNo: widget.seatNo,
+                //     startDate: startdate != null
+                //         ? AppHelpers.formatDate(startdate!)
+                //         : AppHelpers.formatDate(DateTime.now()),
+                //     endDate: endDate != null
+                //         ? AppHelpers.formatDate(endDate!)
+                //         : AppHelpers.formatDate(DateTime.now()),
+                //     floor: widget.floor,
+                //     fromTime: AppHelpers.formatTime(startTime!),
+                //     toTime: AppHelpers.formatTime(endTime!),
+                //   )
+                //       .then((value) {
+                //     if (value) {
+                //       Get.back();
+                //       //setState(() {});
+                //       // Navigator.pop(context);
+
+                //       showDialog(
+                //           context: context,
+                //           barrierDismissible: false,
+                //           useRootNavigator: false,
+                //           builder: (context) {
+                //             return BackdropFilter(
+                //               filter:
+                //                   ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+                //               child: Dialog(
+                //                 shape: RoundedRectangleBorder(
+                //                     borderRadius: BorderRadius.circular(20.0)),
+                //                 child: BookingConfirmedWidget(
+                //                     AppHelpers.formatTime(startTime!),
+                //                     AppHelpers.formatTime(endTime!),
+                //                     widget.tableNo,
+                //                     widget.seatNo,
+                //                     AppHelpers.formatDate(startdate != null
+                //                         ? startdate!
+                //                         : DateTime.now()),
+                //                     widget.floor),
+                //               ),
+                //             );
+                //           }).then((value) {
+                //         TableBookingDataSource().viewAllBooking();
+                //         Get.offAllNamed("/home");
+                //         // eventBus.fire(HotDeskingInitialEvent());
+                //       });
+                //     } else {
+                //       Navigator.pop(context);
+                //     }
+                //   });
+                // } else {
+                //   showSnackBar(
+                //       context: context,
+                //       message: 'Provide start and end time',
+                //       bgColor: AppColors.kRed);
+                // }
               },
               child: confirmButton(),
             ),

@@ -13,8 +13,11 @@ import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_urls.dart';
 import 'package:hot_desking/core/widgets/show_snackbar.dart';
+import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/data/models/table_model.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
+import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.dart';
+import 'package:hot_desking/features/booking/widgets/table_booking_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -247,7 +250,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 width: 130.w,
                               ),
                               onTap: () {
-                                showTabledetails1(1, bookedTables[1] ?? []);
+                                _buildDateSelectionDialog();
+                                // showTabledetails1(1, bookedTables[1] ?? []);
                               },
                             ),
                           ),
@@ -292,7 +296,45 @@ class _Level3LayoutState extends State<Level3Layout> {
     );
   }
 
-  showTabledetails1(int tableNo, List<int> seats) async {
+  _buildDateSelectionDialog() async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child:
+                TableBookingDateDialog((Map<String, dynamic> jsonData) async {
+              jsonData["floor"] = _selectedFloor;
+              jsonData["employeeid"] =
+                  AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
+                      ? AppHelpers.SHARED_PREFERENCES
+                          .getInt('user_id')
+                          .toString()
+                      : 1.toString();
+
+              List<Map<int, int>> bookedSeats =
+                  await TableBookingDataSource().viewAllBooking(jsonData);
+
+              for (var i = 1; i < 8; i++) {
+                modifiedTables[i] = [];
+                for (var element in bookedSeats) {
+                  if (element.containsKey(i)) {
+                    modifiedTables[i]?.add(element.values.first);
+                  }
+                }
+              }
+
+              bookedTables = modifiedTables;
+
+              if (bookedSeats != null) {
+                showTabledetails1(1, bookedTables[1] ?? [], jsonData);
+              }
+            }),
+          );
+        });
+  }
+
+  showTabledetails1(
+      int tableNo, List<int> seats, Map<String, dynamic> data) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -736,32 +778,73 @@ class _Level3LayoutState extends State<Level3Layout> {
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     AppColors.kAubergine)),
-                            onPressed: () {
-                              if (tableNo != null && seatNo != null) {
-                                Get.back();
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 2.5, sigmaY: 2.5),
-                                        child: Dialog(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20.0)),
-                                          child: TimeSlotDialog(
-                                            tableNo: tableNo,
-                                            seatNo: seatNo!,
-                                            date: DateTime.now(),
-                                            startTime: TimeOfDay.now(),
-                                            floor: _selectedFloor,
-                                          ),
-                                        ),
-                                      );
+                            onPressed: () async {
+                              if (tableNo == null || seatNo == null) {
+                                return;
+                              }
+                              if (data["selecteddate"] != null &&
+                                  data["todate"] != null &&
+                                  data["fromtime"] != null &&
+                                  data["totime"] != null) {
+                                TableBookingDataSource()
+                                    .createBooking(
+                                  tableNo: tableNo,
+                                  seatNo: seatNo ?? 0,
+                                  startDate: data["selecteddate"],
+                                  endDate: data["todate"],
+                                  floor: _selectedFloor,
+                                  fromTime: data["fromtime"],
+                                  toTime: data["totime"],
+                                )
+                                    .then((value) {
+                                  if (value) {
+                                    Get.back();
+                                    //setState(() {});
+                                    // Navigator.pop(context);
+
+                                    showDialog(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        useRootNavigator: false,
+                                        builder: (context) {
+                                          return BackdropFilter(
+                                            filter: ImageFilter.blur(
+                                                sigmaX: 2.5, sigmaY: 2.5),
+                                            child: Dialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20.0)),
+                                              child: BookingConfirmedWidget(
+                                                  data["fromtime"],
+                                                  data["totime"],
+                                                  tableNo,
+                                                  seatNo ?? 0,
+                                                  data["selecteddate"],
+                                                  _selectedFloor),
+                                            ),
+                                          );
+                                        }).then((value) {
+                                      TableBookingDataSource().viewAllBooking({
+                                        "selecteddate": "26-05-2022",
+                                        "fromtime": "01:30",
+                                        "totime": "21:45",
+                                        "floor": "Floor 14",
+                                        "todate": "26-05-2022",
+                                        "employeeid": "188"
+                                      });
+                                      Get.offAllNamed("/home");
+                                      // eventBus.fire(HotDeskingInitialEvent());
                                     });
+                                  } else {
+                                    Navigator.pop(context);
+                                  }
+                                });
                               } else {
                                 showSnackBar(
-                                    context: context, message: 'Select Seat');
+                                    context: context,
+                                    message: 'Provide start and end time',
+                                    bgColor: AppColors.kRed);
                               }
                             },
                             child: const Text('Book'),

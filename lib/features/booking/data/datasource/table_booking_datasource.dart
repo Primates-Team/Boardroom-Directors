@@ -41,14 +41,13 @@ class TableBookingDataSource {
           }));
       if (response.statusCode == 200) {
         var jsonString = response.body;
-      
+
         showSnackBar(
             context: Get.context!,
             message: 'Booking Successful',
             bgColor: Colors.green);
         return true;
       } else {
-      
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -90,14 +89,13 @@ class TableBookingDataSource {
           });
       if (response.statusCode == 200) {
         var jsonString = response.body;
-      
+
         showSnackBar(
             context: Get.context!,
             message: 'Booking Successful',
             bgColor: Colors.green);
         return true;
       } else {
-      
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -113,22 +111,15 @@ class TableBookingDataSource {
     }
   }
 
-  Future viewAllBooking() async {
+  Future<List<Map<int, int>>> viewAllBooking(Map<String, dynamic> data) async {
     var client = http.Client();
     try {
       var response = await client.post(Uri.parse(AppUrl.tableAvailabalityNew),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
-          body: jsonEncode({
-            "selecteddate": "26-05-2022",
-            "fromtime": "01:30",
-            "totime": "21:45",
-            "floor": "Floor 14",
-            "todate": "26-05-2022",
-            "employeeid": "188"
-          }));
+          body: jsonEncode(data));
       if (response.statusCode == 200) {
         var jsonString = response.body;
-    
+
         List<GetAllTableBookingResponse> bookings =
             getAllTableBookingResponseFromJson(jsonString);
 
@@ -154,23 +145,46 @@ class TableBookingDataSource {
             }
           }
         }
-        bookedSeats.toSet().toList();
-  
-        bookingController.bookedSeats.value = booked;
-      
 
-        return true;
+        List<dynamic> jsondata = jsonDecode(response.body);
+
+        List<Map<int, int>> tableData = [];
+
+        jsondata.forEach((element) {
+          Map<int, int> tableSeatDict = {
+            int.parse(element["tableid"]): int.parse(element["seatnumber"])
+            // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
+          };
+
+          tableData.add(tableSeatDict);
+        });
+
+        bookingController.tableData = tableData;
+
+        // for (var i = 1; i < 8; i++) {
+        //   modifiedTables[i] = [];
+        //   for (var element in tableData) {
+        //     if (element.containsKey(i)) {
+        //       modifiedTables[i]?.add(element.values.first);
+        //     }
+        //   }
+        // }
+        //return tableData;
+        bookedSeats.toSet().toList();
+
+        bookingController.bookedSeats.value = booked;
+
+        return tableData;
       } else {
-   
         showSnackBar(
             context: Get.context!,
             message: 'Failed to Load',
             bgColor: Colors.red);
-        return false;
+        return [];
       }
     } catch (e) {
       print(e);
-      return false;
+      return [];
     }
   }
 }

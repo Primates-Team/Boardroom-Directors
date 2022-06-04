@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
-import 'package:hot_desking/features/booking/data/datasource/table_booking_datasource.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/home/presentation/pages/home_screen_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,7 +16,7 @@ void main() async {
 
   await Firebase.initializeApp();
   AppHelpers.SHARED_PREFERENCES = await SharedPreferences.getInstance();
-  TableBookingDataSource().viewAllBooking();
+  //TableBookingDataSource().viewAllBooking();
   RoomBookingDataSource().viewAllRoomBooking();
   Get.put(BookingController());
   runApp(const MyApp());

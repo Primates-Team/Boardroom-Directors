@@ -784,21 +784,21 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                   message: 'Enter Valid Pax Email');
                               return;
                             }
-                            Get.back();
-                            showSnackBar(context: context, message: "Success");
+                            // Get.back();
+                            // showSnackBar(context: context, message: "Success");
 
-                            // if (element == paxEmailList.last) {
-                            //   controller.createBooking(
-                            //     roomId!,
-                            //     _formattedStartDate!,
-                            //     _formattedEndDate!,
-                            //     _formattedStartTime!,
-                            //     _formattedEndTime!,
-                            //     paxEmailList,
-                            //     _selectedLevel ?? 'Floor 3',
-                            //     availabilityResponse.name ?? '',
-                            //   );
-                            // }
+                            if (element == paxEmailList.last) {
+                              controller.createBooking(
+                                roomId!,
+                                _formattedStartDate!,
+                                _formattedEndDate!,
+                                _formattedStartTime!,
+                                _formattedEndTime!,
+                                paxEmailList,
+                                _selectedLevel ?? 'Floor 3',
+                                availabilityResponse.name ?? '',
+                              );
+                            }
                           }
                         } else {
                           showSnackBar(
