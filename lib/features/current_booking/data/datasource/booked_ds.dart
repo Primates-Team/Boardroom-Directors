@@ -91,9 +91,7 @@ class BookedDataSource {
     var client = http.Client();
 
     try {
-      var response = await client.post(Uri.parse(
-              // AppUrl.viewByTime
-              AppUrl.roomviewbydateemployee),
+      var response = await client.post(Uri.parse(AppUrl.viewByTime),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": date,
@@ -131,9 +129,7 @@ class BookedDataSource {
     var client = http.Client();
 
     try {
-      var response = await client.post(Uri.parse(
-              //AppUrl.viewByTimeTable
-              AppUrl.tableviewbydateemployee),
+      var response = await client.post(Uri.parse(AppUrl.viewByTimeTable),
           headers: {HttpHeaders.contentTypeHeader: 'application/json'},
           body: jsonEncode({
             "selecteddate": date,
@@ -141,6 +137,84 @@ class BookedDataSource {
             "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
             if (time != null) "current_time": time
           }));
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+
+        /* showSnackBar(
+            context: Get.context!,
+            message: 'Data Fetched Successfully',
+            bgColor: Colors.green);
+        return true;*/
+        return {'flag': true, 'data': jsonDecode(jsonString)};
+      } else {
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        /* showSnackBar(
+            context: Get.context!,
+            message: 'Error loading data',
+            bgColor: Colors.red);*/
+        return {'flag': false};
+      }
+    } catch (e) {
+      showSnackBar(
+          context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      print(e);
+      // return false;
+      return {'flag': false};
+    }
+  }
+
+  static Future<Map> getCalendarRoomHistory(String date, String time) async {
+    var client = http.Client();
+
+    try {
+      var response = await client.post(Uri.parse(AppUrl.roomviewbydateemployee),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": date,
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+            if (time != null) "current_time": time
+          }));
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+
+        /* showSnackBar(
+            context: Get.context!,
+            message: 'Data Fetched Successfully',
+            bgColor: Colors.green);
+        return true;*/
+        return {'flag': true, 'data': jsonDecode(jsonString)};
+      } else {
+        // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
+        /* showSnackBar(
+            context: Get.context!,
+            message: 'Error loading data',
+            bgColor: Colors.red);*/
+        return {'flag': false};
+      }
+    } catch (e) {
+      showSnackBar(
+          context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      print(e);
+      // return false;
+      return {'flag': false};
+    }
+  }
+
+  static Future<Map> getCalendarTableHistory(String date, String time) async {
+    var client = http.Client();
+
+    try {
+      var response =
+          await client.post(Uri.parse(AppUrl.tableviewbydateemployee),
+              headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+              body: jsonEncode({
+                "selecteddate": date,
+                // "employeeid": "10"
+                "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+                if (time != null) "current_time": time
+              }));
 
       if (response.statusCode == 200) {
         var jsonString = response.body;

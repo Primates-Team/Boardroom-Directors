@@ -42,13 +42,30 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     //     AppHelpers.formatDate(_selectedValue));
 
     _processing = true;
-    Map bd = await BookedDataSource.getCurrentHistory(
-        AppHelpers.formatDate(_selectedValue),
-        AppHelpers.formatTime(TimeOfDay.now()));
 
-    Map tt = await BookedDataSource.getCurrentHistoryTable(
-        AppHelpers.formatDate(_selectedValue),
-        AppHelpers.formatTime(TimeOfDay.now()));
+    Map bd;
+
+    if (widget.isCalendarScreen ?? false) {
+      bd = await BookedDataSource.getCalendarRoomHistory(
+          AppHelpers.formatDate(_selectedValue),
+          AppHelpers.formatTime(TimeOfDay.now()));
+    } else {
+      bd = await BookedDataSource.getCurrentHistory(
+          AppHelpers.formatDate(_selectedValue),
+          AppHelpers.formatTime(TimeOfDay.now()));
+    }
+
+    Map tt;
+
+    if (widget.isCalendarScreen ?? false) {
+      tt = await BookedDataSource.getCalendarTableHistory(
+          AppHelpers.formatDate(_selectedValue),
+          AppHelpers.formatTime(TimeOfDay.now()));
+    } else {
+      tt = await BookedDataSource.getCurrentHistoryTable(
+          AppHelpers.formatDate(_selectedValue),
+          AppHelpers.formatTime(TimeOfDay.now()));
+    }
 
     // Map tt = await BookedDataSource.getBookingMeetingHistory();
 
