@@ -90,10 +90,10 @@ class TableCard extends StatelessWidget {
                                       var response = await client.post(
                                           Uri.parse(AppUrl.tablecancleMeeting),
                                           body: {
-                                            "id": "${node['id'] ?? 0}",
+                                            "id": "${node['tableid'] ?? 0}",
                                             "status": "cancel"
                                           });
-                                 
+
                                       onRefresh();
                                     },
                                     onEdit: (String date, String startTime,
@@ -121,7 +121,7 @@ class TableCard extends StatelessWidget {
                                                     .toString()
                                                 : 1.toString(),
                                           });
-                                 
+
                                       onRefresh();
                                     },
                                   ),
@@ -197,10 +197,12 @@ class TableCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         node != null
-                            ? node['selecteddate'] != null
-                                ? node['selecteddate']
-                                : '21/12/2021'
-                            : '21/12/2021',
+                            ? node['fromdate'] != null
+                                ? node['fromdate']
+                                : node['selecteddate'] != null
+                                    ? node['selecteddate']
+                                    : ''
+                            : '',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

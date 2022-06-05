@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/features/booking_history/presentation/widgets/table_card.dart';
 import 'package:hot_desking/features/current_booking/data/datasource/booked_ds.dart';

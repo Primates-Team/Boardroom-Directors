@@ -770,7 +770,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                             _endDate != null &&
                             _startTime != null &&
                             _endTime != null) {
-                          if (_selectedPax.value != paxEmailList.length) {
+                          if (_selectedPax.value < paxEmailList.length) {
                             showSnackBar(
                                 context: context,
                                 message: 'Enter All Pax Emails');

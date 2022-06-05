@@ -173,10 +173,10 @@ class RoomCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         node != null
-                            ? node['selecteddate'] != null
-                                ? node['selecteddate']
-                                : '21/12/2021'
-                            : '21/12/2021',
+                            ? node['fromdate'] != null
+                                ? node['fromdate']
+                                : ''
+                            : '',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
@@ -215,8 +215,8 @@ class RoomCard extends StatelessWidget {
                         node != null
                             ? node['todate'] != null
                                 ? node['todate']
-                                : '21/12/2021'
-                            : '21/12/2021',
+                                : ''
+                            : '',
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,
