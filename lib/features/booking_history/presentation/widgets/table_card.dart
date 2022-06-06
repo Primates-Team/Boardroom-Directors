@@ -90,7 +90,7 @@ class TableCard extends StatelessWidget {
                                       var response = await client.post(
                                           Uri.parse(AppUrl.tablecancleMeeting),
                                           body: {
-                                            "id": "${node['tableid'] ?? 0}",
+                                            "id": "${node['id'] ?? 0}",
                                             "status": "cancel"
                                           });
 
@@ -157,8 +157,8 @@ class TableCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         node != null
-                            ? node['seatnumber'] != null
-                                ? node['seatnumber']
+                            ? node['tablename'] != null
+                                ? node['tablename']
                                 : ''
                             : '',
                         style: TextStyle(

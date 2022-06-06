@@ -243,19 +243,24 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              InkWell(
-                onTap: () async {
-                  Navigator.pop(context);
-                  widget.onEdit(selectdDate, startTime, endTime);
-                },
-                child: confirmButton(),
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    Navigator.pop(context);
+                    widget.onEdit(selectdDate, startTime, endTime);
+                  },
+                  child: confirmButton(),
+                ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                  widget.onDelete();
-                },
-                child: cancelButton(),
+              SizedBox(width: 20),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                    widget.onDelete();
+                  },
+                  child: cancelButton(),
+                ),
               ),
             ],
           ),

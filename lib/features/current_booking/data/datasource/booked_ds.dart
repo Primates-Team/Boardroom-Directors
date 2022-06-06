@@ -241,4 +241,58 @@ class BookedDataSource {
       return {'flag': false};
     }
   }
+
+  static Future<Map> roomBookingHistory(String date) async {
+    var client = http.Client();
+
+    try {
+      var response = await client.post(Uri.parse(AppUrl.roomBookingHistory),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": date,
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+          }));
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+
+        return {'flag': true, 'data': jsonDecode(jsonString)};
+      } else {
+        return {'flag': false};
+      }
+    } catch (e) {
+      showSnackBar(
+          context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      print(e);
+      // return false;
+      return {'flag': false};
+    }
+  }
+
+  static Future<Map> tableBookingHistory(String date) async {
+    var client = http.Client();
+
+    try {
+      var response = await client.post(Uri.parse(AppUrl.tableBookingHistory),
+          headers: {HttpHeaders.contentTypeHeader: 'application/json'},
+          body: jsonEncode({
+            "selecteddate": date,
+            "employeeid": AppHelpers.SHARED_PREFERENCES.getInt('user_id'),
+          }));
+
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+
+        return {'flag': true, 'data': jsonDecode(jsonString)};
+      } else {
+        return {'flag': false};
+      }
+    } catch (e) {
+      showSnackBar(
+          context: Get.context!, message: e.toString(), bgColor: Colors.red);
+      print(e);
+      // return false;
+      return {'flag': false};
+    }
+  }
 }

@@ -38,9 +38,6 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
   }
 
   void loadData() async {
-    // Map bd = await BookedDataSource.getBookingHistory(
-    //     AppHelpers.formatDate(_selectedValue));
-
     _processing = true;
 
     Map bd;
@@ -50,9 +47,8 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           AppHelpers.formatDate(_selectedValue),
           AppHelpers.formatTime(TimeOfDay.now()));
     } else {
-      bd = await BookedDataSource.getCurrentHistory(
-          AppHelpers.formatDate(_selectedValue),
-          AppHelpers.formatTime(TimeOfDay.now()));
+      bd = await BookedDataSource.roomBookingHistory(
+          AppHelpers.formatDate(_selectedValue));
     }
 
     Map tt;
@@ -62,9 +58,9 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           AppHelpers.formatDate(_selectedValue),
           AppHelpers.formatTime(TimeOfDay.now()));
     } else {
-      tt = await BookedDataSource.getCurrentHistoryTable(
-          AppHelpers.formatDate(_selectedValue),
-          AppHelpers.formatTime(TimeOfDay.now()));
+      tt = await BookedDataSource.tableBookingHistory(
+        AppHelpers.formatDate(_selectedValue),
+      );
     }
 
     // Map tt = await BookedDataSource.getBookingMeetingHistory();

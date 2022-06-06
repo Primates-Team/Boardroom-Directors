@@ -111,24 +111,6 @@ class RoomCard extends StatelessWidget {
                                                 .updateRoomBooking(date,
                                                     startTime, endTime, node);
 
-                                        // var response = await http.Client().post(
-                                        //     Uri.parse(AppUrl.updateRoomBooking),
-                                        //     body: jsonEncode({
-                                        //       "id": node['id'].toString(),
-                                        //       "selecteddate": date,
-                                        //       "fromtime": startTime,
-                                        //       "totime": endTime,
-                                        //       "employeeid": AppHelpers
-                                        //                   .SHARED_PREFERENCES
-                                        //                   .getInt('user_id') !=
-                                        //               null
-                                        //           ? AppHelpers
-                                        //               .SHARED_PREFERENCES
-                                        //               .getInt('user_id')
-                                        //               .toString()
-                                        //           : 1.toString(),
-                                        //     }));
-
                                         onRefresh();
                                       },
                                       onDelete: () async {
