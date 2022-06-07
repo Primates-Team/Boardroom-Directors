@@ -182,7 +182,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                           RotatedBox(
                               quarterTurns: 4,
                               child: SvgPicture.asset(
-                                "assets/background_floor/floor3/floor3.svg",
+                                "assets/svg/level3/Map3level 3.svg",
                                 width: MediaQuery.of(context).size.width,
                                 height: 500.h,
                               )
@@ -193,12 +193,24 @@ class _Level3LayoutState extends State<Level3Layout> {
                               // ),
                               ),
                           Positioned(
-                              top: 15.w,
-                              left: 150.w,
+                              top: 38.w,
+                              left: 67.w,
                               child: InkWell(
                                 child: SvgPicture.asset(
-                                  'assets/background_floor/floor3/table_1.svg',
-                                  width: 130.w,
+                                  'assets/svg/level3/Frame 44level 3.svg',
+                                  width: 90.w,
+                                ),
+                                onTap: () {
+                                  _buildDateSelectionDialog(3);
+                                },
+                              )),
+                          Positioned(
+                              top: 40.w,
+                              left: 160.w,
+                              child: InkWell(
+                                child: SvgPicture.asset(
+                                  'assets/svg/level3/Frame 45level 3.svg',
+                                  width: 90.w,
                                 ),
                                 onTap: () {
                                   _buildDateSelectionDialog(3);
@@ -225,7 +237,66 @@ class _Level3LayoutState extends State<Level3Layout> {
                           //   ),
                           // ),
                           Positioned(
-                            bottom: 130.w,
+                            top: 200.w,
+                            left: 100.w,
+                            child: InkWell(
+                              // child: SizedBox(
+                              //   height: 65.h,
+                              //   width: 50.w,
+                              //   child: Column(
+                              //     children: [
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //       Image.asset(
+                              //         'assets/chairs/small_table.png',
+                              //       ),
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //     ],
+                              //   ),
+                              // ),
+                              child: SvgPicture.asset(
+                                'assets/svg/level3/Frame 47level 3.svg',
+                                width: 90.w,
+                              ),
+                              onTap: () {
+                                _buildDateSelectionDialog(1);
+                                // showTabledetails1(1, bookedTables[1] ?? []);
+                              },
+                            ),
+                          ),
+                          Positioned(
+                            top: 300.w,
+                            left: 100.w,
+                            child: InkWell(
+                              // child: SizedBox(
+                              //   height: 65.h,
+                              //   width: 50.w,
+                              //   child: Column(
+                              //     children: [
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //       Image.asset(
+                              //         'assets/chairs/small_table.png',
+                              //       ),
+                              //       Image.asset(
+                              //           'assets/chairs/chair_down_paired.png'),
+                              //     ],
+                              //   ),
+                              // ),
+                              child: SvgPicture.asset(
+                                'assets/svg/level3/Frame 48level 3.svg',
+                                width: 90.w,
+                              ),
+                              onTap: () {
+                                _buildDateSelectionDialog(1);
+                                // showTabledetails1(1, bookedTables[1] ?? []);
+                              },
+                            ),
+                          ),
+
+                          Positioned(
+                            bottom: 180.w,
                             left: 220.w,
                             //  right: 1.w,
 
@@ -246,7 +317,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                               //   ),
                               // ),
                               child: SvgPicture.asset(
-                                'assets/background_floor/floor3/table_3.svg',
+                                'assets/svg/level3/Frame 49level 3.svg',
                                 width: 130.w,
                               ),
                               onTap: () {
@@ -256,7 +327,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                             ),
                           ),
                           Positioned(
-                            top: 8.w,
+                            top: 40.w,
                             left: 260.w,
                             //  right: 1.w,
 
@@ -278,8 +349,8 @@ class _Level3LayoutState extends State<Level3Layout> {
                               //   ),
                               // ),
                               child: SvgPicture.asset(
-                                'assets/background_floor/floor3/table_2.svg',
-                                width: 120.w,
+                                'assets/svg/level3/Frame 46level 3.svg',
+                                width: 90.w,
                               ),
                               onTap: () {
                                 _buildDateSelectionDialog(2);

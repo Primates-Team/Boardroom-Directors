@@ -191,7 +191,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                         RotatedBox(
                             quarterTurns: 4,
                             child: SvgPicture.asset(
-                              'assets/background_floor/floor14/floor_14.svg',
+                              'assets/svg/level14/mAP_14level14.svg',
                               height: height,
                               width: width,
                             )
@@ -202,14 +202,173 @@ class _Level14LayoutState extends State<Level14Layout> {
                             // width: width,
                             // ),
                             ),
+
+                        Positioned(
+                            top: 90.h,
+                            left: 150.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 56level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 190.h,
+                            left: 150.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 57level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+
+                        Positioned(
+                            top: 380.h,
+                            left: 150.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 58level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 480.h,
+                            left: 150.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 59level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 630.h,
+                            left: 240.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 60level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 630.h,
+                            left: 320.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 61level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 630.h,
+                            left: 400.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 62level14.svg',
+                                  width: 100.w,
+                                 // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+
+                        Positioned(
+                            top: 630.h,
+                            left: 476.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 63level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 630.h,
+                            left: 550.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 64level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 630.h,
+                            left: 630.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 65level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+                        Positioned(
+                            top: 630.h,
+                            left: 710.w,
+                            child: InkWell(
+                              child: SvgPicture.asset(
+                                  'assets/svg/level14/Frame 66level14.svg',
+                                  width: 100.w,
+                                  // height: 110.h,
+                                  fit: BoxFit.fitWidth),
+                              onTap: () {
+                                setState(() {});
+                                _buildDateSelectionDialog(6);
+                              },
+                            )),
+
+
                         Positioned(
                             top: 60.h,
                             left: 260.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_6.svg',
-                                  width: 110.w,
-                                  height: 110.h,
+                                  width: 100.w,
+                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
@@ -222,8 +381,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_5.svg',
-                                  width: 110.w,
-                                  height: 110.h,
+                                  width: 100.w,
+                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
@@ -236,8 +395,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_4.svg',
-                                  width: 110.w,
-                                  height: 110.h,
+                                  width: 100.w,
+                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
@@ -250,8 +409,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_3.svg',
-                                  width: 110.w,
-                                  height: 110.h,
+                                  width: 100.w,
+                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
@@ -264,8 +423,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_2.svg',
-                                  width: 110.w,
-                                  height: 110.h,
+                                  width: 100.w,
+                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
@@ -278,8 +437,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/background_floor/floor14/Table_1.svg',
-                                  width: 110.w,
-                                  height: 110.h,
+                                  width: 100.w,
+                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
                                 setState(() {});
