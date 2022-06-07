@@ -361,7 +361,8 @@ class TableCard extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Booked Table will be cancelled if the Table is not occupied within 15 minutes',
+                          'Please cancel/edit your booking if your planned return to office date/time have changed. Thank you for your kind consideration so that other fellow colleagues can book those desks'
+                          '',
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,

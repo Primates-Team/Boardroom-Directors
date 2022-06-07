@@ -69,7 +69,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                             InkWell(
                               radius: 15,
                               onTap: () {
-                                Get.offAllNamed('/root');
+                                Get.offAllNamed('/home');
 
                                 // _controller.jumpToTab(0);
                               },
