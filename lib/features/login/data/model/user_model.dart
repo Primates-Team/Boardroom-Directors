@@ -8,6 +8,7 @@ class UserModel {
   final String email;
   final String? password;
   final String profileUrl;
+  final String? department;
 
   UserModel(
       {required this.firstName,
@@ -18,5 +19,6 @@ class UserModel {
       required this.mobile,
       required this.email,
       this.password,
+      required this.department,
       required this.profileUrl});
 }

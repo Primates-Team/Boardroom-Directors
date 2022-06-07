@@ -18,7 +18,16 @@ class CurrentBookingScreen extends StatefulWidget {
 class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
   bool _processing = true;
   bool _error = false;
-  List _data = [];
+  List _roomdata = [];
+  List _tabledata = [];
+
+  List<String> filterList = [
+    'All',
+    'Room',
+    'Table',
+  ];
+
+  String selectedFilter = 'All';
 
   AppBar appbar = AppBar();
   TabBar tabBar = TabBar(tabs: []);
@@ -41,14 +50,14 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
     if (ct['flag'] == false) {
       _error = true;
     } else {
-      _data = ct['data'];
+      _roomdata = ct['data'];
       _error = false;
     }
 
     if (tt['flag'] == false) {
       _error = true;
     } else {
-      _data.addAll(tt['data']);
+      _tabledata = (tt['data']);
       _error = false;
     }
 
@@ -68,43 +77,92 @@ class _CurrentBookingScreenState extends State<CurrentBookingScreen> {
       onRefresh: () async {
         loadData();
       },
-      child: (_data.length == 0)
-          ? SingleChildScrollView(
-              child: SizedBox(
-                  height: MediaQuery.of(context).size.height -
-                      kToolbarHeight -
-                      kBottomNavigationBarHeight,
-                  child: const Center(child: Text("No Record to show"))),
-            )
-          : Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: SizedBox(
-                  // height: Get.height * 0.9,
-                  child: ListView.builder(
-                      itemCount: _data.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var node = _data[index];
-                        if (node['tableid'] != null) {
-                          return TableCard(
-                              allowEdit: true,
-                              fromCurrentBooking: true,
-                              showWarning: true,
-                              node: node,
-                              onRefresh: () {
-                                loadData();
-                              });
-                        } else {
-                          return RoomCard(
-                              showWarning: true,
-                              fromCurrentBooking: true,
-                              allowEdit: true,
-                              node: node,
-                              onRefresh: () {
-                                loadData();
-                              });
-                        }
-                      }))),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 10),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: DropdownButton<String>(
+                value: selectedFilter,
+                items: filterList.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedFilter = value ?? '';
+                  });
+                },
+              ),
+            ),
+          ),
+          if (_checkEmpty())
+            Expanded(child: const Center(child: Text("No Record to show")))
+          else
+            Expanded(
+              child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: SizedBox(
+                      // height: Get.height * 0.9,
+                      child: ListView.builder(
+                          itemCount: _itemCount(),
+                          itemBuilder: (BuildContext context, int index) {
+                            var node;
+
+                            if (selectedFilter == "Table") {
+                              node = _tabledata[index];
+                            } else if (selectedFilter == "Room") {
+                              node = _roomdata[index];
+                            } else {
+                              node = (_roomdata + _tabledata)[index];
+                            }
+                            if (node['tableid'] != null) {
+                              return TableCard(
+                                  allowEdit: true,
+                                  fromCurrentBooking: true,
+                                  showWarning: true,
+                                  node: node,
+                                  onRefresh: () {
+                                    loadData();
+                                  });
+                            } else {
+                              return RoomCard(
+                                  showWarning: true,
+                                  fromCurrentBooking: true,
+                                  allowEdit: true,
+                                  node: node,
+                                  onRefresh: () {
+                                    loadData();
+                                  });
+                            }
+                          }))),
+            ),
+        ],
+      ),
     );
+  }
+
+  bool _checkEmpty() {
+    if (selectedFilter == "Table") {
+      return _tabledata.isEmpty;
+    } else if (selectedFilter == "Room") {
+      return _roomdata.isEmpty;
+    } else {
+      return (_roomdata + _tabledata).isEmpty;
+    }
+  }
+
+  int _itemCount() {
+    if (selectedFilter == "Table") {
+      return _tabledata.length;
+    } else if (selectedFilter == "Room") {
+      return _roomdata.length;
+    } else {
+      return (_roomdata + _tabledata).length;
+    }
   }
 
   @override

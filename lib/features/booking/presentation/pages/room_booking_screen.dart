@@ -854,7 +854,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                _formattedStartDate ?? 'Select Date',
+                _formattedStartDate ?? 'Start Date',
                 style: black600TextStyle,
               ),
               Icon(

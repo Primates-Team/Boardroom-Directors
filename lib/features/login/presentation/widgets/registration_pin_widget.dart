@@ -62,8 +62,8 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                               setState(() => showPassword = !showPassword),
                           icon: Icon(
                             showPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                             color: showPassword
                                 ? AppColors.kDarkPantone
                                 : AppColors.kLightPantone,
@@ -74,11 +74,11 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
 
                       validator: (s) {
                         const String pattern =
-                            r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$)';
+                            r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$)';
 
                         RegExp regex = RegExp(pattern);
                         if (!regex.hasMatch(s!))
-                          return 'Password should be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character';
+                          return 'Password should be Minimum ten characters, at least one uppercase letter, one lowercase letter, one number and one special character';
                         else
                           return null;
                       },
@@ -119,8 +119,8 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                               () => showConformPassword = !showConformPassword),
                           icon: Icon(
                             showConformPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                             color: showConformPassword
                                 ? AppColors.kDarkPantone
                                 : AppColors.kLightPantone,
@@ -167,6 +167,7 @@ class _RegistrationPinWidgetState extends State<RegistrationPinWidget> {
                               mobile: widget.user.mobile,
                               email: widget.user.email,
                               password: passwordController.text,
+                              department: widget.user.department,
                               profileUrl: widget.user.profileUrl);
 
                           AuthDataSource().signup(userModel).then((value) {

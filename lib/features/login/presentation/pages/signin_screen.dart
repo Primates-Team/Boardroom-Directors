@@ -421,6 +421,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     // designation: designation.text,
                                     mobile: mobile.text,
                                     email: email.text,
+                                    department: department.text,
                                     profileUrl: url);
                                 setState(() {
                                   _isLoading = false;

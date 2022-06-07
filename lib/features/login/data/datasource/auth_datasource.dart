@@ -26,6 +26,7 @@ class AuthDataSource {
             "gender": user.gender,
             "designation": user.designation,
             "phone": user.mobile,
+            "department": user.department,
             // "address": null,
             // "city": null,
             // "dob": null,
@@ -35,7 +36,6 @@ class AuthDataSource {
             "profilepic": user.profileUrl
           }));
       if (response.statusCode == 200) {
-       
         showSnackBar(context: Get.context!, message: 'Registered Successfully');
         // AppHelpers.SHARED_PREFERENCES.setString('email', user.email);
         // AppHelpers.SHARED_PREFERENCES.setString('firstName', user.firstName);
@@ -50,7 +50,6 @@ class AuthDataSource {
             bgColor: Colors.red);
         return false;
       } else {
-  
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -72,7 +71,7 @@ class AuthDataSource {
         Uri.parse(AppUrl.viewAllUsers),
         headers: {HttpHeaders.contentTypeHeader: 'application/json'},
       );
-   
+
       if (response.statusCode == 200) {
         var jsonString = response.body;
         List<GetUserResponse> users = getUserResponseFromJson(jsonString);
@@ -101,6 +100,10 @@ class AuthDataSource {
             if (user.status != null) {
               AppHelpers.SHARED_PREFERENCES.setString('status', user.status);
             }
+            AppHelpers.SHARED_PREFERENCES
+                .setString('firstName', user.firstname);
+            AppHelpers.SHARED_PREFERENCES
+                .setString('department', user.department ?? '');
 
             return user.status == "true" || user.status == true;
           }
@@ -111,7 +114,6 @@ class AuthDataSource {
             bgColor: Colors.red);
         return false;
       } else {
-    
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -122,7 +124,7 @@ class AuthDataSource {
     } catch (e) {
       // showSnackBar(
       //     context: Get.context!, message: e.toString(), bgColor: Colors.red);
-     
+
       return false;
     }
   }
@@ -141,7 +143,6 @@ class AuthDataSource {
         users = getUserResponseFromJson(jsonString);
         return users;
       } else {
-  
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -173,7 +174,6 @@ class AuthDataSource {
         forgotPasswordResponse = ForgotPasswordResponse.fromJson(jsonString);
         return forgotPasswordResponse;
       } else {
-    
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -201,7 +201,6 @@ class AuthDataSource {
       if (response.statusCode == 200) {
         return response.body == "true";
       } else {
-       
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,

@@ -121,15 +121,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               optionsButton(
                   title: 'Calendar',
                   onTap: () {
-                    pushNewScreen(
-                      context,
-                      screen: BookingHistoryScreen(
-                        isCalendarScreen: true,
-                      ),
-                      // screen: const CalenderScreen(),
-                      withNavBar: true, // OPTIONAL VALUE. True by default.
-                      pageTransitionAnimation: PageTransitionAnimation.fade,
-                    );
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookingHistoryScreen(
+                            isCalendarScreen: true,
+                          ),
+                        ));
+
+                    // pushNewScreen(
+                    //   context,
+                    //   screen: BookingHistoryScreen(
+                    //     isCalendarScreen: true,
+                    //   ),
+                    //   // screen: const CalenderScreen(),
+                    //   withNavBar: true, // OPTIONAL VALUE. True by default.
+                    //   pageTransitionAnimation: PageTransitionAnimation.fade,
+                    // );
                   }),
               const Spacer(),
             ],

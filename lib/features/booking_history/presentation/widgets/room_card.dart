@@ -157,7 +157,9 @@ class RoomCard extends StatelessWidget {
                         node != null
                             ? node['fromdate'] != null
                                 ? node['fromdate']
-                                : ''
+                                : node['selecteddate'] != null
+                                    ? node['selecteddate']
+                                    : ''
                             : '',
                         style: TextStyle(
                           fontSize: 12.sp,
@@ -406,7 +408,8 @@ class RoomCard extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Booked Room will be cancelled if the Room is not occupied within 15 minutes',
+                          '''
+Please cancel/edit your booking if your planned return to office date/time have changed. Thank you for your kind consideration so that other fellow colleagues can book those desks''',
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,

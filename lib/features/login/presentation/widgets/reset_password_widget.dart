@@ -72,11 +72,11 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
 
                       validator: (s) {
                         const String pattern =
-                            r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$)';
+                            r'(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$)';
 
                         RegExp regex = RegExp(pattern);
                         if (!regex.hasMatch(s!))
-                          return 'Password should be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character';
+                          return 'Password should be Minimum ten characters, at least one uppercase letter, one lowercase letter, one number and one special character';
                         else
                           return null;
                       },

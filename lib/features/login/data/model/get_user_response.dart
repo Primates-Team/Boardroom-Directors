@@ -19,6 +19,7 @@ class GetUserResponse {
     required this.password,
     required this.lastname,
     required this.gender,
+    required this.department,
     this.phone,
     this.role,
     this.designation,
@@ -38,6 +39,7 @@ class GetUserResponse {
   String firstname;
   String? email;
   String? password;
+  String? department;
   String lastname;
   String gender;
   String? phone;
@@ -71,6 +73,7 @@ class GetUserResponse {
         imei: json["imei"],
         lastscanned: json["lastscanned"],
         status: json["status"],
+        department: json["department"],
         profilepic: json["profilepic"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),

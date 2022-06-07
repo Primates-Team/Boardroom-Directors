@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/features/booking_history/presentation/pages/booking_history_screen.dart';
 import 'package:hot_desking/features/home/presentation/widgets/custom_nav_bar_widget.dart';
@@ -68,7 +69,9 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                             InkWell(
                               radius: 15,
                               onTap: () {
-                                _controller.jumpToTab(0);
+                                Get.offAllNamed('/root');
+
+                                // _controller.jumpToTab(0);
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
