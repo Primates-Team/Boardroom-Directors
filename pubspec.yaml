@@ -60,3 +60,7 @@ flutter:
     - assets/background_floor/floor3/
     - assets/background_floor/floor14/
     - assets/table/
+    - assets/svg/level3/
+    - assets/svg/level14/
+    - assets/png/level3/
+    - assets/png/level14/
