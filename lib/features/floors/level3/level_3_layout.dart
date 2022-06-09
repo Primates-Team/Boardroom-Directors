@@ -38,10 +38,9 @@ class _Level3LayoutState extends State<Level3Layout> {
   int table = 0;
   int seat = 0;
   int? tableNo, seatNo;
-  // Map<int, List<int>> bookedTables = bookingController.bookedSeats;
+
   late Map<int, List<int>> bookedTables;
 
-  // List<Map<int, int>> tableData = bookingController.tableData;
   final String _selectedFloor = 'Floor 3';
   Map<int, List<int>> modifiedTables = {};
   callnext() async {
@@ -65,7 +64,6 @@ class _Level3LayoutState extends State<Level3Layout> {
       jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
           int.parse(element["tableid"]): int.parse(element["seatnumber"])
-          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
         tableData.add(tableSeatDict);
@@ -96,7 +94,6 @@ class _Level3LayoutState extends State<Level3Layout> {
       jsondata.forEach((element) {
         Map<int, int> tableSeatDict = {
           int.parse(element["tableid"]): int.parse(element["seatnumber"])
-          // jsonDecode(element)["tableid"]: jsonDecode(element)["seatno"]
         };
 
         tableData.add(tableSeatDict);
@@ -173,7 +170,6 @@ class _Level3LayoutState extends State<Level3Layout> {
             } else {
               return GetBuilder<BookingController>(builder: (controller) {
                 return SizedBox(
-                  //  height:  MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -185,13 +181,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 "assets/svg/level3/Map3level 3.svg",
                                 width: MediaQuery.of(context).size.width,
                                 height: 500.h,
-                              )
-                              // child: Image.asset(
-                              //   'assets/level3/Frame 10.png',
-                              // width: MediaQuery.of(context).size.width,
-                              // height: 500.h,
-                              // ),
-                              ),
+                              )),
                           Positioned(
                               top: 38.w,
                               left: 67.w,
@@ -216,52 +206,16 @@ class _Level3LayoutState extends State<Level3Layout> {
                                   _buildDateSelectionDialog(3);
                                 },
                               )),
-                          // Positioned(
-                          //     bottom: 160.w,
-                          //     right: 140.w,
-                          //     child: Image.asset(
-                          //       'assets/chairs/chair_of_table.png',
-                          //       height: 90.h,
-                          //     )),
-                          // Positioned(
-                          //   bottom: 168.w,
-                          //   right: 147.w,
-                          //   child: InkWell(
-                          //     child: Image.asset(
-                          //       'assets/chairs/table.png',
-                          //       height: 70.w,
-                          //     ),
-                          //     onTap: () {
-                          //       showTabledetails1(2, bookedTables[2] ?? []);
-                          //     },
-                          //   ),
-                          // ),
                           Positioned(
                             top: 200.w,
                             left: 100.w,
                             child: InkWell(
-                              // child: SizedBox(
-                              //   height: 65.h,
-                              //   width: 50.w,
-                              //   child: Column(
-                              //     children: [
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //       Image.asset(
-                              //         'assets/chairs/small_table.png',
-                              //       ),
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //     ],
-                              //   ),
-                              // ),
                               child: SvgPicture.asset(
                                 'assets/svg/level3/Frame 47level 3.svg',
                                 width: 90.w,
                               ),
                               onTap: () {
                                 _buildDateSelectionDialog(1);
-                                // showTabledetails1(1, bookedTables[1] ?? []);
                               },
                             ),
                           ),
@@ -269,85 +223,32 @@ class _Level3LayoutState extends State<Level3Layout> {
                             top: 300.w,
                             left: 100.w,
                             child: InkWell(
-                              // child: SizedBox(
-                              //   height: 65.h,
-                              //   width: 50.w,
-                              //   child: Column(
-                              //     children: [
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //       Image.asset(
-                              //         'assets/chairs/small_table.png',
-                              //       ),
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //     ],
-                              //   ),
-                              // ),
                               child: SvgPicture.asset(
                                 'assets/svg/level3/Frame 48level 3.svg',
                                 width: 90.w,
                               ),
                               onTap: () {
                                 _buildDateSelectionDialog(1);
-                                // showTabledetails1(1, bookedTables[1] ?? []);
                               },
                             ),
                           ),
-
                           Positioned(
                             bottom: 180.w,
                             left: 220.w,
-                            //  right: 1.w,
-
                             child: InkWell(
-                              // child: SizedBox(
-                              //   height: 65.h,
-                              //   width: 50.w,
-                              //   child: Column(
-                              //     children: [
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //       Image.asset(
-                              //         'assets/chairs/small_table.png',
-                              //       ),
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //     ],
-                              //   ),
-                              // ),
                               child: SvgPicture.asset(
                                 'assets/svg/level3/Frame 49level 3.svg',
                                 width: 130.w,
                               ),
                               onTap: () {
                                 _buildDateSelectionDialog(1);
-                                // showTabledetails1(1, bookedTables[1] ?? []);
                               },
                             ),
                           ),
                           Positioned(
                             top: 40.w,
                             left: 260.w,
-                            //  right: 1.w,
-
                             child: InkWell(
-                              // child: SizedBox(
-                              //   height: 65.h,
-                              //   width: 50.w,
-                              //   child: Column(
-                              //     //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              //     children: [
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //       Image.asset(
-                              //         'assets/chairs/small_table.png',
-                              //       ),
-                              //       Image.asset(
-                              //           'assets/chairs/chair_down_paired.png'),
-                              //     ],
-                              //   ),
-                              // ),
                               child: SvgPicture.asset(
                                 'assets/svg/level3/Frame 46level 3.svg',
                                 width: 90.w,

@@ -200,6 +200,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "horizontal_data_table",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/horizontal_data_table-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4",
       "packageUri": "lib/",
@@ -280,6 +286,12 @@
     {
       "name": "meta",
       "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "nested",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -378,6 +390,12 @@
       "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/provider-6.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "qr_code_scanner",
@@ -518,7 +536,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-06-07T19:23:28.861420Z",
+  "generated": "2022-06-09T13:17:54.738871Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }
