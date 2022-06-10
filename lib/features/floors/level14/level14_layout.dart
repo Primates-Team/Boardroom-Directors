@@ -488,13 +488,13 @@ class _Level14LayoutState extends State<Level14Layout> {
               if (tableNumber == 1) {
                 showTabledetails1(1, bookedTables[1] ?? [], jsonData);
               } else if (tableNumber == 2) {
-                showTabledetails5(2, bookedTables[2] ?? [], jsonData);
+                showTabledetails2(2, bookedTables[2] ?? [], jsonData);
               } else if (tableNumber == 3) {
-                showTabledetails6(3, bookedTables[3] ?? [], jsonData);
+                showTabledetails3(3, bookedTables[3] ?? [], jsonData);
               } else if (tableNumber == 4) {
-                showTabledetails6(4, bookedTables[4] ?? [], jsonData);
+                showTabledetails4(4, bookedTables[4] ?? [], jsonData);
               } else if (tableNumber == 5) {
-                showTabledetails6(5, bookedTables[5] ?? [], jsonData);
+                showTabledetails5(5, bookedTables[5] ?? [], jsonData);
               } else if (tableNumber == 6) {
                 showTabledetails6(6, bookedTables[6] ?? [], jsonData);
               }else if (tableNumber == 7) {
@@ -905,7 +905,7 @@ class _Level14LayoutState extends State<Level14Layout> {
         });
   }
 
-  showTabledetails2(
+ showTabledetails2(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -974,7 +974,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             Center(
                                 child: SvgPicture.asset(
                                     'assets/table/tableleftangle.svg',
-                                    height: 150.h,
+                                    height: 200.h,
                                     width: 800.w)),
                             Positioned(
                               top: 94.h,
@@ -1004,10 +1004,9 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 136.h,
-                              left: 115.w,
+                              top: 142.h,
+                              left: 110.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -1033,10 +1032,9 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 100.h,
-                              left: 93.w,
+                              top: 103.h,
+                              left: 88.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -1062,10 +1060,9 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 },
                               ),
                             ),
-
                             Positioned(
                               top: 60.h,
-                              left: 70.w,
+                              left: 60.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -1091,35 +1088,6 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 },
                               ),
                             ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
                             Positioned(
                               top: 20.h,
                               left: 165.w,
@@ -1212,36 +1180,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                       const SizedBox(
                         height: 15.61,
                       ),
-                      // Row(
-                      //   children: [
-                      //     Container(
-                      //       height: 15.61,
-                      //       width: 31.21,
-                      //       margin: const EdgeInsets.only(
-                      //         left: 53.69,
-                      //       ),
-                      //       decoration: BoxDecoration(
-                      //         borderRadius: BorderRadius.circular(10),
-                      //         color: Colors.grey,
-                      //       ),
-                      //     ),
-                      //     Container(
-                      //       margin: const EdgeInsets.only(
-                      //         left: 18.73,
-                      //       ),
-                      //       child: Text(
-                      //         "Available Soon",
-                      //         style: GoogleFonts.lato(
-                      //           textStyle: const TextStyle(
-                      //               fontSize: 10, fontWeight: FontWeight.w500),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // const SizedBox(
-                      //   height: 15.61,
-                      // ),
+
                       Row(
                         children: [
                           Container(
@@ -1414,11 +1353,11 @@ class _Level14LayoutState extends State<Level14Layout> {
                           children: [
                             Center(
                                 child: RotatedBox(
-                              quarterTurns: 1,
-                              child: Image.asset(
-                                  'assets/level3/Rectangle 146.png',
-                                  height: 100.h,
-                                  width: 600.w),
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
                             )),
 
                             Positioned(
@@ -1791,7 +1730,7 @@ class _Level14LayoutState extends State<Level14Layout> {
         });
   }
 
-  showTabledetails4(
+ showTabledetails4(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -1859,12 +1798,13 @@ class _Level14LayoutState extends State<Level14Layout> {
                           children: [
                             Center(
                                 child: RotatedBox(
-                              quarterTurns: 1,
-                              child: Image.asset(
-                                  'assets/level3/Rectangle 146.png',
-                                  height: 100.h,
-                                  width: 600.w),
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
                             )),
+
                             Positioned(
                               top: 94.h,
                               left: 190.w,
@@ -2069,7 +2009,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                         ),
                       ),
                       SizedBox(
-                        height: 31.92.h,
+                        height: 10.92.h,
                       ),
                       Row(
                         children: [
@@ -2235,400 +2175,7 @@ class _Level14LayoutState extends State<Level14Layout> {
         });
   }
 
-  showTabledetails5(
-      int tableNo, List<int> seats, Map<String, dynamic> data) async {
-    await callAPI();
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-            return Center(
-              child: SingleChildScrollView(
-                child: Card(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.57,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    // margin: const EdgeInsets.only(
-                    //   left: 16.09,
-                    //   right: 7.09,
-                    // ),
-                    padding: EdgeInsets.all(20.r),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                          height: 10.h,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              // ignore: avoid_unnecessary_containers
-                              InkWell(
-                                child: Icon(
-                                  Icons.close_rounded,
-                                  size: 20.r,
-                                ),
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.6.h,
-                        ),
-                        Text(
-                          "Seat Selection",
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                                fontSize: 15.sp, fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.6.h,
-                        ),
-                        // ignore: sized_box_for_whitespace
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.24,
-                          width: MediaQuery.of(context).size.width,
-                          // color: Colors.lightBlue,
-                          // margin: const EdgeInsets.only(
-                          //     top: 34.32, left: 48.41, right: 48.41),
-                          child: Stack(
-                            children: [
-                              Center(
-                                  child: SvgPicture.asset(
-                                      'assets/table/tableangle.svg',
-                                      height: 150.h,
-                                      width: 600.w)),
-
-                              //
-
-                              //
-                              Positioned(
-                                top: 150.h,
-                                left: 125.w,
-                                child: InkWell(
-                                  child: Column(
-                                    children: [
-                                      RotatedBox(
-                                        quarterTurns: 4,
-                                        child: Image.asset(
-                                          "assets/chairs/available.png",
-                                          color: seats.contains(25)
-                                              ? AppColors.kRed
-                                              : (table == tableNo && seat == 25)
-                                                  ? AppColors.kOrange
-                                                  : AppColors.kEvergreen,
-                                          height: 22.r,
-                                        ),
-                                      ),
-                                      Text("HDG25"),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      updateTable(tableNo, 25);
-                                    });
-                                  },
-                                ),
-                              ),
-
-                              Positioned(
-                                top: 80.h,
-                                left: 60.w,
-                                child: InkWell(
-                                  child: Column(
-                                    children: [
-                                      Text("HDG26"),
-                                      RotatedBox(
-                                        quarterTurns: 4,
-                                        child: Image.asset(
-                                          "assets/chairs/available.png",
-                                          color: seats.contains(26)
-                                              ? AppColors.kRed
-                                              : (table == tableNo && seat == 26)
-                                                  ? AppColors.kOrange
-                                                  : AppColors.kEvergreen,
-                                          height: 22.r,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      updateTable(tableNo, 26);
-                                    });
-                                  },
-                                ),
-                              ),
-
-                              Positioned(
-                                top: 38.h,
-                                left: 100.w,
-                                child: InkWell(
-                                  child: Column(
-                                    children: [
-                                      Text("HDG27"),
-                                      RotatedBox(
-                                        quarterTurns: 4,
-                                        child: Image.asset(
-                                          "assets/chairs/available.png",
-                                          color: seats.contains(27)
-                                              ? AppColors.kRed
-                                              : (table == tableNo && seat == 27)
-                                                  ? AppColors.kOrange
-                                                  : AppColors.kEvergreen,
-                                          height: 22.r,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      updateTable(tableNo, 27);
-                                    });
-                                  },
-                                ),
-                              ),
-
-                              Positioned(
-                                //   top: 10.h,
-                                left: 138.w,
-                                child: InkWell(
-                                  child: Column(
-                                    children: [
-                                      Text("HDG28"),
-                                      RotatedBox(
-                                        quarterTurns: 4,
-                                        child: Image.asset(
-                                          "assets/chairs/available.png",
-                                          color: seats.contains(28)
-                                              ? AppColors.kRed
-                                              : (table == tableNo && seat == 28)
-                                                  ? AppColors.kOrange
-                                                  : AppColors.kEvergreen,
-                                          height: 22.r,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      updateTable(tableNo, 28);
-                                    });
-                                  },
-                                ),
-                              ),
-
-                              Positioned(
-                                top: 71.h,
-                                left: 210.w,
-                                child: InkWell(
-                                  child: Column(
-                                    children: [
-                                      RotatedBox(
-                                        quarterTurns: 4,
-                                        child: Image.asset(
-                                          "assets/chairs/available.png",
-                                          color: seats.contains(29)
-                                              ? AppColors.kRed
-                                              : (table == tableNo && seat == 29)
-                                                  ? AppColors.kOrange
-                                                  : AppColors.kEvergreen,
-                                          height: 22.r,
-                                        ),
-                                      ),
-                                      Text("HDG29"),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      updateTable(tableNo, 29);
-                                    });
-                                  },
-                                ),
-                              ),
-                              Positioned(
-                                top: 110.h,
-                                left: 175.w,
-                                child: InkWell(
-                                  child: Column(
-                                    children: [
-                                      RotatedBox(
-                                        quarterTurns: 4,
-                                        child: Image.asset(
-                                          "assets/chairs/available.png",
-                                          color: seats.contains(30)
-                                              ? AppColors.kRed
-                                              : (table == tableNo && seat == 30)
-                                                  ? AppColors.kOrange
-                                                  : AppColors.kEvergreen,
-                                          height: 22.r,
-                                        ),
-                                      ),
-                                      Text("HDG30"),
-                                    ],
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      updateTable(tableNo, 30);
-                                    });
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.92.h,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              height: 15.61,
-                              width: 31.21,
-                              margin: const EdgeInsets.only(
-                                left: 53.69,
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xFFEA893B),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(
-                                left: 18.73,
-                              ),
-                              child: Text(
-                                "Selected",
-                                style: GoogleFonts.lato(
-                                  textStyle: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15.61,
-                        ),
-
-                        Row(
-                          children: [
-                            Container(
-                              height: 15.61,
-                              width: 31.21,
-                              margin: const EdgeInsets.only(
-                                left: 53.69,
-                              ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: AppColors.kEvergreen),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(
-                                left: 18.73,
-                              ),
-                              child: Text(
-                                "Available",
-                                style: GoogleFonts.lato(
-                                  textStyle: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15.61,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              height: 15.61,
-                              width: 31.21,
-                              margin: const EdgeInsets.only(
-                                left: 53.69,
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xFFD14751),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(
-                                left: 18.73,
-                              ),
-                              child: Text(
-                                "Booked",
-                                style: GoogleFonts.lato(
-                                  textStyle: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    AppColors.kAubergine)),
-                            onPressed: () {
-                              if (tableNo != null && seatNo != null) {
-                                Get.back();
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 2.5, sigmaY: 2.5),
-                                        child: Dialog(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(20.0)),
-                                          child: TimeSlotDialog(
-                                            tableNo: tableNo,
-                                            seatNo: seatNo!,
-                                            date: DateTime.now(),
-                                            startTime: TimeOfDay.now(),
-                                            floor: _selectedFloor,
-                                          ),
-                                        ),
-                                      );
-                                    });
-                              } else {
-                                showSnackBar(
-                                    context: context, message: 'Select Seat');
-                              }
-                            },
-                            child: const Text('Book'),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            );
-          });
-        });
-  }
-
-  showTabledetails6(
+ showTabledetails5(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -2639,7 +2186,7 @@ class _Level14LayoutState extends State<Level14Layout> {
             return Center(
               child: Card(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.57,
+                  height: MediaQuery.of(context).size.height * 0.59,
                   width: MediaQuery.of(context).size.width * 0.9,
                   // margin: const EdgeInsets.only(
                   //   left: 16.09,
@@ -2697,8 +2244,421 @@ class _Level14LayoutState extends State<Level14Layout> {
                             Center(
                                 child: SvgPicture.asset(
                                     'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                    height: 120.h,
+                                    width: 500.w)),
+                            Positioned(
+                              top: 150.h,
+                              left: 125.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(25)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 25)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDG25"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 25);
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 80.h,
+                              left: 60.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    Text("HDG26"),
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(26)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 26)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 26);
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 38.h,
+                              left: 100.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    Text("HDG27"),
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(27)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 27)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 27);
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              //   top: 10.h,
+                              left: 138.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    Text("HDG28"),
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(28)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 28)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 28);
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 71.h,
+                              left: 210.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(29)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 29)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDG29"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 29);
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 110.h,
+                              left: 175.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(30)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 30)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDG30"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 30);
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.92.h,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 15.61,
+                            width: 31.21,
+                            margin: const EdgeInsets.only(
+                              left: 53.69,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xFFEA893B),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 18.73,
+                            ),
+                            child: Text(
+                              "Selected",
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15.61,
+                      ),
+
+                      Row(
+                        children: [
+                          Container(
+                            height: 15.61,
+                            width: 31.21,
+                            margin: const EdgeInsets.only(
+                              left: 53.69,
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColors.kEvergreen),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 18.73,
+                            ),
+                            child: Text(
+                              "Available",
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15.61,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 15.61,
+                            width: 31.21,
+                            margin: const EdgeInsets.only(
+                              left: 53.69,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xFFD14751),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 18.73,
+                            ),
+                            child: Text(
+                              "Booked",
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  AppColors.kAubergine)),
+                          onPressed: () {
+                            if (tableNo == null || seatNo == null) {
+                              return;
+                            }
+                            if (data["selecteddate"] != null &&
+                                data["todate"] != null &&
+                                data["fromtime"] != null &&
+                                data["totime"] != null) {
+                              TableBookingDataSource()
+                                  .createBooking(
+                                tableNo: tableNo,
+                                seatNo: seatNo ?? 0,
+                                startDate: data["selecteddate"],
+                                endDate: data["todate"],
+                                floor: _selectedFloor,
+                                fromTime: data["fromtime"],
+                                toTime: data["totime"],
+                              )
+                                  .then((value) {
+                                if (value) {
+                                  Get.back();
+                                  //setState(() {});
+                                  // Navigator.pop(context);
+
+                                  showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      useRootNavigator: false,
+                                      builder: (context) {
+                                        return BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 2.5, sigmaY: 2.5),
+                                          child: Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        20.0)),
+                                            child: BookingConfirmedWidget(
+                                                data["fromtime"],
+                                                data["totime"],
+                                                tableNo,
+                                                seatNo ?? 0,
+                                                data["selecteddate"],
+                                                _selectedFloor),
+                                          ),
+                                        );
+                                      }).then((value) {
+                                    Get.offAllNamed("/home");
+                                    // eventBus.fire(HotDeskingInitialEvent());
+                                  });
+                                } else {
+                                  Navigator.pop(context);
+                                }
+                              });
+                            } else {
+                              showSnackBar(
+                                  context: context,
+                                  message: 'Provide start and end time',
+                                  bgColor: AppColors.kRed);
+                            }
+                          },
+                          child: const Text('Book'),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
+  }
+
+  showTabledetails6(
+      int tableNo, List<int> seats, Map<String, dynamic> data) async {
+    await callAPI();
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+            return Center(
+              child: Card(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  // margin: const EdgeInsets.only(
+                  //   left: 16.09,
+                  //   right: 7.09,
+                  // ),
+                  padding: EdgeInsets.all(20.r),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        height: 10.h,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // ignore: avoid_unnecessary_containers
+                            InkWell(
+                              child: Icon(
+                                Icons.close_rounded,
+                                size: 20.r,
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.6.h,
+                      ),
+                      Text(
+                        "Seat Selection",
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                              fontSize: 15.sp, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.6.h,
+                      ),
+                      // ignore: sized_box_for_whitespace
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.24,
+                        width: MediaQuery.of(context).size.width,
+                        // color: Colors.lightBlue,
+                        // margin: const EdgeInsets.only(
+                        //     top: 34.32, left: 48.41, right: 48.41),
+                        child: Stack(
+                          children: [
+                            Center(
+                                child: SvgPicture.asset(
+                                    'assets/table/tableangle.svg',
+                                    height: 120.h,
+                                    width: 500.w)),
                             Positioned(
                               top: 150.h,
                               left: 125.w,
@@ -3041,6 +3001,7 @@ class _Level14LayoutState extends State<Level14Layout> {
         });
   }
 
+
 showTabledetails7(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
@@ -3052,7 +3013,7 @@ showTabledetails7(
             return Center(
               child: Card(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.57,
+                  height: MediaQuery.of(context).size.height * 0.60,
                   width: MediaQuery.of(context).size.width * 0.9,
                   // margin: const EdgeInsets.only(
                   //   left: 16.09,
@@ -3109,12 +3070,12 @@ showTabledetails7(
                           children: [
                             Center(
                                 child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                    'assets/table/horizontaltable.svg',
+                                    height: 70.h,
+                                    width: 300.w)),
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 135.h,
+                              left: 70.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3141,8 +3102,8 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 10.h,
+                              left: 70.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3169,8 +3130,8 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 10.h,
+                              left: 130.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3197,8 +3158,8 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                                top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3225,8 +3186,8 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 135.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3253,8 +3214,8 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 135.h,
+                              left: 130.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3466,7 +3427,7 @@ showTabledetails8(
             return Center(
               child: Card(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.57,
+                  height: MediaQuery.of(context).size.height * 0.60,
                   width: MediaQuery.of(context).size.width * 0.9,
                   // margin: const EdgeInsets.only(
                   //   left: 16.09,
@@ -3523,12 +3484,12 @@ showTabledetails8(
                           children: [
                             Center(
                                 child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                    'assets/table/horizontaltable.svg',
+                                    height: 70.h,
+                                    width: 300.w)),
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 135.h,
+                              left: 70.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3555,8 +3516,8 @@ showTabledetails8(
                               ),
                             ),
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 10.h,
+                              left: 70.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3583,8 +3544,8 @@ showTabledetails8(
                               ),
                             ),
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 10.h,
+                              left: 130.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3611,8 +3572,8 @@ showTabledetails8(
                               ),
                             ),
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                                top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3639,8 +3600,8 @@ showTabledetails8(
                               ),
                             ),
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 135.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3667,8 +3628,8 @@ showTabledetails8(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 135.h,
+                              left: 130.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3867,7 +3828,6 @@ showTabledetails8(
           });
         });
   }
-
 showTabledetails9(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
@@ -3927,7 +3887,7 @@ showTabledetails9(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -3935,13 +3895,17 @@ showTabledetails9(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3967,9 +3931,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -3995,9 +3960,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4023,9 +3989,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4051,9 +4018,38 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4080,8 +4076,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4143,7 +4139,36 @@ showTabledetails9(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -4209,64 +4234,31 @@ showTabledetails9(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -4292,7 +4284,7 @@ showTabledetails9(
             return Center(
               child: Card(
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.57,
+                  height: MediaQuery.of(context).size.height * 0.60,
                   width: MediaQuery.of(context).size.width * 0.9,
                   // margin: const EdgeInsets.only(
                   //   left: 16.09,
@@ -4349,12 +4341,12 @@ showTabledetails9(
                           children: [
                             Center(
                                 child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                    'assets/table/horizontaltable.svg',
+                                    height: 70.h,
+                                    width: 300.w)),
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 135.h,
+                              left: 70.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4381,8 +4373,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 10.h,
+                              left: 70.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4409,8 +4401,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 10.h,
+                              left: 130.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4437,8 +4429,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                                top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4465,8 +4457,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 135.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4493,8 +4485,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 135.h,
+                              left: 130.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4695,6 +4687,8 @@ showTabledetails9(
   }
 
 
+
+
   showTabledetails11(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
@@ -4754,7 +4748,7 @@ showTabledetails9(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -4762,13 +4756,17 @@ showTabledetails9(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4794,9 +4792,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4822,9 +4821,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4850,9 +4850,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4878,9 +4879,38 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4907,8 +4937,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -4970,7 +5000,36 @@ showTabledetails9(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -5036,64 +5095,31 @@ showTabledetails9(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -5108,6 +5134,8 @@ showTabledetails9(
         });
   }
 
+
+  
   showTabledetails12(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
@@ -5167,7 +5195,7 @@ showTabledetails9(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -5175,13 +5203,17 @@ showTabledetails9(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5207,9 +5239,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5235,9 +5268,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5263,9 +5297,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5291,9 +5326,38 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5320,8 +5384,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5383,7 +5447,36 @@ showTabledetails9(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -5449,64 +5542,31 @@ showTabledetails9(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -5522,6 +5582,8 @@ showTabledetails9(
   }
 
 
+
+  
   showTabledetails13(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
@@ -5581,7 +5643,7 @@ showTabledetails9(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -5589,13 +5651,17 @@ showTabledetails9(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5621,9 +5687,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5649,9 +5716,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5677,9 +5745,10 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5705,9 +5774,38 @@ showTabledetails9(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5734,8 +5832,8 @@ showTabledetails9(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5797,7 +5895,36 @@ showTabledetails9(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -5863,64 +5990,31 @@ showTabledetails9(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -5936,7 +6030,7 @@ showTabledetails9(
   }
 
 
-showTabledetails14(
+  showTabledetails14(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -5995,7 +6089,7 @@ showTabledetails14(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -6003,13 +6097,17 @@ showTabledetails14(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6035,9 +6133,10 @@ showTabledetails14(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6063,9 +6162,10 @@ showTabledetails14(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6091,9 +6191,10 @@ showTabledetails14(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6119,9 +6220,38 @@ showTabledetails14(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6148,8 +6278,8 @@ showTabledetails14(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6211,7 +6341,36 @@ showTabledetails14(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -6277,64 +6436,31 @@ showTabledetails14(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -6349,7 +6475,8 @@ showTabledetails14(
         });
   }
 
-showTabledetails15(
+
+  showTabledetails15(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -6408,7 +6535,7 @@ showTabledetails15(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -6416,13 +6543,17 @@ showTabledetails15(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6448,9 +6579,10 @@ showTabledetails15(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6476,9 +6608,10 @@ showTabledetails15(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6504,9 +6637,10 @@ showTabledetails15(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6532,9 +6666,38 @@ showTabledetails15(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6561,8 +6724,8 @@ showTabledetails15(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6624,7 +6787,36 @@ showTabledetails15(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -6690,64 +6882,31 @@ showTabledetails15(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -6762,7 +6921,8 @@ showTabledetails15(
         });
   }
 
-showTabledetails16(
+
+  showTabledetails16(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -6821,7 +6981,7 @@ showTabledetails16(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -6829,13 +6989,17 @@ showTabledetails16(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6861,9 +7025,10 @@ showTabledetails16(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6889,9 +7054,10 @@ showTabledetails16(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6917,9 +7083,10 @@ showTabledetails16(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6945,9 +7112,38 @@ showTabledetails16(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6974,8 +7170,8 @@ showTabledetails16(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7037,7 +7233,36 @@ showTabledetails16(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -7103,64 +7328,31 @@ showTabledetails16(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -7175,7 +7367,8 @@ showTabledetails16(
         });
   }
 
-showTabledetails17(
+
+  showTabledetails17(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     await callAPI();
     return showDialog(
@@ -7234,7 +7427,7 @@ showTabledetails17(
                       ),
                       // ignore: sized_box_for_whitespace
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.24,
+                        height: MediaQuery.of(context).size.height * 0.17,
                         width: MediaQuery.of(context).size.width,
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
@@ -7242,13 +7435,17 @@ showTabledetails17(
                         child: Stack(
                           children: [
                             Center(
-                                child: SvgPicture.asset(
-                                    'assets/table/tableangle.svg',
-                                    height: 150.h,
-                                    width: 600.w)),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/rightangletable.svg',
+                                  height: 120.h,
+                                  width: 700.w),
+                            )),
+
                             Positioned(
-                              top: 150.h,
-                              left: 125.w,
+                              top: 94.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7274,9 +7471,10 @@ showTabledetails17(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 80.h,
-                              left: 60.w,
+                              top: 94.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7302,9 +7500,10 @@ showTabledetails17(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 38.h,
-                              left: 100.w,
+                              top: 50.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7330,9 +7529,10 @@ showTabledetails17(
                                 },
                               ),
                             ),
+
                             Positioned(
-                              //   top: 10.h,
-                              left: 138.w,
+                              top: 10.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7358,9 +7558,38 @@ showTabledetails17(
                                 },
                               ),
                             ),
+
+                            //
+                            //
+                            // Positioned(
+                            //   top: 60.h,
+                            //   right: 35.w,
+                            //   child: InkWell(
+                            //     child:
+                            //     Row(
+                            //       children: [
+
+                            //         RotatedBox(
+
+                            //           quarterTurns: 1,
+                            //           child: Image.asset(
+
+                            //             "assets/chairs/available.png", color: seats.contains(6)
+                            //               ? AppColors.kRed
+                            //               : (table == tableNo && seat == 6)
+                            //               ? AppColors.kOrange
+                            //               : AppColors.kEvergreen,
+                            //             height: 22.r,),
+                            //         ),
+                            //         Text('6'),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 71.h,
-                              left: 210.w,
+                              top: 10.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7387,8 +7616,8 @@ showTabledetails17(
                               ),
                             ),
                             Positioned(
-                              top: 110.h,
-                              left: 175.w,
+                              top: 50.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -7450,7 +7679,36 @@ showTabledetails17(
                       const SizedBox(
                         height: 15.61,
                       ),
-
+                      // Row(
+                      //   children: [
+                      //     Container(
+                      //       height: 15.61,
+                      //       width: 31.21,
+                      //       margin: const EdgeInsets.only(
+                      //         left: 53.69,
+                      //       ),
+                      //       decoration: BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey,
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       margin: const EdgeInsets.only(
+                      //         left: 18.73,
+                      //       ),
+                      //       child: Text(
+                      //         "Available Soon",
+                      //         style: GoogleFonts.lato(
+                      //           textStyle: const TextStyle(
+                      //               fontSize: 10, fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 15.61,
+                      // ),
                       Row(
                         children: [
                           Container(
@@ -7516,64 +7774,31 @@ showTabledetails17(
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            if (tableNo == null || seatNo == null) {
-                              return;
-                            }
-                            if (data["selecteddate"] != null &&
-                                data["todate"] != null &&
-                                data["fromtime"] != null &&
-                                data["totime"] != null) {
-                              TableBookingDataSource()
-                                  .createBooking(
-                                tableNo: tableNo,
-                                seatNo: seatNo ?? 0,
-                                startDate: data["selecteddate"],
-                                endDate: data["todate"],
-                                floor: _selectedFloor,
-                                fromTime: data["fromtime"],
-                                toTime: data["totime"],
-                              )
-                                  .then((value) {
-                                if (value) {
-                                  Get.back();
-                                  //setState(() {});
-                                  // Navigator.pop(context);
-
-                                  showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      useRootNavigator: false,
-                                      builder: (context) {
-                                        return BackdropFilter(
-                                          filter: ImageFilter.blur(
-                                              sigmaX: 2.5, sigmaY: 2.5),
-                                          child: Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        20.0)),
-                                            child: BookingConfirmedWidget(
-                                                data["fromtime"],
-                                                data["totime"],
-                                                tableNo,
-                                                seatNo ?? 0,
-                                                data["selecteddate"],
-                                                _selectedFloor),
-                                          ),
-                                        );
-                                      }).then((value) {
-                                    Get.offAllNamed("/home");
-                                    // eventBus.fire(HotDeskingInitialEvent());
+                            if (tableNo != null && seatNo != null) {
+                              Get.back();
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                          sigmaX: 2.5, sigmaY: 2.5),
+                                      child: Dialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0)),
+                                        child: TimeSlotDialog(
+                                          tableNo: tableNo,
+                                          seatNo: seatNo!,
+                                          date: DateTime.now(),
+                                          startTime: TimeOfDay.now(),
+                                          floor: _selectedFloor,
+                                        ),
+                                      ),
+                                    );
                                   });
-                                } else {
-                                  Navigator.pop(context);
-                                }
-                              });
                             } else {
                               showSnackBar(
-                                  context: context,
-                                  message: 'Provide start and end time',
-                                  bgColor: AppColors.kRed);
+                                  context: context, message: 'Select Seat');
                             }
                           },
                           child: const Text('Book'),
@@ -7587,6 +7812,7 @@ showTabledetails17(
           });
         });
   }
+
 
   Widget table3(int tableNo, List<int> seats) {
     return Transform.scale(

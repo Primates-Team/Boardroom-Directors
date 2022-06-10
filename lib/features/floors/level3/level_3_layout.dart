@@ -2994,22 +2994,27 @@ showTabledetails7(
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
                         //     top: 34.32, left: 48.41, right: 48.41),
-                        child: Stack(
+                         child: Stack(
                           children: [
                             Center(
-                              child: Image(
-                                  image: AssetImage(
-                                      "assets/images/verticalRectangle 143.png")),
-                            ),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/horizontalrectangle.svg',
+                                  height: 80.h,
+                                  width: 400.w),
+                            )),
+
+                        
                             Positioned(
-                              top: 78.h,
-                              left: 40.w,
+                              top: 110.h,
+                              left: 60.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     Text("HDP9"),
                                     RotatedBox(
-                                      quarterTurns: 3,
+                                      quarterTurns: 2,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(19)
@@ -3030,14 +3035,14 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 20.h,
-                              left: 40.w,
+                              top: 0.h,
+                              left: 50.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     Text("HDP10"),
                                     RotatedBox(
-                                      quarterTurns: 3,
+                                      quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(20)
@@ -3059,13 +3064,13 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 78.h,
-                              left: 195.w,
+                              top: 110.h,
+                              left: 185.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     RotatedBox(
-                                      quarterTurns: 1,
+                                      quarterTurns: 2,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(21)
@@ -3087,13 +3092,13 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 20.h,
-                              left: 195.w,
+                              top: 0.h,
+                              left: 185.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     RotatedBox(
-                                      quarterTurns: 1,
+                                      quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(22)
@@ -3290,8 +3295,7 @@ showTabledetails7(
   }
 
 
-
-  showTabledetails8(
+showTabledetails8(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     return showDialog(
         context: context,
@@ -3349,22 +3353,27 @@ showTabledetails7(
                         // color: Colors.lightBlue,
                         // margin: const EdgeInsets.only(
                         //     top: 34.32, left: 48.41, right: 48.41),
-                        child: Stack(
+                         child: Stack(
                           children: [
                             Center(
-                              child: Image(
-                                  image: AssetImage(
-                                      "assets/images/verticalRectangle 143.png")),
-                            ),
+                                child: RotatedBox(
+                              quarterTurns: 0,
+                              child: SvgPicture.asset(
+                                'assets/table/horizontalrectangle.svg',
+                                  height: 80.h,
+                                  width: 400.w),
+                            )),
+
+                        
                             Positioned(
-                              top: 78.h,
-                              left: 40.w,
+                              top: 110.h,
+                              left: 60.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     Text("HDP5"),
                                     RotatedBox(
-                                      quarterTurns: 3,
+                                      quarterTurns: 2,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(23)
@@ -3385,14 +3394,14 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 20.h,
-                              left: 40.w,
+                              top: 0.h,
+                              left: 50.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     Text("HDP6"),
                                     RotatedBox(
-                                      quarterTurns: 3,
+                                      quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(24)
@@ -3414,13 +3423,13 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 78.h,
-                              left: 195.w,
+                              top: 110.h,
+                              left: 185.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     RotatedBox(
-                                      quarterTurns: 1,
+                                      quarterTurns: 2,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(25)
@@ -3442,13 +3451,13 @@ showTabledetails7(
                               ),
                             ),
                             Positioned(
-                              top: 20.h,
-                              left: 195.w,
+                              top: 0.h,
+                              left: 185.w,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     RotatedBox(
-                                      quarterTurns: 1,
+                                      quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
                                         color: seats.contains(26)
@@ -3643,6 +3652,7 @@ showTabledetails7(
           });
         });
   }
+
 
   showTabledetails4(int tableNo, List<int> seats) async {
     return showDialog(
