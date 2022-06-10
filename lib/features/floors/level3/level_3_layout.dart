@@ -224,13 +224,11 @@ class _Level3LayoutState extends State<Level3Layout> {
                             left: 100.w,
                             child: InkWell(
                               child: SvgPicture.asset(
-                                'assets/svg/level3/Frame 48level 3.svg',
-                                width: 70.w,
-                                fit:BoxFit.fitWidth
-                              ),
+                                  'assets/svg/level3/Frame 48level 3.svg',
+                                  width: 70.w,
+                                  fit: BoxFit.fitWidth),
                               onTap: () {
                                 _buildDateSelectionDialog(4);
-                              
                               },
                             ),
                           ),
@@ -2230,7 +2228,7 @@ class _Level3LayoutState extends State<Level3Layout> {
         });
   }
 
-showTabledetails1(
+  showTabledetails1(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     return showDialog(
         context: context,
@@ -2582,7 +2580,6 @@ showTabledetails1(
           });
         });
   }
-  
 
   showTabledetails9(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
@@ -2660,9 +2657,9 @@ showTabledetails1(
                                       quarterTurns: 3,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(15)
+                                        color: seats.contains(1)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 15)
+                                            : (table == tableNo && seat == 1)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 30.r,
@@ -2672,7 +2669,7 @@ showTabledetails1(
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 15);
+                                    updateTable(tableNo, 1);
                                   });
                                 },
                               ),
@@ -2690,7 +2687,7 @@ showTabledetails1(
                                         "assets/chairs/available.png",
                                         color: seats.contains(16)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 16)
+                                            : (table == tableNo && seat == 2)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 30.r,
@@ -2700,7 +2697,7 @@ showTabledetails1(
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 16);
+                                    updateTable(tableNo, 2);
                                   });
                                   setState(() {});
                                 },
@@ -2718,7 +2715,7 @@ showTabledetails1(
                                         "assets/chairs/available.png",
                                         color: seats.contains(17)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 17)
+                                            : (table == tableNo && seat == 3)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 30.r,
@@ -2729,7 +2726,7 @@ showTabledetails1(
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 17);
+                                    updateTable(tableNo, 3);
                                   });
                                 },
                               ),
@@ -2746,7 +2743,7 @@ showTabledetails1(
                                         "assets/chairs/available.png",
                                         color: seats.contains(18)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 18)
+                                            : (table == tableNo && seat == 4)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 30.r,
@@ -2757,7 +2754,7 @@ showTabledetails1(
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 18);
+                                    updateTable(tableNo, 4);
                                   });
                                 },
                               ),
@@ -2936,7 +2933,8 @@ showTabledetails1(
           });
         });
   }
-showTabledetails7(
+
+  showTabledetails7(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
     return showDialog(
         context: context,
@@ -3288,8 +3286,6 @@ showTabledetails7(
           });
         });
   }
-
-
 
   showTabledetails8(
       int tableNo, List<int> seats, Map<String, dynamic> data) async {
