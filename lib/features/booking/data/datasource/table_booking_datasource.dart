@@ -19,6 +19,7 @@ class TableBookingDataSource {
       required String endDate,
       required String fromTime,
       required String toTime,
+      required String displayname,
       required String floor}) async {
     var client = http.Client();
 
@@ -33,12 +34,17 @@ class TableBookingDataSource {
             "selecteddate": startDate,
             "todate": endDate,
             "floor": floor,
+            "roomtype": floor == 'Floor 14'
+                ? getLevel14RoomType(displayname)
+                : getLevel3RoomType(displayname),
+            "tablename": displayname,
             // "current_time": AppHelpers.formatTime(TimeOfDay.now()),
             "employeeid":
                 AppHelpers.SHARED_PREFERENCES.getInt('user_id') != null
                     ? AppHelpers.SHARED_PREFERENCES.getInt('user_id')
                     : 1,
           }));
+
       if (response.statusCode == 200) {
         var jsonString = response.body;
 
@@ -194,4 +200,96 @@ bool isNumeric(String s) {
     return false;
   }
   return double.tryParse(s) != null;
+}
+
+String getLevel3RoomType(String displayName) {
+  switch (displayName) {
+    case "HDS1":
+    case "HDS2":
+    case "HDS3":
+    case "HDS4":
+      return "BESPL";
+
+    case "HDP1":
+    case "HDP2":
+    case "HDP3":
+    case "HDP4":
+    case "HDP5":
+    case "HDP6":
+    case "HDP7":
+    case "HDP8":
+      return "PAYROLL";
+
+    default:
+      return "GENERAL";
+  }
+}
+
+String getLevel14RoomType(String displayName) {
+  switch (displayName) {
+    case "HDS1":
+    case "HDS2":
+    case "HDS3":
+    case "HDS4":
+    case "HDS5":
+    case "HDS6":
+    case "HDS7":
+    case "HDS8":
+    case "HDS9":
+    case "HDS10":
+    case "HDS11":
+    case "HDS12":
+    case "HDS13":
+    case "HDS14":
+    case "HDS715":
+    case "HDS16":
+    case "HDS17":
+    case "HDS18":
+    case "HDS19":
+    case "HDS20":
+    case "HDS21":
+    case "HDS22":
+    case "HDS23":
+    case "HDS24":
+      return "SRS";
+
+    case "HDG1":
+    case "HDG2":
+    case "HDG3":
+    case "HDG4":
+    case "HDG5":
+    case "HDG6":
+    case "HDG7":
+    case "HDG8":
+    case "HDG9":
+    case "HDG10":
+    case "HDG11":
+    case "HDG12":
+    case "HDG13":
+    case "HDG14":
+    case "HDG715":
+    case "HDG16":
+    case "HDG17":
+    case "HDG18":
+    case "HDG19":
+    case "HDG20":
+    case "HDG21":
+    case "HDG22":
+    case "HDG23":
+    case "HDG24":
+    case "HDG725":
+    case "HDG26":
+    case "HDG27":
+    case "HDG28":
+    case "HDG29":
+    case "HDG30":
+    case "HDG31":
+    case "HDG32":
+    case "HDG33":
+    case "HDG34":
+      return "GENERAL";
+
+    default:
+      return "CS";
+  }
 }

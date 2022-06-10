@@ -18,12 +18,14 @@ class TimeSlotDialog extends StatefulWidget {
   final DateTime date;
   final TimeOfDay startTime;
   final String floor;
+  final String displayName;
   const TimeSlotDialog(
       {Key? key,
       required this.date,
       required this.startTime,
       required this.tableNo,
       required this.seatNo,
+      required this.displayName,
       required this.floor})
       : super(key: key);
 
@@ -338,18 +340,18 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                     endTime != null) {
                   TableBookingDataSource()
                       .createBooking(
-                    tableNo: widget.tableNo,
-                    seatNo: widget.seatNo,
-                    startDate: startdate != null
-                        ? AppHelpers.formatDate(startdate!)
-                        : AppHelpers.formatDate(DateTime.now()),
-                    endDate: endDate != null
-                        ? AppHelpers.formatDate(endDate!)
-                        : AppHelpers.formatDate(DateTime.now()),
-                    floor: widget.floor,
-                    fromTime: AppHelpers.formatTime(startTime!),
-                    toTime: AppHelpers.formatTime(endTime!),
-                  )
+                          tableNo: widget.tableNo,
+                          seatNo: widget.seatNo,
+                          startDate: startdate != null
+                              ? AppHelpers.formatDate(startdate!)
+                              : AppHelpers.formatDate(DateTime.now()),
+                          endDate: endDate != null
+                              ? AppHelpers.formatDate(endDate!)
+                              : AppHelpers.formatDate(DateTime.now()),
+                          floor: widget.floor,
+                          fromTime: AppHelpers.formatTime(startTime!),
+                          toTime: AppHelpers.formatTime(endTime!),
+                          displayname: widget.displayName)
                       .then((value) {
                     if (value) {
                       Get.back();
