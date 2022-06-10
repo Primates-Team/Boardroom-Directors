@@ -81,7 +81,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     }
 
     _processing = false;
-    setState(() {});
+    // setState(() {});
     filter();
   }
 
