@@ -373,7 +373,7 @@ class _TimeSlotDialogState extends State<TimeSlotDialog> {
                                     AppHelpers.formatTime(startTime!),
                                     AppHelpers.formatTime(endTime!),
                                     widget.tableNo,
-                                    widget.seatNo,
+                                    widget.displayName,
                                     AppHelpers.formatDate(startdate != null
                                         ? startdate!
                                         : DateTime.now()),

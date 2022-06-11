@@ -13,14 +13,14 @@ class BookingConfirmedWidget extends StatelessWidget {
 
   final int tableNo;
 
-  final int seatNo;
+  final String displayName;
 
   final String date;
 
   final String floor;
 
   BookingConfirmedWidget(this.startTime, this.endTime, this.tableNo,
-      this.seatNo, this.date, this.floor,
+      this.displayName, this.date, this.floor,
       {Key? key, this.message = 'Booking Confirmed'})
       : super(key: key);
 
@@ -71,7 +71,7 @@ class BookingConfirmedWidget extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                _buildRichTextWidget("Seat No : ", "HDG${seatNo.toString()}"),
+                _buildRichTextWidget("Seat No : ", displayName),
                 const SizedBox(
                   height: 15,
                 ),
