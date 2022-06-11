@@ -261,12 +261,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 240.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 60level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -275,12 +275,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 320.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 61level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -289,12 +289,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 400.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 62level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                  // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -304,12 +304,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                             )),
 
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 476.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 63level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -318,12 +318,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 550.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 64level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -332,12 +332,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 625.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 65level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -346,12 +346,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 700.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 66level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -4765,7 +4765,7 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -4794,12 +4794,12 @@ showTabledetails9(
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC2"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -4812,6 +4812,7 @@ showTabledetails9(
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC2"),
                                   ],
                                 ),
                                 onTap: () {
@@ -4822,13 +4823,42 @@ showTabledetails9(
                               ),
                             ),
 
+                            // Positioned(
+                            //   top: 50.h,
+                            //   left: 80.w,
+                            //   child: InkWell(
+                            //     child: Column(
+                            //       children: [
+                            //         Text("HDC3"),
+                            //         RotatedBox(
+                            //           quarterTurns: 4,
+                            //           child: Image.asset(
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC3"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -4841,6 +4871,7 @@ showTabledetails9(
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC3"),
                                   ],
                                 ),
                                 onTap: () {
@@ -4851,13 +4882,13 @@ showTabledetails9(
                               ),
                             ),
 
+                           
                             Positioned(
-                              top: 10.h,
-                              left: 80.w,
+                              top: 20.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC4"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -4870,6 +4901,7 @@ showTabledetails9(
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC4"),
                                   ],
                                 ),
                                 onTap: () {
@@ -4879,91 +4911,7 @@ showTabledetails9(
                                 },
                               ),
                             ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(65)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 65)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC5"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 65);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(66)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 66)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC6"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 66);
-                                  });
-                                },
-                              ),
-                            ),
+                           
                           ],
                         ),
                       ),
@@ -5212,11 +5160,100 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(65)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 65)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDC5"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 65);
+                                  });
+                                },
+                              ),
+                            ),
+
+                            Positioned(
+                              top: 74.h,
+                              left: 80.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(66)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 66)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDC6"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 66);
+                                  });
+                                },
+                              ),
+                            ),
+
+                            // Positioned(
+                            //   top: 50.h,
+                            //   left: 80.w,
+                            //   child: InkWell(
+                            //     child: Column(
+                            //       children: [
+                            //         Text("HDC3"),
+                            //         RotatedBox(
+                            //           quarterTurns: 4,
+                            //           child: Image.asset(
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
+                            //   ),
+                            // ),
+
+                            Positioned(
+                              top: 20.h,
+                              left: 80.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -5240,13 +5277,13 @@ showTabledetails9(
                               ),
                             ),
 
+                           
                             Positioned(
-                              top: 94.h,
-                              left: 80.w,
+                              top: 20.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC8"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -5259,6 +5296,7 @@ showTabledetails9(
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC8"),
                                   ],
                                 ),
                                 onTap: () {
@@ -5268,149 +5306,7 @@ showTabledetails9(
                                 },
                               ),
                             ),
-
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC9"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(69)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 69)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 69);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC10"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(70)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 70)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 70);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(71)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 71)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC11"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 71);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(72)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 72)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC12"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 72);
-                                  });
-                                },
-                              ),
-                            ),
+                           
                           ],
                         ),
                       ),
@@ -5580,6 +5476,8 @@ showTabledetails9(
           });
         });
   }
+
+
 
 
 
@@ -5660,7 +5558,7 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -5669,170 +5567,117 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(73)
+                                        color: seats.contains(69)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 73)
+                                            : (table == tableNo && seat == 69)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC13"),
+                                    Text("HDC9"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 73);
+                                    updateTable(tableNo, 69);
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC14"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(74)
+                                        color: seats.contains(70)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 74)
+                                            : (table == tableNo && seat == 70)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC10"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 74);
+                                    updateTable(tableNo, 70);
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC15"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(75)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 75)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 75);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC16"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(76)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 76)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 76);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(77)
+                                        color: seats.contains(71)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 77)
+                                            : (table == tableNo && seat == 71)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC17"),
+                                    Text("HDC11"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 77);
+                                    updateTable(tableNo, 71);
                                   });
                                 },
                               ),
                             ),
+
+                           
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -5841,24 +5686,25 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(78)
+                                        color: seats.contains(72)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 78)
+                                            : (table == tableNo && seat == 72)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC18"),
+                                    Text("HDC12"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 78);
+                                    updateTable(tableNo, 72);
                                   });
                                 },
                               ),
                             ),
+                           
                           ],
                         ),
                       ),
@@ -6028,6 +5874,8 @@ showTabledetails9(
           });
         });
   }
+
+
 
 
   showTabledetails14(
@@ -6106,7 +5954,7 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6115,170 +5963,117 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(79)
+                                        color: seats.contains(73)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 79)
+                                            : (table == tableNo && seat == 73)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC19"),
+                                    Text("HDC13"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 79);
+                                    updateTable(tableNo, 73);
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC20"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(80)
+                                        color: seats.contains(74)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 80)
+                                            : (table == tableNo && seat == 74)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC14"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 80);
+                                    updateTable(tableNo, 74);
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC21"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(81)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 81)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 81);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC22"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(82)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 82)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 82);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(83)
+                                        color: seats.contains(75)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 83)
+                                            : (table == tableNo && seat == 75)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC23"),
+                                    Text("HDC15"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 83);
+                                    updateTable(tableNo, 75);
                                   });
                                 },
                               ),
                             ),
+
+                           
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6287,24 +6082,25 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(84)
+                                        color: seats.contains(76)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 84)
+                                            : (table == tableNo && seat == 76)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC24"),
+                                    Text("HDC16"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 84);
+                                    updateTable(tableNo, 76);
                                   });
                                 },
                               ),
                             ),
+                           
                           ],
                         ),
                       ),
@@ -6474,6 +6270,7 @@ showTabledetails9(
           });
         });
   }
+
 
 
   showTabledetails15(
@@ -6552,7 +6349,7 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6561,170 +6358,117 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(85)
+                                        color: seats.contains(77)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 85)
+                                            : (table == tableNo && seat == 77)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC25"),
+                                    Text("HDC17"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 85);
+                                    updateTable(tableNo, 77);
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC26"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(86)
+                                        color: seats.contains(78)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 86)
+                                            : (table == tableNo && seat == 78)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC18"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 86);
+                                    updateTable(tableNo, 78);
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC27"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(87)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 87)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 87);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC28"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(88)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 88)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 88);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(89)
+                                        color: seats.contains(79)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 89)
+                                            : (table == tableNo && seat == 79)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC29"),
+                                    Text("HDC19"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 89);
+                                    updateTable(tableNo, 79);
                                   });
                                 },
                               ),
                             ),
+
+                           
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6733,24 +6477,25 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(90)
+                                        color: seats.contains(80)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 90)
+                                            : (table == tableNo && seat == 80)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC30"),
+                                    Text("HDC20"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 90);
+                                    updateTable(tableNo, 80);
                                   });
                                 },
                               ),
                             ),
+                           
                           ],
                         ),
                       ),
@@ -6920,6 +6665,7 @@ showTabledetails9(
           });
         });
   }
+
 
 
   showTabledetails16(
@@ -6998,7 +6744,7 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -7007,170 +6753,117 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(91)
+                                        color: seats.contains(81)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 91)
+                                            : (table == tableNo && seat == 81)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC31"),
+                                    Text("HDC21"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 91);
+                                    updateTable(tableNo, 81);
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC32"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(92)
+                                        color: seats.contains(82)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 92)
+                                            : (table == tableNo && seat == 82)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC22"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 92);
+                                    updateTable(tableNo, 82);
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC33"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(93)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 93)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 93);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC34"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(94)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 94)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 94);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(95)
+                                        color: seats.contains(83)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 95)
+                                            : (table == tableNo && seat == 83)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC35"),
+                                    Text("HDC23"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 95);
+                                    updateTable(tableNo, 83);
                                   });
                                 },
                               ),
                             ),
+
+                           
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -7179,24 +6872,25 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(96)
+                                        color: seats.contains(84)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 96)
+                                            : (table == tableNo && seat == 84)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC36"),
+                                    Text("HDC24"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 96);
+                                    updateTable(tableNo, 84);
                                   });
                                 },
                               ),
                             ),
+                           
                           ],
                         ),
                       ),
@@ -7366,6 +7060,7 @@ showTabledetails9(
           });
         });
   }
+
 
 
   showTabledetails17(
@@ -7444,7 +7139,7 @@ showTabledetails9(
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -7453,170 +7148,117 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(97)
+                                        color: seats.contains(85)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 97)
+                                            : (table == tableNo && seat == 85)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC37"),
+                                    Text("HDC25"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 97);
+                                    updateTable(tableNo, 85);
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC38"),
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(98)
+                                        color: seats.contains(86)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 98)
+                                            : (table == tableNo && seat == 86)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC26"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 98);
+                                    updateTable(tableNo, 86);
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC39"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(99)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 99)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 99);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC40"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(100)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 100)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 100);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
+                                    
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(101)
+                                        color: seats.contains(87)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 101)
+                                            : (table == tableNo && seat == 87)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC41"),
+                                    Text("HDC27"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 101);
+                                    updateTable(tableNo, 87);
                                   });
                                 },
                               ),
                             ),
+
+                           
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -7625,24 +7267,25 @@ showTabledetails9(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(102)
+                                        color: seats.contains(88)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 102)
+                                            : (table == tableNo && seat == 88)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC42"),
+                                    Text("HDC28"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 102);
+                                    updateTable(tableNo, 88);
                                   });
                                 },
                               ),
                             ),
+                           
                           ],
                         ),
                       ),
@@ -7812,6 +7455,7 @@ showTabledetails9(
           });
         });
   }
+
 
 
   Widget table3(int tableNo, List<int> seats) {
