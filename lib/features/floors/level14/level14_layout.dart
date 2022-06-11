@@ -260,12 +260,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 240.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 60level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -274,12 +274,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 320.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 61level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -288,12 +288,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 400.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 62level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -302,12 +302,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 476.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 63level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -316,12 +316,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 550.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 64level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -330,12 +330,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 625.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 65level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -344,12 +344,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                               },
                             )),
                         Positioned(
-                            top: 630.h,
+                            top: 650.h,
                             left: 700.w,
                             child: InkWell(
                               child: SvgPicture.asset(
                                   'assets/svg/level14/Frame 66level14.svg',
-                                  width: 100.w,
+                                  width: 70.w,
                                   // height: 110.h,
                                   fit: BoxFit.fitWidth),
                               onTap: () {
@@ -615,7 +615,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 1);
+                                    updateTable(tableNo, 1,'HDG1');
                                   });
                                 },
                               ),
@@ -643,7 +643,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 2);
+                                    updateTable(tableNo, 2, 'HDG2');
                                   });
                                 },
                               ),
@@ -671,7 +671,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 3);
+                                    updateTable(tableNo, 3, 'HDG3');
                                   });
                                 },
                               ),
@@ -699,7 +699,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 4);
+                                    updateTable(tableNo, 4, 'HDG4');
                                   });
                                 },
                               ),
@@ -727,7 +727,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 5);
+                                    updateTable(tableNo, 5, 'HDG5');
                                   });
                                 },
                               ),
@@ -755,7 +755,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 6);
+                                    updateTable(tableNo, 6, 'HDG6');
                                   });
                                 },
                               ),
@@ -996,7 +996,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 7);
+                                    updateTable(tableNo, 7, 'HDG7');
                                   });
                                 },
                               ),
@@ -1024,7 +1024,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 8);
+                                    updateTable(tableNo, 8, 'HDG8');
                                   });
                                 },
                               ),
@@ -1052,7 +1052,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 9);
+                                    updateTable(tableNo, 9, 'HDG9');
                                   });
                                 },
                               ),
@@ -1080,7 +1080,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 10);
+                                    updateTable(tableNo, 10, 'HDG10');
                                   });
                                 },
                               ),
@@ -1108,7 +1108,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 11);
+                                    updateTable(tableNo, 11, 'HDG11');
                                   });
                                 },
                               ),
@@ -1136,7 +1136,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 12);
+                                    updateTable(tableNo, 12, 'HDG12');
                                   });
                                 },
                               ),
@@ -1381,7 +1381,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 13);
+                                    updateTable(tableNo, 13, 'HDG13');
                                   });
                                 },
                               ),
@@ -1410,7 +1410,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 14);
+                                    updateTable(tableNo, 14, 'HDG14');
                                   });
                                 },
                               ),
@@ -1439,7 +1439,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 15);
+                                    updateTable(tableNo, 15, 'HDG15');
                                   });
                                 },
                               ),
@@ -1468,7 +1468,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 16);
+                                    updateTable(tableNo, 16, 'HDG16');
                                   });
                                 },
                               ),
@@ -1525,7 +1525,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 17);
+                                    updateTable(tableNo, 17, 'HDG17');
                                   });
                                 },
                               ),
@@ -1553,7 +1553,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 18);
+                                    updateTable(tableNo, 18, 'HDG18');
                                   });
                                 },
                               ),
@@ -1798,7 +1798,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 19);
+                                    updateTable(tableNo, 19, 'HDG19');
                                   });
                                 },
                               ),
@@ -1827,7 +1827,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 20);
+                                    updateTable(tableNo, 20, 'HDG20');
                                   });
                                 },
                               ),
@@ -1856,7 +1856,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 21);
+                                    updateTable(tableNo, 21, 'HDG21');
                                   });
                                 },
                               ),
@@ -1885,7 +1885,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 22);
+                                    updateTable(tableNo, 22, 'HDG22');
                                   });
                                 },
                               ),
@@ -1942,7 +1942,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 23);
+                                    updateTable(tableNo, 23, 'HDG23');
                                   });
                                 },
                               ),
@@ -1970,7 +1970,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 24);
+                                    updateTable(tableNo, 24, 'HDG24');
                                   });
                                 },
                               ),
@@ -2211,7 +2211,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 25);
+                                    updateTable(tableNo, 25, 'HDG25');
                                   });
                                 },
                               ),
@@ -2239,7 +2239,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 26);
+                                    updateTable(tableNo, 26, 'HDG26');
                                   });
                                 },
                               ),
@@ -2267,7 +2267,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 27);
+                                    updateTable(tableNo, 27, 'HDG27');
                                   });
                                 },
                               ),
@@ -2295,7 +2295,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 28);
+                                    updateTable(tableNo, 28, 'HDG28');
                                   });
                                 },
                               ),
@@ -2323,7 +2323,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 29);
+                                    updateTable(tableNo, 29, 'HDG29');
                                   });
                                 },
                               ),
@@ -2351,7 +2351,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 30);
+                                    updateTable(tableNo, 30, 'HDG30');
                                   });
                                 },
                               ),
@@ -2624,7 +2624,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 31);
+                                    updateTable(tableNo, 31, 'HDG31');
                                   });
                                 },
                               ),
@@ -2652,7 +2652,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 32);
+                                    updateTable(tableNo, 32, 'HDG32');
                                   });
                                 },
                               ),
@@ -2680,7 +2680,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 33);
+                                    updateTable(tableNo, 33, 'HDG33');
                                   });
                                 },
                               ),
@@ -2708,7 +2708,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 34);
+                                    updateTable(tableNo, 34, 'HDG34');
                                   });
                                 },
                               ),
@@ -2736,7 +2736,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 35);
+                                    updateTable(tableNo, 35, 'HDG35');
                                   });
                                 },
                               ),
@@ -2764,7 +2764,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 36);
+                                    updateTable(tableNo, 36, 'HDG36');
                                   });
                                 },
                               ),
@@ -3037,7 +3037,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 37);
+                                    updateTable(tableNo, 37, 'HDS1');
                                   });
                                 },
                               ),
@@ -3065,7 +3065,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 38);
+                                    updateTable(tableNo, 38, 'HDS2');
                                   });
                                 },
                               ),
@@ -3093,7 +3093,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 39);
+                                    updateTable(tableNo, 39, 'HDS3');
                                   });
                                 },
                               ),
@@ -3121,7 +3121,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 40);
+                                    updateTable(tableNo, 40, 'HDS4');
                                   });
                                 },
                               ),
@@ -3149,7 +3149,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 41);
+                                    updateTable(tableNo, 41, 'HDS5');
                                   });
                                 },
                               ),
@@ -3177,7 +3177,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 42);
+                                    updateTable(tableNo, 42, 'HDS6');
                                   });
                                 },
                               ),
@@ -3450,7 +3450,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 43);
+                                    updateTable(tableNo, 43, 'HDS7');
                                   });
                                 },
                               ),
@@ -3478,7 +3478,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 44);
+                                    updateTable(tableNo, 44, 'HDS8');
                                   });
                                 },
                               ),
@@ -3506,7 +3506,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 45);
+                                    updateTable(tableNo, 45, 'HDS9');
                                   });
                                 },
                               ),
@@ -3534,7 +3534,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 46);
+                                    updateTable(tableNo, 46, 'HDS10');
                                   });
                                 },
                               ),
@@ -3562,7 +3562,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 47);
+                                    updateTable(tableNo, 47, 'HDS11');
                                   });
                                 },
                               ),
@@ -3590,7 +3590,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 48);
+                                    updateTable(tableNo, 48, 'HDS12');
                                   });
                                 },
                               ),
@@ -3867,7 +3867,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 49);
+                                    updateTable(tableNo, 49, 'HDS13');
                                   });
                                 },
                               ),
@@ -3896,7 +3896,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 50);
+                                    updateTable(tableNo, 50, 'HDS14');
                                   });
                                 },
                               ),
@@ -3925,7 +3925,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 51);
+                                    updateTable(tableNo, 51, 'HDS15');
                                   });
                                 },
                               ),
@@ -3954,7 +3954,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 52);
+                                    updateTable(tableNo, 52, 'HDS16');
                                   });
                                 },
                               ),
@@ -4011,7 +4011,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 53);
+                                    updateTable(tableNo, 53, 'HDS17');
                                   });
                                 },
                               ),
@@ -4039,7 +4039,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 54);
+                                    updateTable(tableNo, 54, 'HDS18');
                                   });
                                 },
                               ),
@@ -4280,7 +4280,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 55);
+                                    updateTable(tableNo, 55, 'HDS19');
                                   });
                                 },
                               ),
@@ -4308,7 +4308,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 56);
+                                    updateTable(tableNo, 56, 'HDS20');
                                   });
                                 },
                               ),
@@ -4336,7 +4336,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 57);
+                                    updateTable(tableNo, 57, 'HDS21');
                                   });
                                 },
                               ),
@@ -4364,7 +4364,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 58);
+                                    updateTable(tableNo, 58, 'HDS22');
                                   });
                                 },
                               ),
@@ -4392,7 +4392,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 59);
+                                    updateTable(tableNo, 59, 'HDS23');
                                   });
                                 },
                               ),
@@ -4420,7 +4420,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 60);
+                                    updateTable(tableNo, 60, 'HDS24');
                                   });
                                 },
                               ),
@@ -4675,7 +4675,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -4697,19 +4697,18 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 61);
+                                    updateTable(tableNo, 61, 'HDC1');
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC2"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -4722,23 +4721,52 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC2"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 62);
+                                    updateTable(tableNo, 62, 'HDC2');
                                   });
                                 },
                               ),
                             ),
 
+                            // Positioned(
+                            //   top: 50.h,
+                            //   left: 80.w,
+                            //   child: InkWell(
+                            //     child: Column(
+                            //       children: [
+                            //         Text("HDC3"),
+                            //         RotatedBox(
+                            //           quarterTurns: 4,
+                            //           child: Image.asset(
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
+                            //   ),
+                            // ),
+
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC3"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -4751,23 +4779,23 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC3"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 63);
+                                    updateTable(tableNo, 63, 'HDC3');
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 80.w,
+                              top: 20.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC4"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -4780,96 +4808,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC4"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 64);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(65)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 65)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC5"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 65);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(66)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 66)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC6"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 66);
+                                    updateTable(tableNo, 64, 'HDC4');
                                   });
                                 },
                               ),
@@ -5092,8 +5036,95 @@ class _Level14LayoutState extends State<Level14Layout> {
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(65)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 65)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDC5"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 65, 'HDC5');
+                                  });
+                                },
+                              ),
+                            ),
+
+                            Positioned(
+                              top: 74.h,
+                              left: 80.w,
+                              child: InkWell(
+                                child: Column(
+                                  children: [
+                                    RotatedBox(
+                                      quarterTurns: 4,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(66)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 66)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 22.r,
+                                      ),
+                                    ),
+                                    Text("HDC6"),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 66, 'HDC6');
+                                  });
+                                },
+                              ),
+                            ),
+
+                            // Positioned(
+                            //   top: 50.h,
+                            //   left: 80.w,
+                            //   child: InkWell(
+                            //     child: Column(
+                            //       children: [
+                            //         Text("HDC3"),
+                            //         RotatedBox(
+                            //           quarterTurns: 4,
+                            //           child: Image.asset(
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
+                            //   ),
+                            // ),
+
+                            Positioned(
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5114,19 +5145,18 @@ class _Level14LayoutState extends State<Level14Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 67);
+                                    updateTable(tableNo, 67, 'HDC7');
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
-                              left: 80.w,
+                              top: 20.h,
+                              left: 190.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC8"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -5139,154 +5169,12 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC8"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 68);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC9"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(69)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 69)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 69);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC10"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(70)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 70)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 70);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(71)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 71)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC11"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 71);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(72)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 72)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC12"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 72);
+                                    updateTable(tableNo, 68, 'HDC8');
                                   });
                                 },
                               ),
@@ -5509,7 +5397,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -5518,143 +5406,86 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(73)
+                                        color: seats.contains(69)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 73)
+                                            : (table == tableNo && seat == 69)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC13"),
+                                    Text("HDC9"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 73);
+                                    updateTable(tableNo, 69, 'HDC9');
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC14"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(74)
+                                        color: seats.contains(70)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 74)
+                                            : (table == tableNo && seat == 70)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC10"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 74);
+                                    updateTable(tableNo, 70, 'HDC10');
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC15"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(75)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 75)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 75);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC16"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(76)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 76)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 76);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -5662,26 +5493,27 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(77)
+                                        color: seats.contains(71)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 77)
+                                            : (table == tableNo && seat == 71)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC17"),
+                                    Text("HDC11"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 77);
+                                    updateTable(tableNo, 71, 'HDC11');
                                   });
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -5690,20 +5522,20 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(78)
+                                        color: seats.contains(72)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 78)
+                                            : (table == tableNo && seat == 72)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC18"),
+                                    Text("HDC12"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 78);
+                                    updateTable(tableNo, 72, 'HDC12');
                                   });
                                 },
                               ),
@@ -5926,7 +5758,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                             )),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -5935,143 +5767,86 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(79)
+                                        color: seats.contains(73)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 79)
+                                            : (table == tableNo && seat == 73)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC19"),
+                                    Text("HDC13"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 79);
+                                    updateTable(tableNo, 73, 'HDC13');
                                   });
                                 },
                               ),
                             ),
 
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC20"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(80)
+                                        color: seats.contains(74)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 80)
+                                            : (table == tableNo && seat == 74)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC14"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 80);
+                                    updateTable(tableNo, 74, 'HDC14');
                                   });
                                 },
                               ),
                             ),
 
-                            Positioned(
-                              top: 50.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC21"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(81)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 81)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 81);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC22"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(82)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 82)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 82);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
                             // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
+                            //   top: 50.h,
+                            //   left: 80.w,
                             //   child: InkWell(
-                            //     child:
-                            //     Row(
+                            //     child: Column(
                             //       children: [
-
+                            //         Text("HDC3"),
                             //         RotatedBox(
-
-                            //           quarterTurns: 1,
+                            //           quarterTurns: 4,
                             //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
+                            //             "assets/chairs/available.png",
+                            //             color: seats.contains(63)
+                            //                 ? AppColors.kRed
+                            //                 : (table == tableNo && seat == 63)
+                            //                     ? AppColors.kOrange
+                            //                     : AppColors.kEvergreen,
+                            //             height: 22.r,
+                            //           ),
                             //         ),
-                            //         Text('6'),
                             //       ],
                             //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         updateTable(tableNo, 63);
+                            //       });
+                            //     },
                             //   ),
                             // ),
 
                             Positioned(
-                              top: 10.h,
-                              left: 190.w,
+                              top: 20.h,
+                              left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
@@ -6079,26 +5854,27 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(83)
+                                        color: seats.contains(75)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 83)
+                                            : (table == tableNo && seat == 75)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC23"),
+                                    Text("HDC15"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 83);
+                                    updateTable(tableNo, 75, 'HDC15');
                                   });
                                 },
                               ),
                             ),
+
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6107,20 +5883,20 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(84)
+                                        color: seats.contains(76)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 84)
+                                            : (table == tableNo && seat == 76)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC24"),
+                                    Text("HDC16"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 84);
+                                    updateTable(tableNo, 76, 'HDC16');
                                   });
                                 },
                               ),
@@ -6341,9 +6117,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                                   height: 120.h,
                                   width: 700.w),
                             )),
-
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6352,142 +6127,82 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(85)
+                                        color: seats.contains(77)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 85)
+                                            : (table == tableNo && seat == 77)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC25"),
+                                    Text("HDC17"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 85);
+                                    updateTable(tableNo, 77, 'HDC17');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC26"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(86)
+                                        color: seats.contains(78)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 86)
+                                            : (table == tableNo && seat == 78)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC18"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 86);
+                                    updateTable(tableNo, 78, 'HDC18');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC27"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(87)
+                                        color: seats.contains(79)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 87)
+                                            : (table == tableNo && seat == 79)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC19"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 87);
+                                    updateTable(tableNo, 79, 'HDC19');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC28"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(88)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 88)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 88);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6496,48 +6211,20 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(89)
+                                        color: seats.contains(80)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 89)
+                                            : (table == tableNo && seat == 80)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC29"),
+                                    Text("HDC20"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 89);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(90)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 90)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC30"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 90);
+                                    updateTable(tableNo, 80, 'HDC20');
                                   });
                                 },
                               ),
@@ -6758,9 +6445,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                                   height: 120.h,
                                   width: 700.w),
                             )),
-
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6769,142 +6455,82 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(91)
+                                        color: seats.contains(81)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 91)
+                                            : (table == tableNo && seat == 81)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC31"),
+                                    Text("HDC21"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 91);
+                                    updateTable(tableNo, 81, 'HDC21');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC32"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(92)
+                                        color: seats.contains(82)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 92)
+                                            : (table == tableNo && seat == 82)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC22"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 92);
+                                    updateTable(tableNo, 82, 'HDC22');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC33"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(93)
+                                        color: seats.contains(83)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 93)
+                                            : (table == tableNo && seat == 83)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC23"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 93);
+                                    updateTable(tableNo, 83, 'HDC23');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC34"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(94)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 94)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 94);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -6913,48 +6539,20 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(95)
+                                        color: seats.contains(84)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 95)
+                                            : (table == tableNo && seat == 84)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC35"),
+                                    Text("HDC24"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 95);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(96)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 96)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC36"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 96);
+                                    updateTable(tableNo, 84, 'HDC24');
                                   });
                                 },
                               ),
@@ -7175,9 +6773,8 @@ class _Level14LayoutState extends State<Level14Layout> {
                                   height: 120.h,
                                   width: 700.w),
                             )),
-
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -7186,142 +6783,82 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(97)
+                                        color: seats.contains(85)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 97)
+                                            : (table == tableNo && seat == 85)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC37"),
+                                    Text("HDC25"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 97);
+                                    updateTable(tableNo, 85, 'HDC25');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 94.h,
+                              top: 74.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC38"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(98)
+                                        color: seats.contains(86)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 98)
+                                            : (table == tableNo && seat == 86)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC26"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 98);
+                                    updateTable(tableNo, 86, 'HDC26');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 50.h,
+                              top: 20.h,
                               left: 80.w,
                               child: InkWell(
                                 child: Column(
                                   children: [
-                                    Text("HDC39"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(99)
+                                        color: seats.contains(87)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 99)
+                                            : (table == tableNo && seat == 87)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
+                                    Text("HDC27"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 99);
+                                    updateTable(tableNo, 87, 'HDC27');
                                   });
                                 },
                               ),
                             ),
-
                             Positioned(
-                              top: 10.h,
-                              left: 80.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    Text("HDC40"),
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(100)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 100)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 100);
-                                  });
-                                },
-                              ),
-                            ),
-
-                            //
-                            //
-                            // Positioned(
-                            //   top: 60.h,
-                            //   right: 35.w,
-                            //   child: InkWell(
-                            //     child:
-                            //     Row(
-                            //       children: [
-
-                            //         RotatedBox(
-
-                            //           quarterTurns: 1,
-                            //           child: Image.asset(
-
-                            //             "assets/chairs/available.png", color: seats.contains(6)
-                            //               ? AppColors.kRed
-                            //               : (table == tableNo && seat == 6)
-                            //               ? AppColors.kOrange
-                            //               : AppColors.kEvergreen,
-                            //             height: 22.r,),
-                            //         ),
-                            //         Text('6'),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
-                            Positioned(
-                              top: 10.h,
+                              top: 20.h,
                               left: 190.w,
                               child: InkWell(
                                 child: Column(
@@ -7330,48 +6867,20 @@ class _Level14LayoutState extends State<Level14Layout> {
                                       quarterTurns: 4,
                                       child: Image.asset(
                                         "assets/chairs/available.png",
-                                        color: seats.contains(101)
+                                        color: seats.contains(88)
                                             ? AppColors.kRed
-                                            : (table == tableNo && seat == 101)
+                                            : (table == tableNo && seat == 88)
                                                 ? AppColors.kOrange
                                                 : AppColors.kEvergreen,
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC41"),
+                                    Text("HDC28"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 101);
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 50.h,
-                              left: 190.w,
-                              child: InkWell(
-                                child: Column(
-                                  children: [
-                                    RotatedBox(
-                                      quarterTurns: 4,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(102)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 102)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 22.r,
-                                      ),
-                                    ),
-                                    Text("HDC42"),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 102);
+                                    updateTable(tableNo, 88, 'HDC28');
                                   });
                                 },
                               ),
@@ -7518,313 +7027,7 @@ class _Level14LayoutState extends State<Level14Layout> {
         });
   }
 
-  Widget table3(int tableNo, List<int> seats) {
-    return Transform.scale(
-      scale: 0.8,
-      child: Stack(
-        children: [
-          Image.asset(
-            table4Seater,
-            height: 115.w,
-          ),
-          Positioned(
-            top: 10.w,
-            left: 10.w,
-            child: InkWell(
-              onTap: () => updateTable(tableNo, 2),
-              child: Image.asset(
-                squareChair,
-                height: 30.w,
-                color: seats.contains(2)
-                    ? AppColors.kRed
-                    : (table == tableNo && seat == 2)
-                        ? AppColors.kOrange
-                        : AppColors.kEvergreen,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 10.w,
-            right: 5.w,
-            child: InkWell(
-              onTap: () => updateTable(tableNo, 3),
-              child: Image.asset(
-                squareChair,
-                height: 30.w,
-                color: seats.contains(3)
-                    ? AppColors.kRed
-                    : (table == tableNo && seat == 3)
-                        ? AppColors.kOrange
-                        : AppColors.kEvergreen,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 10.w,
-            left: 10.w,
-            child: InkWell(
-              onTap: () => updateTable(tableNo, 1),
-              child: Image.asset(
-                squareChair,
-                height: 30.w,
-                color: seats.contains(1)
-                    ? AppColors.kRed
-                    : (table == tableNo && seat == 1)
-                        ? AppColors.kOrange
-                        : AppColors.kEvergreen,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 10.w,
-            right: 5.w,
-            child: InkWell(
-              onTap: () => updateTable(tableNo, 4),
-              child: Image.asset(
-                squareChair,
-                height: 30.w,
-                color: seats.contains(4)
-                    ? AppColors.kRed
-                    : (table == tableNo && seat == 4)
-                        ? AppColors.kOrange
-                        : AppColors.kEvergreen,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Transform table7(int tableNo, List<int> seats) {
-    return Transform.scale(
-      scale: 0.8,
-      child: Transform.rotate(
-        angle: 180,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(
-              table6Seater,
-              height: 150,
-            ),
-            Positioned(
-              top: 15.w,
-              left: 15.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 6),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(6)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 6)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 15.w,
-              right: 10.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 1),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(1)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 1)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 10.w,
-              left: 15.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 4),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(4)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 4)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 10.w,
-              right: 10.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 3),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(3)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 3)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              // top: 10.w,
-              left: 15.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 5),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(5)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 5)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              // bottom: 10.w,
-              right: 10.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 2),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(2)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 2)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Transform table6(int tableNo, List<int> seats) {
-    return Transform.scale(
-      scale: 0.8,
-      child: Transform.rotate(
-        angle: 40,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(
-              table6Seater,
-              height: 150,
-            ),
-            Positioned(
-              top: 15.w,
-              left: 15.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 6),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(6)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 6)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 15.w,
-              right: 10.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 1),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(1)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 1)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 10.w,
-              left: 15.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 4),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(4)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 4)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 10.w,
-              right: 10.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 3),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(3)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 3)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              // top: 10.w,
-              left: 15.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 5),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(5)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 5)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-            Positioned(
-              // bottom: 10.w,
-              right: 10.w,
-              child: InkWell(
-                onTap: () => updateTable(tableNo, 2),
-                child: Image.asset(
-                  squareChair,
-                  height: 30,
-                  color: seats.contains(2)
-                      ? AppColors.kRed
-                      : (table == tableNo && seat == 2)
-                          ? AppColors.kOrange
-                          : AppColors.kEvergreen,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void updateTable(int tableNo, int seatNo) {
+  void updateTable(int tableNo, int seatNo, String displayName) {
     setState(() {
       this.tableNo = tableNo;
       this.seatNo = seatNo;
