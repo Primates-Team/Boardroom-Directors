@@ -34,12 +34,11 @@ class RoomBookingController extends GetxController with StateMixin {
 
     if (response) {
       change(null, status: RxStatus.success());
-      // Get.back();
+
       RoomBookingDataSource().viewAllRoomBooking();
       Get.dialog(BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
         child: Dialog(
-          
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           child: RoomBookingConfirmedWidget(fromTime, toTime, roomName, floor),
@@ -74,7 +73,7 @@ class RoomBookingController extends GetxController with StateMixin {
   }
 }
 
-class RoomBookingConfirmedWidget extends StatelessWidget {
+class RoomBookingConfirmedWidget extends StatefulWidget {
   final String message;
 
   final String startTime;
@@ -90,6 +89,13 @@ class RoomBookingConfirmedWidget extends StatelessWidget {
       {Key? key, this.message = 'Booking Confirmed'})
       : super(key: key);
 
+  @override
+  State<RoomBookingConfirmedWidget> createState() =>
+      _RoomBookingConfirmedWidgetState();
+}
+
+class _RoomBookingConfirmedWidgetState
+    extends State<RoomBookingConfirmedWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -114,7 +120,7 @@ class RoomBookingConfirmedWidget extends StatelessWidget {
               children: [
                 Center(
                   child: Text(
-                    message,
+                    widget.message,
                     style: TextStyle(
                       fontSize: 25.sp,
                       fontWeight: FontWeight.w700,
@@ -125,19 +131,19 @@ class RoomBookingConfirmedWidget extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                _buildRichTextWidget("Room Name : ", roomName),
+                _buildRichTextWidget("Room Name : ", widget.roomName),
                 const SizedBox(
                   height: 15,
                 ),
-                _buildRichTextWidget("Floor : ", floor),
+                _buildRichTextWidget("Floor : ", widget.floor),
                 const SizedBox(
                   height: 15,
                 ),
-                _buildRichTextWidget("Start time: ", startTime),
+                _buildRichTextWidget("Start time: ", widget.startTime),
                 const SizedBox(
                   height: 15,
                 ),
-                _buildRichTextWidget("End time: ", endTime),
+                _buildRichTextWidget("End time: ", widget.endTime),
                 const SizedBox(
                   height: 30,
                 ),

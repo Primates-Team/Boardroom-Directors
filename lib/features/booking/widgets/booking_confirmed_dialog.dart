@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 
@@ -91,7 +90,8 @@ class BookingConfirmedWidget extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.back();
+                    Navigator.pop(context, true);
+                    // Get.back();
                     // Get.back();
                   },
                   child: Padding(
