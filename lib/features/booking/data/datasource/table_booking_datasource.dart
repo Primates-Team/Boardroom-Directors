@@ -55,10 +55,19 @@ class TableBookingDataSource {
         return true;
       } else {
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
-        showSnackBar(
-            context: Get.context!,
-            message: 'Invalid Booking',
-            bgColor: Colors.red);
+
+        if (response.body is String) {
+          showSnackBar(
+              context: Get.context!,
+              message: response.body,
+              bgColor: Colors.red);
+        } else {
+          showSnackBar(
+              context: Get.context!,
+              message: 'Invalid Booking',
+              bgColor: Colors.red);
+        }
+
         return false;
       }
     } catch (e) {

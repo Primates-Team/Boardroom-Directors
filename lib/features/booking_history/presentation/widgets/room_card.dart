@@ -409,7 +409,7 @@ class RoomCard extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Text(
                           '''
-Please cancel/edit your booking if your planned return to office date/time have changed. Thank you for your kind consideration so that other fellow colleagues can book those desks''',
+Please cancel/edit your booking if your planned return to office date/time have changed. Thank you for your kind consideration so that other fellow colleagues can book those rooms''',
                           style: TextStyle(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.w500,

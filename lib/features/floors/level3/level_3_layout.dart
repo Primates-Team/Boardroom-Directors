@@ -118,6 +118,15 @@ class _Level3LayoutState extends State<Level3Layout> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    for (var i = 1; i < 8; i++) {
+      modifiedTables[i] = [];
+      for (var element in bookingController.tableData) {
+        if (element.containsKey(i)) {
+          modifiedTables[i]?.add(element.values.first);
+        }
+      }
+    }
     callAPI();
     callnext();
 

@@ -100,7 +100,7 @@ class _Level14LayoutState extends State<Level14Layout> {
 
       bookingController.tableData = tableData;
 
-      for (var i = 1; i < 8; i++) {
+      for (var i = 1; i < 18; i++) {
         modifiedTables[i] = [];
         for (var element in tableData) {
           if (element.containsKey(i)) {
@@ -119,7 +119,7 @@ class _Level14LayoutState extends State<Level14Layout> {
     // TODO: implement initState
     super.initState();
 
-    for (var i = 1; i < 17; i++) {
+    for (var i = 1; i < 18; i++) {
       modifiedTables[i] = [];
       tableData.forEach((element) {
         if (element.containsKey(i)) {
@@ -6242,7 +6242,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC26"),
+                                    const Text("HDC26"),
                                   ],
                                 ),
                                 onTap: () {
@@ -6270,7 +6270,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC27"),
+                                    const Text("HDC27"),
                                   ],
                                 ),
                                 onTap: () {
@@ -6298,7 +6298,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                                         height: 22.r,
                                       ),
                                     ),
-                                    Text("HDC28"),
+                                    const Text("HDC28"),
                                   ],
                                 ),
                                 onTap: () {
@@ -6452,12 +6452,9 @@ class _Level14LayoutState extends State<Level14Layout> {
               toTime: data["totime"],
               displayname: displayName ?? '')
           .then((value) {
+        Get.back();
         if (value) {
           Get.back();
-
-          //setState(() {});
-          // Navigator.pop(context);
-
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -6482,8 +6479,7 @@ class _Level14LayoutState extends State<Level14Layout> {
             // eventBus.fire(HotDeskingInitialEvent());
           });
         } else {
-          Get.back();
-          // Navigator.pop(context);
+          Navigator.pop(context);
         }
       });
     } else {

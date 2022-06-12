@@ -68,7 +68,7 @@ class _EditBookingDialogState extends State<EditBookingDialog> {
             child: Text(
               widget.type == 'Table'
                   ? 'Table ${widget.node != null ? widget.node["tableid"] != null ? widget.node['tableid'] : widget.node['id'] != null ? widget.node['id'] : 1 : 1}'
-                  : 'Room ${widget.node['id'] != null ? widget.node['id'] : 1}',
+                  : 'Room ${widget.node['roomname'] != null ? widget.node['roomname'] : 1}',
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 18,

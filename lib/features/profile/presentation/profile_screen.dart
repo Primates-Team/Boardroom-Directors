@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Last Activity At ' +
+                                'Last Activity: ' +
                                     AppHelpers.formatDate(DateTime.parse(
                                         AppHelpers.SHARED_PREFERENCES
                                                 .getString('lastActive') ??
@@ -85,10 +85,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 rowWidget('Gender',
                     AppHelpers.SHARED_PREFERENCES.getString('gender') ?? ''),
-                rowWidget(
-                    'Designation',
-                    AppHelpers.SHARED_PREFERENCES.getString('designation') ??
-                        ''),
+                // rowWidget(
+                //     'Designation',
+                //     AppHelpers.SHARED_PREFERENCES.getString('designation') ??
+                //         ''),
                 rowWidget(
                     'Department',
                     AppHelpers.SHARED_PREFERENCES.getString('department') ??
