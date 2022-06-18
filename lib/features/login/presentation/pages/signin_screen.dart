@@ -30,6 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
     "FINANCE",
     "HUMAN RESOURCE",
     "INVESTOR SERVICES",
+    "MARKETING",
     "PAYROLL",
     "RISK, LEGAL & COMPLIANCE",
     "SHARE REG SERVICES – TEMP",

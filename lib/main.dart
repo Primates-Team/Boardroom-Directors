@@ -7,6 +7,7 @@ import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/features/booking/data/datasource/room_booking_datasource.dart';
 import 'package:hot_desking/features/booking/presentation/getX/booking_controller.dart';
 import 'package:hot_desking/features/home/presentation/pages/home_screen_main.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/login/presentation/pages/login_screen.dart';
@@ -18,6 +19,8 @@ void main() async {
   AppHelpers.SHARED_PREFERENCES = await SharedPreferences.getInstance();
   //TableBookingDataSource().viewAllBooking();
   RoomBookingDataSource().viewAllRoomBooking();
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  await AppHelpers.SHARED_PREFERENCES.setString("version", packageInfo.version);
   Get.put(BookingController());
   runApp(const MyApp());
 }

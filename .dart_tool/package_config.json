@@ -296,6 +296,42 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "package_info_plus",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus-1.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "package_info_plus_linux",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_linux-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "package_info_plus_macos",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_macos-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "package_info_plus_platform_interface",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_platform_interface-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "package_info_plus_web",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_web-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "package_info_plus_windows",
+      "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_windows-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "page_transition",
       "rootUri": "file:///Users/mariganesh/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/page_transition-2.0.5",
       "packageUri": "lib/",
@@ -536,7 +572,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2022-06-13T05:39:29.449186Z",
+  "generated": "2022-06-18T14:25:32.670969Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }
