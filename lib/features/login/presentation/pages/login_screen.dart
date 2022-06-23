@@ -24,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldMessengerState> snackbarKey =
       GlobalKey<ScaffoldMessengerState>();
   bool showPassword = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
