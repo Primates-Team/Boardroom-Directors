@@ -807,34 +807,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                               child: InkWell(
                                 child: Row(
                                   children: [
-                                    const Text("HDG10"),
-                                    RotatedBox(
-                                      quarterTurns: 3,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(10)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 10)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 30.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 10, "HDG10");
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 20.h,
-                              left: 40.w,
-                              child: InkWell(
-                                child: Row(
-                                  children: [
                                     const Text("HDG9"),
                                     RotatedBox(
                                       quarterTurns: 3,
@@ -853,6 +825,34 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 onTap: () {
                                   setState(() {
                                     updateTable(tableNo, 9, "HDG9");
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 20.h,
+                              left: 40.w,
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    const Text("HDG10"),
+                                    RotatedBox(
+                                      quarterTurns: 3,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(10)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 10)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 30.r,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 10, "HDG10");
                                   });
                                   setState(() {});
                                 },
@@ -1160,34 +1160,6 @@ class _Level3LayoutState extends State<Level3Layout> {
                               child: InkWell(
                                 child: Row(
                                   children: [
-                                    const Text("HDG14"),
-                                    RotatedBox(
-                                      quarterTurns: 3,
-                                      child: Image.asset(
-                                        "assets/chairs/available.png",
-                                        color: seats.contains(14)
-                                            ? AppColors.kRed
-                                            : (table == tableNo && seat == 14)
-                                                ? AppColors.kOrange
-                                                : AppColors.kEvergreen,
-                                        height: 30.r,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 14, "HDG14");
-                                  });
-                                },
-                              ),
-                            ),
-                            Positioned(
-                              top: 20.h,
-                              left: 40.w,
-                              child: InkWell(
-                                child: Row(
-                                  children: [
                                     const Text("HDG13"),
                                     RotatedBox(
                                       quarterTurns: 3,
@@ -1206,6 +1178,34 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 onTap: () {
                                   setState(() {
                                     updateTable(tableNo, 13, "HDG13");
+                                  });
+                                },
+                              ),
+                            ),
+                            Positioned(
+                              top: 20.h,
+                              left: 40.w,
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    const Text("HDG14"),
+                                    RotatedBox(
+                                      quarterTurns: 3,
+                                      child: Image.asset(
+                                        "assets/chairs/available.png",
+                                        color: seats.contains(14)
+                                            ? AppColors.kRed
+                                            : (table == tableNo && seat == 14)
+                                                ? AppColors.kOrange
+                                                : AppColors.kEvergreen,
+                                        height: 30.r,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    updateTable(tableNo, 14, "HDG14");
                                   });
                                   setState(() {});
                                 },
@@ -1513,7 +1513,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                       "assets/images/verticalRectangle 143.png")),
                             ),
                             Positioned(
-                              top: 78.h,
+                              top: 20.h,
                               left: 40.w,
                               child: InkWell(
                                 child: Row(
@@ -1541,7 +1541,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                               ),
                             ),
                             Positioned(
-                              top: 20.h,
+                              top: 78.h,
                               left: 40.w,
                               child: InkWell(
                                 child: Row(
@@ -1874,7 +1874,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                               child: InkWell(
                                 child: Row(
                                   children: [
-                                    const Text("HDP10"),
+                                    const Text("HDP2"),
                                     RotatedBox(
                                       quarterTurns: 2,
                                       child: Image.asset(
@@ -1891,7 +1891,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 24, 'HDP10');
+                                    updateTable(tableNo, 24, 'HDP2');
                                   });
                                 },
                               ),
@@ -1902,7 +1902,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                               child: InkWell(
                                 child: Row(
                                   children: [
-                                    const Text("HDP12"),
+                                    const Text("HDP4"),
                                     RotatedBox(
                                       quarterTurns: 4,
                                       child: Image.asset(
@@ -1919,7 +1919,7 @@ class _Level3LayoutState extends State<Level3Layout> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 26, 'HDP12');
+                                    updateTable(tableNo, 26, 'HDP4');
                                   });
                                   setState(() {});
                                 },
@@ -1943,12 +1943,12 @@ class _Level3LayoutState extends State<Level3Layout> {
                                         height: 30.r,
                                       ),
                                     ),
-                                    const Text("HDP9"),
+                                    const Text("HDP1"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 23, 'HDP9');
+                                    updateTable(tableNo, 23, 'HDP1');
                                   });
                                 },
                               ),
@@ -1971,12 +1971,12 @@ class _Level3LayoutState extends State<Level3Layout> {
                                         height: 30.r,
                                       ),
                                     ),
-                                    const Text("HDP11"),
+                                    const Text("HDP3"),
                                   ],
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    updateTable(tableNo, 25, 'HDP11');
+                                    updateTable(tableNo, 25, 'HDP3');
                                   });
                                 },
                               ),
