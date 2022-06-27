@@ -77,7 +77,8 @@ class AuthDataSource {
         List<GetUserResponse> users = getUserResponseFromJson(jsonString);
 
         for (var user in users) {
-          if (user.email == email && user.password == password) {
+          if (user.email?.toLowerCase() == email?.toLowerCase() &&
+              user.password == password) {
             AppHelpers.SHARED_PREFERENCES.setString('email', user.email!);
             AppHelpers.SHARED_PREFERENCES.setString('id', user.id.toString());
             AppHelpers.SHARED_PREFERENCES.setString('password', user.password!);

@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldMessengerState> snackbarKey =
       GlobalKey<ScaffoldMessengerState>();
   bool showPassword = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () async {
                   if (_formKey.currentState!.validate()) {
                     await AuthDataSource()
-                        .login(_email.text, _password.text)
+                        .login(_email.text.toLowerCase(), _password.text)
                         .then((value) {
                       if (value) {
                         Get.toNamed("/home");
