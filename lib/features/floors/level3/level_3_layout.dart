@@ -665,8 +665,11 @@ class _Level3LayoutState extends State<Level3Layout> {
                             onPressed: () async {
                               if (tableNo == null || seatNo == null) {
                                 return;
-                              }
-                              if (data["selecteddate"] != null &&
+                              } else if (seats.contains(seatNo)) {
+                                showSnackBar(
+                                    context: context,
+                                    message: "Already Booked");
+                              } else if (data["selecteddate"] != null &&
                                   data["todate"] != null &&
                                   data["fromtime"] != null &&
                                   data["totime"] != null) {
@@ -1019,6 +1022,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                           onPressed: () {
                             if (tableNo == null || seatNo == null) {
                               return;
+                            } else if (seats.contains(seatNo)) {
+                              showSnackBar(
+                                  context: context, message: "Already Booked");
                             }
                             if (data["selecteddate"] != null &&
                                 data["todate"] != null &&
@@ -1372,6 +1378,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                           onPressed: () {
                             if (tableNo == null || seatNo == null) {
                               return;
+                            } else if (seats.contains(seatNo)) {
+                              showSnackBar(
+                                  context: context, message: "Already Booked");
                             }
                             if (data["selecteddate"] != null &&
                                 data["todate"] != null &&
@@ -1730,6 +1739,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                           onPressed: () {
                             if (tableNo == null || seatNo == null) {
                               return;
+                            } else if (seats.contains(seatNo)) {
+                              showSnackBar(
+                                  context: context, message: "Already Booked");
                             }
                             if (data["selecteddate"] != null &&
                                 data["todate"] != null &&
@@ -2086,6 +2098,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                           onPressed: () {
                             if (tableNo == null || seatNo == null) {
                               return;
+                            } else if (seats.contains(seatNo)) {
+                              showSnackBar(
+                                  context: context, message: "Already Booked");
                             }
                             if (data["selecteddate"] != null &&
                                 data["todate"] != null &&
@@ -2442,6 +2457,9 @@ class _Level3LayoutState extends State<Level3Layout> {
                           onPressed: () {
                             if (tableNo == null || seatNo == null) {
                               return;
+                            } else if (seats.contains(seatNo)) {
+                              showSnackBar(
+                                  context: context, message: "Already Booked");
                             }
                             if (data["selecteddate"] != null &&
                                 data["todate"] != null &&

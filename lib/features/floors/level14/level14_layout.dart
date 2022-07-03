@@ -19,7 +19,6 @@ import 'package:hot_desking/features/booking/widgets/booking_confirmed_dialog.da
 import 'package:hot_desking/features/booking/widgets/table_booking_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 class Level14Layout extends StatefulWidget {
   final Function(TableModel? table) selectedTable;
@@ -42,8 +41,6 @@ class _Level14LayoutState extends State<Level14Layout> {
   Map<int, List<int>> modifiedTables = {};
 
   callnext() async {
-
-
     var inputDate = DateTime.parse(DateTime.now().toString());
     var outputFormat = DateFormat('dd-MM-yyyy');
     var outputDate = outputFormat.format(inputDate);
@@ -132,7 +129,7 @@ class _Level14LayoutState extends State<Level14Layout> {
     }
 
     callAPI();
-    callnext();
+    // callnext();
 
     bookedTables = modifiedTables;
     // print(modifiedTables);
@@ -142,6 +139,10 @@ class _Level14LayoutState extends State<Level14Layout> {
     if (bookedTables.containsKey(tableNo) && bookedTables[tableNo] != null) {
       if (bookedTables[tableNo]!.contains(seatNo)) {
         showSnackBar(context: context, message: 'Seat Already booked');
+        setState(() {
+          table = tableNo;
+          seat = seatNo;
+        });
       } else {
         setState(() {
           table = tableNo;
@@ -864,7 +865,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -1219,7 +1220,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -1610,7 +1611,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -2001,7 +2002,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -2356,7 +2357,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -2575,9 +2576,13 @@ class _Level14LayoutState extends State<Level14Layout> {
                                   ],
                                 ),
                                 onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 33, 'HDG33');
-                                  });
+                                  if (seats.contains(33)) {
+                                    print("Cant book");
+                                  } else {
+                                    setState(() {
+                                      updateTable(tableNo, 33, 'HDG33');
+                                    });
+                                  }
                                 },
                               ),
                             ),
@@ -2603,9 +2608,13 @@ class _Level14LayoutState extends State<Level14Layout> {
                                   ],
                                 ),
                                 onTap: () {
-                                  setState(() {
-                                    updateTable(tableNo, 32, 'HDG32');
-                                  });
+                                  if (seats.contains(32)) {
+                                    print("Cant book");
+                                  } else {
+                                    setState(() {
+                                      updateTable(tableNo, 32, 'HDG32');
+                                    });
+                                  }
                                 },
                               ),
                             ),
@@ -2711,7 +2720,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -3066,7 +3075,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -3421,7 +3430,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -3812,7 +3821,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -4167,7 +4176,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -4502,7 +4511,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -4837,7 +4846,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -5172,7 +5181,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -5507,7 +5516,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -5809,7 +5818,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -6111,7 +6120,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -6413,7 +6422,7 @@ class _Level14LayoutState extends State<Level14Layout> {
                               backgroundColor: MaterialStateProperty.all(
                                   AppColors.kAubergine)),
                           onPressed: () {
-                            _performTableBooking(data);
+                            _performTableBooking(data, seats);
                           },
                           child: const Text('Book'),
                         ),
@@ -6436,11 +6445,12 @@ class _Level14LayoutState extends State<Level14Layout> {
     });
   }
 
-  _performTableBooking(Map<String, dynamic> data) {
+  _performTableBooking(Map<String, dynamic> data, List<int> seats) {
     if (tableNo == null || seatNo == null) {
       return;
-    }
-    if (data["selecteddate"] != null &&
+    } else if (seats.contains(seatNo)) {
+      showSnackBar(context: context, message: "Already booked");
+    } else if (data["selecteddate"] != null &&
         data["todate"] != null &&
         data["fromtime"] != null &&
         data["totime"] != null) {
