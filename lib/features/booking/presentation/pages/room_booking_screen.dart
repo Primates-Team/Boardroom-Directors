@@ -18,9 +18,6 @@ import 'package:hot_desking/features/booking/widgets/confirm_button.dart';
 import 'package:hot_desking/features/login/data/datasource/auth_datasource.dart';
 import 'package:hot_desking/features/login/data/model/get_user_response.dart';
 import 'package:http/http.dart' as http;
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-
-import '../../../login/presentation/pages/login_screen.dart';
 
 //import 'package:hot_desking/features/floors/level3/level_3_layout.dart';
 //import 'package:hot_desking/features/booking/widgets/seat_selection_dialog.dart';
@@ -189,8 +186,11 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         GestureDetector(
                           onTap: () {
                             AppHelpers.SHARED_PREFERENCES.clear();
-                            pushAndRemoveUntilScreen(context,
-                                screen: const LoginScreen(), withNavBar: false);
+
+                            Get.offAllNamed("/root");
+
+                            // pushAndRemoveUntilScreen(context,
+                            //     screen: const LoginScreen(), withNavBar: false);
                           },
                           child: Image.asset(
                             'assets/welcome_screen/log_out.png',
@@ -310,7 +310,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                               height: 34.h,
                               width: 152.w,
                               child: startDateSelector(context)),
-                          Spacer(),
+                          const Spacer(),
                           Container(
                               height: 34.h,
                               width: 152.w,
@@ -538,14 +538,15 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                 children: [
                   Text(
                     availabilityResponse.name ?? "Room A",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   Text(
                     'Number of Pax Allowed : ${availabilityResponse.noofpax}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.w500,
                     ),
@@ -635,8 +636,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                         children: [
                           Row(
                             children: [
-                              Expanded(
-                                child: const Text(
+                              const Expanded(
+                                child: Text(
                                   'List of Pax',
                                   style: TextStyle(
                                     fontSize: 20.0,
@@ -649,7 +650,7 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                   child: paxSelector(availabilityResponse)),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -668,8 +669,8 @@ class _RoomBookingScreenState extends State<RoomBookingScreen> {
                                             hintText:
                                                 "Select Invitee${index2 + 1} Email",
                                           ),
-                                          // popupItemDisabled: (String s) =>
-                                          //     s.startsWith('I'),
+                                          popupItemDisabled: (String s) =>
+                                              s.startsWith('I'),
                                           onChanged: (String? newValue) {
                                             setState(() {
                                               if (paxEmailList.isEmpty) {

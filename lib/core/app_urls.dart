@@ -1,5 +1,7 @@
 class AppUrl {
-  static const String baseUrl = 'http://54.147.217.183:3001';
+  // static const String baseUrl = 'http://54.227.36.18:3001';
+  static const String baseUrl = 'https://api.deskq.app';
+
   static const String createUser = '$baseUrl/users/create';
   static const String viewAllUsers = '$baseUrl/users/viewall';
   static const String login = '$baseUrl/users/login';

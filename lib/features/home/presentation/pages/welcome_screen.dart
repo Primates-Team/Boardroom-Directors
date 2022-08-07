@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:hot_desking/core/app_colors.dart';
 import 'package:hot_desking/core/app_helpers.dart';
 import 'package:hot_desking/core/app_theme.dart';
 import 'package:hot_desking/features/booking/presentation/pages/hot_desking_screen.dart';
 import 'package:hot_desking/features/booking_history/presentation/pages/booking_history_screen.dart';
-import 'package:hot_desking/features/login/presentation/pages/login_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import '../../../booking/presentation/pages/room_booking_screen.dart';
@@ -40,8 +40,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   InkWell(
                     onTap: () {
                       AppHelpers.SHARED_PREFERENCES.clear();
-                      pushAndRemoveUntilScreen(context,
-                          screen: const LoginScreen(), withNavBar: false);
+
+                      Get.offAllNamed("/root");
+
+                      // pushAndRemoveUntilScreen(context,
+                      //     screen: const LoginScreen(), withNavBar: false);
                     },
                     child: Image.asset(
                       'assets/welcome_screen/log_out.png',

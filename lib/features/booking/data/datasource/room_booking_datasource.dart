@@ -84,14 +84,13 @@ class RoomBookingDataSource {
 
       if (response.statusCode == 200) {
         var jsonString = response.body;
-      
+
         showSnackBar(
             context: Get.context!,
             message: 'Booking Successful',
             bgColor: Colors.green);
         return true;
       } else {
-    
         // LoginFailureResponse res = loginFailureResponseFromJson(response.body);
         showSnackBar(
             context: Get.context!,
@@ -116,7 +115,7 @@ class RoomBookingDataSource {
       );
       if (response.statusCode == 200) {
         var jsonString = response.body;
-    
+
         List<GetAllRoomBookingResponse> bookings =
             getAllRoomBookingResponseFromJson(jsonString);
 
@@ -132,11 +131,9 @@ class RoomBookingDataSource {
         }
         booked.toSet().toList();
         bookingController.bookedRooms.value = booked;
-    
 
         return true;
       } else {
-     
         showSnackBar(
             context: Get.context!,
             message: 'Failed to Load',
